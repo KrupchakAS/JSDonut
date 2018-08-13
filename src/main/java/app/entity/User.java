@@ -2,8 +2,12 @@ package app.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Set;
 
@@ -15,26 +19,23 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    @NotBlank
     @Column(name = "login")
     private String login;
     @Column(name = "password")
     private String password;
-    @NotBlank
     @Column(name = "firstName")
     private String firstName;
-    @NotBlank
     @Column(name = "surName")
     private String surName;
-    @NotBlank
+    @Column(name = "phoneNumber")
+    private String phoneNumber;
+    @Past
+    @DateTimeFormat(pattern = "YYYY-MM-DD")
     @Temporal(TemporalType.DATE)
     @Column(name = "birthDate")
     private Date birthDate;
-    @NotBlank
     @Column(name = "email")
     private String email;
-
-
     @Transient
     private String confirmPassword;
 
@@ -75,6 +76,14 @@ public class User {
 
     public void setSurName(String surName) {
         this.surName = surName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Date getBirthDate() {

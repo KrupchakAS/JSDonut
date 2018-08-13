@@ -1,35 +1,22 @@
+<!DOCTYPE html>
+<%@ page  pageEncoding="UTF-8" isELIgnored="false"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
-<!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="text/html; content=" IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>Welcome</title>
     <link href="${contextPath}/resources/css/bootstrap.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/app.css" rel="stylesheet">
     </head>
 <body>
-
-<%--<div class="container">--%>
-
-<%--<c:if test="${pageContext.request.userPrincipal.name != null}">--%>
-<%--<form id="logoutForm" method="POST" action="${contextPath}/logout">--%>
-<%--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-<%--</form>--%>
-
-<%--<h4>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a>--%>
-<%--</h4>--%>
-
-<%--</c:if>--%>
-<%--</div>--%>
 <div class="container">
     <nav class="navbar navbar-fixed-top navbar-default container__navbar" role="navigation">
         <div class="container-fluid">
@@ -47,7 +34,6 @@
                         </sec:authorize>
                     </ul>
                 </div>
-
         </div>
     </nav>
 </div>
@@ -55,8 +41,8 @@
 </br>
 </br>
 <sec:authorize access="!hasRole('ADMIN') and !hasRole('MANAGER') and !hasRole('USER')">
-    <c:import url="/WEB-INF/views/registration.jsp" />
-    <c:import url="/WEB-INF/views/login.jsp" />
+    <c:import url="/WEB-INF/views/registration.jsp"  />
+    <%--<c:import url="/WEB-INF/views/login.jsp" />--%>
 </sec:authorize>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
