@@ -15,10 +15,11 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.0.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:5.0.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:5.0.7.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:4.0.2.RELEASE" />
-          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.0.2.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:4.0.2.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.0.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.0.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:5.0.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-taglibs:5.0.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-acl:5.0.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-orm:5.0.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:5.0.7.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:5.0.7.RELEASE" />
@@ -53,6 +54,7 @@
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.46" />
           <element id="library" level="project" name="Maven: org.liquibase:liquibase-core:3.5.5" />
           <element id="library" level="project" name="Maven: org.yaml:snakeyaml:1.17" />
+          <element id="library" level="project" name="Maven: javax.servlet:servlet-api:2.5" />
         </element>
       </element>
       <element id="directory" name="META-INF">

@@ -1,8 +1,10 @@
 package app.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -13,12 +15,25 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-
-    @Column(name = "userName")
-    private String userName;
-
+    @NotBlank
+    @Column(name = "login")
+    private String login;
     @Column(name = "password")
     private String password;
+    @NotBlank
+    @Column(name = "firstName")
+    private String firstName;
+    @NotBlank
+    @Column(name = "surName")
+    private String surName;
+    @NotBlank
+    @Temporal(TemporalType.DATE)
+    @Column(name = "birthDate")
+    private Date birthDate;
+    @NotBlank
+    @Column(name = "email")
+    private String email;
+
 
     @Transient
     private String confirmPassword;
@@ -38,12 +53,44 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return userName;
+    public String getLogin() {
+        return login;
     }
 
-    public void setUsername(String username) {
-        this.userName = username;
+    public void setLogin(String username) {
+        this.login = username;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getSurName() {
+        return surName;
+    }
+
+    public void setSurName(String surName) {
+        this.surName = surName;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

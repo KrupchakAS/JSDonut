@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
         roles.add(role);
         user.setRoles(roles);
         userDao.saveUser(user);
-        logger.debug(String.format("Successfully saved user %s", user.getUsername()));
+        logger.debug(String.format("Successfully saved user %s", user.getLogin()));
     }
 
     @Override
@@ -49,9 +49,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findByUsername(String username) {
+    public User findUserByLogin(String login) {
+        return userDao.findUserByLogin(login);
+    }
 
-        return userDao.findByUsername(username);
+    @Override
+    public User findUserByEmail(String email) {
+        return userDao.findUserByEmail(email);
     }
 
     @Override
@@ -60,11 +64,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getUsersList(String username) {
+    public List<User> getUsersList(String login) {
         List<User> list1 = userDao.getUsersList();
         List<User> list =new ArrayList<>();
         for(User us:list1){
-            if (us.getUsername().toLowerCase().contains(username.toLowerCase())){
+            if (us.getLogin().toLowerCase().contains(login.toLowerCase())){
                 list.add(us);
             }
         }

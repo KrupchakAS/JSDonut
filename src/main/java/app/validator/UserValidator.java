@@ -15,6 +15,7 @@ public class UserValidator implements Validator {
     @Autowired
     private UserService userService;
 
+
     public boolean supports(Class<?> aClass) {
         return User.class.equals(aClass);
     }
@@ -22,14 +23,15 @@ public class UserValidator implements Validator {
 
     public void validate(Object o, Errors errors) {
         User user = (User) o;
+        EmailValidator emailValidator = new EmailValidator();
 
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "Required");
-        if (user.getUsername().length() < 4 || user.getUsername().length() > 16) {
-            errors.rejectValue("username", "Size.userForm.username");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "Required");
+        if (user.getLogin().length() < 4 || user.getLogin().length() > 16) {
+            errors.rejectValue("login", "Size.userForm.login");
         }
 
-        if (userService.findByUsername(user.getUsername()) != null) {
-            errors.rejectValue("username", "Duplicate.userForm.username");
+        if (userService.findUserByLogin(user.getLogin()) != null) {
+            errors.rejectValue("login", "Duplicate.userForm.login");
         }
 
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Required");
@@ -40,5 +42,14 @@ public class UserValidator implements Validator {
         if (!user.getConfirmPassword().equals(user.getPassword())) {
             errors.rejectValue("confirmPassword", "Different.userForm.password");
         }
+
+        if (!emailValidator.validate(user.getEmail())){
+            errors.rejectValue("email","Invalid.userForm.email");
+        }
+
+        if(userService.findUserByEmail(user.getEmail()) != null){
+            errors.rejectValue("email","Duplicate.userForm.email");
+        }
+
     }
 }

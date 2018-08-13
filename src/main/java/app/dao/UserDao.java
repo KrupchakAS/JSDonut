@@ -4,10 +4,9 @@ import app.entity.User;
 import java.util.List;
 
 public interface UserDao {
-    User findByUsername(String username);
-
+    User findUserByEmail(String email);
+    User findUserByLogin(String login);
     List<User> getUsersList();
-
     void saveUser(User user);
     void deleteUser(Integer id);
 }

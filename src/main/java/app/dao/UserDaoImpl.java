@@ -17,13 +17,23 @@ public class UserDaoImpl implements UserDao {
     private static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
     @Autowired
     private  SessionFactory sessionFactory;
+    @SuppressWarnings("unchecked")
+    @Override
+    public User findUserByEmail(String email) {
+        List<User> users =sessionFactory.getCurrentSession().createQuery("from User where email=?").
+                setParameter(0,email).list();
+        if (users.size() > 0) {
+            return users.get(0);
+        } else {
+            return null;
+        }
+    }
 
     @SuppressWarnings("unchecked")
-    public User findByUsername(String username) {
+    public User findUserByLogin(String login) {
         List<User> users = sessionFactory.getCurrentSession()
-                .createQuery("from User where username=?")
-                .setParameter(0, username)
-                .list();
+                .createQuery("from User where login=?")
+                .setParameter(0, login).list();
         if (users.size() > 0) {
             return users.get(0);
         } else {
@@ -45,8 +55,8 @@ public class UserDaoImpl implements UserDao {
     @SuppressWarnings("unchecked")
     @Override
     public void deleteUser(Integer id) {
-        Query query = sessionFactory.getCurrentSession().createQuery("delete from User where id = :i");
-        query.setParameter("i", id);
+        Query query = sessionFactory.getCurrentSession().createQuery("delete from User where id = :id");
+        query.setParameter("id", id);
         query.executeUpdate();
         logger.debug(String.format("Successfully deleted user "));
     }
