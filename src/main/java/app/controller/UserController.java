@@ -28,7 +28,7 @@ public class UserController {
     @Autowired
     private UserValidator userValidator;
 
-    @RequestMapping(value = "/welcome", method = {RequestMethod.GET})
+    @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String createModel(ModelMap modelMap){
         modelMap.addAttribute("userForm",new User());
         return "/welcome";

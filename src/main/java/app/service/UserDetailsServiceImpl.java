@@ -20,11 +20,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserDao userDao;
 
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userDao.findUserByLogin(username);
-
+    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+        User user = userDao.findUserByLogin(login);
         Set<GrantedAuthority> grantedAuthorities = new HashSet<GrantedAuthority>();
-
         for (Role role : user.getRoles()) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
