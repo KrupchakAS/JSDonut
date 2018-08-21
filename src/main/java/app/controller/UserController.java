@@ -35,16 +35,19 @@ public class UserController {
     }
 
     @RequestMapping(value = "/welcome", method = RequestMethod.POST)
-    public String registration(@Valid @ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model) {
+    public String registration(@Valid @ModelAttribute("userForm") User userForm, BindingResult bindingResult, Model model,String error) {
         userValidator.validate(userForm, bindingResult);
         if (bindingResult.hasErrors()) {
-            return "/welcome";
+            return "welcome";
+        }
+        if(error != null) {
+            model.addAttribute("error", "Registration form has error(s)");
         }
         userService.save(userForm);
         return "redirect:/welcome";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {
         if (error != null) {
             model.addAttribute("error", "Username or password is incorrect.");
@@ -95,9 +98,8 @@ public class UserController {
 
     @RequestMapping(value = "/userList2/getUserList", method = RequestMethod.GET)
     public @ResponseBody
-    List<User> getUserList(@RequestParam("uName") String userName) {
-
-        return userService.getUsersList(userName);
+    List<User> getUserList(@RequestParam(value = "uName") String uName) {
+        return userService.getUsersList(uName);
     }
 
     @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
@@ -105,9 +107,14 @@ public class UserController {
         return "deleteUser";
     }
 
-    @RequestMapping(value = "/deleteUser/deleteUser={usId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteUser/deleteUser={usId}", method = RequestMethod.DELETE)
     public String userDelete(@PathVariable("usId") Integer id) {
         userService.deleteUser(id);
         return "redirect:/deleteUser";
+    }
+
+    @RequestMapping(value = "/liiist")
+    public @ResponseBody List<User> liist(){
+        return userService.getUsersList();
     }
 }

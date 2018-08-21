@@ -66,7 +66,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getUsersList(String login) {
         List<User> list1 = userDao.getUsersList();
-        List<User> list =new ArrayList<>();
+        List<User> list = new ArrayList<>();
         for(User us:list1){
             if (us.getLogin().toLowerCase().contains(login.toLowerCase())){
                 list.add(us);

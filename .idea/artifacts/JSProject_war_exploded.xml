@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="JSProject:war exploded">
-    <output-path>$PROJECT_DIR$/target/TChat</output-path>
+    <output-path>$PROJECT_DIR$/target/JSProject</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -51,6 +51,7 @@
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.9.6" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.9.6" />
           <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.6" />
+          <element id="library" level="project" name="Maven: org.modelmapper:modelmapper:2.2.0" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.46" />
           <element id="library" level="project" name="Maven: org.liquibase:liquibase-core:3.5.5" />
           <element id="library" level="project" name="Maven: org.yaml:snakeyaml:1.17" />
@@ -58,7 +59,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/TChat/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/JSProject/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="JSProject/web/Web" />
     </root>

@@ -1,50 +1,31 @@
-package app.entity;
+package app.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.format.annotation.DateTimeFormat;
+import app.entity.Role;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
-public class User {
+public class UserDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
-    @Column(name = "login")
+
     private String login;
-    @Column(name = "password")
+
     private String password;
-    @Column(name = "firstName")
+
     private String firstName;
-    @Column(name = "surName")
+
     private String surName;
-    @Column(name = "phoneNumber")
+
     private String phoneNumber;
-    @Past
-    @DateTimeFormat(pattern = "YYYY-MM-DD")
-    @Temporal(TemporalType.DATE)
-    @Column(name = "birthDate")
+
     private Date birthDate;
-    @Column(name = "email")
+
     private String email;
-    @Transient
+
     private String confirmPassword;
 
-
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
-
 
     public Integer getId() {
         return id;
@@ -58,8 +39,16 @@ public class User {
         return login;
     }
 
-    public void setLogin(String username) {
-        this.login = username;
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -102,14 +91,6 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getConfirmPassword() {
         return confirmPassword;
     }
@@ -125,5 +106,4 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-
 }

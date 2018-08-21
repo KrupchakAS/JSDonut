@@ -115,6 +115,12 @@
             <version>2.9.6</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+
 
         <dependency>
             <groupId>mysql</groupId>
@@ -136,7 +142,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <build>
-        <finalName>TChat</finalName>
+        <finalName>JSProject</finalName>
         <plugins>
             <plugin>
                 <groupId>org.liquibase</groupId>
@@ -146,7 +152,7 @@
                     <changeLogFile>
                         C:\Users\tooto\Desktop\TChat\src\main\resources\changelog\db.changelog-1.0.xml
                     </changeLogFile>
-                    <url>jdbc:mysql://localhost:3306/tbase</url>
+                    <url>jdbc:mysql://localhost:3306/JSProject</url>
                     <username>root</username>
                     <password>root</password>
                     <goal>update</goal>
