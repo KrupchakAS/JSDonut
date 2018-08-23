@@ -81,18 +81,22 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     @Override
     public List<UserDTO> getUsersList() {
-        return userDao.getUsersList().stream().map(user -> modelMapper.map(user, UserDTO.class)).collect(Collectors.toList());
+        List<User> list = userDao.getUsersList();
+        if (list != null) {
+            return list.stream().map(user -> modelMapper.map(user, UserDTO.class)).collect(Collectors.toList());
+        }else {
+            return null;
+        }
     }
     @Transactional(readOnly = true)
     @Override
     public List<UserDTO> getUsersListByChars(String chars) {
-        List<UserDTO> list1 = userDao.getUsersList().stream().map(user -> modelMapper.map(user, UserDTO.class)).collect(Collectors.toList());
-        List<UserDTO> list = new ArrayList<>();
-        for (UserDTO us : list1) {
-            if (us.getLogin().toLowerCase().contains(chars.toLowerCase())) {
-                list.add(us);
-            }
+        List<User> list = userDao.getUsersListByChars(chars);
+        if (list != null) {
+            return list.stream().map(user -> modelMapper.map(user, UserDTO.class)).collect(Collectors.toList());
+        }else {
+            return null;
         }
-        return list;
+
     }
 }

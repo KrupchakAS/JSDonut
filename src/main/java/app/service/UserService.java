@@ -9,7 +9,7 @@ public interface UserService {
     UserDTO findUserByLogin(String login);
     UserDTO findUserByEmail(String email);
     List<UserDTO> getUsersList();
-    List<UserDTO> getUsersListByChars(String username);
+    List<UserDTO> getUsersListByChars(String chars);
     void save(UserDTO userDTO);
     void deleteUser(Integer id);
 }

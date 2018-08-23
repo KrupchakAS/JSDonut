@@ -45,6 +45,13 @@ public class UserDaoImpl implements UserDao {
              return list.get(0);
          }
     }
+    @SuppressWarnings("unchecked")
+    @Override
+    public List<User> getUsersListByChars(String chars) {
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class)
+                .add(Restrictions.like("login","%"+chars+"%"));
+        return criteria.list();
+    }
 
     @Override
     @SuppressWarnings("unchecked")
