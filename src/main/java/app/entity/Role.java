@@ -21,6 +21,11 @@ public class Role {
     public Role() {
     }
 
+    public Role(String name, Set<User> users) {
+        this.name = name;
+        this.users = users;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -45,12 +50,4 @@ public class Role {
         this.users = users;
     }
 
-    @Override
-    public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", users=" + users +
-                '}';
-    }
 }

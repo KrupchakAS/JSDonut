@@ -39,12 +39,25 @@ public class User {
     @Transient
     private String confirmPassword;
 
-
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    public User() {
+    }
+
+    public User(String login, String password, String firstName, String surName, String phoneNumber, Date birthDate, String email, String confirmPassword, Set<Role> roles) {
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.surName = surName;
+        this.phoneNumber = phoneNumber;
+        this.birthDate = birthDate;
+        this.email = email;
+        this.confirmPassword = confirmPassword;
+        this.roles = roles;
+    }
 
     public Integer getId() {
         return id;

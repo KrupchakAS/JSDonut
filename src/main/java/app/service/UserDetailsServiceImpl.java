@@ -1,8 +1,11 @@
 package app.service;
 
 import app.dao.UserDao;
+import app.dto.RoleDTO;
+import app.dto.UserDTO;
 import app.entity.Role;
 import app.entity.User;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,12 +23,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        User user = userDao.findUserByLogin(login);
+        UserDTO userDTO = modelMapper.map(userDao.findUserByLogin(login),UserDTO.class);
         Set<GrantedAuthority> grantedAuthorities = new HashSet<GrantedAuthority>();
-        for (Role role : user.getRoles()) {
+        for (RoleDTO role : userDTO.getRoles()) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
         }
-        return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(), grantedAuthorities);
+        return new org.springframework.security.core.userdetails.User(userDTO.getLogin(), userDTO.getPassword(), grantedAuthorities);
     }
 }

@@ -1,6 +1,7 @@
 package app.validator;
 
 
+import app.dto.UserDTO;
 import app.entity.User;
 import app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,54 +10,53 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import javax.transaction.Transactional;
+
 @Component
 public class UserValidator implements Validator {
 
     @Autowired
     private UserService userService;
 
-
     public boolean supports(Class<?> aClass) {
-        return User.class.equals(aClass);
+        return UserDTO.class.equals(aClass);
     }
 
-
     public void validate(Object o, Errors errors) {
-        User user = (User) o;
-        EmailValidator emailValidator = new EmailValidator();
-
+        UserDTO userDTO = (UserDTO) o;
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "Required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surName", "Required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "birthDate", "Required");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "Required");
-        if (user.getLogin().length() < 4 || user.getLogin().length() > 16) {
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "Required");
+
+
+        if (userService.findUserByLogin(userDTO.getLogin()) != null) {
+            errors.rejectValue("login", "Duplicate.userForm.login");
+        }
+        if (userService.findUserByEmail(userDTO.getEmail()) != null) {
+            errors.rejectValue("email", "Duplicate.userForm.email");
+        }
+        if (userDTO.getLogin().length() < 4 || userDTO.getLogin().length() > 16) {
             errors.rejectValue("login", "Size.userForm.login");
         }
 
-        if (userService.findUserByLogin(user.getLogin()) != null) {
-            errors.rejectValue("login", "Duplicate.userForm.login");
-        }
-
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Required");
-        if (user.getPassword().length() < 4 || user.getPassword().length() > 16) {
+        if (userDTO.getPassword().length() < 4 || userDTO.getPassword().length() > 16) {
             errors.rejectValue("password", "Size.userForm.password");
         }
 
-        if (!user.getConfirmPassword().equals(user.getPassword())) {
+        if (!userDTO.getConfirmPassword().equals(userDTO.getPassword())) {
             errors.rejectValue("confirmPassword", "Different.userForm.password");
         }
-
-        if (!emailValidator.validate(user.getEmail())){
-            errors.rejectValue("email","Invalid.userForm.email");
+        EmailValidator emailValidator = new EmailValidator();
+        if (!emailValidator.validate(userDTO.getEmail())) {
+            errors.rejectValue("email", "Invalid.userForm.email");
         }
 
-        if(userService.findUserByEmail(user.getEmail()) != null){
-            errors.rejectValue("email","Duplicate.userForm.email");
+        if (userDTO.getPhoneNumber().length() != 10) {
+            errors.rejectValue("phoneNumber", "Invalid.userForm.phoneNumber");
         }
-        if (user.getPhoneNumber().length() > 10 || user.getPhoneNumber().length() < 10){
-            errors.rejectValue("phoneNumber","Invalid.userForm.phoneNumber");
-        }
-
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors,"firstName","Required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors,"surName","Required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors,"birthDate","Required");
 
     }
 }

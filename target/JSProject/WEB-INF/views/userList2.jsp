@@ -7,7 +7,6 @@
     <title>Users List</title>
 
     <link href="${contextPath}/resources/css/bootstrap.css" rel="stylesheet">
-
     <link  href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
 </head>
 <body>

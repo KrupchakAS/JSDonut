@@ -1,31 +1,56 @@
 package app.dto;
 
 import app.entity.Role;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 import java.util.Set;
 
 public class UserDTO {
 
     private Integer id;
-
+    @NotNull
     private String login;
-
+    @NotNull
     private String password;
-
+    @NotNull
     private String firstName;
-
+    @NotNull
     private String surName;
-
+    @NotNull
     private String phoneNumber;
-
+    @Past
+    @DateTimeFormat(pattern = "YYYY-MM-DD")
+    @Temporal(TemporalType.DATE)
     private Date birthDate;
-
+    //@Pattern(regexp="[A-Za-z0-9._%-+]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}")
     private String email;
-
+    @NotNull
     private String confirmPassword;
 
-    private Set<Role> roles;
+    private Set<RoleDTO> roles;
+
+    public UserDTO() {
+    }
+
+    public UserDTO(String login, String password, String firstName, String surName, String phoneNumber, Date birthDate, String email, String confirmPassword, Set<RoleDTO> roles) {
+        this.login = login;
+        this.password = password;
+        this.firstName = firstName;
+        this.surName = surName;
+        this.phoneNumber = phoneNumber;
+        this.birthDate = birthDate;
+        this.email = email;
+        this.confirmPassword = confirmPassword;
+        this.roles = roles;
+    }
 
     public Integer getId() {
         return id;
@@ -99,11 +124,27 @@ public class UserDTO {
         this.confirmPassword = confirmPassword;
     }
 
-    public Set<Role> getRoles() {
+    public Set<RoleDTO> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Set<RoleDTO> roles) {
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", surName='" + surName + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", birthDate=" + birthDate +
+                ", email='" + email + '\'' +
+                ", confirmPassword='" + confirmPassword + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 }
