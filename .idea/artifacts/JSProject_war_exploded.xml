@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="JSProject:war exploded">
-    <output-path>$PROJECT_DIR$/target/JSProject</output-path>
+    <output-path>$PROJECT_DIR$/target/JSDonut</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -59,7 +59,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/JSProject/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/JSDonut/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="JSProject/web/Web" />
     </root>

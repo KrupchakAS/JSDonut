@@ -3,7 +3,7 @@
              xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>app</groupId>
-    <artifactId>JSProject</artifactId>
+    <artifactId>JSDonut</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Maven Webapp</name>
@@ -142,7 +142,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <build>
-        <finalName>JSProject</finalName>
+        <finalName>JSDonut</finalName>
         <plugins>
             <plugin>
                 <groupId>org.liquibase</groupId>
