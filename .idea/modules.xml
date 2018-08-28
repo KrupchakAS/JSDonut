@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/JSProject.iml" filepath="$PROJECT_DIR$/JSProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JSDonut.iml" filepath="$PROJECT_DIR$/JSDonut.iml" />
     </modules>
   </component>
 </project>
