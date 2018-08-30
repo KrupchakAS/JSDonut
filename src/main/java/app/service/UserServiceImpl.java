@@ -41,13 +41,11 @@ public class UserServiceImpl implements UserService {
     @Transactional(propagation = Propagation.REQUIRED)
     public void save(UserDTO userDto) {
         userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
-        Set<RoleDTO> roles = new HashSet<>();
         RoleDTO roleDto = new RoleDTO();
         roleDto.setId(2);
         roleDto.setName("ROLE_USER");
-        roles.add(roleDto);
         roleDao.saveRole(modelMapper.map(roleDto, Role.class));
-        userDto.setRoles(roles);
+        userDto.setRole(roleDto);
         userDao.saveUser(modelMapper.map(userDto, User.class));
         logger.debug(String.format("Successfully saved user %s", userDto.getLogin()));
     }

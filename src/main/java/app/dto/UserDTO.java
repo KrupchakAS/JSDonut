@@ -35,22 +35,7 @@ public class UserDTO {
     @NotNull
     private String confirmPassword;
 
-    private Set<RoleDTO> roles;
-
-    public UserDTO() {
-    }
-
-    public UserDTO(String login, String password, String firstName, String surName, String phoneNumber, Date birthDate, String email, String confirmPassword, Set<RoleDTO> roles) {
-        this.login = login;
-        this.password = password;
-        this.firstName = firstName;
-        this.surName = surName;
-        this.phoneNumber = phoneNumber;
-        this.birthDate = birthDate;
-        this.email = email;
-        this.confirmPassword = confirmPassword;
-        this.roles = roles;
-    }
+    private RoleDTO role;
 
     public Integer getId() {
         return id;
@@ -124,27 +109,13 @@ public class UserDTO {
         this.confirmPassword = confirmPassword;
     }
 
-    public Set<RoleDTO> getRoles() {
-        return roles;
+    public RoleDTO getRole() {
+        return role;
     }
 
-    public void setRoles(Set<RoleDTO> roles) {
-        this.roles = roles;
+    public void setRole(RoleDTO role) {
+        this.role = role;
     }
 
-    @Override
-    public String toString() {
-        return "UserDTO{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", surName='" + surName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", birthDate=" + birthDate +
-                ", email='" + email + '\'' +
-                ", confirmPassword='" + confirmPassword + '\'' +
-                ", roles=" + roles +
-                '}';
-    }
+
 }

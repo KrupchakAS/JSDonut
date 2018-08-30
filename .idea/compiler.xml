@@ -6,10 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="JSDonut" />
         <module name="JSProject" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="JSDonut" target="1.8" />
       <module name="JSProject" target="1.8" />
     </bytecodeTargetLevel>
   </component>

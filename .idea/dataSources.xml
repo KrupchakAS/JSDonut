@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="JSProject@localhost" uuid="e18ee720-1164-4065-b336-ebd774da5640">
+    <data-source source="LOCAL" name="jsdonut@localhost" uuid="c886dfc0-ee9a-4c6a-9954-78b4bd50b510">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/JSProject</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/jsdonut</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

@@ -15,16 +15,9 @@ public class Role {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany(mappedBy = "roles",cascade = CascadeType.ALL)
-    private Set<User> users;
+    @OneToOne(mappedBy = "role",cascade = CascadeType.ALL)
+    private User user;
 
-    public Role() {
-    }
-
-    public Role(String name, Set<User> users) {
-        this.name = name;
-        this.users = users;
-    }
 
     public Integer getId() {
         return id;
@@ -42,12 +35,12 @@ public class Role {
         this.name = name;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }

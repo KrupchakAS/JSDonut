@@ -1,15 +1,11 @@
 package app.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
 import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -39,25 +35,10 @@ public class User {
     @Transient
     private String confirmPassword;
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
-
-    public User() {
-    }
-
-    public User(String login, String password, String firstName, String surName, String phoneNumber, Date birthDate, String email, String confirmPassword, Set<Role> roles) {
-        this.login = login;
-        this.password = password;
-        this.firstName = firstName;
-        this.surName = surName;
-        this.phoneNumber = phoneNumber;
-        this.birthDate = birthDate;
-        this.email = email;
-        this.confirmPassword = confirmPassword;
-        this.roles = roles;
-    }
+    private Role role;
 
     public Integer getId() {
         return id;
@@ -131,12 +112,11 @@ public class User {
         this.confirmPassword = confirmPassword;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
-
 }

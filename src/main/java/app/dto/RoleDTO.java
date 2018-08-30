@@ -12,22 +12,14 @@ public class RoleDTO {
 
     private String name;
     @JsonIgnore
-    private Set<UserDTO> users;
+    private UserDTO user;
 
-    public Set<UserDTO> getUsers() {
-        return users;
+    public UserDTO getUser() {
+        return user;
     }
 
-    public RoleDTO() {
-    }
-
-    public RoleDTO(String name, Set<UserDTO> users) {
-        this.name = name;
-        this.users = users;
-    }
-
-    public void setUsers(Set<UserDTO> users) {
-        this.users = users;
+    public void setUser(UserDTO user) {
+        this.user = user;
     }
 
     public Integer getId() {
