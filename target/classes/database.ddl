@@ -3,19 +3,22 @@ SET FOREIGN_KEY_CHECKS=0;
 -- Table: users
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  login VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  firstName VARCHAR(255) NOT NULL,
-  surName VARCHAR(255) NOT NULL,
+  login VARCHAR(16) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  firstName VARCHAR(32) NOT NULL,
+  surName VARCHAR(32) NOT NULL,
   phoneNumber VARCHAR(10) NOT NULL,
-  email VARCHAR(255) NOT NULL,
-  birthDate DATE
+  email VARCHAR(50) NOT NULL,
+  birthDate DATE NOT NULL ,
+  address_id INT ,
+  FOREIGN KEY (address_id) REFERENCES address (id),
+  UNIQUE (login,phoneNumber,email)
 )ENGINE = InnoDB;
 
 -- Table: roles
 CREATE TABLE roles (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(100) NOT NULL
+  name VARCHAR(10) NOT NULL
 )  ENGINE = InnoDB;
 
 -- Table for mapping user and roles: user_roles
@@ -30,34 +33,26 @@ CREATE TABLE user_roles (
 -- Table: address
 CREATE TABLE address (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  country VARCHAR(32) NOT NULL,
-  city VARCHAR(32) NOT NULL,
-  postCode INT NOT NULL ,
+  country VARCHAR(32) NOT NULL ,
+  city VARCHAR(32) NOT NULL ,
   street VARCHAR(32) NOT NULL ,
-  houseNumber INT (32) NOT NULL ,
-  apartment VARCHAR(32) NOT NULL
-) ENGINE = InnoDB;
-
--- Table for mapping user and address: user_address
-CREATE TABLE user_address (
-  user_id INT NOT NULL,
-  address_id INT NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users (id),
-  FOREIGN KEY (address_id) REFERENCES address (id),
-  UNIQUE (user_id, address_id)
+  houseNumber SMALLINT NOT NULL ,
+  apartmentNumber SMALLINT NOT NULL,
+  postCode INT NOT NULL
 ) ENGINE = InnoDB;
 
 -- Table: product
-CREATE TABLE product (
+CREATE TABLE products (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(32) NOT NULL ,
-  price INT NOT NULL ,
-  weight INT NOT NULL ,
-  size INT NOT NULL ,
-  quantity INT,
+  description VARCHAR(255) NOT NULL ,
   image VARCHAR(255),
-  category_id INT NOT NULL,
-  FOREIGN KEY (category_id) REFERENCES category (id)
+  price FLOAT NOT NULL ,
+  weight SMALLINT NOT NULL ,
+  quantity SMALLINT,
+  parameters_id INT NOT NULL,
+  FOREIGN KEY (parameters_id) REFERENCES parameters(id),
+  UNIQUE (name,image)
 )ENGINE = InnoDB;
 
 -- Table: category
@@ -69,26 +64,29 @@ CREATE TABLE category(
 -- Table: parameters
 CREATE TABLE parameters (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  calories INT NOT NULL ,
-  fat INT NOT NULL ,
-  carbohydrate INT NOT NULL ,
-  protein INT NOT NULL ,
+  calories SMALLINT NOT NULL ,
+  fat TINYINT NOT NULL ,
+  carbohydrate TINYINT NOT NULL ,
+  protein TINYINT NOT NULL ,
   composition VARCHAR(255) NOT NULL
 )ENGINE = InnoDB;
 
--- Table for mapping product and parameters: product_parameters
-CREATE TABLE product_parameters (
-  product_id INT NOT NULL,
-  parameters_id INT NOT NULL,
-  FOREIGN KEY (product_id) REFERENCES product (id),
-  FOREIGN KEY (parameters_id) REFERENCES parameters (id),
-  UNIQUE (product_id, parameters_id)
-) ENGINE = InnoDB;
-
--- Table: order
-CREATE TABLE order (
+-- Table: Order
+CREATE TABLE orders (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL ,
-  user_address_id VARCHAR(255) NOT NULL ,
-  
-)
+  user_address_id INT NOT NULL  ,
+  paymentOption TINYINT NOT NULL ,
+  deliveryOption TINYINT NOT NULL ,
+  paymentStatus TINYINT NOT NULL ,
+  orderStatus TINYINT NOT NULL ,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (user_address_id) REFERENCES address(id)
+) ENGINE = InnoDB;
+
+-- Insert data!
+INSERT INTO users VALUES (1, 'admin', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG','Андрей','Крупчак','9650024321','krupchakas@yandex.ru','1989/02/23','1');
+INSERT INTO address VALUES (1,'Россия','Санкт-Петербург','Бухарестская','114','24','192288');
+INSERT INTO roles VALUES (1, 'ROLE_ADMIN');
+INSERT INTO roles VALUES (2, 'ROLE_USER');
+INSERT INTO user_roles VALUES (1, 1);

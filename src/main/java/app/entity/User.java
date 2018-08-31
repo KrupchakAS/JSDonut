@@ -3,9 +3,9 @@ package app.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -15,23 +15,31 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+
     @Column(name = "login")
     private String login;
+
     @Column(name = "password")
     private String password;
+
     @Column(name = "firstName")
     private String firstName;
+
     @Column(name = "surName")
     private String surName;
+
     @Column(name = "phoneNumber")
     private String phoneNumber;
+
     @Past
     @DateTimeFormat(pattern = "YYYY-MM-DD")
     @Temporal(TemporalType.DATE)
     @Column(name = "birthDate")
     private Date birthDate;
+
     @Column(name = "email")
     private String email;
+
     @Transient
     private String confirmPassword;
 
@@ -39,6 +47,16 @@ public class User {
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Role role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Order> ordersList;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="address_id")
+    private Address address;
+
+    @Column(insertable = false, updatable = false)
+    private Integer address_id;
 
     public Integer getId() {
         return id;
@@ -118,5 +136,29 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public Integer getAddress_id() {
+        return address_id;
+    }
+
+    public void setAddress_id(Integer address_id) {
+        this.address_id = address_id;
+    }
+
+    public Address getUserAddress() {
+        return address;
+    }
+
+    public void setUserAddress(Address userAddress) {
+        this.address = userAddress;
+    }
+
+    public List<Order> getOrdersList() {
+        return ordersList;
+    }
+
+    public void setOrdersList(List<Order> ordersList) {
+        this.ordersList = ordersList;
     }
 }

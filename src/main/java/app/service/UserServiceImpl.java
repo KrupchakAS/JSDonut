@@ -7,6 +7,7 @@ import app.dto.RoleDTO;
 import app.dto.UserDTO;
 import app.entity.Role;
 import app.entity.User;
+import app.entity.enums.DeliveryOptions;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

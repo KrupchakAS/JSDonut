@@ -1,6 +1,12 @@
 package app.entity.enums;
 
 public enum PaymentStatus {
-    PAID,
-    NOT_PAID;
+    NOT_PAID(1),
+    PAID(2);
+
+    public final int value;
+
+    PaymentStatus(final int value){
+        this.value=value;
+    }
 }
