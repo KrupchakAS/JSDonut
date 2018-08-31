@@ -2,6 +2,7 @@ package app.entity;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -18,6 +19,9 @@ public class Product {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "composition")
+    private String composition;
+
     @Column(name = "image")
     private String image;
 
@@ -30,6 +34,9 @@ public class Product {
     @Column(name = "quantity")
     private Short quantity;
 
+    @Column(name = "calories")
+    private Short calories;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id")
     private Category category;
@@ -38,12 +45,14 @@ public class Product {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="parameters_id")
-    private Parameters parameters;
+    @OneToMany(mappedBy = "product")
+    private List<Filling> fillingList;
 
-    @Column(insertable = false, updatable = false)
-    private Integer parameters_id;
+    @OneToMany(mappedBy = "product")
+    private List<Corn> cornList;
+
+    @OneToMany(mappedBy = "product")
+    private List<Sprinkle> sprinkleList;
 
     public Integer getId() {
         return id;
@@ -109,27 +118,51 @@ public class Product {
         this.category = category;
     }
 
-    public Parameters getParameters() {
-        return parameters;
-    }
-
-    public void setParameters(Parameters parameters) {
-        this.parameters = parameters;
-    }
-
-    public Integer getParameters_id() {
-        return parameters_id;
-    }
-
-    public void setParameters_id(Integer parameters_id) {
-        this.parameters_id = parameters_id;
-    }
-
     public Order getOrder() {
         return order;
     }
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public String getComposition() {
+        return composition;
+    }
+
+    public void setComposition(String composition) {
+        this.composition = composition;
+    }
+
+    public Short getCalories() {
+        return calories;
+    }
+
+    public void setCalories(Short calories) {
+        this.calories = calories;
+    }
+
+    public List<Filling> getFillingList() {
+        return fillingList;
+    }
+
+    public void setFillingList(List<Filling> fillingList) {
+        this.fillingList = fillingList;
+    }
+
+    public List<Corn> getCornList() {
+        return cornList;
+    }
+
+    public void setCornList(List<Corn> cornList) {
+        this.cornList = cornList;
+    }
+
+    public List<Sprinkle> getSprinkleList() {
+        return sprinkleList;
+    }
+
+    public void setSprinkleList(List<Sprinkle> sprinkleList) {
+        this.sprinkleList = sprinkleList;
     }
 }

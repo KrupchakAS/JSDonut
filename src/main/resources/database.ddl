@@ -46,14 +46,14 @@ CREATE TABLE products (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(32) NOT NULL ,
   description VARCHAR(255) NOT NULL ,
+  composition VARCHAR(255) NOT NULL,
   image VARCHAR(255),
   price FLOAT NOT NULL ,
   weight SMALLINT NOT NULL ,
   quantity SMALLINT,
+  calories SMALLINT NOT NULL ,
   category_id INT NOT NULL,
   FOREIGN KEY (category_id) REFERENCES category (id),
-  parameters_id INT NOT NULL,
-  FOREIGN KEY (parameters_id) REFERENCES parameters(id),
   order_id INT NOT NULL,
   FOREIGN KEY (order_id) REFERENCES orders(id),
   UNIQUE (name,image)
@@ -65,15 +65,32 @@ CREATE TABLE category(
   name VARCHAR(32) NOT NULL
 ) ENGINE = InnoDB;
 
--- Table: parameters
-CREATE TABLE parameters (
+-- Table: filling
+CREATE TABLE filling (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  calories SMALLINT NOT NULL ,
-  fat TINYINT NOT NULL ,
-  carbohydrate TINYINT NOT NULL ,
-  protein TINYINT NOT NULL ,
-  composition VARCHAR(255) NOT NULL
-)ENGINE = InnoDB;
+  name VARCHAR(32) NOT NULL ,
+  calories SMALLINT NOT NULL,
+  product_id INT NOT NULL,
+  FOREIGN KEY (product_id) REFERENCES products (id)
+)ENGINE =InnoDB;
+
+-- Table: corn
+CREATE TABLE corn (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(32) NOT NULL ,
+  calories SMALLINT NOT NULL,
+  product_id INT NOT NULL,
+  FOREIGN KEY (product_id) REFERENCES products (id)
+)ENGINE =InnoDB;
+
+-- Table: Sprinkle
+CREATE TABLE sprinkle (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(32) NOT NULL ,
+  calories SMALLINT NOT NULL,
+  product_id INT NOT NULL,
+  FOREIGN KEY (product_id) REFERENCES products (id)
+)ENGINE =InnoDB;
 
 -- Table: Order
 CREATE TABLE orders (
@@ -83,7 +100,9 @@ CREATE TABLE orders (
   paymentStatus TINYINT NOT NULL ,
   orderStatus TINYINT NOT NULL ,
   user_id INT NOT NULL ,
-  FOREIGN KEY (user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  address_id INT NOT NULL ,
+  FOREIGN KEY (address_id) REFERENCES address(id)
 ) ENGINE = InnoDB;
 
 -- Insert data!
