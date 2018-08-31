@@ -10,33 +10,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8db3c29-dbff-42bc-8049-70113cf0fc96" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Address.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Category.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Order.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Parameters.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Product.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/JSDonut/WEB-INF/classes/app/entity/User.class" afterPath="$PROJECT_DIR$/target/JSDonut/WEB-INF/classes/app/entity/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/JSDonut/WEB-INF/classes/app/service/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/JSDonut/WEB-INF/classes/app/service/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/app/entity/User.class" afterPath="$PROJECT_DIR$/target/classes/app/entity/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/app/service/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/app/service/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/META-INF/application.xml" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/JSDonut/WEB-INF/classes/app/entity/Product.class" afterPath="$PROJECT_DIR$/target/JSDonut/WEB-INF/classes/app/entity/Product.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/app/entity/Product.class" afterPath="$PROJECT_DIR$/target/classes/app/entity/Product.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/JSDonut_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/JSDonut_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/JSDonut.iml" afterPath="$PROJECT_DIR$/JSDonut.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/app/entity/User.java" afterPath="$PROJECT_DIR$/src/main/java/app/entity/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/app/entity/enums/DeliveryOptions.java" afterPath="$PROJECT_DIR$/src/main/java/app/entity/enums/DeliveryOptions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/app/entity/enums/OrderStatus.java" afterPath="$PROJECT_DIR$/src/main/java/app/entity/enums/OrderStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/app/entity/enums/PaymentOptions.java" afterPath="$PROJECT_DIR$/src/main/java/app/entity/enums/PaymentOptions.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/app/entity/enums/PaymentStatus.java" afterPath="$PROJECT_DIR$/src/main/java/app/entity/enums/PaymentStatus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/app/service/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/app/service/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/database.ddl" afterPath="$PROJECT_DIR$/src/main/resources/database.ddl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/appconfig-data.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/appconfig-data.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/app/entity/Product.java" afterPath="$PROJECT_DIR$/src/main/java/app/entity/Product.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/JSDonut/WEB-INF/appconfig-data.xml" afterPath="$PROJECT_DIR$/target/JSDonut/WEB-INF/appconfig-data.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/JSDonut/WEB-INF/classes/database.ddl" afterPath="$PROJECT_DIR$/target/JSDonut/WEB-INF/classes/database.ddl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/JSDonut/WEB-INF/classes/database.dml" afterPath="$PROJECT_DIR$/target/JSDonut/WEB-INF/classes/database.dml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/database.ddl" afterPath="$PROJECT_DIR$/target/classes/database.ddl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/database.dml" afterPath="$PROJECT_DIR$/target/classes/database.dml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -85,8 +68,8 @@
       <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/app/entity/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2020">
-              <caret line="156" column="40" lean-forward="false" selection-start-line="156" selection-start-column="40" selection-end-line="156" selection-end-column="40" />
+            <state relative-caret-position="480">
+              <caret line="57" column="4" lean-forward="false" selection-start-line="57" selection-start-column="4" selection-end-line="58" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2966#2967#0" expanded="true" />
@@ -97,9 +80,22 @@
                 <element signature="e#3165#3166#0" expanded="true" />
                 <element signature="e#3220#3221#0" expanded="true" />
                 <element signature="e#3262#3263#0" expanded="true" />
+                <element signature="e#3304#3305#0" expanded="true" />
                 <element signature="e#3337#3338#0" expanded="true" />
                 <element signature="e#3394#3395#0" expanded="true" />
                 <element signature="e#3438#3439#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Category.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/entity/Category.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -145,41 +141,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.ddl" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Parameters.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/app/entity/Parameters.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database.ddl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/database.ddl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="50" column="20" lean-forward="false" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
+            <state relative-caret-position="160">
+              <caret line="8" column="31" lean-forward="false" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="appconfig-data.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/appconfig-data.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/10a93d77-4003-4e8b-84bd-394f6f48af99/console.sql">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Product.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/app/entity/Product.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -307,7 +293,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/app/exception/GlobalException.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/app/dao/GenericDao.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/appconfig-root.xml" />
@@ -353,11 +338,12 @@
         <option value="$PROJECT_DIR$/src/main/java/app/entity/Parameters.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/entity/orders.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/entity/Orders.java" />
-        <option value="$PROJECT_DIR$/src/main/java/app/entity/Product.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/entity/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/app/entity/Order.java" />
         <option value="$PROJECT_DIR$/src/main/resources/database.ddl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/appconfig-data.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/app/entity/Product.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -395,9 +381,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="43" />
+    <option name="x" value="749" />
     <option name="y" value="1" />
-    <option name="width" value="1882" />
+    <option name="width" value="1176" />
     <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -425,117 +411,6 @@
               <item name="JSDonut" type="b2602c69:ProjectViewProjectNode" />
               <item name="JSDonut" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="JSDonut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JSDonut" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JSDonut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JSDonut" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JSDonut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JSDonut" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JSDonut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JSDonut" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JSDonut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JSDonut" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JSDonut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JSDonut" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JSDonut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JSDonut" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JSDonut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JSDonut" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JSDonut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JSDonut" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="exception" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JSDonut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JSDonut" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JSDonut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JSDonut" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="validator" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JSDonut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JSDonut" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JSDonut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JSDonut" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="JSDonut" type="b2602c69:ProjectViewProjectNode" />
-              <item name="JSDonut" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -546,7 +421,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2246596" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -845,12 +720,12 @@
       <workItem from="1535440503473" duration="877000" />
       <workItem from="1535537365667" duration="9081000" />
       <workItem from="1535616246350" duration="2651000" />
-      <workItem from="1535625356829" duration="34860000" />
+      <workItem from="1535625356829" duration="36736000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="236799000" />
+    <option name="totallyTimeSpent" value="238675000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -862,14 +737,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="43" y="1" width="1882" height="1038" extended-state="0" />
+    <frame x="749" y="1" width="1176" height="1038" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32983607" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20307355" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20307355" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -884,7 +760,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3203991" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27383593" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22447859" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.36648744" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1004,89 +880,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="uml://DATABASE/719da16e-943c-4af5-8bcf-8fb0b049712b.SCHEMA:jsdonut">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>719da16e-943c-4af5-8bcf-8fb0b049712b.SCHEMA:jsdonut</OriginalElement>
-          <nodes>
-            <node x="323.5" y="754.0">719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.user_address</node>
-            <node x="172.0" y="498.0">719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.users</node>
-            <node x="175.0" y="146.0">719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.parameters</node>
-            <node x="388.0" y="509.0">719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.address</node>
-            <node x="0.0" y="124.0">719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.product</node>
-            <node x="4.5" y="0.0">719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.category</node>
-            <node x="0.0" y="564.0">719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.roles</node>
-            <node x="89.0" y="380.0">719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.product_parameters</node>
-            <node x="84.0" y="754.0">719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.user_roles</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.product_parameters" target="719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.parameters">
-              <point x="42.25" y="-36.5" />
-              <point x="215.75" y="355.0" />
-              <point x="269.5" y="355.0" />
-              <point x="0.0" y="81.0" />
-            </edge>
-            <edge source="719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.product_parameters" target="719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.product">
-              <point x="-42.25" y="-36.5" />
-              <point x="131.25" y="355.0" />
-              <point x="77.5" y="355.0" />
-              <point x="0.0" y="103.0" />
-            </edge>
-            <edge source="719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.user_address" target="719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.address">
-              <point x="36.75" y="-36.5" />
-              <point x="433.75" y="729.0" />
-              <point x="475.0" y="729.0" />
-              <point x="0.0" y="92.0" />
-            </edge>
-            <edge source="719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.user_roles" target="719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.roles">
-              <point x="-32.25" y="-36.5" />
-              <point x="116.25" y="729.0" />
-              <point x="76.0" y="729.0" />
-              <point x="0.0" y="37.0" />
-            </edge>
-            <edge source="719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.product" target="719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.category">
-              <point x="0.0" y="-103.0" />
-              <point x="0.0" y="37.0" />
-            </edge>
-            <edge source="719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.user_address" target="719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.users">
-              <point x="-36.75" y="-36.5" />
-              <point x="360.25" y="729.0" />
-              <point x="319.0" y="729.0" />
-              <point x="49.0" y="103.0" />
-            </edge>
-            <edge source="719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.user_roles" target="719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.users">
-              <point x="32.25" y="-36.5" />
-              <point x="180.75" y="729.0" />
-              <point x="221.0" y="729.0" />
-              <point x="-49.0" y="103.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="0.6517119244391971" x="282.0" y="674.0" />
-          <SelectedNodes>
-            <node>719da16e-943c-4af5-8bcf-8fb0b049712b.TABLE:jsdonut.user_roles</node>
-          </SelectedNodes>
-          <Categories>
-            <Category>Columns</Category>
-            <Category>Key columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="89" column="5" lean-forward="false" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
-          <folding>
-            <element signature="e#2850#2851#0" expanded="false" />
-            <element signature="e#2879#2880#0" expanded="false" />
-            <marker date="1535038576768" expanded="true" signature="1466:1514" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -1522,14 +1315,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/entity/enums/OrderStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/entity/enums/DeliveryOptions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -1602,19 +1387,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/entity/Parameters.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/53fcaf6b-acae-4ccf-9bde-c55acb854812/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://table:/33f07773/53fcaf6b-acae-4ccf-9bde-c55acb854812/jsdonut.products">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/10a93d77-4003-4e8b-84bd-394f6f48af99/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/appconfig-data.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="42" lean-forward="false" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="57" column="4" lean-forward="false" selection-start-line="57" selection-start-column="4" selection-end-line="58" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2966#2967#0" expanded="true" />
+            <element signature="e#2999#3000#0" expanded="true" />
+            <element signature="e#3052#3053#0" expanded="true" />
+            <element signature="e#3096#3097#0" expanded="true" />
+            <element signature="e#3135#3136#0" expanded="true" />
+            <element signature="e#3165#3166#0" expanded="true" />
+            <element signature="e#3220#3221#0" expanded="true" />
+            <element signature="e#3262#3263#0" expanded="true" />
+            <element signature="e#3304#3305#0" expanded="true" />
+            <element signature="e#3337#3338#0" expanded="true" />
+            <element signature="e#3394#3395#0" expanded="true" />
+            <element signature="e#3438#3439#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1624,16 +1446,7 @@
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#424#425#0" expanded="true" />
-            <element signature="e#449#450#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://table:/33f07773/53fcaf6b-acae-4ccf-9bde-c55acb854812/jsdonut.products">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1675,55 +1488,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/app/entity/User.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/entity/Parameters.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2020">
-          <caret line="156" column="40" lean-forward="false" selection-start-line="156" selection-start-column="40" selection-end-line="156" selection-end-column="40" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2966#2967#0" expanded="true" />
-            <element signature="e#2999#3000#0" expanded="true" />
-            <element signature="e#3052#3053#0" expanded="true" />
-            <element signature="e#3096#3097#0" expanded="true" />
-            <element signature="e#3135#3136#0" expanded="true" />
-            <element signature="e#3165#3166#0" expanded="true" />
-            <element signature="e#3220#3221#0" expanded="true" />
-            <element signature="e#3262#3263#0" expanded="true" />
-            <element signature="e#3337#3338#0" expanded="true" />
-            <element signature="e#3394#3395#0" expanded="true" />
-            <element signature="e#3438#3439#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="200">
+          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/app/entity/Product.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        <state relative-caret-position="120">
+          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/appconfig-data.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/app/entity/enums/OrderStatus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+        <state relative-caret-position="240">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/10a93d77-4003-4e8b-84bd-394f6f48af99/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+    <entry file="uml://DATABASE/10a93d77-4003-4e8b-84bd-394f6f48af99.SCHEMA:jsdonut">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>10a93d77-4003-4e8b-84bd-394f6f48af99.SCHEMA:jsdonut</OriginalElement>
+          <nodes>
+            <node x="" y="">10a93d77-4003-4e8b-84bd-394f6f48af99.TABLE:jsdonut.products</node>
+            <node x="" y="">10a93d77-4003-4e8b-84bd-394f6f48af99.TABLE:jsdonut.users</node>
+            <node x="" y="">10a93d77-4003-4e8b-84bd-394f6f48af99.TABLE:jsdonut.roles</node>
+            <node x="" y="">10a93d77-4003-4e8b-84bd-394f6f48af99.TABLE:jsdonut.category</node>
+            <node x="" y="">10a93d77-4003-4e8b-84bd-394f6f48af99.TABLE:jsdonut.address</node>
+            <node x="" y="">10a93d77-4003-4e8b-84bd-394f6f48af99.TABLE:jsdonut.user_roles</node>
+            <node x="" y="">10a93d77-4003-4e8b-84bd-394f6f48af99.TABLE:jsdonut.parameters</node>
+            <node x="" y="">10a93d77-4003-4e8b-84bd-394f6f48af99.TABLE:jsdonut.orders</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.1551307847082497" x="155.6190559136038" y="506.92370667131155" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/database.ddl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="50" column="20" lean-forward="false" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
+        <state relative-caret-position="160">
+          <caret line="8" column="31" lean-forward="false" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
           <folding />
         </state>
       </provider>

@@ -34,13 +34,13 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="parameters_id")
-    private Parameters parameters;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     private Order order;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="parameters_id")
+    private Parameters parameters;
 
     @Column(insertable = false, updatable = false)
     private Integer parameters_id;

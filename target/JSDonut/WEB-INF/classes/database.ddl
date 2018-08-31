@@ -50,8 +50,12 @@ CREATE TABLE products (
   price FLOAT NOT NULL ,
   weight SMALLINT NOT NULL ,
   quantity SMALLINT,
+  category_id INT NOT NULL,
+  FOREIGN KEY (category_id) REFERENCES category (id),
   parameters_id INT NOT NULL,
   FOREIGN KEY (parameters_id) REFERENCES parameters(id),
+  order_id INT NOT NULL,
+  FOREIGN KEY (order_id) REFERENCES orders(id),
   UNIQUE (name,image)
 )ENGINE = InnoDB;
 
@@ -74,14 +78,12 @@ CREATE TABLE parameters (
 -- Table: Order
 CREATE TABLE orders (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  user_id INT NOT NULL ,
-  user_address_id INT NOT NULL  ,
   paymentOption TINYINT NOT NULL ,
   deliveryOption TINYINT NOT NULL ,
   paymentStatus TINYINT NOT NULL ,
   orderStatus TINYINT NOT NULL ,
-  FOREIGN KEY (user_id) REFERENCES users(id),
-  FOREIGN KEY (user_address_id) REFERENCES address(id)
+  user_id INT NOT NULL ,
+  FOREIGN KEY (user_id) REFERENCES users(id)
 ) ENGINE = InnoDB;
 
 -- Insert data!
