@@ -1,17 +1,12 @@
 package app.dto;
 
-import app.entity.Role;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Past;
-import javax.validation.constraints.Pattern;
 import java.util.Date;
-import java.util.Set;
 
 public class UserDTO {
 
@@ -35,7 +30,7 @@ public class UserDTO {
     @NotNull
     private String confirmPassword;
 
-    private RoleDTO role;
+    private String role;
 
     public Integer getId() {
         return id;
@@ -109,13 +104,11 @@ public class UserDTO {
         this.confirmPassword = confirmPassword;
     }
 
-    public RoleDTO getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(RoleDTO role) {
+    public void setRole(String role) {
         this.role = role;
     }
-
-
 }

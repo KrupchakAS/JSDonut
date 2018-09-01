@@ -1,13 +1,9 @@
 package app.service;
 
-
-import app.dao.RoleDao;
 import app.dao.UserDao;
-import app.dto.RoleDTO;
 import app.dto.UserDTO;
-import app.entity.Role;
 import app.entity.User;
-import app.entity.enums.DeliveryOptions;
+import app.entity.enums.Role;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,10 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -31,9 +24,6 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Autowired
-    private RoleDao roleDao;
-
-    @Autowired
     private ModelMapper modelMapper;
 
     @Autowired
@@ -42,11 +32,7 @@ public class UserServiceImpl implements UserService {
     @Transactional(propagation = Propagation.REQUIRED)
     public void save(UserDTO userDto) {
         userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
-        RoleDTO roleDto = new RoleDTO();
-        roleDto.setId(2);
-        roleDto.setName("ROLE_USER");
-        roleDao.saveRole(modelMapper.map(roleDto, Role.class));
-        userDto.setRole(roleDto);
+        userDto.setRole(Role.ROLE_USER.toString());//ROLE_ADMIN,ROLE_USER
         userDao.saveUser(modelMapper.map(userDto, User.class));
         logger.debug(String.format("Successfully saved user %s", userDto.getLogin()));
     }

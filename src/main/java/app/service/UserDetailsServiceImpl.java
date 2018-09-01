@@ -1,10 +1,8 @@
 package app.service;
 
 import app.dao.UserDao;
-import app.dto.RoleDTO;
 import app.dto.UserDTO;
-import app.entity.Role;
-import app.entity.User;
+import app.entity.enums.Role;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -29,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         UserDTO userDTO = modelMapper.map(userDao.findUserByLogin(login),UserDTO.class);
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-            grantedAuthorities.add(new SimpleGrantedAuthority(userDTO.getRole().getName()));
+            grantedAuthorities.add(new SimpleGrantedAuthority(userDTO.getRole()));
         return new org.springframework.security.core.userdetails.User(userDTO.getLogin(), userDTO.getPassword(), grantedAuthorities);
     }
 }

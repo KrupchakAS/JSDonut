@@ -10,25 +10,11 @@ CREATE TABLE users (
   phoneNumber VARCHAR(10) NOT NULL,
   email VARCHAR(50) NOT NULL,
   birthDate DATE NOT NULL ,
+  role VARCHAR(10) NOT NULL ,
   address_id INT ,
   FOREIGN KEY (address_id) REFERENCES address (id),
   UNIQUE (login,phoneNumber,email)
 )ENGINE = InnoDB;
-
--- Table: roles
-CREATE TABLE roles (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(10) NOT NULL
-)  ENGINE = InnoDB;
-
--- Table for mapping user and roles: user_roles
-CREATE TABLE user_roles (
-  user_id INT NOT NULL,
-  role_id INT NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES users (id),
-  FOREIGN KEY (role_id) REFERENCES roles (id),
-  UNIQUE (user_id, role_id)
-) ENGINE = InnoDB;
 
 -- Table: address
 CREATE TABLE address (
@@ -106,8 +92,5 @@ CREATE TABLE orders (
 ) ENGINE = InnoDB;
 
 -- Insert data!
-INSERT INTO users VALUES (1, 'admin', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG','Андрей','Крупчак','9650024321','krupchakas@yandex.ru','1989/02/23','1');
+INSERT INTO users VALUES (1, 'admin', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG','Андрей','Крупчак','9650024321','krupchakas@yandex.ru','1989/02/23','ROLE_ADMIN','1');
 INSERT INTO address VALUES (1,'Россия','Санкт-Петербург','Бухарестская','114','24','192288');
-INSERT INTO roles VALUES (1, 'ROLE_ADMIN');
-INSERT INTO roles VALUES (2, 'ROLE_USER');
-INSERT INTO user_roles VALUES (1, 1);

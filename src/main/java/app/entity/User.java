@@ -43,10 +43,8 @@ public class User {
     @Transient
     private String confirmPassword;
 
-    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Role role;
+    @Column(name = "role")
+    private String role;
 
     @OneToMany(mappedBy = "user")
     private List<Order> ordersList;
@@ -130,11 +128,11 @@ public class User {
         this.confirmPassword = confirmPassword;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
