@@ -17,7 +17,13 @@
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
+        <fileset id="web application context" name="MVC application context" removed="true">
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/appconfig-mvc.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/appconfig-data.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/appconfig-security.xml</file>
+        </fileset>
+        <fileset id="fileset2" name="MVC" removed="false">
+          <dependency>web dispatcher servlet context</dependency>
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/appconfig-data.xml</file>
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/appconfig-mvc.xml</file>
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/appconfig-root.xml</file>
@@ -72,7 +78,9 @@
     <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
     <orderEntry type="library" name="Maven: commons-dbcp:commons-dbcp:1.4" level="project" />
     <orderEntry type="library" name="Maven: commons-pool:commons-pool:1.5.4" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:jstl:1.2" level="project" />
+    <orderEntry type="library" name="Maven: javax.servlet:jstl:1.2" level="project" />
+    <orderEntry type="library" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet.jsp:jsp-api:2.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.3.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-core:2.11.0" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.11.0" level="project" />
@@ -87,6 +95,5 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.46" level="project" />
     <orderEntry type="library" name="Maven: org.liquibase:liquibase-core:3.5.5" level="project" />
     <orderEntry type="library" name="Maven: org.yaml:snakeyaml:1.17" level="project" />
-    <orderEntry type="library" name="Maven: javax.servlet:servlet-api:2.5" level="project" />
   </component>
 </module>

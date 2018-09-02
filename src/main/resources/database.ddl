@@ -65,7 +65,6 @@ CREATE TABLE products (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(32) NOT NULL ,
   description VARCHAR(255) NOT NULL ,
-  composition VARCHAR(255) NOT NULL,
   image VARCHAR(255),
   price FLOAT NOT NULL ,
   weight SMALLINT NOT NULL ,
