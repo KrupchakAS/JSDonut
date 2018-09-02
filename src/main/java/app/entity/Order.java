@@ -1,6 +1,7 @@
 package app.entity;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,8 +25,10 @@ public class Order {
     @Column(name = "orderStatus")
     private Byte orderStatus;
 
-    @OneToMany(mappedBy = "order")
-    private Set<Product> productList;
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinTable(name = "order_products", joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private List<Product> productList;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
@@ -71,11 +74,11 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
-    public Set<Product> getProductList() {
+    public List<Product> getProductList() {
         return productList;
     }
 
-    public void setProductList(Set<Product> productList) {
+    public void setProductList(List<Product> productList) {
         this.productList = productList;
     }
 

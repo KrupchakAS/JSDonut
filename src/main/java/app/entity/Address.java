@@ -22,7 +22,8 @@ public class Address {
     @Column(name = "apartmentNumber")
     private Short apartmentNumber;
 
-    @OneToOne(mappedBy = "address")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Integer getId() {

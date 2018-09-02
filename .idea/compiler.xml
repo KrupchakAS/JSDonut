@@ -10,9 +10,8 @@
         <module name="JSProject" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
+    <bytecodeTargetLevel target="1.8">
       <module name="JSDonut" target="1.8" />
-      <module name="JSProject" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

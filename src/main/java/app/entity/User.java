@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Past;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -46,15 +47,11 @@ public class User {
     @Column(name = "role")
     private String role;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Order> ordersList;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="address_id")
-    private Address address;
-
-    @Column(insertable = false, updatable = false)
-    private Integer address_id;
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    private Set<Address> addressList;
 
     public Integer getId() {
         return id;
@@ -136,20 +133,12 @@ public class User {
         this.role = role;
     }
 
-    public Integer getAddress_id() {
-        return address_id;
+    public Set<Address> getAddressList() {
+        return addressList;
     }
 
-    public void setAddress_id(Integer address_id) {
-        this.address_id = address_id;
-    }
-
-    public Address getUserAddress() {
-        return address;
-    }
-
-    public void setUserAddress(Address userAddress) {
-        this.address = userAddress;
+    public void setAddressList(Set<Address> addressList) {
+        this.addressList = addressList;
     }
 
     public List<Order> getOrdersList() {

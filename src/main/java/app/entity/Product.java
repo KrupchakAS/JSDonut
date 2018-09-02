@@ -37,13 +37,12 @@ public class Product {
     @Column(name = "calories")
     private Short calories;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_id")
-    private Order order;
+    @ManyToMany(mappedBy = "productList")
+    private List<Order> orderList;
 
     @OneToMany(mappedBy = "product")
     private List<Filling> fillingList;
@@ -118,12 +117,12 @@ public class Product {
         this.category = category;
     }
 
-    public Order getOrder() {
-        return order;
+    public List<Order> getOrderList() {
+        return orderList;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
     }
 
     public String getComposition() {
