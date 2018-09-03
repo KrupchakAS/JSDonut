@@ -17,8 +17,7 @@ public class Sprinkle {
     @Column(name = "price")
     private Short price;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id")
+    @ManyToOne
     private Product product;
 
     public Integer getId() {

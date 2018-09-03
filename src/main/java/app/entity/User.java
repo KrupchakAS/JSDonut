@@ -33,7 +33,7 @@ public class User {
     private String phoneNumber;
 
     @Past
-    @DateTimeFormat(pattern = "YYYY-MM-DD")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Temporal(TemporalType.DATE)
     @Column(name = "birthDate")
     private Date birthDate;

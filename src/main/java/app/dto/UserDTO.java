@@ -22,7 +22,7 @@ public class UserDTO {
     @NotNull
     private String phoneNumber;
     @Past
-    @DateTimeFormat(pattern = "YYYY-MM-DD")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Temporal(TemporalType.DATE)
     private Date birthDate;
     //@Pattern(regexp="[A-Za-z0-9._%-+]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}")

@@ -19,9 +19,6 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "composition")
-    private String composition;
-
     @Column(name = "image")
     private String image;
 
@@ -37,20 +34,33 @@ public class Product {
     @Column(name = "calories")
     private Short calories;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @Column(insertable = false, updatable = false)
+    private Integer category_id;
 
     @ManyToMany(mappedBy = "productList")
     private List<Order> orderList;
 
-    @OneToMany(mappedBy = "product")
-    private List<Filling> fillingList;
+    @OneToOne
+    @JoinColumn(name = "filling_id")
+    private Filling filling;
 
-    @OneToMany(mappedBy = "product")
-    private List<Corn> cornList;
+    @Column(insertable = false, updatable = false)
+    private Integer filling_id;
 
-    @OneToMany(mappedBy = "product")
+    @OneToOne
+    @JoinColumn(name = "corn_id")
+    private Corn corn;
+
+    @Column(insertable = false, updatable = false)
+    private Integer corn_id;
+
+    @OneToMany
+    @JoinTable(name = "products_sprinkle", joinColumns = @JoinColumn(name = "product_id"),
+    inverseJoinColumns = @JoinColumn(name = "sprinkle_id"))
     private List<Sprinkle> sprinkleList;
 
     public Integer getId() {
@@ -117,6 +127,14 @@ public class Product {
         this.category = category;
     }
 
+    public Integer getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(Integer category_id) {
+        this.category_id = category_id;
+    }
+
     public List<Order> getOrderList() {
         return orderList;
     }
@@ -125,13 +143,6 @@ public class Product {
         this.orderList = orderList;
     }
 
-    public String getComposition() {
-        return composition;
-    }
-
-    public void setComposition(String composition) {
-        this.composition = composition;
-    }
 
     public Short getCalories() {
         return calories;
@@ -141,20 +152,37 @@ public class Product {
         this.calories = calories;
     }
 
-    public List<Filling> getFillingList() {
-        return fillingList;
+
+    public Filling getFilling() {
+        return filling;
     }
 
-    public void setFillingList(List<Filling> fillingList) {
-        this.fillingList = fillingList;
+    public void setFilling(Filling filling) {
+        this.filling = filling;
     }
 
-    public List<Corn> getCornList() {
-        return cornList;
+    public Integer getFilling_id() {
+        return filling_id;
     }
 
-    public void setCornList(List<Corn> cornList) {
-        this.cornList = cornList;
+    public void setFilling_id(Integer filling_id) {
+        this.filling_id = filling_id;
+    }
+
+    public Corn getCorn() {
+        return corn;
+    }
+
+    public void setCorn(Corn corn) {
+        this.corn = corn;
+    }
+
+    public Integer getCorn_id() {
+        return corn_id;
+    }
+
+    public void setCorn_id(Integer corn_id) {
+        this.corn_id = corn_id;
     }
 
     public List<Sprinkle> getSprinkleList() {
@@ -164,4 +192,5 @@ public class Product {
     public void setSprinkleList(List<Sprinkle> sprinkleList) {
         this.sprinkleList = sprinkleList;
     }
+
 }

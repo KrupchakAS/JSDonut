@@ -15,8 +15,8 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "category")
-    private Set<Product> products;
+    @OneToOne(mappedBy = "category")
+    private Product product;
 
     public Integer getId() {
         return id;
@@ -34,11 +34,11 @@ public class Category {
         this.name = name;
     }
 
-    public Set<Product> getProducts() {
-        return products;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProducts(Set<Product> products) {
-        this.products = products;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

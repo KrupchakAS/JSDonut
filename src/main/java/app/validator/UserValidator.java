@@ -2,15 +2,12 @@ package app.validator;
 
 
 import app.dto.UserDTO;
-import app.entity.User;
 import app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
-
-import javax.transaction.Transactional;
 
 @Component
 public class UserValidator implements Validator {

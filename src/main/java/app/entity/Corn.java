@@ -17,8 +17,7 @@ public class Corn {
     @Column(name = "price")
     private Short price;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id")
+    @OneToOne(mappedBy = "corn")
     private Product product;
 
     public Integer getId() {

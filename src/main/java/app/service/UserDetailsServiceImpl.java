@@ -1,8 +1,7 @@
 package app.service;
 
-import app.dao.UserDao;
+import app.dao.api.UserDao;
 import app.dto.UserDTO;
-import app.entity.enums.Role;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

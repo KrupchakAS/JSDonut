@@ -29,37 +29,40 @@ CREATE TABLE address (
 
 -- Table: category
 CREATE TABLE category(
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(32) NOT NULL
+  id TINYINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(32) NOT NULL,
+  UNIQUE (name)
 ) ENGINE = InnoDB;
 
 -- Table: filling
 CREATE TABLE filling (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id TINYINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(32) NOT NULL ,
   calories SMALLINT NOT NULL,
-  product_id INT NOT NULL,
-  FOREIGN KEY (product_id) REFERENCES products (id)
+  price FLOAT NOT NULL
 )ENGINE =InnoDB;
 
 -- Table: corn
 CREATE TABLE corn (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id TINYINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(32) NOT NULL ,
   calories SMALLINT NOT NULL,
-  product_id INT NOT NULL,
-  FOREIGN KEY (product_id) REFERENCES products (id)
+  price FLOAT NOT NULL
 )ENGINE =InnoDB;
-
 -- Table: Sprinkle
 CREATE TABLE sprinkle (
-  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id TINYINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(32) NOT NULL ,
   calories SMALLINT NOT NULL,
-  product_id INT NOT NULL,
-  FOREIGN KEY (product_id) REFERENCES products (id)
+  price FLOAT NOT NULL
 )ENGINE =InnoDB;
 
+CREATE TABLE products_sprinkle(
+  product_id INT NOT NULL ,
+  sprinkle_id TINYINT NOT NULL ,
+  FOREIGN KEY (product_id) REFERENCES products(id),
+  FOREIGN KEY (sprinkle_id) REFERENCES sprinkle(id)
+)ENGINE = InnoDB;
 -- Table: product
 CREATE TABLE products (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -67,11 +70,17 @@ CREATE TABLE products (
   description VARCHAR(255) NOT NULL ,
   image VARCHAR(255),
   price FLOAT NOT NULL ,
+  priceForCustom FLOAT,
   weight SMALLINT NOT NULL ,
   quantity SMALLINT,
   calories SMALLINT NOT NULL ,
-  category_id INT NOT NULL,
+  category_id TINYINT NOT NULL,
   FOREIGN KEY (category_id) REFERENCES category (id),
+  corn_id TINYINT NOT NULL,
+  FOREIGN KEY (corn_id) REFERENCES corn (id),
+  filling_id TINYINT NOT NULL,
+  FOREIGN KEY (filling_id) REFERENCES filling (id),
+
   UNIQUE (name,image)
 )ENGINE = InnoDB;
 

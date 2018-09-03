@@ -4,7 +4,6 @@ package app.controller;
 import app.dto.UserDTO;
 import app.service.UserService;
 import app.validator.UserValidator;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,12 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
-import javax.transaction.Transactional;
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -35,7 +30,7 @@ public class UserController {
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String createModel(ModelMap modelMap){
         modelMap.addAttribute("userForm",new UserDTO());
-        return "/welcome";
+        return "welcome";
     }
 
     @RequestMapping(value = "/welcome", method = RequestMethod.POST)
@@ -44,7 +39,7 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "welcome";
         }
-        userService.save(userForm);
+        userService.create(userForm);
         return "redirect:/welcome";
     }
 
@@ -69,8 +64,6 @@ public class UserController {
     }
 
 
-
-
     @RequestMapping(value = {"/index"}, method = RequestMethod.GET)
     public String index(Model model) {
         return "index";
@@ -80,8 +73,6 @@ public class UserController {
     public String admin(Model model) {
         return "admin";
     }
-
-
 
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
@@ -96,33 +87,9 @@ public class UserController {
     }
 
 
-
-
-    @RequestMapping(value = "/userList2", method = RequestMethod.GET)
-    public String userslist() {
-        return "userList2";
-    }
-
-    @RequestMapping(value = "/userList2/getUserList", method = RequestMethod.GET)
-    public @ResponseBody
-    List<UserDTO> getUserList(@RequestParam(value = "uName") String uName) {
-        return userService.getUsersListByChars(uName);
-    }
-
-    @RequestMapping(value = "/deleteUser", method = RequestMethod.GET)
-    public String usersl() {
-        return "deleteUser";
-    }
-
-    @RequestMapping(value = "/deleteUser/deleteUser={usId}", method = RequestMethod.DELETE)
-    public String userDelete(@PathVariable("usId") Integer id) {
-        userService.deleteUser(id);
-        return "redirect:/deleteUser";
-    }
-
     @RequestMapping(value = "/liiist",method = RequestMethod.GET)
     public @ResponseBody List<UserDTO> liist(){
-        System.out.println(userService.getUsersList().size());
-        return userService.getUsersList();
+
+        return userService.getAll();
     }
 }
