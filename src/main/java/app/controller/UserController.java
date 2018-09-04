@@ -2,7 +2,7 @@ package app.controller;
 
 
 import app.dto.UserDTO;
-import app.service.UserService;
+import app.service.api.UserService;
 import app.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -61,29 +61,6 @@ public class UserController {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/welcome";
-    }
-
-
-    @RequestMapping(value = {"/index"}, method = RequestMethod.GET)
-    public String index(Model model) {
-        return "index";
-    }
-
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String admin(Model model) {
-        return "admin";
-    }
-
-
-    @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public String user() {
-        return "user";
-    }
-
-    @RequestMapping(value = "/user/findUser", method = RequestMethod.GET)
-    @ResponseBody
-    public UserDTO userfd(@RequestParam(value = "uName") String login) {
-        return userService.findUserByLogin(login);
     }
 
 

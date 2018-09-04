@@ -1,4 +1,4 @@
-package app.service;
+package app.service.impl;
 
 import app.dao.api.UserDao;
 import app.dto.UserDTO;

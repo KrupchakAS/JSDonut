@@ -2,7 +2,7 @@ package app.validator;
 
 
 import app.dto.UserDTO;
-import app.service.UserService;
+import app.service.api.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;

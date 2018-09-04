@@ -10,12 +10,12 @@
     <context:annotation-config />
 
     <http auto-config="true">
-        <intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')"/>
+        <!--<intercept-url pattern="/admin/*" access="hasRole('ROLE_ADMIN')"/>-->
         <form-login login-page="/login" default-target-url="/welcome" authentication-failure-url="/welcome?error"/>
         <logout logout-success-url="/welcome"/>
     </http>
 
-    <beans:bean id="userDetailsServiceImpl" class="app.service.UserDetailsServiceImpl"></beans:bean>
+    <beans:bean id="userDetailsServiceImpl" class="app.service.impl.UserDetailsServiceImpl"></beans:bean>
 
     <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="userDetailsServiceImpl">

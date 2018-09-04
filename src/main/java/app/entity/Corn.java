@@ -17,6 +17,9 @@ public class Corn {
     @Column(name = "price")
     private Short price;
 
+    @Column(name = "calories")
+    private Short calories;
+
     @OneToOne(mappedBy = "corn")
     private Product product;
 
@@ -30,6 +33,14 @@ public class Corn {
 
     public String getName() {
         return name;
+    }
+
+    public Short getCalories() {
+        return calories;
+    }
+
+    public void setCalories(Short calories) {
+        this.calories = calories;
     }
 
     public void setName(String name) {

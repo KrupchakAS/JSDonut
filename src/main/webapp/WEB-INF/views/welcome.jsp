@@ -6,13 +6,13 @@
 
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" type="text/html" charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" >
     <title>Welcome</title>
-    <link href="${contextPath}/resources/css/bootstrap.css" rel="stylesheet">
-    <link href="${contextPath}/resources/css/app.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/bootstrap.css"  rel="stylesheet">
+    <link href="${contextPath}/resources/css/app.css"  rel="stylesheet">
 </head>
 <body>
 <div>
@@ -55,9 +55,9 @@
     vice lomo.
 </p>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="${contextPath}/resources/js/bootstrap.js"></script>
-<script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/js/bootstrap.js"></script>
+<script type="text/javascript">
     $(document).ready(function () {
         $.ajax({
             url: "/welcome",

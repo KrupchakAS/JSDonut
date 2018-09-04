@@ -1,4 +1,4 @@
-package app.service;
+package app.service.api;
 
 import app.dto.UserDTO;
 import app.entity.User;
@@ -13,7 +13,7 @@ public interface UserService {
 
     void delete(UserDTO entity);
 
-    UserDTO getById(Integer key);
+    UserDTO getById(Integer id);
 
     UserDTO getByName(String Name);
 

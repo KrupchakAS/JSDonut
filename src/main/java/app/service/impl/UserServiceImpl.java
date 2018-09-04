@@ -1,9 +1,10 @@
-package app.service;
+package app.service.impl;
 
 import app.dao.api.UserDao;
 import app.dto.UserDTO;
 import app.entity.User;
 import app.entity.enums.Role;
+import app.service.api.UserService;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.Id;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,22 +35,26 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void create(UserDTO userDto) {
-        userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
-        userDto.setRole(Role.ROLE_USER.toString());//ROLE_ADMIN,ROLE_USER
+        if (userDto != null)
+            userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
+        userDto.setRole(Role.ROLE_USER.toString());//ROLE_USER or ROLE_ADMIN
         userDao.create(modelMapper.map(userDto, User.class));
         logger.debug(String.format("Successfully saved user %s", userDto.getLogin()));
     }
-
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public void update(UserDTO entity) {
-        if (entity != null)
-            userDao.update(userDao.getById(entity.getId()));
+    public void update(UserDTO userDTO) {
+        User user = userDao.getById(userDTO.getId());
+        if (user != null)
+            userDao.update(modelMapper.map(userDTO,User.class));
+        logger.debug(String.format("Successfully update user %s", userDTO.getLogin()));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void delete(UserDTO userDTO) {
         if (userDTO != null)
             userDao.delete(modelMapper.map(userDTO, User.class));
+        logger.debug(String.format("Successfully delete user %s", userDTO.getLogin()));
     }
 
     @Transactional(readOnly = true)
@@ -63,6 +67,7 @@ public class UserServiceImpl implements UserService {
             return null;
         }
     }
+
     @Transactional(readOnly = true)
     @Override
     public UserDTO getByName(String name) {
@@ -75,7 +80,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void detach(UserDTO entity) {
+    public void detach(UserDTO userDto) {
 
     }
 

@@ -1,26 +1,21 @@
-package app.entity;
+package app.dto;
 
-import javax.persistence.*;
+import app.entity.Product;
 
-@Entity
-@Table(name = "sprinkle")
-public class Sprinkle {
+public class SprinkleDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name")
+
     private String name;
 
-    @Column(name = "price")
+
     private Short price;
 
-    @Column(name = "calories")
+
     private Short calories;
 
-    @ManyToOne
+
     private Product product;
 
     public Integer getId() {
@@ -35,14 +30,6 @@ public class Sprinkle {
         return name;
     }
 
-    public Short getCalories() {
-        return calories;
-    }
-
-    public void setCalories(Short calories) {
-        this.calories = calories;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -53,6 +40,14 @@ public class Sprinkle {
 
     public void setPrice(Short price) {
         this.price = price;
+    }
+
+    public Short getCalories() {
+        return calories;
+    }
+
+    public void setCalories(Short calories) {
+        this.calories = calories;
     }
 
     public Product getProduct() {

@@ -1,75 +1,58 @@
-package app.entity;
+package app.dto;
 
+import app.entity.*;
 
-import javax.persistence.*;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import java.util.List;
 
-@Entity
-@Table(name = "products")
-public class Product {
+public class ProductDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+
     private Integer id;
 
-    @Column(name = "name")
+
     private String name;
 
-    @Column(name = "description")
     private String description;
 
-    @Column(name = "image")
+
     private String image;
 
-    @Column(name = "price")
+
     private Float price;
 
-    @Column(name = "weight")
+
     private Short weight;
 
-    @Column(name = "quantity")
+
     private Short quantity;
 
-    @Column(name = "calories")
+
     private Short calories;
 
-    @Column(name = "creator")
+
     private String creator;
 
-    @OneToOne
-    @JoinColumn(name = "category_id")
+
     private Category category;
 
-    @Column(insertable = false, updatable = false)
+
     private Integer category_id;
 
-    @ManyToMany(mappedBy = "productList")
     private List<Order> orderList;
 
-    @OneToOne
-    @JoinColumn(name = "filling_id")
     private Filling filling;
 
-    @Column(insertable = false, updatable = false)
     private Integer filling_id;
 
-    @OneToOne
-    @JoinColumn(name = "corn_id")
     private Corn corn;
 
-    @Column(insertable = false, updatable = false)
     private Integer corn_id;
 
-    @OneToMany
-    @JoinTable(name = "products_sprinkle", joinColumns = @JoinColumn(name = "product_id"),
-    inverseJoinColumns = @JoinColumn(name = "sprinkle_id"))
     private List<Sprinkle> sprinkleList;
 
-
-    public Integer getId() {
-        return id;
-    }
+    public Integer getId() { return id; }
 
     public void setId(Integer id) {
         this.id = id;
@@ -123,6 +106,22 @@ public class Product {
         this.quantity = quantity;
     }
 
+    public Short getCalories() {
+        return calories;
+    }
+
+    public void setCalories(Short calories) {
+        this.calories = calories;
+    }
+
+    public String getCreator() {
+        return creator;
+    }
+
+    public void setCreator(String creator) {
+        this.creator = creator;
+    }
+
     public Category getCategory() {
         return category;
     }
@@ -146,23 +145,6 @@ public class Product {
     public void setOrderList(List<Order> orderList) {
         this.orderList = orderList;
     }
-
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
-
-    public Short getCalories() {
-        return calories;
-    }
-
-    public void setCalories(Short calories) {
-        this.calories = calories;
-    }
-
 
     public Filling getFilling() {
         return filling;
@@ -203,5 +185,4 @@ public class Product {
     public void setSprinkleList(List<Sprinkle> sprinkleList) {
         this.sprinkleList = sprinkleList;
     }
-
 }
