@@ -41,6 +41,7 @@ public class UserServiceImpl implements UserService {
         userDao.create(modelMapper.map(userDto, User.class));
         logger.debug(String.format("Successfully saved user %s", userDto.getLogin()));
     }
+
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void update(UserDTO userDTO) {
@@ -66,22 +67,6 @@ public class UserServiceImpl implements UserService {
         } else {
             return null;
         }
-    }
-
-    @Transactional(readOnly = true)
-    @Override
-    public UserDTO getByName(String name) {
-        User user = userDao.getByName(name);
-        if (user != null) {
-            return modelMapper.map(user, UserDTO.class);
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    public void detach(UserDTO userDto) {
-
     }
 
     @Transactional(readOnly = true)

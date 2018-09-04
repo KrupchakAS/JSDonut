@@ -15,10 +15,6 @@ public interface UserService {
 
     UserDTO getById(Integer id);
 
-    UserDTO getByName(String Name);
-
-    void detach(UserDTO entity);
-
     List<UserDTO> getAll();
 
     UserDTO findUserByLogin(String login);

@@ -27,48 +27,42 @@ public abstract class GenericDaoImpl<Entity> implements GenericDao<Entity> {
     }
 
     @Override
-    @Transactional
     public void create(Entity entity) {
         entityManager.persist(entity);
     }
 
     @Override
-    @Transactional
     public void update(Entity entity) {
         entityManager.merge(entity);
     }
 
-    @Transactional
     @Override
     public void detach(Entity entity) {
         entityManager.detach(entity);
     }
 
     @Override
-    @Transactional
     public void delete(Entity entity) {
         entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
     }
-    @Transactional
+
     @Override
     public Entity getById(Integer id) {
         return entityManager.find(daoClass, id);
     }
 
     @Override
-    @Transactional
     public Entity getByName(String name){
         return entityManager.find(daoClass,name);
     }
 
-    @Transactional
     @Override
     public List<Entity> getAll() {
         CriteriaQuery<Entity> criteriaQuery = entityManager.getCriteriaBuilder().createQuery(daoClass);
         criteriaQuery.from(daoClass);
         return findList(criteriaQuery);
     }
-    @Transactional
+
     protected List<Entity> findList(CriteriaQuery<Entity> criteriaQuery) {
         TypedQuery<Entity> query = entityManager.createQuery(criteriaQuery);
         return query.getResultList();

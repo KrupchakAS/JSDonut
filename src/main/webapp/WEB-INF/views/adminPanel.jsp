@@ -12,7 +12,7 @@
 
     <title>AdminPanel</title>
 
-    <link rel="stylesheet" type="text/css" href="${contextPath}/resources/css/bootstrap.css" />
+    <link href="${contextPath}/resources/css/bootstrap.css" rel="stylesheet"/>
 </head>
 
 <body>

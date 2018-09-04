@@ -6,7 +6,7 @@
 
 <html>
 <head>
-    <meta http-equiv="Content-Type" type="text/html" charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" >
@@ -38,7 +38,7 @@
 
     </sec:authorize>
     <sec:authorize access="hasRole('ROLE_ADMIN')">
-        <a class="btn btn-primary" href="/admin" role="button">Admin Panel</a>
+        <a class="btn btn-primary" href="/admin/adminPanel" role="button">Admin Panel</a>
     </sec:authorize>
     <sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
         <a class="btn btn-secondary" href="/logout" role="button">Sign Out</a>
@@ -55,9 +55,9 @@
     vice lomo.
 </p>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script type="text/javascript" src="${contextPath}/resources/js/bootstrap.js"></script>
-<script type="text/javascript">
+<script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script  src="${contextPath}/resources/js/bootstrap.js"></script>
+<script >
     $(document).ready(function () {
         $.ajax({
             url: "/welcome",

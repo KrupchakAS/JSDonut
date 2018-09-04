@@ -31,17 +31,19 @@ public class OrderServiceImpl implements OrderService {
     public void create(OrderDTO orderDTO) {
         if (orderDTO != null)
             orderDao.create(modelMapper.map(orderDTO, Order.class));
-        logger.debug(String.format("Successfully saved order "));
+        logger.debug(String.format("Successfully saved order"));
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void update(OrderDTO orderDTO) {
         Order order = orderDao.getById(orderDTO.getId());
         if (order != null)
             orderDao.update(modelMapper.map(orderDTO, Order.class));
-        logger.debug(String.format("Successfully updated order %s", orderDTO.getId()));
+        logger.debug(String.format("Successfully updated order"));
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void delete(OrderDTO orderDTO) {
         if (orderDTO != null)
@@ -49,21 +51,19 @@ public class OrderServiceImpl implements OrderService {
         logger.debug(String.format("Successfully deleted order"));
     }
 
+    @Transactional(readOnly = true)
     @Override
     public OrderDTO getById(Integer id) {
         return modelMapper.map(orderDao.getById(id), OrderDTO.class);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public OrderDTO getByName(String name) {
         return modelMapper.map(orderDao.getByName(name), OrderDTO.class);
     }
 
-    @Override
-    public void detach(OrderDTO orderDTO) {
-
-    }
-
+    @Transactional(readOnly = true)
     @Override
     public List<OrderDTO> getAll() {
         List<Order> orderList = orderDao.getAll();

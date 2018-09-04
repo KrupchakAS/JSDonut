@@ -5,13 +5,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" type="text/html"/>
+    <meta http-equiv="Content-Type" content="text/html"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" >
     <meta name="author">
 
     <title>UsersList</title>
-    <link href="<c:url value='/resources/css/bootstrap.css' />" type="text/css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/bootstrap.css"  rel="stylesheet"/>
 </head>
 
 <body>

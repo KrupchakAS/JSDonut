@@ -11,27 +11,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.List;
 
 @Controller
+@RequestMapping(value = "/admin")
 public class AdminController {
 
     @Autowired
     private UserService userService;
 
-
-    @RequestMapping(name = "/admin/adminPanel",method = RequestMethod.GET)
+    @RequestMapping(value = "/adminPanel",method = RequestMethod.GET)
     public String adminPanel(){
         return "adminPanel";
     }
 
-    @RequestMapping(value = {"/admin/usersList" }, method = RequestMethod.GET)
+    @RequestMapping(value = "/usersList" , method = RequestMethod.GET)
     public String listUsers(ModelMap model) {
         List<UserDTO> users = userService.getAll();
         model.addAttribute("users", users);
         return "usersList";
     }
 
-    @RequestMapping(value = {"/admin/productsList" }, method = RequestMethod.GET)
+    @RequestMapping(value = "/productsList", method = RequestMethod.GET)
     public String productsList(ModelMap model) {
-        List<UserDTO> users = userService.getAll();//!! dao еще нет
+        List<UserDTO> users = userService.getAll();
         model.addAttribute("cars", users);
         return "productsList";
     }

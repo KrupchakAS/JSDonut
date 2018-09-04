@@ -1,4 +1,4 @@
-package app.exception;
+package app.controller;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 

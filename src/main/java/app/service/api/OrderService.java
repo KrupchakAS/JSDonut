@@ -16,7 +16,5 @@ public interface OrderService {
 
     OrderDTO getByName(String name);
 
-    void detach(OrderDTO orderDTO);
-
     List<OrderDTO> getAll();
 }
