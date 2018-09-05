@@ -14,7 +14,7 @@ public interface GenericDao<Entity> {
 
     Entity getByName(String Name);
 
-    void detach(Entity entity);
+
 
     List<Entity> getAll();
 

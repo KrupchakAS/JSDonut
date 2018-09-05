@@ -1,9 +1,6 @@
 package app.dao;
 
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,9 +9,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-public abstract class GenericDaoImpl<Entity> implements GenericDao<Entity> {
 
-    private static final Logger logger = LoggerFactory.getLogger(GenericDaoImpl.class);
+public abstract class GenericDaoImpl<Entity> implements GenericDao<Entity> {
 
     @PersistenceContext
     protected EntityManager entityManager;
@@ -34,11 +30,6 @@ public abstract class GenericDaoImpl<Entity> implements GenericDao<Entity> {
     @Override
     public void update(Entity entity) {
         entityManager.merge(entity);
-    }
-
-    @Override
-    public void detach(Entity entity) {
-        entityManager.detach(entity);
     }
 
     @Override

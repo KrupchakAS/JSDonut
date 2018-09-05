@@ -32,7 +32,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
     @Transactional(propagation = Propagation.REQUIRED)
     public void create(UserDTO userDto) {
         if (userDto != null)
