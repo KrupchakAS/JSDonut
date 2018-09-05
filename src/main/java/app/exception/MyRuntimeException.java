@@ -1,4 +1,4 @@
 package app.exception;
 
-public class MyRuntimeException {
+public class MyRuntimeException extends  RuntimeException{
 }
