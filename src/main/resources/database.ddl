@@ -153,54 +153,26 @@ INSERT INTO sprinkle VALUE (6, 'Вафельная крошка', 280, 120);
 INSERT INTO sprinkle VALUE (7, 'Шоколадная крошка', 495, 130);
 INSERT INTO sprinkle VALUE (8, 'Кунжут', 535, 80);
 
-INSERT INTO products
-  VALUE (1, 'Шоколадный', 'С шоколадной глазурью', NULL, 70.5, NULL, 90, 20, 320, 'admin', 1, NULL, NULL);
-INSERT INTO products
-  VALUE (2, 'Ванильный', 'С мадагаскарской ванилью', NULL, 55, NULL, 80, 45, 290, 'admin', 1, NULL, NULL);
+INSERT INTO products VALUE (1, 'Шоколадный', 'С шоколадной глазурью', NULL, 70.5, NULL, 90, 20, 320, 'admin', 1, NULL, NULL);
+INSERT INTO products VALUE (2, 'Ванильный', 'С мадагаскарской ванилью', NULL, 55, NULL, 80, 45, 290, 'admin', 1, NULL, NULL);
 INSERT INTO products VALUE (3, 'Вишневый', 'Со спелой вишней', NULL, 73.6, NULL, 85, 35, 300, 'admin', 1, NULL, NULL);
-INSERT INTO products
-  VALUE (4, 'Абрикосовый', 'С ярким абрикосом', NULL, 68.1, NULL, 75, 30, 310, 'admin', 1, NULL, NULL);
-INSERT INTO products
-  VALUE (5, 'Черничный', 'Со сладкой черникой', NULL, 77, NULL, 75, 250, 270, 'admin', 1, NULL, NULL);
+INSERT INTO products VALUE (4, 'Абрикосовый', 'С ярким абрикосом', NULL, 68.1, NULL, 75, 30, 310, 'admin', 1, NULL, NULL);
+INSERT INTO products VALUE (5, 'Черничный', 'Со сладкой черникой', NULL, 77, NULL, 75, 250, 270, 'admin', 1, NULL, NULL);
 
-INSERT INTO products
-  VALUE (6, 'Малиновая радость', 'Тарталетка Малиновая', NULL, 50.2, NULL, 66, 20, 230, 'admin', 2, NULL, NULL);
-INSERT INTO products VALUE
-  (7, 'Черная Смородинка', 'Тарталетка с Черной Смородиной', NULL, 58.7, NULL, 70, 45, 280, 'admin', 2, NULL, NULL);
-INSERT INTO products
-  VALUE (8, 'Клубника-шейк', 'Тарталетка Клубничная', NULL, 61.2, NULL, 71, 35, 290, 'admin', 2, NULL, NULL);
-INSERT INTO products
-  VALUE (9, 'Эклер Ваниль', 'Эклер Классический ванильный', NULL, 46.1, NULL, 55, 30, 295, 'admin', 2, NULL, NULL);
-INSERT INTO products
-  VALUE (10, 'Эклер Кофейный', 'Эклер Классический кофейный', NULL, 47, NULL, 65, 150, 280, 'admin', 2, NULL, NULL);
+INSERT INTO products VALUE (6, 'Малиновая радость', 'Тарталетка Малиновая', NULL, 50.2, NULL, 66, 20, 230, 'admin', 2, NULL, NULL);
+INSERT INTO products VALUE (7, 'Черная Смородинка', 'Тарталетка с Черной Смородиной', NULL, 58.7, NULL, 70, 45, 280, 'admin', 2, NULL, NULL);
+INSERT INTO products VALUE (8, 'Клубника-шейк', 'Тарталетка Клубничная', NULL, 61.2, NULL, 71, 35, 290, 'admin', 2, NULL, NULL);
+INSERT INTO products VALUE (9, 'Эклер Ваниль', 'Эклер Классический ванильный', NULL, 46.1, NULL, 55, 30, 295, 'admin', 2, NULL, NULL);
+INSERT INTO products VALUE (10, 'Эклер Кофейный', 'Эклер Классический кофейный', NULL, 47, NULL, 65, 150, 280, 'admin', 2, NULL, NULL);
 
-INSERT INTO products VALUE
-  (11, 'Миндальный', 'Два бисквитных коржа с хрустящим слоем миндаля в карамели и лепестками миндаля', NULL, 600, NULL,
-       330, 150, 390, 'admin', 3, NULL, NULL);
-INSERT INTO products VALUE
-  (12, 'Брусничный', 'Пирог с брусничной начинкой и начинкой из белого шоколада', NULL, 410, NULL, 800, 12, 420,
-       'admin', 3, NULL, NULL);
-INSERT INTO products VALUE (13, 'Три шоколада',
-                                'Слой брауни с воздушным муссом из молочного шоколада, шоколадным бисквитом, покрыт темным шоколадом',
-                                NULL, 500, NULL, 700, 22, 460, 'admin', 3, NULL, NULL);
-INSERT INTO products VALUE
-  (14, 'Медовик', 'Класический медовик с традиционным вкусом', NULL, 390, NULL, 480, 25, 380, 'admin', 3, NULL, NULL);
-INSERT INTO products VALUE
-  (15, 'Захер', 'Традиционный шоколадный торт с абрикосовым джемом и шоколадной глазурью', NULL, 620, NULL, 700, 9, 370,
-       'admin', 3, NULL, NULL);
+INSERT INTO products VALUE (11, 'Миндальный', 'Два бисквитных коржа с хрустящим слоем миндаля в карамели и лепестками миндаля', NULL, 600, NULL, 330, 150, 390, 'admin', 3, NULL, NULL);
+INSERT INTO products VALUE (12, 'Брусничный', 'Пирог с брусничной начинкой и начинкой из белого шоколада', NULL, 410, NULL, 800, 12, 420, 'admin', 3, NULL, NULL);
+INSERT INTO products VALUE (13, 'Три шоколада', 'Слой брауни с воздушным муссом из молочного шоколада, шоколадным бисквитом, покрыт темным шоколадом', NULL, 500, NULL, 700, 22, 460, 'admin', 3, NULL, NULL);
+INSERT INTO products VALUE (14, 'Медовик', 'Класический медовик с традиционным вкусом', NULL, 390, NULL, 480, 25, 380, 'admin', 3, NULL, NULL);
+INSERT INTO products VALUE (15, 'Захер', 'Традиционный шоколадный торт с абрикосовым джемом и шоколадной глазурью', NULL, 620, NULL, 700, 9, 370, 'admin', 3, NULL, NULL);
 
-INSERT INTO products VALUE
-  (16, 'Корица-Мускат', 'Французское миндальное печенье с корицей и мускатом и с начинкой', NULL, 35, NULL, 15, 500,
-       100, 'admin', 4, NULL, NULL);
-INSERT INTO products VALUE
-  (17, 'Имбирь', 'Французское миндальное имбирное печенье с начинкой.', NULL, 40, NULL, 15, 450, 110, 'admin', 4, NULL,
-   NULL);
-INSERT INTO products VALUE
-  (18, 'Фисташка', 'Французское миндальное фисташковое печенье с начинкой', NULL, 45, NULL, 15, 350, 100, 'admin', 4,
-   NULL, NULL);
-INSERT INTO products VALUE
-  (19, 'Вишня', 'Французское миндальное вишневое печенье с начинкой', NULL, 40, NULL, 15, 400, 110, 'admin', 4, NULL,
-   NULL);
-INSERT INTO products VALUE
-  (20, 'Смородина', 'Французское миндальное смородина микс печенье с начинкой', NULL, 40, NULL, 15, 550, 120, 'admin',
-       4, NULL, NULL);
+INSERT INTO products VALUE (16, 'Корица-Мускат', 'Французское миндальное печенье с корицей и мускатом и с начинкой', NULL, 35, NULL, 15, 500, 100, 'admin', 4, NULL, NULL);
+INSERT INTO products VALUE (17, 'Имбирь', 'Французское миндальное имбирное печенье с начинкой.', NULL, 40, NULL, 15, 450, 110, 'admin', 4, NULL, NULL);
+INSERT INTO products VALUE (18, 'Фисташка', 'Французское миндальное фисташковое печенье с начинкой', NULL, 45, NULL, 15, 350, 100, 'admin', 4, NULL, NULL);
+INSERT INTO products VALUE (19, 'Вишня', 'Французское миндальное вишневое печенье с начинкой', NULL, 40, NULL, 15, 400, 110, 'admin', 4, NULL, NULL);
+INSERT INTO products VALUE (20, 'Смородина', 'Французское миндальное смородина микс печенье с начинкой', NULL, 40, NULL, 15, 550, 120, 'admin', 4, NULL, NULL);
