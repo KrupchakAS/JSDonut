@@ -116,11 +116,20 @@ INSERT INTO category VALUE (2,'Пироженные');
 INSERT INTO category VALUE (3,'Торты');
 INSERT INTO category VALUE (4,'Макаруны');
 
-INSERT INTO products VALUE (1,'Шоколадный','Донат с шоколадной глазурью',null,70.5,null,90,20,320,'admin',1,null,null);
-INSERT INTO products VALUE (2,'Ванильный','Донат с мадагаскарской ванилью',null,55,null,80,45,290,'admin',1,null,null);
-INSERT INTO products VALUE (3,'Вишневый','Донат со спелой вишней',null,73.6,null,85,35,300,'admin',1,null,null);
-INSERT INTO products VALUE (4,'Абрикосовый','Донат с ярким абрикосом',null,68.1,null,75,30,310,'admin',1,null,null);
-INSERT INTO products VALUE (5,'Черничный','Донат со сладкой черникой',null,77,null,75,250,270,'admin',1,null,null);
+INSERT INTO sprinkle VALUE (1,'Шарики разноцветные(шоколад)', 390, 100);
+INSERT INTO sprinkle VALUE (2,'Вермишель разноцветная(глазурь)', 385, 110);
+INSERT INTO sprinkle VALUE (3,'Конфетти разноцветная(глазурь)', 387, 140);
+INSERT INTO sprinkle VALUE (4,'Кокосовая стружка', 399, 120);
+INSERT INTO sprinkle VALUE (5,'Мак', 395, 130);
+INSERT INTO sprinkle VALUE (6,'Вафельная крошка', 280, 120);
+INSERT INTO sprinkle VALUE (7,'Шоколадная крошка', 495, 190);
+INSERT INTO sprinkle VALUE (8,'Кунжут', 535, 80);
+
+INSERT INTO products VALUE (1,'Шоколадный','С шоколадной глазурью',null,70.5,null,90,20,320,'admin',1,null,null);
+INSERT INTO products VALUE (2,'Ванильный','С мадагаскарской ванилью',null,55,null,80,45,290,'admin',1,null,null);
+INSERT INTO products VALUE (3,'Вишневый','Со спелой вишней',null,73.6,null,85,35,300,'admin',1,null,null);
+INSERT INTO products VALUE (4,'Абрикосовый','С ярким абрикосом',null,68.1,null,75,30,310,'admin',1,null,null);
+INSERT INTO products VALUE (5,'Черничный','Со сладкой черникой',null,77,null,75,250,270,'admin',1,null,null);
 
 INSERT INTO products VALUE (6,'Малиновая радость','Тарталетка Малиновая',null,50.2,null,66,20,230,'admin',2,null,null);
 INSERT INTO products VALUE (7,'Черная Смородинка','Тарталетка с Черной Смородиной',null,58.7,null,70,45,280,'admin',2,null,null);
