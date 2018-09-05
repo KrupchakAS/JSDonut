@@ -11,8 +11,8 @@
     <meta name="description" content="">
     <meta name="author" >
     <title>Welcome</title>
-    <link href="${contextPath}/resources/css/bootstrap.css"  rel="stylesheet">
-    <link href="${contextPath}/resources/css/app.css"  rel="stylesheet">
+    <link href="${contextPath}/resources/css/bootstrap.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/app.css" rel="stylesheet">
 </head>
 <body>
 <div>

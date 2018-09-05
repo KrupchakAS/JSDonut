@@ -11,7 +11,7 @@
     <meta name="author">
 
     <title>UsersList</title>
-    <link href="${contextPath}/resources/css/bootstrap.css"  rel="stylesheet"/>
+    <link href="${contextPath}/resources/css/bootstrap.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -30,8 +30,8 @@
                 <th>SurName</th>
                 <th>PhoneNumber</th>
                 <th>Email</th>
-                <th width="100"></th>
-                <th width="100"></th>
+                <%--<th width="100"></th>--%>
+                <%--<th width="100"></th>--%>
             </tr>
             </thead>
             <tbody>
