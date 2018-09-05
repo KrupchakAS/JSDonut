@@ -134,3 +134,8 @@ INSERT INTO products VALUE (13,'Три шоколада','Слой брауни 
 INSERT INTO products VALUE (14,'Медовик','Класический медовик с традиционным вкусом',null,390,null,480,25,380,'admin',3,null,null);
 INSERT INTO products VALUE (15,'Захер','Традиционный шоколадный торт с абрикосовым джемом и шоколадной глазурью',null,620,null,700,9,370,'admin',3,null,null);
 
+INSERT INTO products VALUE (16,'Корица-Мускат','Французское миндальное печенье с корицей и мускатом и с начинкой',null,35,null,15,500,100,'admin',4,null,null);
+INSERT INTO products VALUE (17,'Имбирь','Французское миндальное имбирное печенье с начинкой.',null,40,null,15,450,110,'admin',4,null,null);
+INSERT INTO products VALUE (18,'Фисташка','Французское миндальное фисташковое печенье с начинкой',null,45,null,15,350,100,'admin',4,null,null);
+INSERT INTO products VALUE (19,'Вишня','Французское миндальное вишневое печенье с начинкой',null,40,null,15,400,110,'admin',4,null,null);
+INSERT INTO products VALUE (20,'Смородина','Французское миндальное смородина микс печенье с начинкой',null,40,null,15,550,120,'admin',4,null,null);
