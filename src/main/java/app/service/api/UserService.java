@@ -17,7 +17,7 @@ public interface UserService {
 
     List<UserDTO> getAll();
 
-    UserDTO findUserByLogin(String login);
+    UserDTO getByLogin(String login);
 
-    UserDTO findUserByEmail(String email);
+    UserDTO getByEmail(String email);
 }

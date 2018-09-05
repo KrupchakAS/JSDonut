@@ -23,7 +23,7 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
     protected EntityManager entityManager;
 
     @Override
-    public User findUserByLogin(String login) {
+    public User getByLogin(String login) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> userRoot = criteriaQuery.from(User.class);
@@ -41,7 +41,7 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 
     @SuppressWarnings("unchecked")
     @Override
-    public User findUserByEmail(String email) {
+    public User getByEmail(String email) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> userRoot = criteriaQuery.from(User.class);

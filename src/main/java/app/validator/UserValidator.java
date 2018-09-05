@@ -29,10 +29,10 @@ public class UserValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "Required");
 
 
-        if (userService.findUserByLogin(userDTO.getLogin()) != null) {
+        if (userService.getByLogin(userDTO.getLogin()) != null) {
             errors.rejectValue("login", "Duplicate.userForm.login");
         }
-        if (userService.findUserByEmail(userDTO.getEmail()) != null) {
+        if (userService.getByEmail(userDTO.getEmail()) != null) {
             errors.rejectValue("email", "Duplicate.userForm.email");
         }
         if (userDTO.getLogin().length() < 4 || userDTO.getLogin().length() > 16) {

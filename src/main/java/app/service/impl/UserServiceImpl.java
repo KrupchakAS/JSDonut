@@ -63,6 +63,20 @@ public class UserServiceImpl implements UserService {
     public UserDTO getById(Integer id) {
         User user = userDao.getById(id);
         if (user != null) {
+            logger.debug(String.format("Successfully got user with id %d" + user.getId()));
+            return modelMapper.map(user, UserDTO.class);
+
+        } else {
+            return null;
+        }
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public UserDTO getByLogin(String login) {
+        User user = userDao.getByLogin(login);
+        if (user != null) {
+            logger.debug(String.format("Successfully got user with login %s" + user.getLogin()));
             return modelMapper.map(user, UserDTO.class);
         } else {
             return null;
@@ -71,20 +85,10 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true)
     @Override
-    public UserDTO findUserByLogin(String login) {
-        User user = userDao.findUserByLogin(login);
+    public UserDTO getByEmail(String email) {
+        User user = userDao.getByEmail(email);
         if (user != null) {
-            return modelMapper.map(user, UserDTO.class);
-        } else {
-            return null;
-        }
-    }
-
-    @Transactional(readOnly = true)
-    @Override
-    public UserDTO findUserByEmail(String email) {
-        User user = userDao.findUserByEmail(email);
-        if (user != null) {
+            logger.debug(String.format("Successfully got user with email %s" + user.getEmail()));
             return modelMapper.map(user, UserDTO.class);
         } else {
             return null;

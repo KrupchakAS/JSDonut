@@ -49,7 +49,7 @@ CREATE TABLE corn (
   calories SMALLINT NOT NULL,
   price FLOAT NOT NULL
 )ENGINE =InnoDB;
--- Table: Sprinkle
+-- Table: SprinkleService
 CREATE TABLE sprinkle (
   id TINYINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(32) NOT NULL ,

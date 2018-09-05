@@ -9,6 +9,6 @@ import javax.persistence.Id;
 import java.util.List;
 
 public interface UserDao extends GenericDao<User>{
-    User findUserByLogin(String login);
-    User findUserByEmail(String email);
+    User getByLogin(String login);
+    User getByEmail(String email);
 }

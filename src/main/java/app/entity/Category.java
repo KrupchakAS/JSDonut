@@ -1,6 +1,7 @@
 package app.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -12,6 +13,7 @@ public class Category {
     @Column(name = "id")
     private Integer id;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "name")
     private String name;
 

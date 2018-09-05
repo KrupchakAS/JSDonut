@@ -1,6 +1,7 @@
 package app.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Set;
 
@@ -13,15 +14,19 @@ public class Order {
     @Column(name = "id")
     private Integer id;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "paymentOption")
     private Byte paymentOption;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "deliveryOption")
     private Byte deliveryOption;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "paymentStatus")
     private Byte paymentStatus;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "orderStatus")
     private Byte orderStatus;
 

@@ -2,6 +2,7 @@ package app.entity;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
@@ -13,27 +14,35 @@ public class Product {
     @Column(name = "id")
     private Integer id;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "name")
     private String name;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "description")
     private String description;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "image")
     private String image;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "price")
     private Float price;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "weight")
     private Short weight;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "quantity")
     private Short quantity;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "calories")
     private Short calories;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "creator")
     private String creator;
 

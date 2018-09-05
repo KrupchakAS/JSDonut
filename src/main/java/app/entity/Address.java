@@ -1,24 +1,30 @@
 package app.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "address")
 public class Address {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "city")
     private String city;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "postCode")
     private Integer postCode;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "houseNumber")
     private Short houseNumber;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "apartmentNumber")
     private Short apartmentNumber;
 

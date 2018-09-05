@@ -3,7 +3,9 @@ package app.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -17,33 +19,47 @@ public class User {
     @Column(name = "id")
     private Integer id;
 
+    @Size(min = 4,max = 16, message = "Field must be between 4 and 16 characters.")
+    @NotNull(message = "Field can not be null")
     @Column(name = "login")
     private String login;
 
+    @Size(min = 4,max = 16, message = "Field must be between 4 and 16 characters.")
+    @NotNull(message = "Field can not be null")
     @Column(name = "password")
     private String password;
 
+    @Size(min = 1,max = 16, message = "Field must be between 1 and 16 characters.")
+    @NotNull(message = "Field can not be null")
     @Column(name = "firstName")
     private String firstName;
 
+    @Size(min = 1,max = 16, message = "Field must be between 1 and 16 characters.")
+    @NotNull(message = "Field can not be null")
     @Column(name = "surName")
     private String surName;
 
+    @Size(min = 10,max = 10, message = "Field must has 10 digits.")
+    @NotNull(message = "Field can not be null")
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
+    @NotNull(message = "Field can not be null")
     @Past
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Temporal(TemporalType.DATE)
     @Column(name = "birthDate")
     private Date birthDate;
 
+    @Size(min = 4,max = 32, message = "Field must be between 4 and 32 characters.")
+    @NotNull(message = "Field can not be null")
     @Column(name = "email")
     private String email;
 
     @Transient
     private String confirmPassword;
 
+    @NotNull(message = "Field can not be null")
     @Column(name = "role")
     private String role;
 
