@@ -66,7 +66,6 @@ public class Product {
     inverseJoinColumns = @JoinColumn(name = "sprinkle_id"))
     private List<Sprinkle> sprinkleList;
 
-
     public Integer getId() {
         return id;
     }
