@@ -18,7 +18,7 @@ public class Address {
 
     @NotNull(message = "Field can not be null")
     @Column(name = "postCode")
-    private Integer postCode;
+    private String postCode;
 
     @NotNull(message = "Field can not be null")
     @Column(name = "houseNumber")
@@ -48,11 +48,11 @@ public class Address {
         this.city = city;
     }
 
-    public Integer getPostCode() {
+    public String getPostCode() {
         return postCode;
     }
 
-    public void setPostCode(Integer postCode) {
+    public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
 

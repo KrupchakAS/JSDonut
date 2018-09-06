@@ -50,9 +50,6 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @Column(insertable = false, updatable = false)
-    private Integer category_id;
-
     @ManyToMany(mappedBy = "productList")
     private List<Order> orderList;
 
@@ -60,15 +57,13 @@ public class Product {
     @JoinColumn(name = "filling_id")
     private Filling filling;
 
-    @Column(insertable = false, updatable = false)
-    private Integer filling_id;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @OneToOne
     @JoinColumn(name = "corn_id")
-    private Corn corn;
-
-    @Column(insertable = false, updatable = false)
-    private Integer corn_id;
+    private Dough corn;
 
     @OneToMany
     @JoinTable(name = "products_sprinkle", joinColumns = @JoinColumn(name = "product_id"),
@@ -140,14 +135,6 @@ public class Product {
         this.category = category;
     }
 
-    public Integer getCategory_id() {
-        return category_id;
-    }
-
-    public void setCategory_id(Integer category_id) {
-        this.category_id = category_id;
-    }
-
     public List<Order> getOrderList() {
         return orderList;
     }
@@ -172,7 +159,6 @@ public class Product {
         this.calories = calories;
     }
 
-
     public Filling getFilling() {
         return filling;
     }
@@ -181,28 +167,20 @@ public class Product {
         this.filling = filling;
     }
 
-    public Integer getFilling_id() {
-        return filling_id;
-    }
-
-    public void setFilling_id(Integer filling_id) {
-        this.filling_id = filling_id;
-    }
-
-    public Corn getCorn() {
+    public Dough getCorn() {
         return corn;
     }
 
-    public void setCorn(Corn corn) {
+    public void setCorn(Dough corn) {
         this.corn = corn;
     }
 
-    public Integer getCorn_id() {
-        return corn_id;
+    public User getUser() {
+        return user;
     }
 
-    public void setCorn_id(Integer corn_id) {
-        this.corn_id = corn_id;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public List<Sprinkle> getSprinkleList() {

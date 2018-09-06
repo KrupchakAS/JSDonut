@@ -36,7 +36,6 @@ public class UserServiceImpl implements UserService {
     public void create(UserDTO userDto) {
         if (userDto != null)
             userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
-        userDto.setRole(Role.ROLE_USER.toString());//ROLE_USER or ROLE_ADMIN
         userDao.create(modelMapper.map(userDto, User.class));
         logger.debug(String.format("Successfully saved user %s", userDto.getLogin()));
     }
@@ -62,7 +61,7 @@ public class UserServiceImpl implements UserService {
     public UserDTO getById(Integer id) {
         User user = userDao.getById(id);
         if (user != null) {
-            logger.debug(String.format("Successfully got user with id %d" + user.getId()));
+            logger.debug(String.format("Successfully got user with id %d", user.getId()));
             return modelMapper.map(user, UserDTO.class);
 
         } else {
@@ -75,7 +74,7 @@ public class UserServiceImpl implements UserService {
     public UserDTO getByLogin(String login) {
         User user = userDao.getByLogin(login);
         if (user != null) {
-            logger.debug(String.format("Successfully got user with login %s" + user.getLogin()));
+            logger.debug(String.format("Successfully got user with login %s", user.getLogin()));
             return modelMapper.map(user, UserDTO.class);
         } else {
             return null;
@@ -87,7 +86,7 @@ public class UserServiceImpl implements UserService {
     public UserDTO getByEmail(String email) {
         User user = userDao.getByEmail(email);
         if (user != null) {
-            logger.debug(String.format("Successfully got user with email %s" + user.getEmail()));
+            logger.debug(String.format("Successfully got user with email %s", user.getEmail()));
             return modelMapper.map(user, UserDTO.class);
         } else {
             return null;

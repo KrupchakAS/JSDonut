@@ -21,12 +21,6 @@ public class UserValidator implements Validator {
 
     public void validate(Object o, Errors errors) {
         UserDTO userDTO = (UserDTO) o;
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "firstName", "Required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surName", "Required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "birthDate", "Required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "Required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Required");
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmPassword", "Required");
 
 
         if (userService.getByLogin(userDTO.getLogin()) != null) {
@@ -35,24 +29,14 @@ public class UserValidator implements Validator {
         if (userService.getByEmail(userDTO.getEmail()) != null) {
             errors.rejectValue("email", "Duplicate.userForm.email");
         }
-        if (userDTO.getLogin().length() < 4 || userDTO.getLogin().length() > 16) {
-            errors.rejectValue("login", "Size.userForm.login");
-        }
-
-        if (userDTO.getPassword().length() < 4 || userDTO.getPassword().length() > 16) {
-            errors.rejectValue("password", "Size.userForm.password");
-        }
 
         if (!userDTO.getConfirmPassword().equals(userDTO.getPassword())) {
             errors.rejectValue("confirmPassword", "Different.userForm.password");
         }
+
         EmailValidator emailValidator = new EmailValidator();
         if (!emailValidator.validate(userDTO.getEmail())) {
             errors.rejectValue("email", "Invalid.userForm.email");
-        }
-
-        if (userDTO.getPhoneNumber().length() != 10) {
-            errors.rejectValue("phoneNumber", "Invalid.userForm.phoneNumber");
         }
 
     }

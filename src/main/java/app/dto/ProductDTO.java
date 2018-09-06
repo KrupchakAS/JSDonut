@@ -2,53 +2,35 @@ package app.dto;
 
 import app.entity.*;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import java.util.List;
 
 public class ProductDTO {
 
-
     private Integer id;
-
 
     private String name;
 
     private String description;
 
-
     private String image;
-
 
     private Float price;
 
-
     private Short weight;
-
 
     private Short quantity;
 
-
     private Short calories;
 
-
-    private String creator;
-
-
     private Category category;
-
-
-    private Integer category_id;
 
     private List<Order> orderList;
 
     private Filling filling;
 
-    private Integer filling_id;
+    private Dough corn;
 
-    private Corn corn;
-
-    private Integer corn_id;
+    private User user;
 
     private List<Sprinkle> sprinkleList;
 
@@ -76,6 +58,12 @@ public class ProductDTO {
 
     public String getImage() {
         return image;
+    }
+
+    public User getUser() { return user; }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public void setImage(String image) {
@@ -114,28 +102,12 @@ public class ProductDTO {
         this.calories = calories;
     }
 
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
-
     public Category getCategory() {
         return category;
     }
 
     public void setCategory(Category category) {
         this.category = category;
-    }
-
-    public Integer getCategory_id() {
-        return category_id;
-    }
-
-    public void setCategory_id(Integer category_id) {
-        this.category_id = category_id;
     }
 
     public List<Order> getOrderList() {
@@ -154,29 +126,15 @@ public class ProductDTO {
         this.filling = filling;
     }
 
-    public Integer getFilling_id() {
-        return filling_id;
-    }
 
-    public void setFilling_id(Integer filling_id) {
-        this.filling_id = filling_id;
-    }
-
-    public Corn getCorn() {
+    public Dough getCorn() {
         return corn;
     }
 
-    public void setCorn(Corn corn) {
+    public void setCorn(Dough corn) {
         this.corn = corn;
     }
 
-    public Integer getCorn_id() {
-        return corn_id;
-    }
-
-    public void setCorn_id(Integer corn_id) {
-        this.corn_id = corn_id;
-    }
 
     public List<Sprinkle> getSprinkleList() {
         return sprinkleList;

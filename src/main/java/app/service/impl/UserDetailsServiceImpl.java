@@ -26,7 +26,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         UserDTO userDTO = modelMapper.map(userDao.getByLogin(login),UserDTO.class);
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-            grantedAuthorities.add(new SimpleGrantedAuthority(userDTO.getRole()));
+            grantedAuthorities.add(new SimpleGrantedAuthority(userDTO.getRole().toString()));
         return new org.springframework.security.core.userdetails.User(userDTO.getLogin(), userDTO.getPassword(), grantedAuthorities);
     }
 }

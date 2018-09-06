@@ -25,9 +25,6 @@ public class Filling {
     @Column(name = "calories")
     private Short calories;
 
-    @OneToOne(mappedBy = "filling")
-    private Product product;
-
     public Integer getId() {
         return id;
     }
@@ -58,13 +55,5 @@ public class Filling {
 
     public void setPrice(Short price) {
         this.price = price;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 }

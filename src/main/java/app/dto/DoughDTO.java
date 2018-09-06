@@ -1,30 +1,17 @@
-package app.entity;
+package app.dto;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import app.entity.Product;
 
-@Entity
-@Table(name = "corn")
-public class Corn {
+public class DoughDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Integer id;
 
-    @NotNull(message = "Field can not be null")
-    @Column(name = "name")
     private String name;
 
-    @NotNull(message = "Field can not be null")
-    @Column(name = "price")
     private Short price;
 
-    @NotNull(message = "Field can not be null")
-    @Column(name = "calories")
     private Short calories;
 
-    @OneToOne(mappedBy = "corn")
     private Product product;
 
     public Integer getId() {
@@ -39,16 +26,16 @@ public class Corn {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public Short getCalories() {
         return calories;
     }
 
     public void setCalories(Short calories) {
         this.calories = calories;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Short getPrice() {

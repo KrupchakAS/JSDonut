@@ -1,5 +1,7 @@
 package app.entity;
 
+import app.entity.enums.Role;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -19,32 +21,21 @@ public class User {
     @Column(name = "id")
     private Integer id;
 
-    @Size(min = 4,max = 16, message = "Field must be between 4 and 16 characters.")
-    @NotNull(message = "Field can not be null")
     @Column(name = "login")
     private String login;
 
-    @Size(min = 4,max = 16, message = "Field must be between 4 and 16 characters.")
-    @NotNull(message = "Field can not be null")
     @Column(name = "password")
     private String password;
 
-    @Size(min = 1,max = 16, message = "Field must be between 1 and 16 characters.")
-    @NotNull(message = "Field can not be null")
     @Column(name = "firstName")
     private String firstName;
 
-    @Size(min = 1,max = 16, message = "Field must be between 1 and 16 characters.")
-    @NotNull(message = "Field can not be null")
     @Column(name = "surName")
     private String surName;
 
-    @Size(min = 10,max = 10, message = "Field must has 10 digits.")
-    @NotNull(message = "Field can not be null")
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
-    @NotNull(message = "Field can not be null")
     @Past
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Temporal(TemporalType.DATE)
@@ -56,12 +47,10 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Transient
-    private String confirmPassword;
-
+    @Enumerated(EnumType.STRING)
     @NotNull(message = "Field can not be null")
     @Column(name = "role")
-    private String role;
+    private Role role = Role.ROLE_USER;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
     private List<Order> ordersList;
@@ -133,19 +122,11 @@ public class User {
         this.password = password;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
-
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

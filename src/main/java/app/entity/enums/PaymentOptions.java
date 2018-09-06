@@ -4,9 +4,13 @@ public enum PaymentOptions {
     CASH(1),
     CARD(2);
 
-    public final int value;
+    private final int value;
 
-    PaymentOptions(final int value){
-        this.value=value;
+    PaymentOptions(final int value) {
+        this.value = value;
+    }
+
+    public int getValue() {
+        return value;
     }
 }

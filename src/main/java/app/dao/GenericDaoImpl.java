@@ -18,9 +18,7 @@ public abstract class GenericDaoImpl<Entity> implements GenericDao<Entity> {
     protected final Class<Entity> daoClass;
     @SuppressWarnings("unchecked")
     public GenericDaoImpl() {
-        daoClass = (Class<Entity>) ((ParameterizedType) getClass().getGenericSuperclass())
-                .getActualTypeArguments()[0];
-    }
+        daoClass = (Class<Entity>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];}
 
     @Override
     public void create(Entity entity) {
@@ -34,8 +32,7 @@ public abstract class GenericDaoImpl<Entity> implements GenericDao<Entity> {
 
     @Override
     public void delete(Entity entity) {
-        entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity));
-    }
+        entityManager.remove(entityManager.contains(entity) ? entity : entityManager.merge(entity)); }
 
     @Override
     public Entity getById(Integer id) {
