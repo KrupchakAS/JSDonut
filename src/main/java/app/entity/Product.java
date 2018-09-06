@@ -61,7 +61,7 @@ public class Product {
     @JoinColumn(name = "dough_id")
     private Dough dough;
 
-    @OneToMany
+    @ManyToMany
     @JoinTable(name = "products_sprinkle", joinColumns = @JoinColumn(name = "product_id"),
     inverseJoinColumns = @JoinColumn(name = "sprinkle_id"))
     private List<Sprinkle> sprinkleList;

@@ -24,9 +24,6 @@ public class Sprinkle {
     @Column(name = "calories")
     private Short calories;
 
-    @ManyToOne
-    private Product product;
-
     public Integer getId() {
         return id;
     }
@@ -57,13 +54,5 @@ public class Sprinkle {
 
     public void setPrice(Short price) {
         this.price = price;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 }

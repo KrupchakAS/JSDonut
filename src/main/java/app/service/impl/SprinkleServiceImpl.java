@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -80,7 +81,7 @@ public class SprinkleServiceImpl implements SprinkleService {
         if (sprinkleList != null) {
             return sprinkleList.stream().map(sprinkle -> modelMapper.map(sprinkle, SprinkleDTO.class)).collect(Collectors.toList());
         } else {
-            return null;
+            return new ArrayList<>();
         }
     }
 }

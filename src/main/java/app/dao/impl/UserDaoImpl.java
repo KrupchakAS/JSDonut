@@ -3,16 +3,13 @@ package app.dao.impl;
 import app.dao.GenericDaoImpl;
 import app.dao.api.UserDao;
 import app.entity.User;
-import org.hibernate.Criteria;
-import org.hibernate.Query;
-import org.hibernate.criterion.Restrictions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.*;
-import javax.persistence.criteria.*;
-import java.util.ArrayList;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 
@@ -29,7 +26,7 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
         Root<User> userRoot = criteriaQuery.from(User.class);
         if (login != null) {
             //criteriaQuery.select(userRoot.get("login"));
-            criteriaQuery.where(entityManager.getCriteriaBuilder().equal(userRoot.get("login"),login));
+            criteriaQuery.where(entityManager.getCriteriaBuilder().equal(userRoot.get("login"), login));
         }
         List<User> list = entityManager.createQuery(criteriaQuery).getResultList();
         if (list.isEmpty()) {
@@ -48,7 +45,7 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 
         if (email != null) {
             //criteriaQuery.select(userRoot.get("email"));
-            criteriaQuery.where(entityManager.getCriteriaBuilder().equal(userRoot.get("email"),email));
+            criteriaQuery.where(entityManager.getCriteriaBuilder().equal(userRoot.get("email"), email));
         }
         List<User> list = entityManager.createQuery(criteriaQuery).getResultList();
         if (list.isEmpty()) {

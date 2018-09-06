@@ -112,8 +112,8 @@ CREATE TABLE products (
   FOREIGN KEY (user_id) REFERENCES users (id),
   category_id    TINYINT      NOT NULL,
   FOREIGN KEY (category_id) REFERENCES category (id),
-  corn_id        TINYINT,
-  FOREIGN KEY (corn_id) REFERENCES corn (id),
+  dough_id        TINYINT,
+  FOREIGN KEY (dough_id) REFERENCES dough (id),
   filling_id     TINYINT,
   FOREIGN KEY (filling_id) REFERENCES filling (id),
   UNIQUE (name)

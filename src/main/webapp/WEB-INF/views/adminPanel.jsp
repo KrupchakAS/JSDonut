@@ -112,8 +112,8 @@
         </div>
     </form>
     <ul class="nav menu">
-        <li class="active"><a href="${contextPath}/resources/assets/index.html"><em class="fa fa-dashboard">&nbsp;</em> Dashboard</a></li>
-        <li><a href="${contextPath}/resources/assets/widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
+        <li><a href="${contextPath}/jsDonut/admin/sprinkle"><em class="fa fa-dashboard">&nbsp;</em> Sprinkle</a></li>
+        <%--<li><a href="${contextPath}/resources/assets/widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
         <li><a href="${contextPath}/resources/assets/charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
         <li><a href="${contextPath}/resources/assets/elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
         <li><a href="${contextPath}/resources/assets/panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
@@ -133,7 +133,7 @@
                 </a></li>
             </ul>
         </li>
-        <li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>
+        <li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>--%>
     </ul>
 </div><!--/.sidebar-->
 
