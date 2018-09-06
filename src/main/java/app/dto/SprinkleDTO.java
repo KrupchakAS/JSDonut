@@ -1,22 +1,16 @@
 package app.dto;
 
-import app.entity.Product;
+
 
 public class SprinkleDTO {
 
     private Integer id;
 
-
     private String name;
-
 
     private Short price;
 
-
     private Short calories;
-
-
-    private Product product;
 
     public Integer getId() {
         return id;
@@ -50,11 +44,5 @@ public class SprinkleDTO {
         this.calories = calories;
     }
 
-    public Product getProduct() {
-        return product;
-    }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
 }

@@ -1,6 +1,5 @@
 package app.dto;
 
-import app.entity.Product;
 
 public class DoughDTO {
 
@@ -11,8 +10,6 @@ public class DoughDTO {
     private Short price;
 
     private Short calories;
-
-    private Product product;
 
     public Integer getId() {
         return id;
@@ -44,13 +41,5 @@ public class DoughDTO {
 
     public void setPrice(Short price) {
         this.price = price;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 }
