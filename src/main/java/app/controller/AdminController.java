@@ -1,9 +1,7 @@
 package app.controller;
 
-import app.dto.ProductDTO;
-import app.dto.UserDTO;
-import app.service.api.ProductService;
-import app.service.api.UserService;
+import app.dto.*;
+import app.service.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -21,6 +19,15 @@ public class AdminController {
     private UserService userService;
 
     @Autowired
+    private DoughService doughService;
+
+    @Autowired
+    private SprinkleService sprinkleService;
+
+    @Autowired
+    private FillingService fillingService;
+
+    @Autowired
     private ProductService productService;
 
     @RequestMapping(value = "/adminPanel",method = RequestMethod.GET)
@@ -36,5 +43,20 @@ public class AdminController {
     @RequestMapping(value = "/adminPanel/productsList", method = RequestMethod.GET)
     public @ResponseBody List<ProductDTO> productsList() {
         return productService.getAll();
+    }
+
+    @RequestMapping(value = "/adminPanel/sprinkleList", method = RequestMethod.GET)
+    public @ResponseBody List<SprinkleDTO> sprinkleList() {
+        return sprinkleService.getAll();
+    }
+
+    @RequestMapping(value = "/adminPanel/fillingList", method = RequestMethod.GET)
+    public @ResponseBody List<FillingDTO> fillingList() {
+        return fillingService.getAll();
+    }
+
+    @RequestMapping(value = "/adminPanel/fillingList", method = RequestMethod.GET)
+    public @ResponseBody List<DoughDTO> doughList() {
+        return doughService.getAll();
     }
 }
