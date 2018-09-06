@@ -42,9 +42,9 @@ public class Product {
     @Column(name = "calories")
     private Short calories;
 
-    @NotNull(message = "Field can not be null")
-    @Column(name = "creator")
-    private String creator;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @OneToOne
     @JoinColumn(name = "category_id")
@@ -58,12 +58,8 @@ public class Product {
     private Filling filling;
 
     @OneToOne
-    @JoinColumn(name = "user_id")
-    private User user;
-
-    @OneToOne
-    @JoinColumn(name = "corn_id")
-    private Dough corn;
+    @JoinColumn(name = "dough_id")
+    private Dough dough;
 
     @OneToMany
     @JoinTable(name = "products_sprinkle", joinColumns = @JoinColumn(name = "product_id"),
@@ -143,14 +139,6 @@ public class Product {
         this.orderList = orderList;
     }
 
-    public String getCreator() {
-        return creator;
-    }
-
-    public void setCreator(String creator) {
-        this.creator = creator;
-    }
-
     public Short getCalories() {
         return calories;
     }
@@ -167,12 +155,12 @@ public class Product {
         this.filling = filling;
     }
 
-    public Dough getCorn() {
-        return corn;
+    public Dough getDough() {
+        return dough;
     }
 
-    public void setCorn(Dough corn) {
-        this.corn = corn;
+    public void setDough(Dough dough) {
+        this.dough = dough;
     }
 
     public User getUser() {

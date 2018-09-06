@@ -4,7 +4,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 CREATE TABLE users (
   id          INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
   login       VARCHAR(16)  NOT NULL,
-  password    VARCHAR(16) NOT NULL,
+  password    VARCHAR(60) NOT NULL,
   firstName   VARCHAR(32)  NOT NULL,
   surName     VARCHAR(32)  NOT NULL,
   phoneNumber VARCHAR(10)  NOT NULL,

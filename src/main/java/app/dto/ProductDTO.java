@@ -22,15 +22,15 @@ public class ProductDTO {
 
     private Short calories;
 
+    private User user;
+
     private Category category;
 
     private List<Order> orderList;
 
     private Filling filling;
 
-    private Dough corn;
-
-    private User user;
+    private Dough dough;
 
     private List<Sprinkle> sprinkleList;
 
@@ -126,15 +126,13 @@ public class ProductDTO {
         this.filling = filling;
     }
 
-
-    public Dough getCorn() {
-        return corn;
+    public Dough getDough() {
+        return dough;
     }
 
-    public void setCorn(Dough corn) {
-        this.corn = corn;
+    public void setDough(Dough dough) {
+        this.dough = dough;
     }
-
 
     public List<Sprinkle> getSprinkleList() {
         return sprinkleList;
