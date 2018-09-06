@@ -55,7 +55,7 @@ public class AdminController {
         return fillingService.getAll();
     }
 
-    @RequestMapping(value = "/adminPanel/fillingList", method = RequestMethod.GET)
+    @RequestMapping(value = "/adminPanel/doughList", method = RequestMethod.GET)
     public @ResponseBody List<DoughDTO> doughList() {
         return doughService.getAll();
     }
