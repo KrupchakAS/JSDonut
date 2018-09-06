@@ -17,7 +17,7 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Calories</th>
-                <th>Prices</th>
+                <th>Price</th>
             </tr>
             </thead>
             <tbody>
@@ -31,7 +31,7 @@
 <script>
     $.document.ready(function() {
         $.getJSON({
-                url: ""
+                url: "/adminPanel/fillingList"
             },
             function (data) {
                 var tablebody = $('#table tbody');
