@@ -17,7 +17,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="/admin/adminPanel"><span></span>AdminPanel</a>
+            <a class="navbar-brand" href="/jsDonut/admin/adminPanel"><span></span>AdminPanel</a>
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <em class="fa fa-envelope"></em><span class="label label-danger">15</span>
@@ -102,6 +102,7 @@
     <ul class="nav menu">
         <li class="${sprinkleActive}"><a href="${contextPath}/jsDonut/admin/sprinkle"><em class="fa fa-dashboard">&nbsp;</em> Sprinkle</a></li>
         <li class="${doughActive}"><a href="${contextPath}/jsDonut/admin/dough"><em class="fa fa-dashboard">&nbsp;</em> Dough</a></li>
+        <li class="${fillingActive}"><a href="${contextPath}/jsDonut/admin/filling"><em class="fa fa-dashboard">&nbsp;</em> Filling</a></li>
         <%--<li><a href="${contextPath}/resources/assets/widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
         <li><a href="${contextPath}/resources/assets/charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
         <li><a href="${contextPath}/resources/assets/elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>

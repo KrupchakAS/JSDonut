@@ -6,3 +6,4 @@
 <script type="text/javascript" src="${contextPath}/resources/assets/js/sendAjax.js"></script>
 <script type="text/javascript" src="${contextPath}/resources/assets/js/sprinkle.js"></script>
 <script type="text/javascript" src="${contextPath}/resources/assets/js/dough.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/assets/js/filling.js"></script>
