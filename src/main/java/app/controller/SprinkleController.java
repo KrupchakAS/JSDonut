@@ -7,10 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -36,6 +33,17 @@ public class SprinkleController {
     public AjaxDTO getSprinkle(@RequestParam(value = "id") @Valid @NotEmpty(message = "Sprinkle id cannot be empty") Integer sprinkleId) {
         AjaxDTO result = new AjaxDTO();
         result.setData(sprinkleService.getById(sprinkleId));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "sprinkle/saveSprinkle", method = RequestMethod.GET)
+    public AjaxDTO updateSprinkle(@RequestBody SprinkleDTO sprinkleDTO){
+
+        AjaxDTO result = new AjaxDTO();
+        if(sprinkleDTO != null){
+            sprinkleService.update(sprinkleDTO);
+        }
         return result;
     }
 

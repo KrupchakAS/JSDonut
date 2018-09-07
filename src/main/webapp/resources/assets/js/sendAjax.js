@@ -8,8 +8,12 @@ function sendAjax(ajax) {
         beforeSend: function (xhr) {
             if (typeof ajax.selector !== undefined) {
                 disabledController(ajax.selector, true);
+                var token = $("meta[name='_csrf']").attr("content");
+                var header = $("meta[name='_csrf_header']").attr("content");
+                xhr.setRequestHeader(header, token);
             }
         }
+
     });
     request.done(function (result) {
         if (result.code === 200 || result.code === undefined) {
