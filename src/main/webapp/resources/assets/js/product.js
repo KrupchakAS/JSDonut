@@ -27,7 +27,7 @@ function openProductForm(productObject) {
     $('.product-quantity').val(productObject.quantity);
 
 
-    $('.container-head').text("Product: " + productObject.name);
+    $('.container-head').text("Category: " + productObject.category.name + " Product: " + productObject.name);
     $('.product-list').addClass('block__display-none');
     $('.product-form').removeClass('block__display-none');
 }
