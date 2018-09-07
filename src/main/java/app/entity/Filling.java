@@ -19,7 +19,7 @@ public class Filling {
 
     @NotNull(message = "Field can not be null")
     @Column(name = "price")
-    private Short price;
+    private Float price;
 
     @NotNull(message = "Field can not be null")
     @Column(name = "calories")
@@ -49,11 +49,11 @@ public class Filling {
         this.name = name;
     }
 
-    public Short getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Short price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 }

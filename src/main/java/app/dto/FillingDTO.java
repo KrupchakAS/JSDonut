@@ -7,7 +7,7 @@ public class FillingDTO {
 
     private String name;
 
-    private Short price;
+    private Float price;
 
     private Short calories;
 
@@ -27,11 +27,11 @@ public class FillingDTO {
         this.name = name;
     }
 
-    public Short getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(Short price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 

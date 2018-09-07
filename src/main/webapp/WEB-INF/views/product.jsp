@@ -164,6 +164,8 @@
                                     <th>Weight</th>
                                     <th>Quantity</th>
                                     <th>Calories</th>
+                                    <th>Category</th>
+                                    <th>User</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -179,6 +181,8 @@
                                                 <th>${product.weight}</th>
                                                 <th>${product.quantity}</th>
                                                 <th>${product.calories}</th>
+                                                <th>${product.category.name}</th>
+                                                <th>${product.user.name}</th>
                                                 <th>
                                                     <button type="button" class="btn btn-md btn-primary product-edit">
                                                         Edit
