@@ -28,7 +28,7 @@ function openSprinkleForm(sprinkleObject) {
 }
 
 function closeSprinkle() {
-    $('.container-head').text("prinkle list");
+    $('.container-head').text("Sprinkle list");
     $('.sprinkle-list').removeClass('block__display-none');
     $('.sprinkle-form').addClass('block__display-none');
 }

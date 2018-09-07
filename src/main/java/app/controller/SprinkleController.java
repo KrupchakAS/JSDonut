@@ -18,6 +18,7 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/jsDonut/admin")
 public class SprinkleController {
+
     @Autowired
     SprinkleService sprinkleService;
 

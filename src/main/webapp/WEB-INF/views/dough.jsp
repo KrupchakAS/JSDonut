@@ -102,7 +102,6 @@
     <ul class="nav menu">
         <li class="${sprinkleActive}"><a href="${contextPath}/jsDonut/admin/sprinkle"><em class="fa fa-dashboard">&nbsp;</em> Sprinkle</a></li>
         <li class="${doughActive}"><a href="${contextPath}/jsDonut/admin/dough"><em class="fa fa-dashboard">&nbsp;</em> Dough</a></li>
-
         <%--<li><a href="${contextPath}/resources/assets/widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
         <li><a href="${contextPath}/resources/assets/charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
         <li><a href="${contextPath}/resources/assets/elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
@@ -133,13 +132,13 @@
             <li><a href="#">
                 <em class="fa fa-home"></em>
             </a></li>
-            <li class="active">Sprinkle</li>
+            <li class="active">Dough</li>
         </ol>
     </div><!--/.row-->
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Sprinkle</h1>
+            <h1 class="page-header">Dough</h1>
         </div>
     </div><!--/.row-->
 
@@ -147,12 +146,12 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading container-head">
-                    Sprinkle list
+                    Dough list
                 </div>
                 <div class="panel-body container-body">
                     <div class="row">
-                        <div class="col-md-12 sprinkle-list">
-                            <table class="table table-striped sprinkle-table">
+                        <div class="col-md-12 dough-list">
+                            <table class="table table-striped dough-table">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -164,19 +163,19 @@
                                 <tbody>
 
                                 <c:choose>
-                                    <c:when test="${sprinkleList.size() > 0}">
-                                        <с:forEach var="sprinkle" items="${sprinkleList}">
-                                            <tr class="sprinkle-table__row" data-id="${sprinkle.id}">
-                                                <th>${sprinkle.id}</th>
-                                                <th>${sprinkle.name}</th>
-                                                <th>${sprinkle.calories}</th>
-                                                <th>${sprinkle.price}</th>
+                                    <c:when test="${doughList.size() > 0}">
+                                        <с:forEach var="dough" items="${doughList}">
+                                            <tr class="dough-table__row" data-id="${dough.id}">
+                                                <th>${dough.id}</th>
+                                                <th>${dough.name}</th>
+                                                <th>${dough.calories}</th>
+                                                <th>${dough.price}</th>
                                                 <th>
-                                                    <button type="button" class="btn btn-md btn-primary sprinkle-edit">Edit
+                                                    <button type="button" class="btn btn-md btn-primary dough-edit">Edit
                                                     </button>
                                                 </th>
                                                 <th>
-                                                    <button type="button" class="btn btn-md btn-danger sprinkle-delete">
+                                                    <button type="button" class="btn btn-md btn-danger dough-delete">
                                                         Delete
                                                     </button>
                                                 </th>
@@ -185,7 +184,7 @@
                                     </c:when>
                                     <c:otherwise>
                                         <tr>
-                                            <th colspan="4">Not sprinkle</th>
+                                            <th colspan="4">Not dough</th>
                                         </tr>
                                     </c:otherwise>
                                 </c:choose>
@@ -194,26 +193,26 @@
 
 
                         </div>
-                        <div class="col-md-12 sprinkle-form block__display-none">
+                        <div class="col-md-12 dough-form block__display-none">
                             <form role="form">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input class="form-control sprinkle-name" placeholder="Name">
+                                    <input class="form-control dough-name" placeholder="Name">
                                 </div>
                                 <div class="form-group">
                                     <label>Calories</label>
-                                    <input class="form-control sprinkle-calories" placeholder="Calories">
+                                    <input class="form-control dough-calories" placeholder="Calories">
                                 </div><div class="form-group">
-                                    <label>Price</label>
-                                    <input class="form-control sprinkle-price" placeholder="Price">
-                                </div>
+                                <label>Price</label>
+                                <input class="form-control dough-price" placeholder="Price">
+                            </div>
                             </form>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-success btn-block sprinkle-save">Save</button>
+                                    <button type="button" class="btn btn-lg btn-success btn-block dough-save">Save</button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-danger btn-block sprinkle-close">Cancel</button>
+                                    <button type="button" class="btn btn-lg btn-danger btn-block dough-close">Cancel</button>
                                 </div>
                             </div>
                         </div>

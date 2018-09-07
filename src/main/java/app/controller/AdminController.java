@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/admin")
+@RequestMapping(value = "jsDonut/admin")
 public class AdminController {
 
     @Autowired
@@ -35,28 +35,4 @@ public class AdminController {
         return "adminPanel";
     }
 
-    @RequestMapping(value = "/adminPanel/usersList" , method = RequestMethod.GET)
-    public @ResponseBody List<UserDTO> usersList() {
-        return userService.getAll();
-    }
-
-    @RequestMapping(value = "/adminPanel/productsList", method = RequestMethod.GET)
-    public @ResponseBody List<ProductDTO> productsList() {
-        return productService.getAll();
-    }
-
-    @RequestMapping(value = "/adminPanel/sprinkleList", method = RequestMethod.GET)
-    public @ResponseBody List<SprinkleDTO> sprinkleList() {
-        return sprinkleService.getAll();
-    }
-
-    @RequestMapping(value = "/adminPanel/fillingList", method = RequestMethod.GET)
-    public @ResponseBody List<FillingDTO> fillingList() {
-        return fillingService.getAll();
-    }
-
-    @RequestMapping(value = "/adminPanel/doughList", method = RequestMethod.GET)
-    public @ResponseBody List<DoughDTO> doughList() {
-        return doughService.getAll();
-    }
 }

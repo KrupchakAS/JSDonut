@@ -4,25 +4,9 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
-<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="description" content="">
-    <meta name="author">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel DONUT</title>
+<c:import url="/WEB-INF/views/header.jsp" />
 
-    <link href="${contextPath}/resources/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/assets/css/font-awesome.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/assets/css/datepicker3.css" rel="stylesheet">
-    <link href="${contextPath}/resources/assets/css/styles.css" rel="stylesheet">
-    <!--Custom Font-->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i"
-          rel="stylesheet">
-
-</head>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -113,27 +97,27 @@
     </form>
     <ul class="nav menu">
         <li><a href="${contextPath}/jsDonut/admin/sprinkle"><em class="fa fa-dashboard">&nbsp;</em> Sprinkle</a></li>
-        <%--<li><a href="${contextPath}/resources/assets/widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
-        <li><a href="${contextPath}/resources/assets/charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
-        <li><a href="${contextPath}/resources/assets/elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
-        <li><a href="${contextPath}/resources/assets/panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
-        <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
-            <em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1"
-                                                                   class="icon pull-right"><em class="fa fa-plus"></em></span>
-        </a>
-            <ul class="children collapse" id="sub-item-1">
-                <li><a class="" href="#">
-                    <span class="fa fa-arrow-right">&nbsp;</span> Sub Item 1
-                </a></li>
-                <li><a class="" href="#">
-                    <span class="fa fa-arrow-right">&nbsp;</span> Sub Item 2
-                </a></li>
-                <li><a class="" href="#">
-                    <span class="fa fa-arrow-right">&nbsp;</span> Sub Item 3
-                </a></li>
-            </ul>
-        </li>
-        <li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>--%>
+        <li><a href="${contextPath}/jsDonut/admin/dough"><em class="fa fa-calendar">&nbsp;</em> Dough</a></li>
+        <%--<li><a href="${contextPath}/resources/assets/charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>--%>
+        <%--<li><a href="${contextPath}/resources/assets/elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>--%>
+        <%--<li><a href="${contextPath}/resources/assets/panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>--%>
+        <%--<li class="parent "><a data-toggle="collapse" href="#sub-item-1">--%>
+            <%--<em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1"--%>
+                                                                   <%--class="icon pull-right"><em class="fa fa-plus"></em></span>--%>
+        <%--</a>--%>
+            <%--<ul class="children collapse" id="sub-item-1">--%>
+                <%--<li><a class="" href="#">--%>
+                    <%--<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 1--%>
+                <%--</a></li>--%>
+                <%--<li><a class="" href="#">--%>
+                    <%--<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 2--%>
+                <%--</a></li>--%>
+                <%--<li><a class="" href="#">--%>
+                    <%--<span class="fa fa-arrow-right">&nbsp;</span> Sub Item 3--%>
+                <%--</a></li>--%>
+            <%--</ul>--%>
+        <%--</li>--%>
+        <%--<li><a href="login.html"><em class="fa fa-power-off">&nbsp;</em> Logout</a></li>--%>
     </ul>
 </div><!--/.sidebar-->
 
