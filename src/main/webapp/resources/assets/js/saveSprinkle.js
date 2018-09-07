@@ -1,8 +1,8 @@
-
 function saveItem(button) {
 
     var pst = {};
-    pst.button = button;
+    pst.selector = button;
+    pst.type = "POST";
     pst.url = '/jsDonut/admin/sprinkle/saveSprinkle';
     pst.data = {};
     pst.data = getItemData();

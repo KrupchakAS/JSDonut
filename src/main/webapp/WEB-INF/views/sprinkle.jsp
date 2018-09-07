@@ -120,7 +120,7 @@
 
                         </div>
                         <div class="col-md-12 sprinkle-form block__display-none">
-                            <form role="form">
+                            <form method="post" role="form">
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input class="form-control sprinkle-name" placeholder="Name">

@@ -37,7 +37,7 @@ public class SprinkleController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "sprinkle/saveSprinkle", method = RequestMethod.GET)
+    @RequestMapping(value = "sprinkle/saveSprinkle", method = RequestMethod.POST)
     public AjaxDTO updateSprinkle(@RequestBody SprinkleDTO sprinkleDTO){
 
         AjaxDTO result = new AjaxDTO();
