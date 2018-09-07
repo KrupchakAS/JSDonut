@@ -108,11 +108,7 @@
             Doughs</a></li>
         <li class="${fillingActive}"><a href="${contextPath}/jsDonut/admin/filling"><em
                 class="fa fa-dashboard">&nbsp;</em> Fillings</a></li>
-        <%--<li><a href="${contextPath}/resources/assets/widgets.html"><em class="fa fa-calendar">&nbsp;</em> Widgets</a></li>
-        <li><a href="${contextPath}/resources/assets/charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
-        <li><a href="${contextPath}/resources/assets/elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
-        <li><a href="${contextPath}/resources/assets/panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
-        <li class="parent "><a data-toggle="collapse" href="#sub-item-1">
+        <%--<li class="parent "><a data-toggle="collapse" href="#sub-item-1">
             <em class="fa fa-navicon">&nbsp;</em> Multilevel <span data-toggle="collapse" href="#sub-item-1"
                                                                    class="icon pull-right"><em class="fa fa-plus"></em></span>
         </a>
@@ -138,13 +134,13 @@
             <li><a href="#">
                 <em class="fa fa-home"></em>
             </a></li>
-            <li class="active">Sprinkle</li>
+            <li class="active">Products</li>
         </ol>
     </div><!--/.row-->
 
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Sprinkle</h1>
+            <h1 class="page-header">Products</h1>
         </div>
     </div><!--/.row-->
 
@@ -152,37 +148,44 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading container-head">
-                    Sprinkle list
+                    Product list
                 </div>
                 <div class="panel-body container-body">
                     <div class="row">
-                        <div class="col-md-12 sprinkle-list">
-                            <table class="table table-striped sprinkle-table">
+                        <div class="col-md-12 product-list">
+                            <table class="table table-striped product-table">
                                 <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Calories</th>
+                                    <th>Description</th>
                                     <th>Price</th>
+                                    <th>WorkPrice</th>
+                                    <th>Weight</th>
+                                    <th>Quantity</th>
+                                    <th>Calories</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 <c:choose>
-                                    <c:when test="${sprinkleList.size() > 0}">
-                                        <с:forEach var="sprinkle" items="${sprinkleList}">
-                                            <tr class="sprinkle-table__row" data-id="${sprinkle.id}">
-                                                <th>${sprinkle.id}</th>
-                                                <th>${sprinkle.name}</th>
-                                                <th>${sprinkle.calories}</th>
-                                                <th>${sprinkle.price}</th>
+                                    <c:when test="${productList.size() > 0}">
+                                        <с:forEach var="product" items="${productList}">
+                                            <tr class="product-table__row" data-id="${product.id}">
+                                                <th>${product.id}</th>
+                                                <th>${product.name}</th>
+                                                <th>${product.description}</th>
+                                                <th>${product.price}</th>
+                                                <th>${product.workPrice}</th>
+                                                <th>${product.weight}</th>
+                                                <th>${product.quantity}</th>
+                                                <th>${product.calories}</th>
                                                 <th>
-                                                    <button type="button" class="btn btn-md btn-primary sprinkle-edit">
+                                                    <button type="button" class="btn btn-md btn-primary product-edit">
                                                         Edit
                                                     </button>
                                                 </th>
                                                 <th>
-                                                    <button type="button" class="btn btn-md btn-danger sprinkle-delete">
+                                                    <button type="button" class="btn btn-md btn-danger product-delete">
                                                         Delete
                                                     </button>
                                                 </th>
@@ -191,38 +194,51 @@
                                     </c:when>
                                     <c:otherwise>
                                         <tr>
-                                            <th colspan="4">Not sprinkle</th>
+                                            <th colspan="4">Not product</th>
                                         </tr>
                                     </c:otherwise>
                                 </c:choose>
                                 </tbody>
                             </table>
-
-
                         </div>
-                        <div class="col-md-12 sprinkle-form block__display-none">
+                        <div class="col-md-12 product-form block__display-none">
                             <form role="form">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input class="form-control sprinkle-name" placeholder="Name">
+                                    <input class="form-control product-name" placeholder="Name">
                                 </div>
                                 <div class="form-group">
-                                    <label>Calories</label>
-                                    <input class="form-control sprinkle-calories" placeholder="Calories">
+                                    <label>Description</label>
+                                    <input class="form-control product-description" placeholder="Description">
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input class="form-control sprinkle-price" placeholder="Price">
+                                    <input class="form-control product-price" placeholder="Price">
+                                </div>
+                                <div class="form-group">
+                                    <label>WorkPrice</label>
+                                    <input class="form-control product-workPrice" placeholder="WorkPrice">
+                                </div>
+                                <div class="form-group">
+                                    <label>Weight</label>
+                                    <input class="form-control product-weight" placeholder="Weight">
+                                </div>
+                                <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input class="form-control product-quantity" placeholder="Quantity">
+                                </div>
+                                <div class="form-group">
+                                    <label>Calories</label>
+                                    <input class="form-control product-calories" placeholder="Calories">
                                 </div>
                             </form>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-success btn-block sprinkle-save">Save
+                                    <button type="button" class="btn btn-lg btn-success btn-block product-save">Save
                                     </button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-danger btn-block sprinkle-close">
-                                        Cancel
+                                    <button type="button" class="btn btn-lg btn-danger btn-block product-close">Cancel
                                     </button>
                                 </div>
                             </div>

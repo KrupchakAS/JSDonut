@@ -7,7 +7,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <html>
-<c:import url="/WEB-INF/views/header.jsp" />
+<c:import url="/WEB-INF/views/header.jsp"/>
 
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container-fluid">
@@ -17,7 +17,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="/jsDonut/admin/adminPanel"><span></span>AdminPanel</a>
+            <a class="navbar-brand" href="/jsDonut/admin/adminPanel"><span></span>Admin Panel</a>
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown"><a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                     <em class="fa fa-envelope"></em><span class="label label-danger">15</span>
@@ -100,9 +100,14 @@
         </div>
     </form>
     <ul class="nav menu">
-        <li class="${sprinkleActive}"><a href="${contextPath}/jsDonut/admin/sprinkle"><em class="fa fa-dashboard">&nbsp;</em> Sprinkle</a></li>
-        <li class="${doughActive}"><a href="${contextPath}/jsDonut/admin/dough"><em class="fa fa-dashboard">&nbsp;</em> Dough</a></li>
-        <li class="${fillingActive}"><a href="${contextPath}/jsDonut/admin/filling"><em class="fa fa-dashboard">&nbsp;</em> Filling</a></li>
+        <li class="${productActive}"><a href="${contextPath}/jsDonut/admin/product"><em
+                class="fa fa-dashboard">&nbsp;</em> Product</a></li>
+        <li class="${sprinkleActive}"><a href="${contextPath}/jsDonut/admin/sprinkle"><em
+                class="fa fa-dashboard">&nbsp;</em> Sprinkle</a></li>
+        <li class="${doughActive}"><a href="${contextPath}/jsDonut/admin/dough"><em class="fa fa-dashboard">&nbsp;</em>
+            Dough</a></li>
+        <li class="${fillingActive}"><a href="${contextPath}/jsDonut/admin/filling"><em
+                class="fa fa-dashboard">&nbsp;</em> Filling</a></li>
         <%--<li><a href="${contextPath}/resources/assets/charts.html"><em class="fa fa-bar-chart">&nbsp;</em> Charts</a></li>
         <li><a href="${contextPath}/resources/assets/elements.html"><em class="fa fa-toggle-off">&nbsp;</em> UI Elements</a></li>
         <li><a href="${contextPath}/resources/assets/panels.html"><em class="fa fa-clone">&nbsp;</em> Alerts &amp; Panels</a></li>
@@ -161,7 +166,6 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 <c:choose>
                                     <c:when test="${fillingList.size() > 0}">
                                         <с:forEach var="filling" items="${fillingList}">
@@ -171,7 +175,8 @@
                                                 <th>${filling.calories}</th>
                                                 <th>${filling.price}</th>
                                                 <th>
-                                                    <button type="button" class="btn btn-md btn-primary filling-edit">Edit
+                                                    <button type="button" class="btn btn-md btn-primary filling-edit">
+                                                        Edit
                                                     </button>
                                                 </th>
                                                 <th>
@@ -202,17 +207,20 @@
                                 <div class="form-group">
                                     <label>Calories</label>
                                     <input class="form-control filling-calories" placeholder="Calories">
-                                </div><div class="form-group">
-                                <label>Price</label>
-                                <input class="form-control filling-price" placeholder="Price">
-                            </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input class="form-control filling-price" placeholder="Price">
+                                </div>
                             </form>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-success btn-block filling-save">Save</button>
+                                    <button type="button" class="btn btn-lg btn-success btn-block filling-save">Save
+                                    </button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-danger btn-block filling-close">Cancel</button>
+                                    <button type="button" class="btn btn-lg btn-danger btn-block filling-close">Cancel
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -223,7 +231,7 @@
     </div><!--/.row-->
 </div>    <!--/.main-->
 
-<c:import url="/WEB-INF/views/footer.jsp" />
+<c:import url="/WEB-INF/views/footer.jsp"/>
 
 </body>
 </html>

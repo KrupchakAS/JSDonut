@@ -30,12 +30,12 @@ public class Order {
     @Column(name = "orderStatus")
     private Byte orderStatus;
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "order_products", joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> productList;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 

@@ -16,6 +16,8 @@ public class ProductDTO {
 
     private Float price;
 
+    private Float workPrice;
+
     private Short weight;
 
     private Short quantity;
@@ -54,6 +56,14 @@ public class ProductDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Float getWorkPrice() {
+        return workPrice;
+    }
+
+    public void setWorkPrice(Float workPrice) {
+        this.workPrice = workPrice;
     }
 
     public String getImage() {

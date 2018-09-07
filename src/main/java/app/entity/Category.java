@@ -17,9 +17,6 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    @OneToOne(mappedBy = "category")
-    private Product product;
-
     public Integer getId() {
         return id;
     }
@@ -34,13 +31,5 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
     }
 }

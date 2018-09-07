@@ -31,6 +31,10 @@ public class Product {
     private Float price;
 
     @NotNull(message = "Field can not be null")
+    @Column(name = "workPrice")
+    private Float workPrice;
+
+    @NotNull(message = "Field can not be null")
     @Column(name = "weight")
     private Short weight;
 
@@ -124,6 +128,14 @@ public class Product {
 
     public Category getCategory() {
         return category;
+    }
+
+    public Float getWorkPrice() {
+        return workPrice;
+    }
+
+    public void setWorkPrice(Float workPrice) {
+        this.workPrice = workPrice;
     }
 
     public void setCategory(Category category) {
