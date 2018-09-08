@@ -151,9 +151,8 @@
                 </div>
             </div>
         </div>
-    </div><!--/.row-->
-</div>    <!--/.main-->
-
+    </div>
+</div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
 
 </body>

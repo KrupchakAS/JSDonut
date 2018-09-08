@@ -2,15 +2,13 @@ package app.controller;
 
 import app.dto.AjaxDTO;
 import app.dto.FillingDTO;
+import app.dto.SprinkleDTO;
 import app.service.api.FillingService;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -39,9 +37,15 @@ public class FillingController {
         return result;
     }
 
-    public void setFillingService(FillingService fillingService) {
-        this.fillingService = fillingService;
-    }
 
+    @ResponseBody
+    @RequestMapping(value = "/filling/updateFilling", method = RequestMethod.POST)
+    public AjaxDTO updateFilling(@RequestBody FillingDTO fillingDTO){
+        AjaxDTO result = new AjaxDTO();
+        if(fillingDTO != null){
+            fillingService.update(fillingDTO);
+        }
+        return result;
+    }
 
 }

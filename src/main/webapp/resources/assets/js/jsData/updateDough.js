@@ -3,7 +3,7 @@ function saveItem(button) {
     var pst = {};
     pst.selector = button;
     pst.type = "POST";
-    pst.url = '/jsDonut/admin/dough/saveDough';
+    pst.url = '/jsDonut/admin/dough/updateDough';
     pst.data = {};
     pst.data = getItemData();
 
@@ -27,6 +27,6 @@ function getItemData() {
 $(document).ready(function () {
     $(document).on('click', '.dough-save', function (e) {
         e.preventDefault();
-        saveItem($(this));
+        saveItem($(this) );
     });
 });

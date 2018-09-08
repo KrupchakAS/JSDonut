@@ -18,6 +18,8 @@ function getFilling(id, selector) {
 }
 
 function openFillingForm(fillingObject) {
+
+    $('.filling-id').val(fillingObject.id);
     $('.filling-name').val(fillingObject.name);
     $('.filling-calories').val(fillingObject.calories);
     $('.filling-price').val(fillingObject.price);
@@ -46,4 +48,8 @@ $(function() {
     $(document).on('click', '.filling-close', function() {
         closeFilling();
     });
+    $(document).on('click', '.filling-save', function() {
+        closeFilling();
+    });
 });
+
