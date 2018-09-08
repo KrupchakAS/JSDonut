@@ -65,7 +65,7 @@
         <div class="col-lg-12">
             <h1 class="page-header">Products</h1>
         </div>
-    </div><!--/.row-->
+    </div>
 
     <div class="row">
         <div class="col-md-12">
@@ -74,6 +74,9 @@
                     Product list
                 </div>
                 <div class="panel-body container-body">
+                    <button type="button" class="btn btn-md btn-success product-add">
+                        Add Product
+                    </button>
                     <div class="row">
                         <div class="col-md-12 product-list">
                             <table class="table table-striped product-table">
@@ -129,43 +132,91 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-md-12 product-form block__display-none">
+
+                        <div class="col-md-12 product-form-create block__display-none">
                             <form role="form">
                                 <div class="form-group">
-                                    <label>Id</label>
-                                    <input class="form-control product-id" placeholder="Id">
-                                </div>
-                                <div class="form-group">
                                     <label>Name</label>
-                                    <input class="form-control product-name" placeholder="Name">
+                                    <input class="form-control product-name-cr" placeholder="Name">
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
-                                    <input class="form-control product-description" placeholder="Description">
+                                    <input class="form-control product-description-cr" placeholder="Description">
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input class="form-control product-price" placeholder="Price">
+                                    <input class="form-control product-price-cr" placeholder="Price">
                                 </div>
                                 <div class="form-group">
                                     <label>WorkPrice</label>
-                                    <input class="form-control product-workPrice" placeholder="WorkPrice">
+                                    <input class="form-control product-workPrice-cr" placeholder="WorkPrice">
                                 </div>
                                 <div class="form-group">
                                     <label>Weight</label>
-                                    <input class="form-control product-weight" placeholder="Weight">
+                                    <input class="form-control product-weight-cr" placeholder="Weight">
                                 </div>
                                 <div class="form-group">
                                     <label>Quantity</label>
-                                    <input class="form-control product-quantity" placeholder="Quantity">
+                                    <input class="form-control product-quantity-cr" placeholder="Quantity">
                                 </div>
                                 <div class="form-group">
                                     <label>Calories</label>
-                                    <input class="form-control product-calories" placeholder="Calories">
+                                    <input class="form-control product-calories-cr" placeholder="Calories">
                                 </div>
                                 <div class="form-group">
                                     <label>Category-Id</label>
-                                    <input class="form-control product__category-id" placeholder="Category-Id">
+                                    <input class="form-control product__category-id-cr" placeholder="Category-Id">
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-lg btn-success btn-block product-save">Save
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-lg btn-danger btn-block product-close">Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 product-form-update block__display-none">
+                            <form role="form">
+                                <div class="form-group">
+                                    <label>Id</label>
+                                    <input disabled class="form-control  product-id-up" placeholder="Id">
+                                </div>
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input class="form-control product-name-up" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input class="form-control product-description-up" placeholder="Description">
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input class="form-control product-price-up" placeholder="Price">
+                                </div>
+                                <div class="form-group">
+                                    <label>WorkPrice</label>
+                                    <input class="form-control product-workPrice-up" placeholder="WorkPrice">
+                                </div>
+                                <div class="form-group">
+                                    <label>Weight</label>
+                                    <input class="form-control product-weight-up" placeholder="Weight">
+                                </div>
+                                <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input class="form-control product-quantity-up" placeholder="Quantity">
+                                </div>
+                                <div class="form-group">
+                                    <label>Calories</label>
+                                    <input class="form-control product-calories-up" placeholder="Calories">
+                                </div>
+                                <div class="form-group">
+                                    <label>Category-Id</label>
+                                    <input disabled class="form-control  product__category-id-up" placeholder="Category-Id">
                                 </div>
                             </form>
                             <div class="row">
@@ -179,12 +230,13 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-    </div><!--/.row-->
-</div>    <!--/.main-->
+    </div>
+</div>
 
 <c:import url="/WEB-INF/views/footer.jsp"/>
 <script type="text/javascript" src="${contextPath}/resources/assets/js/jsData/product.js"></script>

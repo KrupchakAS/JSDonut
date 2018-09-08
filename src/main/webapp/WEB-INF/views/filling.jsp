@@ -115,14 +115,40 @@
                                 </c:choose>
                                 </tbody>
                             </table>
-
-
                         </div>
-                        <div class="col-md-12 filling-form block__display-none">
+
+                        <div class="col-md-12 filling-form-create block__display-none">
+                            <form  method="post" role="form">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input class="form-control filling-name" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Calories</label>
+                                    <input class="form-control filling-calories" placeholder="Calories">
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input class="form-control filling-price" placeholder="Price">
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-lg btn-success btn-block filling-update">Update
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-lg btn-danger btn-block filling-close">Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 filling-form-update block__display-none">
                             <form  method="post" role="form">
                                 <div class="form-group">
                                     <label>Id</label>
-                                    <input class="form-control filling-id" placeholder="Id">
+                                    <input disabled class="form-control filling-id" placeholder="Id">
                                 </div>
                                 <div class="form-group">
                                     <label>Name</label>
@@ -148,6 +174,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

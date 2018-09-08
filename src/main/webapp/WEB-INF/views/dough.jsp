@@ -48,7 +48,7 @@
         <li class="${fillingActive}"><a href="${contextPath}/jsDonut/admin/filling"><em
                 class="fa fa-dashboard">&nbsp;</em> Fillings</a></li>
     </ul>
-</div><!--/.sidebar-->
+</div>
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
@@ -58,13 +58,13 @@
             </a></li>
             <li class="active">Doughs</li>
         </ol>
-    </div><!--/.row-->
+    </div>
 
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">Doughs</h1>
         </div>
-    </div><!--/.row-->
+    </div>
 
     <div class="row">
         <div class="col-md-12">
@@ -73,6 +73,9 @@
                     Dough list
                 </div>
                 <div class="panel-body container-body">
+                    <button type="button" class="btn btn-md btn-success dough-add">
+                        Add Dough
+                    </button>
                     <div class="row">
                         <div class="col-md-12 dough-list">
                             <table class="table table-striped dough-table">
@@ -114,26 +117,52 @@
                                 </c:choose>
                                 </tbody>
                             </table>
-
-
                         </div>
-                        <div class="col-md-12 dough-form block__display-none">
+
+                        <div class="col-md-12 dough-form-create block__display-none">
                             <form method="post" role="form">
                                 <div class="form-group">
-                                    <label>Id</label>
-                                    <input class="form-control dough-id" placeholder="Id">
-                                </div>
-                                <div class="form-group">
                                     <label>Name</label>
-                                    <input class="form-control dough-name" placeholder="Name">
+                                    <input class="form-control dough-name-cr" placeholder="Name">
                                 </div>
                                 <div class="form-group">
                                     <label>Calories</label>
-                                    <input class="form-control dough-calories" placeholder="Calories">
+                                    <input class="form-control dough-calories-cr" placeholder="Calories">
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input class="form-control dough-price" placeholder="Price">
+                                    <input class="form-control dough-price-cr" placeholder="Price">
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-lg btn-success btn-block dough-save">Save
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-lg btn-danger btn-block dough-close">Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 dough-form-update block__display-none">
+                            <form method="post" role="form">
+                                <div class="form-group">
+                                    <label>Id</label>
+                                    <input disabled class="form-control dough-id-up" placeholder="Id">
+                                </div>
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input class="form-control dough-name-up" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Calories</label>
+                                    <input class="form-control dough-calories-up" placeholder="Calories">
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input class="form-control dough-price-up" placeholder="Price">
                                 </div>
                             </form>
                             <div class="row">
@@ -147,6 +176,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

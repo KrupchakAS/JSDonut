@@ -30,7 +30,7 @@ public class ProductController {
         return "product";
     }
 
-    @RequestMapping(value = "/product/getProduct", method = RequestMethod.GET)
+    @RequestMapping(value = "/product/getProductById", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO getDough(@RequestParam(value = "id") @Valid @NotEmpty(message = "Product id cannot be empty") Integer productId) {
         AjaxDTO result = new AjaxDTO();
@@ -39,8 +39,28 @@ public class ProductController {
     }
 
     @ResponseBody
+    @RequestMapping(value = "/product/createProduct", method = RequestMethod.POST)
+    public AjaxDTO createProduct(@RequestBody ProductDTO productDTO){
+        AjaxDTO result = new AjaxDTO();
+        if(productDTO != null){
+            productService.create(productDTO);
+        }
+        return result;
+    }
+
+    @ResponseBody
     @RequestMapping(value = "/product/updateProduct", method = RequestMethod.POST)
     public AjaxDTO updateProduct(@RequestBody ProductDTO productDTO){
+        AjaxDTO result = new AjaxDTO();
+        if(productDTO != null){
+            productService.update(productDTO);
+        }
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/product/deleteProduct", method = RequestMethod.DELETE)
+    public AjaxDTO deleteProduct(@RequestBody ProductDTO productDTO){
         AjaxDTO result = new AjaxDTO();
         if(productDTO != null){
             productService.update(productDTO);

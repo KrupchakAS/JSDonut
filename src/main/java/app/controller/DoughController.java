@@ -23,17 +23,26 @@ public class DoughController {
     @RequestMapping(value = "/dough", method = RequestMethod.GET)
     public String openPage(ModelMap modelMap) {
         modelMap.addAttribute("doughActive", "active");
-
         List<DoughDTO> doughDTOList = doughService.getAll();
         modelMap.addAttribute("doughList", doughDTOList);
         return "dough";
     }
 
-    @RequestMapping(value = "/dough/getDough", method = RequestMethod.GET)
+    @RequestMapping(value = "/dough/getDoughById", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO getDough(@RequestParam(value = "id") @Valid @NotEmpty(message = "Dough id cannot be empty") Integer doughId) {
         AjaxDTO result = new AjaxDTO();
         result.setData(doughService.getById(doughId));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/dough/createDough", method = RequestMethod.POST)
+    public AjaxDTO createDough(@RequestBody DoughDTO doughDTO){
+        AjaxDTO result = new AjaxDTO();
+        if(doughDTO != null){
+            doughService.create(doughDTO);
+        }
         return result;
     }
 
