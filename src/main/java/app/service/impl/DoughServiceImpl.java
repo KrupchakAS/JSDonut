@@ -32,7 +32,7 @@ public class DoughServiceImpl implements DoughService {
     public void create(DoughDTO doughDTO) {
         if (doughDTO != null)
             doughDao.create(modelMapper.map(doughDTO, Dough.class));
-        logger.debug(String.format("Successfully saved corn"));
+        logger.debug(String.format("Successfully saved dough"));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -41,7 +41,7 @@ public class DoughServiceImpl implements DoughService {
         Dough corn = doughDao.getById(doughDTO.getId());
         if (corn != null)
             doughDao.update(modelMapper.map(doughDTO, Dough.class));
-        logger.debug(String.format("Successfully updated corn"));
+        logger.debug(String.format("Successfully updated dough"));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -49,7 +49,7 @@ public class DoughServiceImpl implements DoughService {
     public void delete(DoughDTO doughDTO) {
         if (doughDTO != null)
             doughDao.delete(modelMapper.map(doughDTO, Dough.class));
-        logger.debug(String.format("Successfully deleted corn"));
+        logger.debug(String.format("Successfully deleted dough"));
     }
 
     @Transactional(readOnly = true)

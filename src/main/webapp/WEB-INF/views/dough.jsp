@@ -153,7 +153,10 @@
         </div>
     </div>
 </div>
+
 <c:import url="/WEB-INF/views/footer.jsp"/>
+
+<script type="text/javascript" src="${contextPath}/resources/assets/js/jsData/dough.js"></script>
 
 </body>
 </html>

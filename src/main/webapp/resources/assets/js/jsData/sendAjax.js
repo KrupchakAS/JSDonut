@@ -29,9 +29,9 @@ function sendAjax(ajax) {
     request.done(function (result) {
 
         if (result.code === 200 || result.code === undefined) {
-
-            ajax.successFunction(result.data);
-
+            if(ajax.successFunction !== undefined) {
+                ajax.successFunction(result.data);
+            }
         } else {
 
             if (ajax.errorFunction !== undefined) {

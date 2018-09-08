@@ -178,6 +178,6 @@
 </div>    <!--/.main-->
 
 <c:import url="/WEB-INF/views/footer.jsp"/>
-
+<script type="text/javascript" src="${contextPath}/resources/assets/js/jsData/product.js"></script>
 </body>
 </html>

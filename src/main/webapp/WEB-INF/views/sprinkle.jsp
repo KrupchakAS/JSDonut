@@ -154,10 +154,9 @@
                 </div>
             </div>
         </div>
-    </div><!--/.row-->
-</div>    <!--/.main-->
-
+    </div>
+</div>
 <c:import url="/WEB-INF/views/footer.jsp"/>
-
+<script type="text/javascript" src="${contextPath}/resources/assets/js/jsData/sprinkle.js"></script>
 </body>
 </html>

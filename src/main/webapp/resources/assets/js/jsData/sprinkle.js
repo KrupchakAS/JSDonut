@@ -52,3 +52,55 @@ $(function() {
     });
 });
 
+function saveItem(button) {
+
+    var pst = {};
+    pst.selector = button;
+    pst.type = "POST";
+    pst.url = '/jsDonut/admin/sprinkle/updateSprinkle';
+    pst.data = {};
+    pst.data = getItemData();
+
+    console.log(pst.data);
+
+    sendAjax(pst);
+}
+
+function getItemData() {
+    var sprinkle = {};
+
+    sprinkle.id = parseInt($('.sprinkle-id').val());
+    sprinkle.name = $('.sprinkle-name').val();
+    sprinkle.price = parseFloat($('.sprinkle-price').val());
+    sprinkle.calories = parseInt($('.sprinkle-calories').val());
+
+    return sprinkle;
+}
+
+
+$(document).ready(function () {
+    $(document).on('click', '.sprinkle-save', function (e) {
+        e.preventDefault();
+        saveItem($(this));
+    });
+});
+
+function deleteItem(id, button) {
+
+    var pst = {};
+    pst.selector = button;
+    pst.type = "POST";
+    pst.url = '/jsDonut/admin/sprinkle/deleteSprinkle';
+    pst.data = {};
+    pst.data = {id: id};
+
+    console.log(pst.data);
+
+    sendAjax(pst);
+}
+$(document).ready(function () {
+    $(document).on('click', '.sprinkle-delete', function (e) {
+        e.preventDefault();
+        deleteItem($(this));
+    });
+});

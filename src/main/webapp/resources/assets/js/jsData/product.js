@@ -18,6 +18,7 @@ function getProduct(id, selector) {
 }
 
 function openProductForm(productObject) {
+    $('.product-id').val(productObject.id);
     $('.product-name').val(productObject.name);
     $('.product-calories').val(productObject.calories);
     $('.product-price').val(productObject.price);

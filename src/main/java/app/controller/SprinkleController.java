@@ -47,6 +47,16 @@ public class SprinkleController {
         return result;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/sprinkle/deleteSprinkle", method = RequestMethod.POST)
+    public AjaxDTO deleteSprinkle(@RequestBody SprinkleDTO sprinkleDTO){
+        AjaxDTO result = new AjaxDTO();
+        if(sprinkleDTO != null){
+            sprinkleService.delete(sprinkleDTO);
+        }
+        return result;
+    }
+
     public void setSprinkleService(SprinkleService sprinkleService) {
         this.sprinkleService = sprinkleService;
     }

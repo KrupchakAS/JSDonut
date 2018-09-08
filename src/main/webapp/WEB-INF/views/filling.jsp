@@ -157,5 +157,6 @@
 
 <c:import url="/WEB-INF/views/footer.jsp"/>
 
+<script type="text/javascript" src="${contextPath}/resources/assets/js/jsData/filling.js"></script>
 </body>
 </html>
