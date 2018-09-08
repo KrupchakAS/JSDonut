@@ -47,7 +47,10 @@ $(function() {
     $(document).on('click', '.sprinkle-close', function() {
         closeSprinkle();
     });
-    $(document).on('click', '.sprinkle-save', function() {
+    $(document).on('click', '.sprinkle-update', function() {
+        closeSprinkle();
+    });
+    $(document).on('click', '.sprinkle-delete', function() {
         closeSprinkle();
     });
 });
@@ -79,28 +82,33 @@ function getItemData() {
 
 
 $(document).ready(function () {
-    $(document).on('click', '.sprinkle-save', function (e) {
+    $(document).on('click', '.sprinkle-update', function (e) {
         e.preventDefault();
         saveItem($(this));
     });
 });
 
-function deleteItem(id, button) {
 
-    var pst = {};
-    pst.selector = button;
-    pst.type = "POST";
-    pst.url = '/jsDonut/admin/sprinkle/deleteSprinkle';
-    pst.data = {};
-    pst.data = {id: id};
 
-    console.log(pst.data);
 
-    sendAjax(pst);
-}
-$(document).ready(function () {
-    $(document).on('click', '.sprinkle-delete', function (e) {
-        e.preventDefault();
-        deleteItem($(this));
-    });
-});
+//
+// function deleteItem(button) {
+//     var sprinkle = {};
+//     sprinkle.id = parseInt({id:id});
+//
+//     var pst = {};
+//     pst.selector = button;
+//     pst.type = "POST";
+//     pst.url = '/jsDonut/admin/sprinkle/deleteSprinkle';
+//     pst.data = sprinkle;
+//
+//     console.log(pst.data);
+//
+//     sendAjax(pst);
+// }
+// $(document).ready(function () {
+//     $(document).on('click', '.sprinkle-delete', function (e) {
+//         e.preventDefault();
+//         deleteItem($(this));
+//     });
+// });

@@ -48,7 +48,7 @@ $(function() {
     $(document).on('click', '.dough-close', function() {
         closeDough();
     });
-    $(document).on('click', '.dough-save', function() {
+    $(document).on('click', '.dough-update', function() {
         closeDough();
     });
 });
@@ -80,7 +80,7 @@ function getItemData() {
 
 
 $(document).ready(function () {
-    $(document).on('click', '.dough-save', function (e) {
+    $(document).on('click', '.dough-update', function (e) {
         e.preventDefault();
         saveItem($(this) );
     });

@@ -3,16 +3,14 @@ package app.controller;
 import app.dto.AjaxDTO;
 import app.dto.DoughDTO;
 import app.dto.ProductDTO;
+import app.dto.SprinkleDTO;
 import app.service.api.DoughService;
 import app.service.api.ProductService;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -37,6 +35,16 @@ public class ProductController {
     public AjaxDTO getDough(@RequestParam(value = "id") @Valid @NotEmpty(message = "Product id cannot be empty") Integer productId) {
         AjaxDTO result = new AjaxDTO();
         result.setData(productService.getById(productId));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/product/updateProduct", method = RequestMethod.POST)
+    public AjaxDTO updateProduct(@RequestBody ProductDTO productDTO){
+        AjaxDTO result = new AjaxDTO();
+        if(productDTO != null){
+            productService.update(productDTO);
+        }
         return result;
     }
 

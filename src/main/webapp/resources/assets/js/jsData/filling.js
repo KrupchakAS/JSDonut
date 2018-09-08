@@ -48,7 +48,7 @@ $(function() {
     $(document).on('click', '.filling-close', function() {
         closeFilling();
     });
-    $(document).on('click', '.filling-save', function() {
+    $(document).on('click', '.filling-update', function() {
         closeFilling();
     });
 });
@@ -80,7 +80,7 @@ function getItemData() {
 
 
 $(document).ready(function () {
-    $(document).on('click', '.filling-save', function (e) {
+    $(document).on('click', '.filling-update', function (e) {
         e.preventDefault();
         saveItem($(this) );
     });

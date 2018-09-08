@@ -79,6 +79,7 @@
                             <table class="table table-striped product-table">
                                 <thead>
                                 <tr>
+                                    <th>Category</th>
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>Description</th>
@@ -87,7 +88,7 @@
                                     <th>Weight</th>
                                     <th>Quantity</th>
                                     <th>Calories</th>
-                                    <th>Category</th>
+
                                     <th>User</th>
                                 </tr>
                                 </thead>
@@ -96,6 +97,7 @@
                                     <c:when test="${productList.size() > 0}">
                                         <с:forEach var="product" items="${productList}">
                                             <tr class="product-table__row" data-id="${product.id}">
+                                                <th>${product.category.name}</th>
                                                 <th>${product.id}</th>
                                                 <th>${product.name}</th>
                                                 <th>${product.description}</th>
@@ -104,7 +106,6 @@
                                                 <th>${product.weight}</th>
                                                 <th>${product.quantity}</th>
                                                 <th>${product.calories}</th>
-                                                <th>${product.category.name}</th>
                                                 <th>${product.user.name}</th>
                                                 <th>
                                                     <button type="button" class="btn btn-md btn-primary product-edit">
@@ -130,6 +131,10 @@
                         </div>
                         <div class="col-md-12 product-form block__display-none">
                             <form role="form">
+                                <div class="form-group">
+                                    <label>Id</label>
+                                    <input class="form-control product-id" placeholder="Id">
+                                </div>
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input class="form-control product-name" placeholder="Name">
@@ -158,10 +163,14 @@
                                     <label>Calories</label>
                                     <input class="form-control product-calories" placeholder="Calories">
                                 </div>
+                                <div class="form-group">
+                                    <label>Category-Id</label>
+                                    <input class="form-control product__category-id" placeholder="Category-Id">
+                                </div>
                             </form>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-success btn-block product-save">Save
+                                    <button type="button" class="btn btn-lg btn-success btn-block product-update">Update
                                     </button>
                                 </div>
                                 <div class="col-md-6">

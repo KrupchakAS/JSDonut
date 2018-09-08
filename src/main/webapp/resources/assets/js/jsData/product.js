@@ -18,6 +18,7 @@ function getProduct(id, selector) {
 }
 
 function openProductForm(productObject) {
+
     $('.product-id').val(productObject.id);
     $('.product-name').val(productObject.name);
     $('.product-calories').val(productObject.calories);
@@ -26,6 +27,7 @@ function openProductForm(productObject) {
     $('.product-description').val(productObject.description);
     $('.product-weight').val(productObject.weight);
     $('.product-quantity').val(productObject.quantity);
+    $('.product__category-id').val(productObject.category.id);
 
 
     $('.container-head').text("Category: " + productObject.category.name + " Product: " + productObject.name);
@@ -51,5 +53,48 @@ $(function() {
     });
     $(document).on('click', '.product-close', function() {
         closeProduct();
+    });
+    $(document).on('click', '.product-update', function() {
+        closeProduct();
+    });
+});
+
+
+function saveItem(button) {
+
+    var pst = {};
+    pst.selector = button;
+    pst.type = "POST";
+    pst.url = '/jsDonut/admin/product/updateProduct';
+    pst.data = {};
+    pst.data = getItemData();
+
+    console.log(pst.data);
+
+    sendAjax(pst);
+}
+
+function getItemData() {
+    var product = {};
+
+    product.id = parseInt($('.product-id').val());
+    product.name = $('.product-name').val();
+    product.calories = parseInt($('.product-calories').val());
+    product.price = parseFloat($('.product-price').val());
+    product.workPrice = parseFloat($('.product-workPrice').val());
+    product.description = $('.product-description').val();
+    product.weight = parseInt($('.product-weight').val());
+    product.quantity = parseInt($('.product-quantity').val());
+    product.category= {};
+    product.category.id = parseInt($('.product__category-id').val());
+
+    return product;
+}
+
+
+$(document).ready(function () {
+    $(document).on('click', '.product-update', function (e) {
+        e.preventDefault();
+        saveItem($(this) );
     });
 });

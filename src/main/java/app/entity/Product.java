@@ -22,7 +22,7 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @NotNull(message = "Field can not be null")
+
     @Column(name = "image")
     private String image;
 
