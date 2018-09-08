@@ -39,7 +39,7 @@ public class ProductServiceImpl implements ProductService {
     public void update(ProductDTO productDTO) {
         Product product = productDao.getById(productDTO.getId());
         if (product != null)
-            productDao.create(modelMapper.map(productDTO, Product.class));
+            productDao.update(modelMapper.map(productDTO, Product.class));
         logger.debug(String.format("Successfully updated product"));
     }
 

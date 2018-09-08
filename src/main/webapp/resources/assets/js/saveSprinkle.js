@@ -15,9 +15,10 @@ function saveItem(button) {
 function getItemData() {
     var sprinkle = {};
 
+    sprinkle.id = parseInt($('.sprinkle-id').val());
     sprinkle.name = $('.sprinkle-name').val();
-    sprinkle.price = $('.sprinkle-price').val();
-    sprinkle.calories = $('.sprinkle-calories').val();
+    sprinkle.price = parseFloat($('.sprinkle-price').val());
+    sprinkle.calories = parseInt($('.sprinkle-calories').val());
 
     return sprinkle;
 }

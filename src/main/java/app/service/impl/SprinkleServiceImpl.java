@@ -40,7 +40,7 @@ public class SprinkleServiceImpl implements SprinkleService {
     public void update(SprinkleDTO sprinkleDTO) {
         Sprinkle sprinkle = sprinkleDao.getById(sprinkleDTO.getId());
         if (sprinkle != null)
-            sprinkleDao.create(modelMapper.map(sprinkleDTO, Sprinkle.class));
+            sprinkleDao.update(modelMapper.map(sprinkleDTO, Sprinkle.class));
         logger.debug(String.format("Successfully updated sprinkle"));
     }
 

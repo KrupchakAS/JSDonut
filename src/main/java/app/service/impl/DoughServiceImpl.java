@@ -40,7 +40,7 @@ public class DoughServiceImpl implements DoughService {
     public void update(DoughDTO doughDTO) {
         Dough corn = doughDao.getById(doughDTO.getId());
         if (corn != null)
-            doughDao.create(modelMapper.map(doughDTO, Dough.class));
+            doughDao.update(modelMapper.map(doughDTO, Dough.class));
         logger.debug(String.format("Successfully updated corn"));
     }
 

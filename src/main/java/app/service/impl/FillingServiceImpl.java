@@ -39,7 +39,7 @@ public class FillingServiceImpl implements FillingService {
     public void update(FillingDTO fillingDTO) {
         Filling filling = fillingDao.getById(fillingDTO.getId());
         if (filling != null)
-            fillingDao.create(modelMapper.map(fillingDTO, Filling.class));
+            fillingDao.update(modelMapper.map(fillingDTO, Filling.class));
         logger.debug(String.format("Successfully updated filling"));
     }
 

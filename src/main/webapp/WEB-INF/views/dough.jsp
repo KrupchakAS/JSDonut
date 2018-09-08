@@ -118,7 +118,11 @@
 
                         </div>
                         <div class="col-md-12 dough-form block__display-none">
-                            <form role="form">
+                            <form method="post" role="form">
+                                <div class="form-group">
+                                    <label>Id</label>
+                                    <input class="form-control dough-id" placeholder="Id">
+                                </div>
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input class="form-control dough-name" placeholder="Name">

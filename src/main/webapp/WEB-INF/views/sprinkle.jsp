@@ -122,16 +122,20 @@
                         <div class="col-md-12 sprinkle-form block__display-none">
                             <form method="post" role="form">
                                 <div class="form-group">
+                                    <label>Id</label>
+                                    <input type="text" class="form-control sprinkle-id" placeholder="Id">
+                                </div>
+                                <div class="form-group">
                                     <label>Name</label>
-                                    <input class="form-control sprinkle-name" placeholder="Name">
+                                    <input type="text" class="form-control sprinkle-name" placeholder="Name">
                                 </div>
                                 <div class="form-group">
                                     <label>Calories</label>
-                                    <input class="form-control sprinkle-calories" placeholder="Calories">
+                                    <input type="number" class="form-control sprinkle-calories" placeholder="Calories">
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input class="form-control sprinkle-price" placeholder="Price">
+                                    <input type="number" class="form-control sprinkle-price" placeholder="Price">
                                 </div>
                             </form>
                             <div class="row">

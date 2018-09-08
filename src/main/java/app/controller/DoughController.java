@@ -2,15 +2,13 @@ package app.controller;
 
 import app.dto.AjaxDTO;
 import app.dto.DoughDTO;
+import app.dto.SprinkleDTO;
 import app.service.api.DoughService;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -39,6 +37,15 @@ public class DoughController {
         return result;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "dough/saveDough", method = RequestMethod.POST)
+    public AjaxDTO updateDough(@RequestBody DoughDTO doughDTO){
+        AjaxDTO result = new AjaxDTO();
+        if(doughDTO != null){
+            doughService.update(doughDTO);
+        }
+        return result;
+    }
     public void setDoughService(DoughService doughService) {
         this.doughService = doughService;
     }

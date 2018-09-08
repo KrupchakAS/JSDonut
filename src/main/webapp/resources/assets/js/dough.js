@@ -18,6 +18,8 @@ function getDough(id, selector) {
 }
 
 function openDoughForm(doughObject) {
+
+    $('.dough-id').val(doughObject.id);
     $('.dough-name').val(doughObject.name);
     $('.dough-calories').val(doughObject.calories);
     $('.dough-price').val(doughObject.price);
@@ -44,6 +46,9 @@ $(function() {
         getDoughForm(id, $(this));
     });
     $(document).on('click', '.dough-close', function() {
+        closeDough();
+    });
+    $(document).on('click', '.dough-save', function() {
         closeDough();
     });
 });

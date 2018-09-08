@@ -18,6 +18,7 @@ function getSprinkle(id, selector) {
 }
 
 function openSprinkleForm(sprinkleObject) {
+    $('.sprinkle-id').val(sprinkleObject.id);
     $('.sprinkle-name').val(sprinkleObject.name);
     $('.sprinkle-calories').val(sprinkleObject.calories);
     $('.sprinkle-price').val(sprinkleObject.price);
@@ -44,6 +45,9 @@ $(function() {
         getSprinkleForm(id, $(this));
     });
     $(document).on('click', '.sprinkle-close', function() {
+        closeSprinkle();
+    });
+    $(document).on('click', '.sprinkle-save', function() {
         closeSprinkle();
     });
 });
