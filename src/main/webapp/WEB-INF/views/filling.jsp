@@ -74,6 +74,9 @@
                     Filling list
                 </div>
                 <div class="panel-body container-body">
+                    <button type="button" class="btn btn-md btn-success filling-add">
+                        Add Filling
+                    </button>
                     <div class="row">
                         <div class="col-md-12 filling-list">
                             <table class="table table-striped filling-table">
@@ -121,20 +124,20 @@
                             <form  method="post" role="form">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input class="form-control filling-name" placeholder="Name">
+                                    <input class="form-control filling-name-cr" placeholder="Name">
                                 </div>
                                 <div class="form-group">
                                     <label>Calories</label>
-                                    <input class="form-control filling-calories" placeholder="Calories">
+                                    <input class="form-control filling-calories-cr" placeholder="Calories">
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input class="form-control filling-price" placeholder="Price">
+                                    <input class="form-control filling-price-cr" placeholder="Price">
                                 </div>
                             </form>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-success btn-block filling-update">Update
+                                    <button type="button" class="btn btn-lg btn-success btn-block filling-save">Update
                                     </button>
                                 </div>
                                 <div class="col-md-6">
@@ -148,19 +151,19 @@
                             <form  method="post" role="form">
                                 <div class="form-group">
                                     <label>Id</label>
-                                    <input disabled class="form-control filling-id" placeholder="Id">
+                                    <input disabled class="form-control filling-id-up" placeholder="Id">
                                 </div>
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input class="form-control filling-name" placeholder="Name">
+                                    <input class="form-control filling-name-up" placeholder="Name">
                                 </div>
                                 <div class="form-group">
                                     <label>Calories</label>
-                                    <input class="form-control filling-calories" placeholder="Calories">
+                                    <input class="form-control filling-calories-up" placeholder="Calories">
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input class="form-control filling-price" placeholder="Price">
+                                    <input class="form-control filling-price-up" placeholder="Price">
                                 </div>
                             </form>
                             <div class="row">

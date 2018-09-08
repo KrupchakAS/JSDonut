@@ -1,6 +1,8 @@
 
 
+
 // update --------------------
+
 function getUpdateForm(doughId, selector) {
     if (isNumber(doughId)) {
         getDoughById(doughId, selector);
@@ -67,7 +69,7 @@ function getItemData() {
 $(document).ready(function () {
     $(document).on('click', '.dough-update', function (e) {
         e.preventDefault();
-        updateItem($(this) );
+        updateItem($(this));
     });
 });
 
@@ -114,9 +116,6 @@ $(document).ready(function () {
 });
 
 // delete -----------------------------
-
-
-
 
 // Scripts
 

@@ -74,6 +74,9 @@
                     Sprinkle list
                 </div>
                 <div class="panel-body container-body">
+                    <button type="button" class="btn btn-md btn-success sprinkle-add">
+                        Add Sprinkle
+                    </button>
                     <div class="row">
                         <div class="col-md-12 sprinkle-list">
                             <table class="table table-striped sprinkle-table">
@@ -116,26 +119,53 @@
                                 </c:choose>
                                 </tbody>
                             </table>
-
-
                         </div>
-                        <div class="col-md-12 sprinkle-form block__display-none">
+
+                        <div class="col-md-12 sprinkle-form-create block__display-none">
                             <form method="post" role="form">
                                 <div class="form-group">
-                                    <label>Id</label>
-                                    <input type="text" class="form-control sprinkle-id" placeholder="Id">
-                                </div>
-                                <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="form-control sprinkle-name" placeholder="Name">
+                                    <input type="text" class="form-control sprinkle-name-cr" placeholder="Name">
                                 </div>
                                 <div class="form-group">
                                     <label>Calories</label>
-                                    <input type="number" class="form-control sprinkle-calories" placeholder="Calories">
+                                    <input type="number" class="form-control sprinkle-calories-cr" placeholder="Calories">
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input type="number" class="form-control sprinkle-price" placeholder="Price">
+                                    <input type="number" class="form-control sprinkle-price-cr" placeholder="Price">
+                                </div>
+                            </form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-lg btn-success btn-block sprinkle-save">Update
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button type="button" class="btn btn-lg btn-danger btn-block sprinkle-close">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 sprinkle-form-update block__display-none">
+                            <form method="post" role="form">
+                                <div class="form-group">
+                                    <label>Id</label>
+                                    <input disabled type="text" class="form-control sprinkle-id-up" placeholder="Id">
+                                </div>
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" class="form-control sprinkle-name-up" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Calories</label>
+                                    <input type="number" class="form-control sprinkle-calories-up" placeholder="Calories">
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input type="number" class="form-control sprinkle-price-up" placeholder="Price">
                                 </div>
                             </form>
                             <div class="row">
@@ -150,6 +180,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

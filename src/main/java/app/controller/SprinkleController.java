@@ -28,11 +28,21 @@ public class SprinkleController {
         return "sprinkle";
     }
 
-    @RequestMapping(value = "/sprinkle/getSprinkle", method = RequestMethod.GET)
+    @RequestMapping(value = "/sprinkle/getSprinkleById", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO getSprinkle(@RequestParam(value = "id") @Valid @NotEmpty(message = "Sprinkle id cannot be empty") Integer sprinkleId) {
         AjaxDTO result = new AjaxDTO();
         result.setData(sprinkleService.getById(sprinkleId));
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/sprinkle/createSprinkle", method = RequestMethod.POST)
+    public AjaxDTO createSprinkle(@RequestBody SprinkleDTO sprinkleDTO){
+        AjaxDTO result = new AjaxDTO();
+        if(sprinkleDTO != null){
+            sprinkleService.create(sprinkleDTO);
+        }
         return result;
     }
 

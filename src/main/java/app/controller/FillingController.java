@@ -29,7 +29,7 @@ public class FillingController {
         return "filling";
     }
 
-    @RequestMapping(value = "/filling/getFilling", method = RequestMethod.GET)
+    @RequestMapping(value = "/filling/getFillingById", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO getFilling(@RequestParam(value = "id") @Valid @NotEmpty(message = "Filling id cannot be empty") Integer fillingId) {
         AjaxDTO result = new AjaxDTO();
@@ -37,7 +37,15 @@ public class FillingController {
         return result;
     }
 
-
+    @ResponseBody
+    @RequestMapping(value = "/filling/createFilling", method = RequestMethod.POST)
+    public AjaxDTO createFilling(@RequestBody FillingDTO fillingDTO){
+        AjaxDTO result = new AjaxDTO();
+        if(fillingDTO != null){
+            fillingService.create(fillingDTO);
+        }
+        return result;
+    }
     @ResponseBody
     @RequestMapping(value = "/filling/updateFilling", method = RequestMethod.POST)
     public AjaxDTO updateFilling(@RequestBody FillingDTO fillingDTO){
