@@ -92,7 +92,7 @@
                                 <c:choose>
                                     <c:when test="${fillingList.size() > 0}">
                                         <с:forEach var="filling" items="${fillingList}">
-                                            <tr class="filling-table__row" data-id="${filling.id}">
+                                            <tr class="filling-table__row"  data-id="${filling.id}">
                                                 <th>${filling.id}</th>
                                                 <th>${filling.name}</th>
                                                 <th>${filling.calories}</th>
@@ -186,7 +186,7 @@
 </div>    <!--/.main-->
 
 <c:import url="/WEB-INF/views/footer.jsp"/>
-
+<script type="text/javascript" src="${contextPath}/resources/assets/js/sweetalert.min.js"></script>
 <script type="text/javascript" src="${contextPath}/resources/assets/js/jsData/filling.js"></script>
 </body>
 </html>

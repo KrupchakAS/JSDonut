@@ -1,15 +1,25 @@
 package app.entity.enums;
 
 public enum  DeliveryOptions {
-    PICKUP(1),
-    DELIVERY(2);
+    PICKUP((byte)1),
+    DELIVERY((byte)2);
 
-    //MyEnum e = MyEnum.Test1;
-    //int value = e.value; // = 1
+    public final Byte value;
 
-    public final int value;
+    DeliveryOptions (final Byte value) {
+        this.value = value;
+    }
 
-    DeliveryOptions(final int value){
-        this.value=value;
+    public Byte getValue() {
+        return value;
+    }
+
+    public DeliveryOptions valueOf(final Byte value) {
+        for (DeliveryOptions status : DeliveryOptions.values()) {
+            if (status.getValue().equals(value)) {
+                return status;
+            }
+        }
+        return null;
     }
 }

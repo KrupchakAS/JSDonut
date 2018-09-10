@@ -1,6 +1,7 @@
 package app.controller;
 
 
+import app.dto.CartDTO;
 import app.dto.UserDTO;
 import app.exception.MyRuntimeException;
 import app.service.api.UserService;
@@ -16,14 +17,16 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
+@SessionAttributes("cartDTO")
 @RequestMapping(value = "/jsDonut")
-public class UserController {
+public class MainController {
 
     @Autowired
     private UserService userService;
@@ -32,7 +35,7 @@ public class UserController {
     private UserValidator userValidator;
 
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public String createModel(ModelMap modelMap){
+    public String createModel(ModelMap modelMap, CartDTO cartDTO, HttpSession session){
         modelMap.addAttribute("userForm",new UserDTO());
         return "welcome";
     }

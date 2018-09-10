@@ -16,7 +16,7 @@ public enum OrderStatus {
         return value;
     }
 
-    public static OrderStatus valueOf(final Byte value) {
+    public OrderStatus valueOf(final Byte value) {
         for (OrderStatus status : OrderStatus.values()) {
             if (status.getValue().equals(value)) {
                 return status;

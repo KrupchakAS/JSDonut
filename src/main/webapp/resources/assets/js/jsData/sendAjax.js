@@ -4,7 +4,7 @@ function sendAjax(ajax) {
 
         type: ajax.type,
 
-        contentType: "application/json;charset=UTF-8",
+        contentType: "application/json; charset=UTF-8",
 
         url: ajax.url,
 
@@ -15,13 +15,11 @@ function sendAjax(ajax) {
         beforeSend: function (xhr) {
 
             if (ajax.selector !== undefined) {
-
                 disabledController(ajax.selector, true);
                 var token = $("meta[name='_csrf']").attr("content");
                 var header = $("meta[name='_csrf_header']").attr("content");
                 xhr.setRequestHeader(header, token);
             }
-
         }
 
     });

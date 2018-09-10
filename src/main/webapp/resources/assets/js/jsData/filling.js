@@ -102,31 +102,61 @@ function getFormCreate() {
     return filling;
 }
 
-
 $(document).ready(function () {
     $(document).on('click', '.filling-save', function (e) {
         e.preventDefault();
         saveItem($(this));
+
+    });
+});
+
+// delete ---------------------------
+
+function deleteFilling(button) {
+
+    var pst = {};
+    pst.data = {};
+    pst.data.filling = {};
+    pst.data.filling.id = $(this).closest('tr').data('id');
+    pst.selector = button;
+    pst.dataType = 'JSON';
+    pst.type = "POST";
+    pst.url = '/jsDonut/admin/filling/deleteFilling';
+    pst.function = function (result) {
+        pst.selector.closest('tr').remove();
+    };
+    sendAjax(pst);
+}
+
+
+$(document).ready(function () {
+    $(document).on('click', '.filling-delete', function (e) {
+        e.preventDefault();
+        deleteFilling($(this));
     });
 });
 
 // Scripts
 
-$(function() {
+$(function () {
     $(document).on('click', '.filling-add', function () {
         getFormCreate();
     });
-    $(document).on('click', '.filling-edit', function() {
-        var id = $(this).parent().parent().data('id');
+    $(document).on('click', '.filling-edit', function () {
+        var id = $(this).closest('tr').data('id');
         getUpdateForm(id, $(this));
     });
-    $(document).on('click', '.filling-close', function() {
+    $(document).on('click', '.filling-close', function () {
         closeFilling();
     });
-    $(document).on('click', '.filling-update', function() {
+    $(document).on('click', '.filling-update', function () {
         closeFilling();
     });
-    $(document).on('click', '.filling-save', function() {
+    $(document).on('click', '.filling-save', function () {
+        closeFilling();
+
+    });
+    $(document).on('click', '.filling-delete', function () {
         closeFilling();
     });
 });

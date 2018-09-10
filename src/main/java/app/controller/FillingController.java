@@ -23,7 +23,6 @@ public class FillingController {
     @RequestMapping(value = "/filling", method = RequestMethod.GET)
     public String openPage(ModelMap modelMap) {
         modelMap.addAttribute("fillingActive", "active");
-
         List<FillingDTO> fillingDTOList = fillingService.getAll();
         modelMap.addAttribute("fillingList", fillingDTOList);
         return "filling";
@@ -52,6 +51,17 @@ public class FillingController {
         AjaxDTO result = new AjaxDTO();
         if(fillingDTO != null){
             fillingService.update(fillingDTO);
+        }
+        return result;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/filling/deleteFilling", method = RequestMethod.POST)
+    public AjaxDTO deleteFilling(@RequestParam(value = "id") @Valid @NotEmpty(message = "Filling id cannot be empty") Integer fillingId){
+        FillingDTO fillingDTO = fillingService.getById(fillingId);
+        AjaxDTO result = new AjaxDTO();
+        if(fillingDTO != null){
+            fillingService.delete(fillingDTO);
         }
         return result;
     }
