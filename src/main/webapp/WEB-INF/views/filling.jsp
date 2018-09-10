@@ -137,7 +137,7 @@
                             </form>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-success btn-block filling-save">Update
+                                    <button type="button" class="btn btn-lg btn-success btn-block filling-save">Save
                                     </button>
                                 </div>
                                 <div class="col-md-6">

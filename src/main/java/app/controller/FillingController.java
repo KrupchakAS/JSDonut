@@ -55,15 +55,15 @@ public class FillingController {
         return result;
     }
 
+
     @ResponseBody
-    @RequestMapping(value = "/filling/deleteFilling", method = RequestMethod.POST)
-    public AjaxDTO deleteFilling(@RequestParam(value = "id") @Valid @NotEmpty(message = "Filling id cannot be empty") Integer fillingId){
-        FillingDTO fillingDTO = fillingService.getById(fillingId);
+    @RequestMapping(value = "/filling/deleteFilling", method = RequestMethod.DELETE)
+    public AjaxDTO deleteFilling(@RequestBody Integer id){
+        FillingDTO fillingDTO = fillingService.getById(id);
         AjaxDTO result = new AjaxDTO();
         if(fillingDTO != null){
             fillingService.delete(fillingDTO);
         }
         return result;
     }
-
 }

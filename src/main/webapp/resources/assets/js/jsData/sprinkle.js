@@ -25,16 +25,18 @@ function getSprinkleById(id, selector) {
 
 function openSprinkleFormUpdate(sprinkleObject) {
 
-    $('.sprinkle-id-up').val(sprinkleObject.id);
-    $('.sprinkle-name-up').val(sprinkleObject.name);
-    $('.sprinkle-calories-up').val(sprinkleObject.calories);
-    $('.sprinkle-price-up').val(sprinkleObject.price);
-
     $('.container-head').text("Sprinkle: " + sprinkleObject.name);
     $('.sprinkle-add').addClass('block__display-none');
     $('.sprinkle-list').addClass('block__display-none');
     $('.sprinkle-form-create').addClass('block__display-none');
     $('.sprinkle-form-update').removeClass('block__display-none');
+
+    $('.sprinkle-id-up').val(sprinkleObject.id);
+    $('.sprinkle-name-up').val(sprinkleObject.name);
+    $('.sprinkle-calories-up').val(sprinkleObject.calories);
+    $('.sprinkle-price-up').val(sprinkleObject.price);
+
+
 }
 
 function updateItem(button) {
@@ -88,16 +90,19 @@ function saveItem(button) {
 }
 
 function getFormCreate() {
+
+    $('.sprinkle-add').addClass('block__display-none');
+    $('.sprinkle-list').addClass('block__display-none');
+    $('.sprinkle-form-update').addClass('block__display-none');
+    $('.sprinkle-form-create').removeClass('block__display-none');
+
     var sprinkle = {};
 
     sprinkle.name = $('.sprinkle-name-cr').val();
     sprinkle.price = parseFloat($('.sprinkle-price-cr').val());
     sprinkle.calories = parseInt($('.sprinkle-calories-cr').val());
 
-    $('.sprinkle-add').addClass('block__display-none');
-    $('.sprinkle-list').addClass('block__display-none');
-    $('.sprinkle-form-update').addClass('block__display-none');
-    $('.sprinkle-form-create').removeClass('block__display-none');
+
 
     return sprinkle;
 }

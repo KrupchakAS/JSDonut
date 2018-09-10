@@ -8,7 +8,7 @@ function sendAjax(ajax) {
 
         url: ajax.url,
 
-        data: (ajax.type === "POST") ? JSON.stringify(ajax.data) : ajax.data,
+        data: (ajax.type === "GET") ? ajax.data : JSON.stringify(ajax.data),
 
         dataType: ajax.dataType,
 

@@ -113,26 +113,23 @@ $(document).ready(function () {
 // delete ---------------------------
 
 
-function deleteFilling(id,button) {
+function deleteFilling(id, button) {
 
     if (intValueTest(id, 'Не удалось получить id')) return false;
 
     var pst = {};
-    pst.data = {};
-    pst.data.filling = {};
-    pst.data.filling.id = id;
+    pst.data = id;
 
     pst.selector = button;
     pst.dataType = 'JSON';
-    pst.type = "POST";
+    pst.type = "DELETE";
     pst.url = '/jsDonut/admin/filling/deleteFilling';
-    pst.function = function (result) {
+    pst.successFunction = function (result) {
         pst.selector.closest('tr').remove();
     };
 
     sendAjax(pst);
 }
-
 
 $(document).ready(function () {
     $(document).on('click', '.filling-delete', function (e) {
