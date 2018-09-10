@@ -16,7 +16,7 @@
         <div class="col-lg-6 col-lg-offset-3">
             <div class="lock-screen">
                 <h1><span class="color">405</span><br />Запрос<br /><span class="color">не поддерживается</span><br />Попробуйте снова</h1>
-                <h1><a class="color" href="/welcome">На главную</a></h1>
+                <h1><a class="color" href="jsDonut/welcome">На главную</a></h1>
             </div>
         </div>
     </div>
