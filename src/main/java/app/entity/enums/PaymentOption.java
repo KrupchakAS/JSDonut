@@ -1,9 +1,9 @@
 package app.entity.enums;
 
-public enum PaymentStatus {
+public enum PaymentOption {
 
-    NOT_PAID((byte) 1),
-    PAID((byte) 2);
+    CASH((byte) 1),
+    CARD((byte) 2);
 
     public final Byte value;
 
@@ -11,12 +11,12 @@ public enum PaymentStatus {
         return value;
     }
 
-    PaymentStatus(final Byte value) {
+    PaymentOption(final Byte value) {
         this.value = value;
     }
 
-    public static PaymentStatus valueOf(final Byte value) {
-        for (PaymentStatus status : PaymentStatus.values()) {
+    public static PaymentOption valueOf(final Byte value) {
+        for (PaymentOption status : PaymentOption.values()) {
             if (status.getValue().equals(value)) {
                 return status;
             }

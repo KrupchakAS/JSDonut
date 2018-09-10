@@ -1,9 +1,17 @@
 package app.entity;
 
+import app.entity.enums.Converter.DeliveryOptionConverter;
+import app.entity.enums.Converter.OrderStatusConverter;
+import app.entity.enums.Converter.PaymentOptionConverter;
+import app.entity.enums.Converter.PaymentStatusConverter;
+import app.entity.enums.DeliveryOption;
+import app.entity.enums.OrderStatus;
+import app.entity.enums.PaymentOption;
+import app.entity.enums.PaymentStatus;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "orders")
@@ -15,20 +23,24 @@ public class Order {
     private Integer id;
 
     @NotNull(message = "Field can not be null")
-    @Column(name = "paymentOption")
-    private Byte paymentOption;
+    @Column(name = "paymentOption", insertable = false, updatable = false)
+    @Convert(converter = PaymentOptionConverter.class)
+    private PaymentOption paymentOption;
 
     @NotNull(message = "Field can not be null")
-    @Column(name = "deliveryOption")
-    private Byte deliveryOption;
+    @Column(name = "deliveryOption", insertable = false, updatable = false)
+    @Convert(converter = DeliveryOptionConverter.class)
+    private DeliveryOption deliveryOption;
 
     @NotNull(message = "Field can not be null")
-    @Column(name = "paymentStatus")
-    private Byte paymentStatus;
+    @Column(name = "paymentStatus", insertable = false, updatable = false)
+    @Convert(converter = PaymentStatusConverter.class)
+    private PaymentStatus paymentStatus;
 
     @NotNull(message = "Field can not be null")
-    @Column(name = "orderStatus")
-    private Byte orderStatus;
+    @Column(name = "OrderStatus", insertable = false, updatable = false)
+    @Convert(converter = OrderStatusConverter.class)
+    private OrderStatus orderStatus;
 
     @ManyToMany
     @JoinTable(name = "order_products", joinColumns = @JoinColumn(name = "order_id"),
@@ -47,36 +59,36 @@ public class Order {
         this.id = id;
     }
 
-    public Byte getPaymentOption() {
+    public PaymentOption getPaymentOption() {
         return paymentOption;
     }
 
-    public void setPaymentOption(Byte paymentOption) {
+    public void setPaymentOption(PaymentOption paymentOption) {
         this.paymentOption = paymentOption;
     }
 
-    public Byte getDeliveryOption() {
-        return deliveryOption;
-    }
-
-    public void setDeliveryOption(Byte deliveryOption) {
-        this.deliveryOption = deliveryOption;
-    }
-
-    public Byte getPaymentStatus() {
+    public PaymentStatus getPaymentStatus() {
         return paymentStatus;
     }
 
-    public void setPaymentStatus(Byte paymentStatus) {
+    public void setPaymentStatus(PaymentStatus paymentStatus) {
         this.paymentStatus = paymentStatus;
     }
 
-    public Byte getOrderStatus() {
+    public OrderStatus getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(Byte orderStatus) {
+    public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public DeliveryOption getDeliveryOption() {
+        return deliveryOption;
+    }
+
+    public void setDeliveryOption(DeliveryOption deliveryOption) {
+        this.deliveryOption = deliveryOption;
     }
 
     public List<Product> getProductList() {
