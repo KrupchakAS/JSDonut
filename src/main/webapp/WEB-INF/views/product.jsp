@@ -82,17 +82,12 @@
                             <table class="table table-striped product-table">
                                 <thead>
                                 <tr>
-                                    <th>Category</th>
                                     <th>#</th>
+                                    <th>Category</th>
                                     <th>Name</th>
-                                    <th>Description</th>
                                     <th>Price</th>
-                                    <th>WorkPrice</th>
                                     <th>Weight</th>
                                     <th>Quantity</th>
-                                    <th>Calories</th>
-
-                                    <th>User</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -100,16 +95,12 @@
                                     <c:when test="${productList.size() > 0}">
                                         <с:forEach var="product" items="${productList}">
                                             <tr class="product-table__row" data-id="${product.id}">
-                                                <th>${product.category.name}</th>
                                                 <th>${product.id}</th>
+                                                <th>${product.category.name}</th>
                                                 <th>${product.name}</th>
-                                                <th>${product.description}</th>
                                                 <th>${product.price}</th>
-                                                <th>${product.workPrice}</th>
                                                 <th>${product.weight}</th>
                                                 <th>${product.quantity}</th>
-                                                <th>${product.calories}</th>
-                                                <th>${product.user.name}</th>
                                                 <th>
                                                     <button type="button" class="btn btn-md btn-primary product-edit">
                                                         Edit

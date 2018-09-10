@@ -114,6 +114,31 @@ $(document).ready(function () {
 
 // delete -----------------------------
 
+function deleteDough(id, button) {
+
+    if (intValueTest(id, 'Не удалось получить id')) return false;
+
+    var pst = {};
+    pst.data = id;
+
+    pst.selector = button;
+    pst.dataType = 'JSON';
+    pst.type = "DELETE";
+    pst.url = '/jsDonut/admin/dough/deleteDough';
+    pst.successFunction = function (result) {
+        pst.selector.closest('tr').remove();
+    };
+
+    sendAjax(pst);
+}
+
+$(document).ready(function () {
+    $(document).on('click', '.dough-delete', function (e) {
+        e.preventDefault();
+        var id = $(this).closest('tr').data('id');
+        deleteDough(id, $(this));
+    });
+});
 // Scripts
 
 $(function() {
@@ -133,6 +158,9 @@ $(function() {
     $(document).on('click', '.dough-save', function () {
         closeDough();
     });
+    $(document).on('click', '.dough-delete', function () {
+        closeDough();
+    });
 });
 
 function closeDough() {
@@ -142,4 +170,11 @@ function closeDough() {
     $('.dough-list').removeClass('block__display-none');
     $('.dough-form-update').addClass('block__display-none');
     $('.dough-form-create').addClass('block__display-none');
+}
+function intValueTest(value, text) {
+    if (value === 0 || value === undefined) {
+        swal('Ошибка', text, 'error');
+        return true
+    }
+    return false;
 }

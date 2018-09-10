@@ -60,10 +60,11 @@ public class ProductController {
 
     @ResponseBody
     @RequestMapping(value = "/product/deleteProduct", method = RequestMethod.DELETE)
-    public AjaxDTO deleteProduct(@RequestBody ProductDTO productDTO){
+    public AjaxDTO deleteProduct(@RequestBody Integer id){
+        ProductDTO productDTO = productService.getById(id);
         AjaxDTO result = new AjaxDTO();
         if(productDTO != null){
-            productService.update(productDTO);
+            productService.delete(productDTO);
         }
         return result;
     }

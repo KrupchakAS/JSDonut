@@ -136,28 +136,31 @@ $(document).ready(function () {
 
 // delete --------------------------------------------
 
-function deleteItem(id, button) {
+function deleteProduct(id, button) {
 
-    var ajax = {};
-    ajax.selector = button;
-    ajax.data = {id: id};
-    ajax.type = "POST";
-    ajax.url = "/jsDonut/admin/product/deleteProduct";
-    ajax.dataType = 'JSON';
-    sendAjax(ajax);
+    if (intValueTest(id, 'Не удалось получить id')) return false;
 
+    var pst = {};
+    pst.data = id;
+    pst.selector = button;
+    pst.dataType = 'JSON';
+    pst.type = "DELETE";
+    pst.url = '/jsDonut/admin/product/deleteProduct';
+    pst.successFunction = function (result) {
+        pst.selector.closest('tr').remove();
+    };
 
-    console.log(ajax);
-
-    sendAjax(ajax);
+    sendAjax(pst);
 }
 
 $(document).ready(function () {
     $(document).on('click', '.product-delete', function (e) {
         e.preventDefault();
-        deleteItem($(this));
+        var id = $(this).closest('tr').data('id');
+        deleteProduct(id, $(this));
     });
 });
+
 
 // Scripts
 
@@ -178,7 +181,9 @@ $(function() {
     $(document).on('click', '.product-save', function () {
         closeProduct();
     });
-
+    $(document).on('click', '.product-delete', function () {
+        closeDough();
+    });
 });
 
 
@@ -189,4 +194,11 @@ function closeProduct() {
     $('.product-add').removeClass('block__display-none');
     $('.product-form-update').addClass('block__display-none');
     $('.product-form-create').addClass('block__display-none');
+}
+function intValueTest(value, text) {
+    if (value === 0 || value === undefined) {
+        swal('Ошибка', text, 'error');
+        return true
+    }
+    return false;
 }

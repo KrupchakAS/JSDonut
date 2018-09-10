@@ -2,6 +2,7 @@ package app.controller;
 
 import app.dto.AjaxDTO;
 import app.dto.DoughDTO;
+import app.dto.FillingDTO;
 import app.dto.SprinkleDTO;
 import app.service.api.DoughService;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -56,6 +57,15 @@ public class DoughController {
         return result;
     }
 
-
+    @ResponseBody
+    @RequestMapping(value = "/dough/deleteDough", method = RequestMethod.DELETE)
+    public AjaxDTO deleteDough(@RequestBody Integer id){
+        DoughDTO doughDTO = doughService.getById(id);
+        AjaxDTO result = new AjaxDTO();
+        if(doughDTO != null){
+            doughService.delete(doughDTO);
+        }
+        return result;
+    }
 
 }
