@@ -127,7 +127,7 @@ INSERT INTO address VALUES (1, 'Россия', 'Санкт-Петербург', 
 INSERT INTO category VALUE (1, 'Донатсы');
 INSERT INTO category VALUE (2, 'Пироженные');
 INSERT INTO category VALUE (3, 'Торты');
-INSERT INTO category VALUE (4, 'Макаруны');
+INSERT INTO category VALUE (4, 'Макарони');
 
 INSERT INTO dough VALUE (1, 'Бисквитное', 320, 70);
 INSERT INTO dough VALUE (2, 'Песочный', 440, 105);

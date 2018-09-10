@@ -124,7 +124,7 @@ $(function() {
         getFormCreate();
     });
     $(document).on('click', '.dough-edit', function() {
-        var id = $(this).parent().parent().data('id');
+        var id = $(this).closest('tr').data('id');
         getUpdateForm(id, $(this));
     });
     $(document).on('click', '.dough-close', function() {

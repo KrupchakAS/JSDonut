@@ -112,12 +112,16 @@ $(document).ready(function () {
 
 // delete ---------------------------
 
-function deleteFilling(button) {
+
+function deleteFilling(id,button) {
+
+    if (intValueTest(id, 'Не удалось получить id')) return false;
 
     var pst = {};
     pst.data = {};
     pst.data.filling = {};
-    pst.data.filling.id = $(this).closest('tr').data('id');
+    pst.data.filling.id = id;
+
     pst.selector = button;
     pst.dataType = 'JSON';
     pst.type = "POST";
@@ -125,6 +129,7 @@ function deleteFilling(button) {
     pst.function = function (result) {
         pst.selector.closest('tr').remove();
     };
+
     sendAjax(pst);
 }
 
@@ -132,7 +137,8 @@ function deleteFilling(button) {
 $(document).ready(function () {
     $(document).on('click', '.filling-delete', function (e) {
         e.preventDefault();
-        deleteFilling($(this));
+        var id = $(this).closest('tr').data('id');
+        deleteFilling(id, $(this));
     });
 });
 
@@ -168,4 +174,12 @@ function closeFilling() {
     $('.filling-add').removeClass('block__display-none');
     $('.filling-form-update').addClass('block__display-none');
     $('.filling-form-create').addClass('block__display-none');
+}
+
+function intValueTest(value, text) {
+    if (value === 0 || value === undefined) {
+        swal('Ошибка', text, 'error');
+        return true
+    }
+    return false;
 }

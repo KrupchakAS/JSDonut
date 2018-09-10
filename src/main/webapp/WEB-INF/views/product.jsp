@@ -165,7 +165,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Category-Id</label>
-                                    <input class="form-control product__category-id-cr" placeholder="Category-Id">
+                                    <input list="listCategory" class="form-control product__category-id-cr" placeholder="Category-Id">
+                                    <datalist id="listCategory">
+                                        <option value="1">
+                                        <option value="2">
+                                        <option value="3">
+                                        <option value="4">
+                                    </datalist>
                                 </div>
                             </form>
                             <div class="row">
