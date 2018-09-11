@@ -9,11 +9,17 @@
     <div class="card card-body">
         <div class="container">
             <form:form method="POST" action="/login" class="form-signin">
-                <div class="form-group ${error != null ? 'has-error' : ''}">
-                    <span>${message}</span>
-                    <input required min="4" max="16" name="username" type="text" class="form-control" placeholder="Login">
-                    <input required min="4" max="16" name="password" type="password" class="form-control" placeholder="Password">
-                    <span>${error}</span>
+                <div class="form-group">
+                    <div>
+                        <label>Enter your login:</label>
+                        <input required minlength="4" maxlength="16" name="username" type="text" class="form-control"
+                               placeholder="Login">
+                    </div>
+                    <div>
+                        <label>Enter your password:</label>
+                        <input required minlength="4" maxlength="16" name="password" type="password"
+                               class="form-control" placeholder="Password">
+                    </div>
                 </div>
                 <button class="btn btn-md" type="submit">Sign In</button>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
