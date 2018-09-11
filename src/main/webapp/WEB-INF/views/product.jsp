@@ -126,43 +126,89 @@
 
                         <div class="col-md-12 product-form-create block__display-none">
                             <form role="form">
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input class="form-control product-name-cr" placeholder="Name">
-                                </div>
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <input class="form-control product-description-cr" placeholder="Description">
-                                </div>
-                                <div class="form-group">
-                                    <label>Price</label>
-                                    <input class="form-control product-price-cr" placeholder="Price">
-                                </div>
-                                <div class="form-group">
-                                    <label>WorkPrice</label>
-                                    <input class="form-control product-workPrice-cr" placeholder="WorkPrice">
-                                </div>
-                                <div class="form-group">
-                                    <label>Weight</label>
-                                    <input class="form-control product-weight-cr" placeholder="Weight">
-                                </div>
-                                <div class="form-group">
-                                    <label>Quantity</label>
-                                    <input class="form-control product-quantity-cr" placeholder="Quantity">
-                                </div>
-                                <div class="form-group">
-                                    <label>Calories</label>
-                                    <input class="form-control product-calories-cr" placeholder="Calories">
-                                </div>
-                                <div class="form-group">
-                                    <label>Category-Id</label>
-                                    <input list="listCategory" class="form-control product__category-id-cr" placeholder="Category-Id">
-                                    <datalist id="listCategory">
-                                        <option value="1">
-                                        <option value="2">
-                                        <option value="3">
-                                        <option value="4">
-                                    </datalist>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Name</label>
+                                            <input class="form-control product-name-cr" placeholder="Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Price</label>
+                                            <input class="form-control product-price-cr" placeholder="Price">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>WorkPrice</label>
+                                            <input class="form-control product-workPrice-cr" placeholder="WorkPrice">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Weight</label>
+                                            <input class="form-control product-weight-cr" placeholder="Weight">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Quantity</label>
+                                            <input class="form-control product-quantity-cr" placeholder="Quantity">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Calories</label>
+                                            <input class="form-control product-calories-cr" placeholder="Calories">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Category</label>
+                                            <div class="input-group">
+                                                <select class=" form-control product__category-id-cr">
+                                                    <option disabled selected>Choose category</option>
+                                                    <option value="1">Донатсы</option>
+                                                    <option value="2">Макарони</option>
+                                                    <option value="3">Пироженные</option>
+                                                    <option value="4">Торты</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Dough</label>
+                                            <div class="input-group">
+                                                <select class=" form-control product__dough-id-cr">
+                                                    <option disabled selected>Choose dough</option>
+                                                    <option value="1">Бисквитное</option>
+                                                    <option value="2">Песочное</option>
+                                                    <option value="3">Слоеное</option>
+                                                    <option value="4">Заварное</option>
+                                                    <option value="5">Миндальное</option>
+                                                    <option value="6">Классическое(дрожжевое)</option>
+                                                    <option value="7">Классическое(бездрожжевое)</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Filling</label>
+                                            <div class="input-group">
+                                                <select class="form-control product__filling-id-cr">
+                                                    <option disabled selected>Choose filling</option>
+                                                    <option value="1">Шоколад(темный)</option>
+                                                    <option value="2">Шоколад(молочный)</option>
+                                                    <option value="3">Банан</option>
+                                                    <option value="4">Клубника</option>
+                                                    <option value="5">Вишня</option>
+                                                    <option value="6">Киви</option>
+                                                    <option value="7">Смородина</option>
+                                                    <option value="8">Заварной крем</option>
+                                                    <option value="9">Творог</option>
+                                                    <option value="10">Ваниль</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Description</label>
+                                            <textarea class="form-control te product-description-cr"
+                                                      placeholder="Description"></textarea>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </form>
                             <div class="row">
@@ -179,41 +225,89 @@
 
                         <div class="col-md-12 product-form-update block__display-none">
                             <form role="form">
-                                <div class="form-group">
-                                    <label>Id</label>
-                                    <input disabled class="form-control  product-id-up" placeholder="Id">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Id</label>
+                                        <input disabled class="form-control  product-id-up" placeholder="Id">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Name</label>
+                                        <input class="form-control product-name-up" placeholder="Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Price</label>
+                                        <input class="form-control product-price-up" placeholder="Price">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>WorkPrice</label>
+                                        <input class="form-control product-workPrice-up" placeholder="WorkPrice">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Weight</label>
+                                        <input class="form-control product-weight-up" placeholder="Weight">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Quantity</label>
+                                        <input class="form-control product-quantity-up" placeholder="Quantity">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Calories</label>
+                                        <input class="form-control product-calories-up" placeholder="Calories">
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input class="form-control product-name-up" placeholder="Name">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Category</label>
+                                        <div class="input-group">
+                                            <select class="form-control product__category-id-up">
+                                                <option disabled selected>Choose category</option>
+                                                <option value="1">Донатсы</option>
+                                                <option value="2">Макарони</option>
+                                                <option value="3">Пироженные</option>
+                                                <option value="4">Торты</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Dough</label>
+                                        <div class="input-group">
+                                            <select class=" form-control product__dough-id-up">
+                                                <option disabled selected>Choose dough</option>
+                                                <option value="1">Бисквитное</option>
+                                                <option value="2">Песочное</option>
+                                                <option value="3">Слоеное</option>
+                                                <option value="4">Заварное</option>
+                                                <option value="5">Миндальное</option>
+                                                <option value="6">Классическое(дрожжевое)</option>
+                                                <option value="7">Классическое(бездрожжевое)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Filling</label>
+                                        <div class="input-group">
+                                            <select class="form-control product__filling-id-up">
+                                                <option disabled selected>Choose filling</option>
+                                                <option value="1">Шоколад(темный)</option>
+                                                <option value="2">Шоколад(молочный)</option>
+                                                <option value="3">Банан</option>
+                                                <option value="4">Клубника</option>
+                                                <option value="5">Вишня</option>
+                                                <option value="6">Киви</option>
+                                                <option value="7">Смородина</option>
+                                                <option value="8">Заварной крем</option>
+                                                <option value="9">Творог</option>
+                                                <option value="10">Ваниль</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Description</label>
-                                    <input class="form-control product-description-up" placeholder="Description">
-                                </div>
-                                <div class="form-group">
-                                    <label>Price</label>
-                                    <input class="form-control product-price-up" placeholder="Price">
-                                </div>
-                                <div class="form-group">
-                                    <label>WorkPrice</label>
-                                    <input class="form-control product-workPrice-up" placeholder="WorkPrice">
-                                </div>
-                                <div class="form-group">
-                                    <label>Weight</label>
-                                    <input class="form-control product-weight-up" placeholder="Weight">
-                                </div>
-                                <div class="form-group">
-                                    <label>Quantity</label>
-                                    <input class="form-control product-quantity-up" placeholder="Quantity">
-                                </div>
-                                <div class="form-group">
-                                    <label>Calories</label>
-                                    <input class="form-control product-calories-up" placeholder="Calories">
-                                </div>
-                                <div class="form-group">
-                                    <label>Category-Id</label>
-                                    <input disabled class="form-control  product__category-id-up" placeholder="Category-Id">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <textarea class="form-control te product-description-up"
+                                                  placeholder="Description"></textarea>
+                                    </div>
                                 </div>
                             </form>
                             <div class="row">

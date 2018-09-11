@@ -29,6 +29,10 @@ function getItemData() {
     product.quantity = parseInt($('.product-quantity-up').val());
     product.category = {};
     product.category.id = parseInt($('.product__category-id-up').val());
+    product.filling = {};
+    product.filling.id = parseInt($('.product__filling-id-up').val());
+    product.dough = {};
+    product.dough.id = parseInt($('.product__dough-id-up').val());
 
     return product;
 }
@@ -79,6 +83,8 @@ function openProductFormUpdate(productObject) {
     $('.product-weight-up').val(productObject.weight);
     $('.product-quantity-up').val(productObject.quantity);
     $('.product__category-id-up').val(productObject.category.id);
+    $('.product__filling-id-up').val(productObject.filling.id);
+    $('.product__dough-id-up').val(productObject.dough.id);
 
     $('.container-head').text("Category: " + productObject.category.name + " Product: " + productObject.name);
     $('.product-list').addClass('block__display-none');
@@ -117,6 +123,10 @@ function getFormCreate() {
     product.quantity = parseInt($('.product-quantity-cr').val());
     product.category = {};
     product.category.id = parseInt($('.product__category-id-cr').val());
+    product.filling = {};
+    product.filling.id = parseInt($('.product__filling-id-cr').val());
+    product.dough = {};
+    product.dough.id = parseInt($('.product__dough-id-cr').val());
 
     $('.product-add').addClass('block__display-none');
     $('.product-list').addClass('block__display-none');
