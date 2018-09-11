@@ -69,6 +69,7 @@ $(document).ready(function () {
     $(document).on('click', '.sprinkle-update', function (e) {
         e.preventDefault();
         updateItem($(this));
+        swal('Updated!');
     });
 });
 
@@ -112,6 +113,7 @@ $(document).ready(function () {
     $(document).on('click', '.sprinkle-save', function (e) {
         e.preventDefault();
         saveItem($(this));
+        swal('SAVED!');
     });
 });
 
@@ -140,7 +142,8 @@ $(document).ready(function () {
     $(document).on('click', '.sprinkle-delete', function (e) {
         e.preventDefault();
         var id = $(this).closest('tr').data('id');
-        deleteSprinkle(id, $(this));
+                deleteSprinkle(id, $(this));
+        swal('Deleted!');
     });
 });
 

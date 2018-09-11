@@ -47,10 +47,10 @@ public class MainController {
             return "welcome";
         }
         userService.create(userForm);
-        return "redirect:/welcome";
+        return "redirect:/jsDonut/welcome";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(Model model, String error, String logout) {
         if (error != null) {
             model.addAttribute("error", "Username or password is incorrect.");
@@ -58,7 +58,7 @@ public class MainController {
         if (logout != null) {
             model.addAttribute("message", "Logged out successfully.");
         }
-        return "redirect:/welcome";
+        return "redirect:/jsDonut/welcome";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -67,7 +67,7 @@ public class MainController {
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "redirect:/welcome";
+        return "redirect:/jsDonut/welcome";
     }
 
 }

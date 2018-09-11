@@ -67,6 +67,7 @@ $(document).ready(function () {
     $(document).on('click', '.filling-update', function (e) {
         e.preventDefault();
         updateItem($(this));
+        swal('Updated!');
     });
 });
 
@@ -106,7 +107,7 @@ $(document).ready(function () {
     $(document).on('click', '.filling-save', function (e) {
         e.preventDefault();
         saveItem($(this));
-
+        swal('SAVED!');
     });
 });
 
@@ -135,7 +136,8 @@ $(document).ready(function () {
     $(document).on('click', '.filling-delete', function (e) {
         e.preventDefault();
         var id = $(this).closest('tr').data('id');
-        deleteFilling(id, $(this));
+                deleteFilling(id, $(this));
+        swal('Deleted!');
     });
 });
 

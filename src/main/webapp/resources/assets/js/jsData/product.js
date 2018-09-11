@@ -42,6 +42,7 @@ $(document).ready(function () {
     $(document).on('click', '.product-update', function (e) {
         e.preventDefault();
         updateItem($(this));
+        swal('Updated!');
     });
 });
 
@@ -141,6 +142,7 @@ $(document).ready(function () {
     $(document).on('click', '.product-save', function (e) {
         e.preventDefault();
         saveItem($(this));
+        swal('SAVED!');
     });
 });
 
@@ -167,7 +169,8 @@ $(document).ready(function () {
     $(document).on('click', '.product-delete', function (e) {
         e.preventDefault();
         var id = $(this).closest('tr').data('id');
-        deleteProduct(id, $(this));
+                deleteProduct(id, $(this));
+        swal('Deleted!');
     });
 });
 

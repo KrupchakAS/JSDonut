@@ -70,6 +70,7 @@ $(document).ready(function () {
     $(document).on('click', '.dough-update', function (e) {
         e.preventDefault();
         updateItem($(this));
+        swal('Updated!');
     });
 });
 
@@ -109,6 +110,7 @@ $(document).ready(function () {
     $(document).on('click', '.dough-save', function (e) {
         e.preventDefault();
         saveItem($(this));
+        swal('SAVED!');
     });
 });
 
@@ -137,6 +139,7 @@ $(document).ready(function () {
         e.preventDefault();
         var id = $(this).closest('tr').data('id');
         deleteDough(id, $(this));
+        swal('Deleted!');
     });
 });
 // Scripts
