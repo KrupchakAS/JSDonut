@@ -39,5 +39,8 @@ public class UserValidator implements Validator {
             errors.rejectValue("email", "Invalid.userForm.email");
         }
 
+        if (userService.getByLogin(userDTO.getLogin()) == null) {
+            errors.rejectValue("username", "NotFound.userForm.login");
+        }
     }
 }

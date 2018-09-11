@@ -17,4 +17,6 @@ public interface FillingService {
     FillingDTO getByName(String name);
 
     List<FillingDTO> getAll();
+
+    FillingDTO getLastItem();
 }

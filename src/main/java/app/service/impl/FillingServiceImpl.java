@@ -83,4 +83,15 @@ public class FillingServiceImpl implements FillingService {
             return null;
         }
     }
+
+    @Override
+    public FillingDTO getLastItem() {
+        List<Filling> fillingList = fillingDao.getAll();
+        FillingDTO fillingDTO = modelMapper.map(fillingList.get(fillingList.size()-1),FillingDTO.class);
+        if(fillingDTO != null){
+            return fillingDTO;
+        }else {
+            return null;
+        }
+    }
 }

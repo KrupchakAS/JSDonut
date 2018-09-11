@@ -51,13 +51,8 @@ public class MainController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(Model model, String error, String logout) {
-        if (error != null) {
-            model.addAttribute("error", "Username or password is incorrect.");
-        }
-        if (logout != null) {
-            model.addAttribute("message", "Logged out successfully.");
-        }
+    public String login(@Valid UserDTO userDTO,BindingResult bindingResult) {
+        userValidator.validate(userDTO, bindingResult);
         return "redirect:/jsDonut/welcome";
     }
 

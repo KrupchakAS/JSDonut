@@ -103,10 +103,44 @@ function getFormCreate() {
     return filling;
 }
 
+function getLastRow(selector) {
+
+    var ajax = {};
+    ajax.type = "GET";
+    ajax.url = "/jsDonut/admin/filling/getLastFilling";
+    ajax.dataType = 'JSON';
+    ajax.selector = selector;
+    ajax.successFunction = addNewRow();
+
+    console.log(ajax);
+
+    sendAjax(ajax);
+}
+
+function addNewRow(fillingObject) {
+
+    $('.container-head').text("Filling list");
+    $('.filling-list').removeClass('block__display-none');
+    $('.filling-add').removeClass('block__display-none');
+    $('.filling-form-update').addClass('block__display-none');
+    $('.filling-form-create').addClass('block__display-none');
+
+
+    var t = $('#filling-table').DataTable();
+    t.row.add([
+        35,
+        2,
+        3,
+        4
+    ]).draw(false);
+
+}
+
 $(document).ready(function () {
     $(document).on('click', '.filling-save', function (e) {
         e.preventDefault();
         saveItem($(this));
+        addNewRow();
         swal('SAVED!');
     });
 });
@@ -136,7 +170,7 @@ $(document).ready(function () {
     $(document).on('click', '.filling-delete', function (e) {
         e.preventDefault();
         var id = $(this).closest('tr').data('id');
-                deleteFilling(id, $(this));
+        deleteFilling(id, $(this));
         swal('Deleted!');
     });
 });
@@ -158,8 +192,7 @@ $(function () {
         closeFilling();
     });
     $(document).on('click', '.filling-save', function () {
-        closeFilling();
-
+        getLastRow($(this));
     });
     $(document).on('click', '.filling-delete', function () {
         closeFilling();

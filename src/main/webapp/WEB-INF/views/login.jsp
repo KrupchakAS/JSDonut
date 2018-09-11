@@ -12,17 +12,21 @@
                 <div class="form-group">
                     <div>
                         <label>Enter your login:</label>
-                        <input required minlength="4" maxlength="16" name="username" type="text" class="form-control"
-                               placeholder="Login">
+                        <input minlength="4" maxlength="16" name="username" type="text" class="form-control"
+                               placeholder="Login"  path="username"></input>
+                        <div class="has-error">
+                            <form:errors path="username"></form:errors></div>
                     </div>
                     <div>
                         <label>Enter your password:</label>
-                        <input required minlength="4" maxlength="16" name="password" type="password"
-                               class="form-control" placeholder="Password">
+                        <input minlength="4" maxlength="16" name="password" type="password"
+                               class="form-control" path="password" placeholder="Password"></input>
+                        <div class="has-error">
+                            <form:errors path="password"></form:errors></div>
                     </div>
                 </div>
                 <button class="btn btn-md" type="submit">Sign In</button>
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <%--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
             </form:form>
         </div>
     </div>
