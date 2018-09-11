@@ -10,7 +10,6 @@
 <c:import url="/WEB-INF/views/header.jsp"/>
 <link href="${contextPath}/resources/assets/css/multiselect/bootstrap-select.css" rel="stylesheet">
 
-
 <body>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container-fluid">
@@ -299,11 +298,10 @@
                                         </div>
 
                                         <select class="selectpicker" multiple>
-                                            <option>Mustard</option>
-                                            <option>Ketchup</option>
-                                            <option>Relish</option>
+                                            <option value="1">Mustard</option>
+                                            <option value="2">Ketchup</option>
+                                            <option value="3">Relish</option>
                                         </select>
-
 
                                     </div>
                                 </div>
@@ -330,8 +328,6 @@
 <c:import url="/WEB-INF/views/footer.jsp"/>
 <script type="text/javascript" src="${contextPath}/resources/assets/js/jsData/product.js"></script>
 <script type="text/javascript" src="${contextPath}/resources/assets/js/multiselect/bootstrap-select.js"></script>
-
-
 <script type="text/javascript">
     $(document).ready(function () {
         $('.selectpicker').selectpicker();
