@@ -13,6 +13,8 @@
     <title>Welcome</title>
     <link href="${contextPath}/resources/css/bootstrap.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/app.css" rel="stylesheet">
+
+
 </head>
 <body>
 <div>
@@ -38,14 +40,18 @@
 
     </sec:authorize>
     <sec:authorize access="hasRole('ROLE_ADMIN')">
-        <a class="btn btn-primary" href="/admin/adminPanel" role="button">Admin Panel</a>
+        <a class="btn btn-primary" href="/jsDonut/admin/adminPanel" role="button">Admin Panel</a>
     </sec:authorize>
     <sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
-        <a class="btn btn-secondary" href="/logout" role="button">Sign Out</a>
+        <a class="btn btn-secondary" href="/jsDonut/logout" role="button">Sign Out</a>
     </sec:authorize>
 </div>
 </br>
 </br>
+
+
+<!-- Initialize the plugin: -->
+
 <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
     officia
     aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon
@@ -55,19 +61,9 @@
     vice lomo.
 </p>
 
-<script  src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script  src="${contextPath}/resources/assets/js/jquery-3.3.1.min.js"></script>
 <script  src="${contextPath}/resources/js/bootstrap.js"></script>
-<script >
-    $(document).ready(function () {
-        $.ajax({
-            url: "/welcome",
-            success: function () {
-                if ($('error').isValid) {
-                    $('#reg').click();
-                }
-            }
-        })
-    });
-</script>
+
+
 </body>
 </html>

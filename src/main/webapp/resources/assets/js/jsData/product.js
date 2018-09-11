@@ -205,6 +205,7 @@ function closeProduct() {
     $('.product-form-update').addClass('block__display-none');
     $('.product-form-create').addClass('block__display-none');
 }
+
 function intValueTest(value, text) {
     if (value === 0 || value === undefined) {
         swal('Ошибка', text, 'error');

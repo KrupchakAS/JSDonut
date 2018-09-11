@@ -13,7 +13,7 @@
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <title>Admin Panel DONUT</title>
 
-    <link href="${contextPath}/resources/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/assets/css/bootstrap.css" rel="stylesheet">
     <link href="${contextPath}/resources/assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/assets/css/datepicker3.css" rel="stylesheet">
     <link href="${contextPath}/resources/assets/css/styles.css" rel="stylesheet">

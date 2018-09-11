@@ -8,7 +8,9 @@
 
 <html>
 <c:import url="/WEB-INF/views/header.jsp"/>
+<link href="${contextPath}/resources/assets/css/multiselect/bootstrap-select.css" rel="stylesheet">
 
+<body>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -39,27 +41,15 @@
         </div>
     </form>
     <ul class="nav menu">
-        <li class="${productActive}"><a href="${contextPath}/jsDonut/admin/product"><em
-                class="fa fa-dashboard">&nbsp;</em> Products</a></li>
-        <li class="${sprinkleActive}"><a href="${contextPath}/jsDonut/admin/sprinkle"><em
-                class="fa fa-dashboard">&nbsp;</em> Sprinkles</a></li>
-        <li class="${doughActive}"><a href="${contextPath}/jsDonut/admin/dough"><em class="fa fa-dashboard">&nbsp;</em>
-            Doughs</a></li>
-        <li class="${fillingActive}"><a href="${contextPath}/jsDonut/admin/filling"><em
-                class="fa fa-dashboard">&nbsp;</em> Fillings</a></li>
+        <li class="${productActive}"><a href="${contextPath}/jsDonut/admin/product"> Products</a></li>
+        <li class="${sprinkleActive}"><a href="${contextPath}/jsDonut/admin/sprinkle"> Sprinkles</a></li>
+        <li class="${doughActive}"><a href="${contextPath}/jsDonut/admin/dough">Doughs</a></li>
+        <li class="${fillingActive}"><a href="${contextPath}/jsDonut/admin/filling"> Fillings</a></li>
 
     </ul>
 </div>
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-    <div class="row">
-        <ol class="breadcrumb">
-            <li><a href="#">
-                <em class="fa fa-home"></em>
-            </a></li>
-            <li class="active">Products</li>
-        </ol>
-    </div><!--/.row-->
 
     <div class="row">
         <div class="col-lg-12">
@@ -199,7 +189,6 @@
                                                 </select>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
@@ -301,6 +290,13 @@
                                             </select>
                                         </div>
                                     </div>
+
+                                    <select class="selectpicker" multiple>
+                                        <option>Mustard</option>
+                                        <option>Ketchup</option>
+                                        <option>Relish</option>
+                                    </select>
+
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -321,7 +317,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -331,5 +326,12 @@
 
 <c:import url="/WEB-INF/views/footer.jsp"/>
 <script type="text/javascript" src="${contextPath}/resources/assets/js/jsData/product.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/assets/js/multiselect/bootstrap-select.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.selectpicker').selectpicker();
+    });
+</script>
 </body>
 </html>

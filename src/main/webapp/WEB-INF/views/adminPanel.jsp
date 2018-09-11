@@ -37,22 +37,14 @@
         </div>
     </form>
     <ul class="nav menu">
-        <li><a href="${contextPath}/jsDonut/admin/product"><em class="fa fa-dashboard">&nbsp;</em> Products</a></li>
-        <li><a href="${contextPath}/jsDonut/admin/sprinkle"><em class="fa fa-dashboard">&nbsp;</em> Sprinkles</a></li>
-        <li><a href="${contextPath}/jsDonut/admin/dough"><em class="fa fa-calendar">&nbsp;</em> Doughs</a></li>
-        <li><a href="${contextPath}/jsDonut/admin/filling"><em class="fa fa-calendar">&nbsp;</em> Fillings</a></li>
+        <li><a href="${contextPath}/jsDonut/admin/product"> Products</a></li>
+        <li><a href="${contextPath}/jsDonut/admin/sprinkle"> Sprinkles</a></li>
+        <li><a href="${contextPath}/jsDonut/admin/dough"> Doughs</a></li>
+        <li><a href="${contextPath}/jsDonut/admin/filling"> Fillings</a></li>
     </ul>
 </div><!--/.sidebar-->
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-    <div class="row">
-        <ol class="breadcrumb">
-            <li><a href="#">
-                <em class="fa fa-home"></em>
-            </a></li>
-            <li class="active">Dashboard</li>
-        </ol>
-    </div><!--/.row-->
 
     <div class="row">
         <div class="col-lg-12">

@@ -40,26 +40,14 @@
         </div>
     </form>
     <ul class="nav menu">
-        <li class="${productActive}"><a href="${contextPath}/jsDonut/admin/product"><em
-                class="fa fa-dashboard">&nbsp;</em> Product</a></li>
-        <li class="${sprinkleActive}"><a href="${contextPath}/jsDonut/admin/sprinkle"><em
-                class="fa fa-dashboard">&nbsp;</em> Sprinkle</a></li>
-        <li class="${doughActive}"><a href="${contextPath}/jsDonut/admin/dough"><em class="fa fa-dashboard">&nbsp;</em>
-            Dough</a></li>
-        <li class="${fillingActive}"><a href="${contextPath}/jsDonut/admin/filling"><em
-                class="fa fa-dashboard">&nbsp;</em> Filling</a></li>
+        <li class="${productActive}"><a href="${contextPath}/jsDonut/admin/product">Product</a></li>
+        <li class="${sprinkleActive}"><a href="${contextPath}/jsDonut/admin/sprinkle">Sprinkle</a></li>
+        <li class="${doughActive}"><a href="${contextPath}/jsDonut/admin/dough">Dough</a></li>
+        <li class="${fillingActive}"><a href="${contextPath}/jsDonut/admin/filling">Filling</a></li>
     </ul>
 </div><!--/.sidebar-->
 
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-    <div class="row">
-        <ol class="breadcrumb">
-            <li><a href="#">
-                <em class="fa fa-home"></em>
-            </a></li>
-            <li class="active">Filling</li>
-        </ol>
-    </div><!--/.row-->
 
     <div class="row">
         <div class="col-lg-12">
