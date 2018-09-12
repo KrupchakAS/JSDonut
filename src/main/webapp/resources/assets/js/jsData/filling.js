@@ -30,6 +30,13 @@ function openFillingFormUpdate(fillingObject) {
     $('.filling-calories-up').val(fillingObject.calories);
     $('.filling-price-up').val(fillingObject.price);
 
+
+    // $("#fil-id").text($('.filling-id-up').val());
+    // $("#fil-name").text($('.filling-name-up').val());
+    // $("#fil-price").text(parseFloat($('.filling-price-up').val()));
+    // $("#fil-calories").text($('.filling-calories-up').val());
+
+
     $('.container-head').text("Filling: " + fillingObject.name);
     $('.filling-add').addClass('block__display-none');
     $('.filling-list').addClass('block__display-none');
@@ -58,6 +65,7 @@ function getItemData() {
     filling.name = $('.filling-name-up').val();
     filling.price = parseFloat($('.filling-price-up').val());
     filling.calories = parseInt($('.filling-calories-up').val());
+
 
     return filling;
 }
@@ -94,6 +102,9 @@ function getFormCreate() {
     filling.name = $('.filling-name-cr').val();
     filling.price = parseFloat($('.filling-price-cr').val());
     filling.calories = parseInt($('.filling-calories-cr').val());
+    $('.filling-name-cr').val('');
+    $('.filling-price-cr').val('');
+    $('.filling-calories-cr').val('');
 
     $('.filling-add').addClass('block__display-none');
     $('.filling-list').addClass('block__display-none');
@@ -110,7 +121,7 @@ function getLastRow(selector) {
     ajax.url = "/jsDonut/admin/filling/getLastFilling";
     ajax.dataType = 'JSON';
     ajax.selector = selector;
-    ajax.successFunction = addNewRow();
+    ajax.successFunction = addNewRow;
 
     console.log(ajax);
 
@@ -125,14 +136,17 @@ function addNewRow(fillingObject) {
     $('.filling-form-update').addClass('block__display-none');
     $('.filling-form-create').addClass('block__display-none');
 
+    console.log(fillingObject);
 
-    var t = $('#filling-table').DataTable();
-    t.row.add([
-        35,
-        2,
-        3,
-        4
-    ]).draw(false);
+    $('#filling-table').append(
+        '<tr>' +
+        '<th>' + fillingObject.id + '</th>' +
+        '<th>' + fillingObject.name + '</th>' +
+        '<th>' + fillingObject.calories + '</th>' +
+        '<th>' + fillingObject.price + '</th>' +
+        '<th>' + '<button type="button" class="btn btn-md btn-primary filling-edit">' + 'Edit' + '</button>' + '</th>' +
+        '<th>' + '<button type="button" class="btn btn-md btn-danger filling-delete">' + 'Delete' + '</button>' + '</th>' +
+        '</tr>');
 
 }
 
@@ -140,7 +154,7 @@ $(document).ready(function () {
     $(document).on('click', '.filling-save', function (e) {
         e.preventDefault();
         saveItem($(this));
-        addNewRow();
+        getLastRow($(this));
         swal('SAVED!');
     });
 });
@@ -192,7 +206,7 @@ $(function () {
         closeFilling();
     });
     $(document).on('click', '.filling-save', function () {
-        getLastRow($(this));
+        closeFilling();
     });
     $(document).on('click', '.filling-delete', function () {
         closeFilling();

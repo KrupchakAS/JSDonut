@@ -96,6 +96,10 @@ function getFormCreate() {
     dough.name = $('.dough-name-cr').val();
     dough.price = parseFloat($('.dough-price-cr').val());
     dough.calories = parseInt($('.dough-calories-cr').val());
+    $('.dough-name-cr').val('');
+    $('.dough-price-cr').val('');
+    $('.dough-calories-cr').val('');
+
 
     $('.dough-add').addClass('block__display-none');
     $('.dough-list').addClass('block__display-none');

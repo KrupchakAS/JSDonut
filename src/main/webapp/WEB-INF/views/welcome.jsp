@@ -37,7 +37,49 @@
     </sec:authorize>
 </div>
 
-
+<table id="example" class="display" style="width:100%">
+    <thead>
+    <tr>
+        <th>Column 1</th>
+        <th>Column 2</th>
+        <th>Column 3</th>
+        <th>Column 4</th>
+        <th>Column 5</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <th>Column 1</th>
+        <th>Column 2</th>
+        <th>Column 3</th>
+        <th>Column 4</th>
+        <th>Column 5</th>
+    </tr>
+    </tfoot>
+</table>
+<button id="addRow">Add</button>
 <c:import url="/WEB-INF/views/footer.jsp"/>
+
+<script>
+    $(document).ready(function() {
+        var t = $('#example').DataTable();
+        var counter = 1;
+
+        $('#addRow').on( 'click', function () {
+            t.row.add( [
+                counter +'.1',
+                counter +'.2',
+                counter +'.3',
+                counter +'.4',
+                counter +'.5'
+            ] ).draw( false );
+
+            counter++;
+        } );
+
+        // Automatically add a first row of data
+
+    } );
+</script>
 </body>
 </html>

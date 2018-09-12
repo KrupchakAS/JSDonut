@@ -102,7 +102,9 @@ function getFormCreate() {
     sprinkle.name = $('.sprinkle-name-cr').val();
     sprinkle.price = parseFloat($('.sprinkle-price-cr').val());
     sprinkle.calories = parseInt($('.sprinkle-calories-cr').val());
-
+    $('.sprinkle-name-cr').val('');
+    $('.sprinkle-price-cr').val('');
+    $('.sprinkle-calories-cr').val('');
 
 
     return sprinkle;

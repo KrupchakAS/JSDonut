@@ -14,8 +14,6 @@
     <title>Admin Panel DONUT</title>
 
     <link href="${contextPath}/resources/assets/css/bootstrap.css" rel="stylesheet">
-
-
     <link href="${contextPath}/resources/assets/css/styles.css" rel="stylesheet">
     <link href="${contextPath}/resources/assets/css/project.css" rel="stylesheet">
     <link href="${contextPath}/resources/assets/css/datatables.css" rel="stylesheet">

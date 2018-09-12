@@ -129,6 +129,14 @@ function getFormCreate() {
     product.dough = {};
     product.dough.id = parseInt($('.product__dough-id-cr').val());
 
+    $('.product-name-cr').val('');
+    $('.product-price-cr').val('');
+    $('.product-calories-cr').val('');
+    $('.product-workPrice-cr').val('');
+    $('.product-description-cr').val('');
+    $('.product-weight-cr').val('');
+    $('.product-quantity-cr').val('');
+
     $('.product-add').addClass('block__display-none');
     $('.product-list').addClass('block__display-none');
     $('.product-form-update').addClass('block__display-none');

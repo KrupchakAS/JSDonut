@@ -84,6 +84,7 @@ public class FillingServiceImpl implements FillingService {
         }
     }
 
+    @Transactional(readOnly = true)
     @Override
     public FillingDTO getLastItem() {
         List<Filling> fillingList = fillingDao.getAll();
