@@ -49,8 +49,7 @@
     </ul>
 </div>
 
-<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-
+<div id="main" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -114,39 +113,39 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input class="form-control product-name-cr" placeholder="Name">
+                                            <input required class="form-control product-name-cr" placeholder="Name">
                                         </div>
                                         <div class="form-group">
                                             <label>Price</label>
-                                            <input class="form-control product-price-cr" placeholder="Price">
+                                            <input required type="number" class="form-control product-price-cr" placeholder="Price">
                                         </div>
                                         <div class="form-group">
                                             <label>WorkPrice</label>
-                                            <input class="form-control product-workPrice-cr" placeholder="WorkPrice">
+                                            <input required type="number" class="form-control product-workPrice-cr" placeholder="WorkPrice">
                                         </div>
                                         <div class="form-group">
                                             <label>Weight</label>
-                                            <input class="form-control product-weight-cr" placeholder="Weight">
+                                            <input required type="number" class="form-control product-weight-cr" placeholder="Weight">
                                         </div>
                                         <div class="form-group">
                                             <label>Quantity</label>
-                                            <input class="form-control product-quantity-cr" placeholder="Quantity">
+                                            <input required type="number" class="form-control product-quantity-cr" placeholder="Quantity">
                                         </div>
                                         <div class="form-group">
                                             <label>Calories</label>
-                                            <input class="form-control product-calories-cr" placeholder="Calories">
+                                            <input required type="number" class="form-control product-calories-cr" placeholder="Calories">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea class="form-control product-description-cr"
+                                            <textarea required class="form-control product-description-cr"
                                                       placeholder="Description"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Category</label>
                                             <div class="input-group">
-                                                <select class=" form-control product__category-id-cr">
+                                                <select required class=" form-control product__category-id-cr">
                                                     <option disabled selected>Choose category</option>
                                                     <option value="1">Донатсы</option>
                                                     <option value="2">Макарони</option>
@@ -158,7 +157,7 @@
                                         <div class="form-group">
                                             <label>Dough</label>
                                             <div class="input-group">
-                                                <select class=" form-control product__dough-id-cr">
+                                                <select required class=" form-control product__dough-id-cr">
                                                     <option disabled selected>Choose dough</option>
                                                     <option value="1">Бисквитное</option>
                                                     <option value="2">Песочное</option>
@@ -173,7 +172,7 @@
                                         <div class="form-group">
                                             <label>Filling</label>
                                             <div class="input-group">
-                                                <select class="form-control product__filling-id-cr">
+                                                <select required class="form-control product__filling-id-cr">
                                                     <option disabled selected>Choose filling</option>
                                                     <option value="1">Шоколад(темный)</option>
                                                     <option value="2">Шоколад(молочный)</option>
@@ -215,40 +214,40 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Name</label>
-                                            <input class="form-control product-name-up" placeholder="Name">
+                                            <input required class="form-control product-name-up" placeholder="Name">
                                         </div>
                                         <div class="form-group">
                                             <label>Price</label>
-                                            <input class="form-control product-price-up" placeholder="Price">
+                                            <input required type="number" class="form-control product-price-up" placeholder="Price">
                                         </div>
                                         <div class="form-group">
                                             <label>WorkPrice</label>
-                                            <input class="form-control product-workPrice-up" placeholder="WorkPrice">
+                                            <input required type="number" class="form-control product-workPrice-up" placeholder="WorkPrice">
                                         </div>
                                         <div class="form-group">
                                             <label>Weight</label>
-                                            <input class="form-control product-weight-up" placeholder="Weight">
+                                            <input required type="number" class="form-control product-weight-up" placeholder="Weight">
                                         </div>
                                         <div class="form-group">
                                             <label>Quantity</label>
-                                            <input class="form-control product-quantity-up" placeholder="Quantity">
+                                            <input required type="number" class="form-control product-quantity-up" placeholder="Quantity">
                                         </div>
                                         <div class="form-group">
                                             <label>Calories</label>
-                                            <input class="form-control product-calories-up" placeholder="Calories">
+                                            <input required type="number" class="form-control product-calories-up" placeholder="Calories">
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea class="form-control product-description-up"
+                                            <textarea required class="form-control product-description-up"
                                                       placeholder="Description"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label>Category</label>
                                             <div class="input-group">
-                                                <select class="form-control product__category-id-up">
+                                                <select required class="form-control product__category-id-up">
                                                     <option disabled selected>Choose category</option>
                                                     <option value="1">Донатсы</option>
                                                     <option value="2">Макарони</option>
@@ -260,7 +259,7 @@
                                         <div class="form-group">
                                             <label>Dough</label>
                                             <div class="input-group">
-                                                <select class=" form-control product__dough-id-up">
+                                                <select required class=" form-control product__dough-id-up">
                                                     <option disabled selected>Choose dough</option>
                                                     <option value="1">Бисквитное</option>
                                                     <option value="2">Песочное</option>
@@ -275,7 +274,7 @@
                                         <div class="form-group">
                                             <label>Filling</label>
                                             <div class="input-group">
-                                                <select class="form-control product__filling-id-up">
+                                                <select required class="form-control product__filling-id-up">
                                                     <option disabled selected>Choose filling</option>
                                                     <option value="1">Шоколад(темный)</option>
                                                     <option value="2">Шоколад(молочный)</option>

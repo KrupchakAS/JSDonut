@@ -47,10 +47,7 @@
     </ul>
 </div><!--/.sidebar-->
 
-<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-
-
-
+<div id="main" class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -109,15 +106,15 @@
                             <form method="post" role="form">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="form-control sprinkle-name-cr" placeholder="Name">
+                                    <input required class="form-control sprinkle-name-cr" placeholder="Name">
                                 </div>
                                 <div class="form-group">
                                     <label>Calories</label>
-                                    <input type="number" class="form-control sprinkle-calories-cr" placeholder="Calories">
+                                    <input required type="number" class="form-control sprinkle-calories-cr" placeholder="Calories">
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input type="number" class="form-control sprinkle-price-cr" placeholder="Price">
+                                    <input required type="number" class="form-control sprinkle-price-cr" placeholder="Price">
                                 </div>
                             </form>
                             <div class="row">
