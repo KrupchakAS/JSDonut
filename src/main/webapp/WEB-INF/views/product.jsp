@@ -289,13 +289,20 @@
                                                 </select>
                                             </div>
                                         </div>
-
-                                        <select class="selectpicker" multiple>
-                                            <option value="1">Mustard</option>
-                                            <option value="2">Ketchup</option>
-                                            <option value="3">Relish</option>
+                                        <div class="input-group">
+                                        <select required class="selectpicker" multiple>
+                                            <option disabled selected>Choose sprinkles</option>
+                                            <option value="1">Шарики разноцветные(шоколад)</option>
+                                            <option value="2">Вермишель разноцветная(глазурь)</option>
+                                            <option value="3">Конфетти разноцветная(глазурь)</option>
+                                            <option value="4">Кокосовая стружка</option>
+                                            <option value="5">Мак</option>
+                                            <option value="6">Вафельная крошка</option>
+                                            <option value="7">Шоколадная крошка</option>
+                                            <option value="8">Ваниль</option>
+                                            <option value="9">Ореховые слайсы</option>
                                         </select>
-
+                                        </div>
                                     </div>
                                 </div>
                             </form>
