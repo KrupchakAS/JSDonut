@@ -114,21 +114,20 @@ function getFormCreate() {
     return filling;
 }
 
-function getLastRow(selector) {
+function getLastFilling() {
 
     var ajax = {};
     ajax.type = "GET";
     ajax.url = "/jsDonut/admin/filling/getLastFilling";
     ajax.dataType = 'JSON';
-    ajax.selector = selector;
-    ajax.successFunction = addNewRow;
+    ajax.successFunction = addNewFilling;
 
     console.log(ajax);
 
     sendAjax(ajax);
 }
 
-function addNewRow(fillingObject) {
+function addNewFilling(fillingObject) {
 
     $('.container-head').text("Filling list");
     $('.filling-list').removeClass('block__display-none');
@@ -138,13 +137,13 @@ function addNewRow(fillingObject) {
 
     console.log(fillingObject);
 
-    $('#filling-table').append(
-        '<tr>' +
+    $('#filling-table').find('tbody').append(
+        '<tr  class="filling-table__row" data-id='+fillingObject.id+'>' +
         '<th>' + fillingObject.id + '</th>' +
         '<th>' + fillingObject.name + '</th>' +
         '<th>' + fillingObject.calories + '</th>' +
         '<th>' + fillingObject.price + '</th>' +
-        '<th>' + '<button type="button" class="btn btn-md btn-primary filling-edit">' + 'Edit' + '</button>' + '</th>' +
+        '<th>' + '<button type="button" class="btn btn-md btn-primary filling-update">' + 'Edit' + '</button>' + '</th>' +
         '<th>' + '<button type="button" class="btn btn-md btn-danger filling-delete">' + 'Delete' + '</button>' + '</th>' +
         '</tr>');
 
@@ -154,8 +153,10 @@ $(document).ready(function () {
     $(document).on('click', '.filling-save', function (e) {
         e.preventDefault();
         saveItem($(this));
-        getLastRow($(this));
         swal('SAVED!');
+        setTimeout(function () {
+            getLastFilling();
+        }, 200);
     });
 });
 

@@ -17,4 +17,6 @@ public interface DoughService {
     DoughDTO getByName(String name);
 
     List<DoughDTO> getAll();
+
+    DoughDTO getLastDough();
 }

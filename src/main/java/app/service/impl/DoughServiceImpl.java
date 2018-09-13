@@ -84,4 +84,16 @@ public class DoughServiceImpl implements DoughService {
             return null;
         }
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public DoughDTO getLastDough() {
+        List<Dough> doughList = doughDao.getAll();
+        DoughDTO doughDTO = modelMapper.map(doughList.get(doughList.size()-1),DoughDTO.class);
+        if(doughDTO != null){
+            return doughDTO;
+        }else {
+            return null;
+        }
+    }
 }

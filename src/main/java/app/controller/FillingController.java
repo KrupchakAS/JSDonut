@@ -2,7 +2,6 @@ package app.controller;
 
 import app.dto.AjaxDTO;
 import app.dto.FillingDTO;
-import app.dto.SprinkleDTO;
 import app.service.api.FillingService;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +71,7 @@ public class FillingController {
     @ResponseBody
     public AjaxDTO getLastFilling() {
         AjaxDTO result = new AjaxDTO();
-        result.setData(fillingService.getLastItem());
+        result.setData(fillingService.getLastFilling());
         return result;
     }
 }

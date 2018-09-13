@@ -60,7 +60,7 @@
                     </button>
                     <div class="row">
                         <div class="col-md-12 dough-list">
-                            <table class="table table-striped dough-table">
+                            <table id="dough-table" class="table table-striped dough-table">
                                 <thead>
                                 <tr>
                                     <th>#</th>
@@ -80,7 +80,8 @@
                                                 <th>${dough.calories}</th>
                                                 <th>${dough.price}</th>
                                                 <th>
-                                                    <button type="button" class="btn btn-md btn-primary dough-edit">Edit
+                                                    <button type="button" class="btn btn-md btn-primary dough-edit">
+                                                        Edit
                                                     </button>
                                                 </th>
                                                 <th>

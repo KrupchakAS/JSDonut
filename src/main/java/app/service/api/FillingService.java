@@ -18,5 +18,5 @@ public interface FillingService {
 
     List<FillingDTO> getAll();
 
-    FillingDTO getLastItem();
+    FillingDTO getLastFilling();
 }

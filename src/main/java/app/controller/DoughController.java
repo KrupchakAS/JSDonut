@@ -68,4 +68,12 @@ public class DoughController {
         return result;
     }
 
+    @RequestMapping(value = "/dough/getLastDough", method = RequestMethod.GET)
+    @ResponseBody
+    public AjaxDTO getLastDough() {
+        AjaxDTO result = new AjaxDTO();
+        result.setData(doughService.getLastDough());
+        return result;
+    }
+
 }

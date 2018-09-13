@@ -109,12 +109,49 @@ function getFormCreate() {
     return dough;
 }
 
+function getLastDough() {
+
+    var ajax = {};
+    ajax.type = "GET";
+    ajax.url = "/jsDonut/admin/dough/getLastDough";
+    ajax.dataType = 'JSON';
+    ajax.successFunction = addNewDough;
+
+    console.log(ajax);
+
+    sendAjax(ajax);
+}
+
+function addNewDough(doughObject) {
+
+    $('.container-head').text("Dough list");
+    $('.dough-list').removeClass('block__display-none');
+    $('.dough-add').removeClass('block__display-none');
+    $('.dough-form-update').addClass('block__display-none');
+    $('.dough-form-create').addClass('block__display-none');
+
+    console.log(doughObject);
+
+    $('#dough-table').find('tbody').append(
+        '<tr  class="dough-table__row" data-id='+doughObject.id+'>' +
+        '<th>' + doughObject.id + '</th>' +
+        '<th>' + doughObject.name + '</th>' +
+        '<th>' + doughObject.calories + '</th>' +
+        '<th>' + doughObject.price + '</th>' +
+        '<th>' + '<button type="button" class="btn btn-md btn-primary dough-update">' + 'Edit' + '</button>' + '</th>' +
+        '<th>' + '<button type="button" class="btn btn-md btn-danger dough-delete">' + 'Delete' + '</button>' + '</th>' +
+        '</tr>');
+
+}
 
 $(document).ready(function () {
     $(document).on('click', '.dough-save', function (e) {
         e.preventDefault();
         saveItem($(this));
         swal('SAVED!');
+        setTimeout(function () {
+            getLastDough();
+        }, 200);
     });
 });
 
