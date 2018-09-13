@@ -63,7 +63,7 @@
                     </button>
                     <div class="row">
                         <div class="col-md-12 sprinkle-list">
-                            <table class="table table-striped sprinkle-table">
+                            <table id="sprinkle-table" class="table table-striped sprinkle-table">
                                 <thead>
                                 <tr>
                                     <th>#</th>

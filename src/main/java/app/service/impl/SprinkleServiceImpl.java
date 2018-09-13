@@ -84,4 +84,16 @@ public class SprinkleServiceImpl implements SprinkleService {
             return new ArrayList<>();
         }
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public SprinkleDTO getLastSprinkle() {
+        List<Sprinkle> sprinkleList = sprinkleDao.getAll();
+        SprinkleDTO sprinkleDTO = modelMapper.map(sprinkleList.get(sprinkleList.size()-1),SprinkleDTO.class);
+        if(sprinkleDTO != null){
+            return sprinkleDTO;
+        }else {
+            return null;
+        }
+    }
 }

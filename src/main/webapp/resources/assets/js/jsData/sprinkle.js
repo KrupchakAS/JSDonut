@@ -111,11 +111,51 @@ function getFormCreate() {
 }
 
 
+function getLastSprinkle() {
+
+    var ajax = {};
+    ajax.type = "GET";
+    ajax.url = "/jsDonut/admin/sprinkle/getLastSprinkle";
+    ajax.dataType = 'JSON';
+    ajax.successFunction = addNewSprinkle;
+
+    console.log(ajax);
+
+    sendAjax(ajax);
+}
+
+function addNewSprinkle(sprinkleObject) {
+
+    $('.container-head').text("Sprinkle list");
+    $('.sprinkle-list').removeClass('block__display-none');
+    $('.sprinkle-add').removeClass('block__display-none');
+    $('.sprinkle-form-update').addClass('block__display-none');
+    $('.sprinkle-form-create').addClass('block__display-none');
+
+    console.log(sprinkleObject);
+
+    $('#sprinkle-table').find('tbody').append(
+        '<tr  class="sprinkle-table__row" data-id='+sprinkleObject.id+'>' +
+        '<th>' + sprinkleObject.id + '</th>' +
+        '<th>' + sprinkleObject.name + '</th>' +
+        '<th>' + sprinkleObject.calories + '</th>' +
+        '<th>' + sprinkleObject.price + '</th>' +
+        '<th>' + '<button type="button" class="btn btn-md btn-primary sprinkle-update">' + 'Edit' + '</button>' + '</th>' +
+        '<th>' + '<button type="button" class="btn btn-md btn-danger sprinkle-delete">' + 'Delete' + '</button>' + '</th>' +
+        '</tr>');
+
+}
+
+
+
 $(document).ready(function () {
     $(document).on('click', '.sprinkle-save', function (e) {
         e.preventDefault();
         saveItem($(this));
         swal('SAVED!');
+        setTimeout(function () {
+            getLastSprinkle();
+        }, 200);
     });
 });
 
