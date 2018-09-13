@@ -8,7 +8,7 @@
 
 <html>
 <c:import url="/WEB-INF/views/header.jsp"/>
-<link href="${contextPath}/resources/assets/css/multiselect/bootstrap-select.css" rel="stylesheet">
+<%--<link href="${contextPath}/resources/assets/css/multiselect/bootstrap-select.css" rel="stylesheet">--%>
 
 <body>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -41,6 +41,7 @@
         </div>
     </form>
     <ul class="nav menu">
+        <li class="${categoryActive}"><a href="${contextPath}/jsDonut/admin/category"> Categories</a></li>
         <li class="${productActive}"><a href="${contextPath}/jsDonut/admin/product"> Products</a></li>
         <li class="${sprinkleActive}"><a href="${contextPath}/jsDonut/admin/sprinkle"> Sprinkles</a></li>
         <li class="${doughActive}"><a href="${contextPath}/jsDonut/admin/dough">Doughs</a></li>
@@ -150,27 +151,36 @@
                                         <div class="form-group">
                                             <label>Category</label>
                                             <div class="input-group">
-                                                <select required class=" form-control product__category-id-cr">
+                                                <select required class="form-control product__category-id-cr">
                                                     <option disabled selected>Choose category</option>
-                                                    <option value="1">Донатсы</option>
-                                                    <option value="2">Макарони</option>
-                                                    <option value="3">Пироженные</option>
-                                                    <option value="4">Торты</option>
+                                                    <c:choose>
+                                                        <c:when test="${categoryList.size() > 0}">
+                                                            <с:forEach var="category" items="${categoryList}">
+                                                                    <option data-id="${category.id}" value="${category.id}">${category.name}</option>
+                                                            </с:forEach>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <option disabled selected>Category not found</option>
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label>Dough</label>
                                             <div class="input-group">
-                                                <select required class=" form-control product__dough-id-cr">
+                                                <select required class="form-control product__dough-id-cr">
                                                     <option disabled selected>Choose dough</option>
-                                                    <option value="1">Бисквитное</option>
-                                                    <option value="2">Песочное</option>
-                                                    <option value="3">Слоеное</option>
-                                                    <option value="4">Заварное</option>
-                                                    <option value="5">Миндальное</option>
-                                                    <option value="6">Классическое(дрожжевое)</option>
-                                                    <option value="7">Классическое(бездрожжевое)</option>
+                                                    <c:choose>
+                                                        <c:when test="${doughList.size() > 0}">
+                                                            <с:forEach var="dough" items="${doughList}">
+                                                                <option data-id="${dough.id}" value="${dough.id}">${dough.name}</option>
+                                                            </с:forEach>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <option disabled selected>Dough not found</option>
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                 </select>
                                             </div>
                                         </div>
@@ -179,16 +189,16 @@
                                             <div class="input-group">
                                                 <select required class="form-control product__filling-id-cr">
                                                     <option disabled selected>Choose filling</option>
-                                                    <option value="1">Шоколад(темный)</option>
-                                                    <option value="2">Шоколад(молочный)</option>
-                                                    <option value="3">Банан</option>
-                                                    <option value="4">Клубника</option>
-                                                    <option value="5">Вишня</option>
-                                                    <option value="6">Киви</option>
-                                                    <option value="7">Смородина</option>
-                                                    <option value="8">Заварной крем</option>
-                                                    <option value="9">Творог</option>
-                                                    <option value="10">Ваниль</option>
+                                                    <c:choose>
+                                                        <c:when test="${fillingList.size() > 0}">
+                                                            <с:forEach var="filling" items="${fillingList}">
+                                                                <option data-id="${filling.id}" value="${filling.id}">${filling.name}</option>
+                                                            </с:forEach>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <option disabled selected>Filling not found</option>
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                 </select>
                                             </div>
                                         </div>
@@ -197,15 +207,16 @@
                                             <div class="input-group">
                                                 <select required class="selectpicker" multiple>
                                                     <option disabled selected>Choose sprinkle</option>
-                                                    <option value="1">Шарики разноцветные(шоколад)</option>
-                                                    <option value="2">Вермишель разноцветная(глазурь)</option>
-                                                    <option value="3">Конфетти разноцветная(глазурь)</option>
-                                                    <option value="4">Кокосовая стружка</option>
-                                                    <option value="5">Мак</option>
-                                                    <option value="6">Вафельная крошка</option>
-                                                    <option value="7">Шоколадная крошка</option>
-                                                    <option value="8">Ваниль</option>
-                                                    <option value="9">Ореховые слайсы</option>
+                                                    <c:choose>
+                                                        <c:when test="${sprinkleList.size() > 0}">
+                                                            <с:forEach var="sprinkle" items="${sprinkleList}">
+                                                                <option data-id="${sprinkle.id}" value="${sprinkle.id}">${sprinkle.name}</option>
+                                                            </с:forEach>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <option disabled selected>Sprinkle not found</option>
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                 </select>
                                             </div>
                                         </div>
@@ -276,10 +287,16 @@
                                             <div class="input-group">
                                                 <select required class="form-control product__category-id-up">
                                                     <option disabled selected>Choose category</option>
-                                                    <option value="1">Донатсы</option>
-                                                    <option value="2">Макарони</option>
-                                                    <option value="3">Пироженные</option>
-                                                    <option value="4">Торты</option>
+                                                    <c:choose>
+                                                        <c:when test="${categoryList.size() > 0}">
+                                                            <с:forEach var="category" items="${categoryList}">
+                                                                <option data-id="${category.id}" value="${category.id}">${category.name}</option>
+                                                            </с:forEach>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <option disabled selected>Category not found</option>
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                 </select>
                                             </div>
                                         </div>
@@ -288,13 +305,16 @@
                                             <div class="input-group">
                                                 <select required class=" form-control product__dough-id-up">
                                                     <option disabled selected>Choose dough</option>
-                                                    <option value="1">Бисквитное</option>
-                                                    <option value="2">Песочное</option>
-                                                    <option value="3">Слоеное</option>
-                                                    <option value="4">Заварное</option>
-                                                    <option value="5">Миндальное</option>
-                                                    <option value="6">Классическое(дрожжевое)</option>
-                                                    <option value="7">Классическое(бездрожжевое)</option>
+                                                    <c:choose>
+                                                        <c:when test="${doughList.size() > 0}">
+                                                            <с:forEach var="dough" items="${doughList}">
+                                                                <option data-id="${dough.id}" value="${dough.id}">${dough.name}</option>
+                                                            </с:forEach>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <option disabled selected>Dough not found</option>
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                 </select>
                                             </div>
                                         </div>
@@ -303,16 +323,16 @@
                                             <div class="input-group">
                                                 <select required class="form-control product__filling-id-up">
                                                     <option disabled selected>Choose filling</option>
-                                                    <option value="1">Шоколад(темный)</option>
-                                                    <option value="2">Шоколад(молочный)</option>
-                                                    <option value="3">Банан</option>
-                                                    <option value="4">Клубника</option>
-                                                    <option value="5">Вишня</option>
-                                                    <option value="6">Киви</option>
-                                                    <option value="7">Смородина</option>
-                                                    <option value="8">Заварной крем</option>
-                                                    <option value="9">Творог</option>
-                                                    <option value="10">Ваниль</option>
+                                                    <c:choose>
+                                                        <c:when test="${fillingList.size() > 0}">
+                                                            <с:forEach var="filling" items="${fillingList}">
+                                                                <option data-id="${filling.id}" value="${filling.id}">${filling.name}</option>
+                                                            </с:forEach>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <option disabled selected>Filling not found</option>
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                 </select>
                                             </div>
                                         </div>
@@ -321,15 +341,16 @@
                                             <div class="input-group">
                                             <select required class="selectpicker" multiple>
                                                 <option disabled selected>Choose sprinkle</option>
-                                                <option value="1">Шарики разноцветные(шоколад)</option>
-                                                <option value="2">Вермишель разноцветная(глазурь)</option>
-                                                <option value="3">Конфетти разноцветная(глазурь)</option>
-                                                <option value="4">Кокосовая стружка</option>
-                                                <option value="5">Мак</option>
-                                                <option value="6">Вафельная крошка</option>
-                                                <option value="7">Шоколадная крошка</option>
-                                                <option value="8">Ваниль</option>
-                                                <option value="9">Ореховые слайсы</option>
+                                                <c:choose>
+                                                    <c:when test="${sprinkleList.size() > 0}">
+                                                        <с:forEach var="sprinkle" items="${sprinkleList}">
+                                                            <option data-id="${sprinkle.id}" value="${sprinkle.id}">${sprinkle.name}</option>
+                                                        </с:forEach>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <option disabled selected>Sprinkle not found</option>
+                                                    </c:otherwise>
+                                                </c:choose>
                                             </select>
                                             </div>
                                         </div>

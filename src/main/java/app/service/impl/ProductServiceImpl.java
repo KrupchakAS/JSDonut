@@ -28,10 +28,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public void create(ProductDTO productDTO) {
-        if (productDTO != null)
-            productDao.create(modelMapper.map(productDTO, Product.class));
-        logger.debug(String.format("Successfully saved product"));
+    public ProductDTO create(ProductDTO productDTO) {
+        if (productDTO != null) {
+            Product product = modelMapper.map(productDTO, Product.class);
+            productDao.create(product);
+            productDTO.setId(product.getId());
+            logger.debug(String.format("Successfully saved product"));
+        }
+        return productDTO;
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface FillingService {
 
-    void create(FillingDTO fillingDTO);
+    FillingDTO create(FillingDTO fillingDTO);
 
     void update(FillingDTO fillingDTO);
 

@@ -21,10 +21,8 @@ public class SprinkleController {
 
     @RequestMapping(value = "/sprinkle", method = RequestMethod.GET)
     public String openPage(ModelMap modelMap) {
-        modelMap.addAttribute("sprinkleActive", "active");
-
-        List<SprinkleDTO> sprinkleDTOList = sprinkleService.getAll();
-        modelMap.addAttribute("sprinkleList", sprinkleDTOList);
+        modelMap.addAttribute("sprinkleActive", "active");;
+        modelMap.addAttribute("sprinkleList", sprinkleService.getAll());
         return "sprinkle";
     }
 
@@ -42,6 +40,7 @@ public class SprinkleController {
         AjaxDTO result = new AjaxDTO();
         if(sprinkleDTO != null){
             sprinkleService.create(sprinkleDTO);
+            result.setData(sprinkleDTO);
         }
         return result;
     }

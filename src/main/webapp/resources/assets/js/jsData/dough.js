@@ -1,6 +1,4 @@
 
-
-
 // update --------------------
 
 function getUpdateForm(doughId, selector) {
@@ -83,52 +81,38 @@ function saveItem(button) {
     pst.type = "POST";
     pst.url = '/jsDonut/admin/dough/createDough';
     pst.data = {};
-    pst.data = getFormCreate();
+    pst.data = getDataFromForm();
+    pst.successFunction = addNewDough;
 
     console.log(pst.data);
 
     sendAjax(pst);
 }
 
-function getFormCreate() {
-    var dough = {};
 
-    dough.name = $('.dough-name-cr').val();
-    dough.price = parseFloat($('.dough-price-cr').val());
-    dough.calories = parseInt($('.dough-calories-cr').val());
+function getFormCreate() {
+
     $('.dough-name-cr').val('');
     $('.dough-price-cr').val('');
     $('.dough-calories-cr').val('');
-
 
     $('.dough-add').addClass('block__display-none');
     $('.dough-list').addClass('block__display-none');
     $('.dough-form-update').addClass('block__display-none');
     $('.dough-form-create').removeClass('block__display-none');
+}
 
+function getDataFromForm() {
+    var dough = {};
+
+    dough.name = $('.dough-name-cr').val();
+    dough.price = parseFloat($('.dough-price-cr').val());
+    dough.calories = parseInt($('.dough-calories-cr').val());
     return dough;
 }
 
-function getLastDough() {
-
-    var ajax = {};
-    ajax.type = "GET";
-    ajax.url = "/jsDonut/admin/dough/getLastDough";
-    ajax.dataType = 'JSON';
-    ajax.successFunction = addNewDough;
-
-    console.log(ajax);
-
-    sendAjax(ajax);
-}
-
 function addNewDough(doughObject) {
-
-    $('.container-head').text("Dough list");
-    $('.dough-list').removeClass('block__display-none');
-    $('.dough-add').removeClass('block__display-none');
-    $('.dough-form-update').addClass('block__display-none');
-    $('.dough-form-create').addClass('block__display-none');
+    swal('SAVED!');
 
     console.log(doughObject);
 
@@ -142,16 +126,13 @@ function addNewDough(doughObject) {
         '<th>' + '<button type="button" class="btn btn-md btn-danger dough-delete">' + 'Delete' + '</button>' + '</th>' +
         '</tr>');
 
+    closeDough();
 }
 
 $(document).ready(function () {
     $(document).on('click', '.dough-save', function (e) {
         e.preventDefault();
         saveItem($(this));
-        swal('SAVED!');
-        setTimeout(function () {
-            getLastDough();
-        }, 200);
     });
 });
 
@@ -197,9 +178,6 @@ $(function() {
         closeDough();
     });
     $(document).on('click', '.dough-update', function() {
-        closeDough();
-    });
-    $(document).on('click', '.dough-save', function () {
         closeDough();
     });
     $(document).on('click', '.dough-delete', function () {

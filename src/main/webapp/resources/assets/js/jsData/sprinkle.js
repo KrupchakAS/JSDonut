@@ -25,18 +25,16 @@ function getSprinkleById(id, selector) {
 
 function openSprinkleFormUpdate(sprinkleObject) {
 
-    $('.container-head').text("Sprinkle: " + sprinkleObject.name);
-    $('.sprinkle-add').addClass('block__display-none');
-    $('.sprinkle-list').addClass('block__display-none');
-    $('.sprinkle-form-create').addClass('block__display-none');
-    $('.sprinkle-form-update').removeClass('block__display-none');
-
     $('.sprinkle-id-up').val(sprinkleObject.id);
     $('.sprinkle-name-up').val(sprinkleObject.name);
     $('.sprinkle-calories-up').val(sprinkleObject.calories);
     $('.sprinkle-price-up').val(sprinkleObject.price);
 
-
+    $('.container-head').text("Sprinkle: " + sprinkleObject.name);
+    $('.sprinkle-add').addClass('block__display-none');
+    $('.sprinkle-list').addClass('block__display-none');
+    $('.sprinkle-form-create').addClass('block__display-none');
+    $('.sprinkle-form-update').removeClass('block__display-none');
 }
 
 function updateItem(button) {
@@ -54,6 +52,7 @@ function updateItem(button) {
 }
 
 function getItemData() {
+
     var sprinkle = {};
 
     sprinkle.id = parseInt($('.sprinkle-id-up').val());
@@ -75,7 +74,6 @@ $(document).ready(function () {
 
 // save -----------------------------
 
-
 function saveItem(button) {
 
     var pst = {};
@@ -83,59 +81,41 @@ function saveItem(button) {
     pst.type = "POST";
     pst.url = '/jsDonut/admin/sprinkle/createSprinkle';
     pst.data = {};
-    pst.data = getFormCreate();
+    pst.data = getDataFromForm();
+    pst.successFunction = addNewSprinkle;
 
     console.log(pst.data);
 
     sendAjax(pst);
 }
 
-function getFormCreate() {
-
-    $('.sprinkle-add').addClass('block__display-none');
-    $('.sprinkle-list').addClass('block__display-none');
-    $('.sprinkle-form-update').addClass('block__display-none');
-    $('.sprinkle-form-create').removeClass('block__display-none');
-
+function getDataFromForm() {
     var sprinkle = {};
 
     sprinkle.name = $('.sprinkle-name-cr').val();
     sprinkle.price = parseFloat($('.sprinkle-price-cr').val());
     sprinkle.calories = parseInt($('.sprinkle-calories-cr').val());
+    return sprinkle;
+}
+
+function getFormCreate() {
+
     $('.sprinkle-name-cr').val('');
     $('.sprinkle-price-cr').val('');
     $('.sprinkle-calories-cr').val('');
 
-
-    return sprinkle;
-}
-
-
-function getLastSprinkle() {
-
-    var ajax = {};
-    ajax.type = "GET";
-    ajax.url = "/jsDonut/admin/sprinkle/getLastSprinkle";
-    ajax.dataType = 'JSON';
-    ajax.successFunction = addNewSprinkle;
-
-    console.log(ajax);
-
-    sendAjax(ajax);
+    $('.sprinkle-add').addClass('block__display-none');
+    $('.sprinkle-list').addClass('block__display-none');
+    $('.sprinkle-form-update').addClass('block__display-none');
+    $('.sprinkle-form-create').removeClass('block__display-none');
 }
 
 function addNewSprinkle(sprinkleObject) {
-
-    $('.container-head').text("Sprinkle list");
-    $('.sprinkle-list').removeClass('block__display-none');
-    $('.sprinkle-add').removeClass('block__display-none');
-    $('.sprinkle-form-update').addClass('block__display-none');
-    $('.sprinkle-form-create').addClass('block__display-none');
-
+    swal('SAVED!');
     console.log(sprinkleObject);
 
     $('#sprinkle-table').find('tbody').append(
-        '<tr  class="sprinkle-table__row" data-id='+sprinkleObject.id+'>' +
+        '<tr  class="sprinkle-table__row" data-id=' + sprinkleObject.id + '>' +
         '<th>' + sprinkleObject.id + '</th>' +
         '<th>' + sprinkleObject.name + '</th>' +
         '<th>' + sprinkleObject.calories + '</th>' +
@@ -144,18 +124,14 @@ function addNewSprinkle(sprinkleObject) {
         '<th>' + '<button type="button" class="btn btn-md btn-danger sprinkle-delete">' + 'Delete' + '</button>' + '</th>' +
         '</tr>');
 
+    closeSprinkle();
 }
-
 
 
 $(document).ready(function () {
     $(document).on('click', '.sprinkle-save', function (e) {
         e.preventDefault();
         saveItem($(this));
-        swal('SAVED!');
-        setTimeout(function () {
-            getLastSprinkle();
-        }, 200);
     });
 });
 
@@ -184,7 +160,7 @@ $(document).ready(function () {
     $(document).on('click', '.sprinkle-delete', function (e) {
         e.preventDefault();
         var id = $(this).closest('tr').data('id');
-                deleteSprinkle(id, $(this));
+        deleteSprinkle(id, $(this));
         swal('Deleted!');
     });
 });
@@ -192,24 +168,22 @@ $(document).ready(function () {
 
 // Scripts
 
-$(function() {
+$(function () {
     $(document).on('click', '.sprinkle-add', function () {
         getFormCreate();
     });
-    $(document).on('click', '.sprinkle-edit', function() {
+    $(document).on('click', '.sprinkle-edit', function () {
         var id = $(this).closest('tr').data('id');
         getUpdateForm(id, $(this));
     });
-    $(document).on('click', '.sprinkle-close', function() {
+    $(document).on('click', '.sprinkle-close', function () {
         closeSprinkle();
     });
-    $(document).on('click', '.sprinkle-update', function() {
+    $(document).on('click', '.sprinkle-update', function () {
         closeSprinkle();
     });
-    $(document).on('click', '.sprinkle-save', function() {
-        closeSprinkle();
-    });
-    $(document).on('click', '.sprinkle-delete', function() {
+
+    $(document).on('click', '.sprinkle-delete', function () {
         closeSprinkle();
     });
 });
@@ -222,6 +196,7 @@ function closeSprinkle() {
     $('.sprinkle-form-update').addClass('block__display-none');
     $('.sprinkle-form-create').addClass('block__display-none');
 }
+
 function intValueTest(value, text) {
     if (value === 0 || value === undefined) {
         swal('Ошибка', text, 'error');

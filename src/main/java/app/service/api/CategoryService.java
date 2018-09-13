@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface CategoryService {
 
-    void create(CategoryDTO categoryDTO);
+    CategoryDTO create(CategoryDTO categoryDTO);
 
     void update(CategoryDTO categoryDTO);
 

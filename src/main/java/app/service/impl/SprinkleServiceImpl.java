@@ -29,10 +29,14 @@ public class SprinkleServiceImpl implements SprinkleService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public void create(SprinkleDTO sprinkleDTO) {
-        if (sprinkleDTO != null)
-            sprinkleDao.create(modelMapper.map(sprinkleDTO, Sprinkle.class));
-        logger.debug(String.format("Successfully saved sprinkle"));
+    public SprinkleDTO create(SprinkleDTO sprinkleDTO) {
+        if (sprinkleDTO != null) {
+            Sprinkle sprinkle= modelMapper.map(sprinkleDTO, Sprinkle.class);
+            sprinkleDao.create(sprinkle);
+            sprinkleDTO.setId(sprinkle.getId());
+            logger.debug(String.format("Successfully saved sprinkle"));
+        }
+        return sprinkleDTO;
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

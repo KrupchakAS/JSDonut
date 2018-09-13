@@ -24,8 +24,7 @@ public class DoughController {
     @RequestMapping(value = "/dough", method = RequestMethod.GET)
     public String openPage(ModelMap modelMap) {
         modelMap.addAttribute("doughActive", "active");
-        List<DoughDTO> doughDTOList = doughService.getAll();
-        modelMap.addAttribute("doughList", doughDTOList);
+        modelMap.addAttribute("doughList", doughService.getAll());
         return "dough";
     }
 
@@ -43,6 +42,7 @@ public class DoughController {
         AjaxDTO result = new AjaxDTO();
         if(doughDTO != null){
             doughService.create(doughDTO);
+            result.setData(doughDTO);
         }
         return result;
     }

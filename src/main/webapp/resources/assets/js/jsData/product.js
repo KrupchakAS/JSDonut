@@ -1,4 +1,3 @@
-
 // update -----------------------------------------------------------------
 
 function updateItem(button) {
@@ -104,14 +103,15 @@ function saveItem(button) {
     pst.type = "POST";
     pst.url = '/jsDonut/admin/product/createProduct';
     pst.data = {};
-    pst.data = getFormCreate();
+    pst.data = getDataFromForm();
+    pst.successFunction = addNewProduct;
 
     console.log(pst.data);
 
     sendAjax(pst);
 }
 
-function getFormCreate() {
+function getDataFromForm() {
     var product = {};
 
     product.name = $('.product-name-cr').val();
@@ -127,6 +127,11 @@ function getFormCreate() {
     product.filling.id = parseInt($('.product__filling-id-cr').val());
     product.dough = {};
     product.dough.id = parseInt($('.product__dough-id-cr').val());
+
+    return product;
+}
+
+function getFormCreate() {
 
     $('.product-name-cr').val('');
     $('.product-price-cr').val('');
@@ -144,35 +149,14 @@ function getFormCreate() {
     $('.product-form-update').addClass('block__display-none');
     $('.product-form-create').removeClass('block__display-none');
 
-    return product;
-}
-
-
-function getLastProduct() {
-
-    var ajax = {};
-    ajax.type = "GET";
-    ajax.url = "/jsDonut/admin/product/getLastProduct";
-    ajax.dataType = 'JSON';
-    ajax.successFunction = addNewProduct;
-
-    console.log(ajax);
-
-    sendAjax(ajax);
 }
 
 function addNewProduct(productObject) {
-
-    $('.container-head').text("Product list");
-    $('.product-list').removeClass('block__display-none');
-    $('.product-add').removeClass('block__display-none');
-    $('.product-form-update').addClass('block__display-none');
-    $('.product-form-create').addClass('block__display-none');
-
+    swal('SAVED!');
     console.log(productObject);
 
     $('#product-table').find('tbody').append(
-        '<tr  class="product-table__row" data-id='+productObject.id+'>' +
+        '<tr  class="product-table__row" data-id=' + productObject.id + '>' +
         '<th>' + productObject.id + '</th>' +
         '<th>' + productObject.category.name + '</th>' +
         '<th>' + productObject.name + '</th>' +
@@ -183,16 +167,14 @@ function addNewProduct(productObject) {
         '<th>' + '<button type="button" class="btn btn-md btn-danger product-delete">' + 'Delete' + '</button>' + '</th>' +
         '</tr>');
 
+    closeProduct();
+
 }
 
 $(document).ready(function () {
     $(document).on('click', '.product-save', function (e) {
         e.preventDefault();
         saveItem($(this));
-        swal('SAVED!');
-        setTimeout(function () {
-            getLastProduct();
-        }, 300);
     });
 });
 
@@ -219,7 +201,7 @@ $(document).ready(function () {
     $(document).on('click', '.product-delete', function (e) {
         e.preventDefault();
         var id = $(this).closest('tr').data('id');
-                deleteProduct(id, $(this));
+        deleteProduct(id, $(this));
         swal('Deleted!');
     });
 });
@@ -227,7 +209,7 @@ $(document).ready(function () {
 
 // Scripts
 
-$(function() {
+$(function () {
     $(document).on('click', '.product-add', function () {
         getFormCreate();
     });
@@ -241,11 +223,8 @@ $(function() {
     $(document).on('click', '.product-update', function () {
         closeProduct();
     });
-    $(document).on('click', '.product-save', function () {
-        closeProduct();
-    });
     $(document).on('click', '.product-delete', function () {
-        closeDough();
+        closeProduct();
     });
 });
 

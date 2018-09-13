@@ -8,7 +8,7 @@
 
 <html>
 <c:import url="/WEB-INF/views/header.jsp"/>
-
+<body>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -40,6 +40,7 @@
         </div>
     </form>
     <ul class="nav menu">
+        <li class="${categoryActive}"><a href="${contextPath}/jsDonut/admin/category"> Categories</a></li>
         <li class="${productActive}"><a href="${contextPath}/jsDonut/admin/product">Product</a></li>
         <li class="${sprinkleActive}"><a href="${contextPath}/jsDonut/admin/sprinkle">Sprinkle</a></li>
         <li class="${doughActive}"><a href="${contextPath}/jsDonut/admin/dough">Dough</a></li>

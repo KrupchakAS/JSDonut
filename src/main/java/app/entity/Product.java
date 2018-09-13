@@ -49,7 +49,7 @@ public class Product {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne
+    @OneToOne()
     @JoinColumn(name = "category_id")
     private Category category;
 

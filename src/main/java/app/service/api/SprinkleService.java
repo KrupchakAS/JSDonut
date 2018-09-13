@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface SprinkleService {
 
-    void create(SprinkleDTO sprinkleDTO);
+    SprinkleDTO create(SprinkleDTO sprinkleDTO);
 
     void update(SprinkleDTO sprinkleDTO);
 

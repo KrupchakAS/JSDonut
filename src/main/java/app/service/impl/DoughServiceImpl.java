@@ -29,10 +29,14 @@ public class DoughServiceImpl implements DoughService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public void create(DoughDTO doughDTO) {
-        if (doughDTO != null)
-            doughDao.create(modelMapper.map(doughDTO, Dough.class));
+    public DoughDTO create(DoughDTO doughDTO) {
+        if (doughDTO != null) {
+            Dough dough = modelMapper.map(doughDTO, Dough.class);
+            doughDao.create(dough);
+            doughDTO.setId(dough.getId());
+        }
         logger.debug(String.format("Successfully saved dough"));
+        return doughDTO;
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -89,10 +93,10 @@ public class DoughServiceImpl implements DoughService {
     @Override
     public DoughDTO getLastDough() {
         List<Dough> doughList = doughDao.getAll();
-        DoughDTO doughDTO = modelMapper.map(doughList.get(doughList.size()-1),DoughDTO.class);
-        if(doughDTO != null){
+        DoughDTO doughDTO = modelMapper.map(doughList.get(doughList.size() - 1), DoughDTO.class);
+        if (doughDTO != null) {
             return doughDTO;
-        }else {
+        } else {
             return null;
         }
     }

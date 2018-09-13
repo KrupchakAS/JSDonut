@@ -28,10 +28,14 @@ public class FillingServiceImpl implements FillingService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public void create(FillingDTO fillingDTO) {
-        if (fillingDTO != null)
-            fillingDao.create(modelMapper.map(fillingDTO, Filling.class));
-        logger.debug(String.format("Successfully saved filling"));
+    public FillingDTO create(FillingDTO fillingDTO) {
+        if (fillingDTO != null) {
+            Filling filling = modelMapper.map(fillingDTO, Filling.class);
+            fillingDao.create(filling);
+            fillingDTO.setId(filling.getId());
+            logger.debug(String.format("Successfully saved filling"));
+        }
+        return fillingDTO;
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

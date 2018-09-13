@@ -28,10 +28,14 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public void create(CategoryDTO categoryDTO) {
-        if (categoryDTO != null)
-            categoryDao.create(modelMapper.map(categoryDTO, Category.class));
+    public CategoryDTO create(CategoryDTO categoryDTO) {
+        if (categoryDTO != null) {
+            Category category = modelMapper.map(categoryDTO, Category.class);
+            categoryDao.create(category);
+            categoryDTO.setId(category.getId());
+        }
         logger.debug(String.format("Successfully saved category"));
+        return categoryDTO;
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

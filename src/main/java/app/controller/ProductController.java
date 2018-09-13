@@ -4,8 +4,7 @@ import app.dto.AjaxDTO;
 import app.dto.DoughDTO;
 import app.dto.ProductDTO;
 import app.dto.SprinkleDTO;
-import app.service.api.DoughService;
-import app.service.api.ProductService;
+import app.service.api.*;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,12 +20,23 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+    @Autowired
+    private DoughService doughService;
+    @Autowired
+    private FillingService fillingService;
+    @Autowired
+    private SprinkleService sprinkleService;
+    @Autowired
+    private CategoryService categoryService;
 
     @RequestMapping(value = "/product", method = RequestMethod.GET)
     public String openPage(ModelMap modelMap) {
         modelMap.addAttribute("productActive", "active");
-        List<ProductDTO> productDTOList = productService.getAll();
-        modelMap.addAttribute("productList", productDTOList);
+        modelMap.addAttribute("productList", productService.getAll());
+        modelMap.addAttribute("fillingList", fillingService.getAll());
+        modelMap.addAttribute("sprinkleList", sprinkleService.getAll());
+        modelMap.addAttribute("doughList", doughService.getAll());
+        modelMap.addAttribute("categoryList", categoryService.getAll());
         return "product";
     }
 
@@ -44,6 +54,7 @@ public class ProductController {
         AjaxDTO result = new AjaxDTO();
         if(productDTO != null){
             productService.create(productDTO);
+            result.setData(productDTO);
         }
         return result;
     }
@@ -76,6 +87,7 @@ public class ProductController {
         result.setData(productService.getLastProduct());
         return result;
     }
+
 
 
 }

@@ -22,8 +22,7 @@ public class FillingController {
     @RequestMapping(value = "/filling", method = RequestMethod.GET)
     public String openPage(ModelMap modelMap) {
         modelMap.addAttribute("fillingActive", "active");
-        List<FillingDTO> fillingDTOList = fillingService.getAll();
-        modelMap.addAttribute("fillingList", fillingDTOList);
+        modelMap.addAttribute("fillingList", fillingService.getAll());
         return "filling";
     }
 
@@ -41,10 +40,11 @@ public class FillingController {
         AjaxDTO result = new AjaxDTO();
         if(fillingDTO != null){
             fillingService.create(fillingDTO);
-
+            result.setData(fillingDTO);
         }
         return result;
     }
+
     @ResponseBody
     @RequestMapping(value = "/filling/updateFilling", method = RequestMethod.POST)
     public AjaxDTO updateFilling(@RequestBody FillingDTO fillingDTO){

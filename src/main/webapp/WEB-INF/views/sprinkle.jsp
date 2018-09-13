@@ -8,7 +8,7 @@
 
 <html>
 <c:import url="/WEB-INF/views/header.jsp"/>
-
+<body>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -40,6 +40,7 @@
         </div>
     </form>
     <ul class="nav menu">
+        <li class="${categoryActive}"><a href="${contextPath}/jsDonut/admin/category"> Categories</a></li>
         <li class="${productActive}"><a href="${contextPath}/jsDonut/admin/product"> Products</a></li>
         <li class="${sprinkleActive}"><a href="${contextPath}/jsDonut/admin/sprinkle"> Sprinkles</a></li>
         <li class="${doughActive}"><a href="${contextPath}/jsDonut/admin/dough">Doughs</a></li>
@@ -110,11 +111,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Calories</label>
-                                    <input required type="number" class="form-control sprinkle-calories-cr" placeholder="Calories">
+                                    <input required type="number" class="form-control sprinkle-calories-cr"
+                                           placeholder="Calories">
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input required type="number" class="form-control sprinkle-price-cr" placeholder="Price">
+                                    <input required type="number" class="form-control sprinkle-price-cr"
+                                           placeholder="Price">
                                 </div>
                             </form>
                             <div class="row">
@@ -142,7 +145,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Calories</label>
-                                    <input type="number" class="form-control sprinkle-calories-up" placeholder="Calories">
+                                    <input type="number" class="form-control sprinkle-calories-up"
+                                           placeholder="Calories">
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
@@ -151,7 +155,8 @@
                             </form>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-success btn-block sprinkle-update">Update
+                                    <button type="button" class="btn btn-lg btn-success btn-block sprinkle-update">
+                                        Update
                                     </button>
                                 </div>
                                 <div class="col-md-6">

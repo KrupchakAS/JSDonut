@@ -1,0 +1,192 @@
+// update --------------------
+
+function getUpdateForm(categoryId, selector) {
+    if (isNumber(categoryId)) {
+        getDoughById(categoryId, selector);
+    } else {
+        swal("Category ID is not number");
+    }
+}
+function isNumber(value) {
+    return (value !== undefined && value !== null && value > 0);
+}
+
+function getDoughById(id, selector) {
+    var ajax = {};
+    ajax.data = {id: id};
+    ajax.type = "GET";
+    ajax.url = "/jsDonut/admin/category/getCategoryById";
+    ajax.dataType = 'JSON';
+    ajax.selector = selector;
+    ajax.successFunction = openCategoryFormUpdate;
+    sendAjax(ajax);
+}
+
+
+function openCategoryFormUpdate(categoryObject) {
+
+    $('.category-id-up').val(categoryObject.id);
+    $('.category-name-up').val(categoryObject.name);
+
+    $('.container-head').text("Category: " + categoryObject.name);
+    $('.category-list').addClass('block__display-none');
+    $('.category-add').addClass('block__display-none');
+    $('.category-form-create').addClass('block__display-none');
+    $('.category-form-update').removeClass('block__display-none');
+}
+
+function updateItem(button) {
+
+    var pst = {};
+    pst.selector = button;
+    pst.type = "POST";
+    pst.url = '/jsDonut/admin/category/updateCategory';
+    pst.data = {};
+    pst.data = getItemData();
+
+    console.log(pst.data);
+
+    sendAjax(pst);
+}
+
+function getItemData() {
+    var category = {};
+
+    category.id = parseInt($('.category-id-up').val());
+    category.name = $('.category-name-up').val();
+
+    return category;
+}
+
+
+$(document).ready(function () {
+    $(document).on('click', '.category-update', function (e) {
+        e.preventDefault();
+        updateItem($(this));
+        swal('Updated!');
+    });
+});
+
+// save -------------------------------
+
+function saveItem(button) {
+
+    var pst = {};
+    pst.selector = button;
+    pst.type = "POST";
+    pst.url = '/jsDonut/admin/category/createCategory';
+    pst.data = {};
+    pst.data = getDataFromForm();
+    pst.successFunction = addNewCategory;
+
+    console.log(pst.data);
+
+    sendAjax(pst);
+}
+
+
+function getFormCreate() {
+
+    $('.category-name-cr').val('');
+
+    $('.category-add').addClass('block__display-none');
+    $('.category-list').addClass('block__display-none');
+    $('.category-form-update').addClass('block__display-none');
+    $('.category-form-create').removeClass('block__display-none');
+}
+
+function getDataFromForm() {
+    var category = {};
+
+    category.name = $('.category-name-cr').val();
+
+    return category;
+}
+
+function addNewCategory(categoryObject) {
+    swal('SAVED!');
+
+    console.log(categoryObject);
+
+    $('#category-table').find('tbody').append(
+        '<tr  class="category-table__row" data-id='+categoryObject.id+'>' +
+        '<th>' + categoryObject.id + '</th>' +
+        '<th>' + categoryObject.name + '</th>' +
+        '<th>' + '<button type="button" class="btn btn-md btn-primary category-update">' + 'Edit' + '</button>' + '</th>' +
+        '<th>' + '<button type="button" class="btn btn-md btn-danger category-delete">' + 'Delete' + '</button>' + '</th>' +
+        '</tr>');
+
+    closeCategory();
+}
+
+$(document).ready(function () {
+    $(document).on('click', '.category-save', function (e) {
+        e.preventDefault();
+        saveItem($(this));
+    });
+});
+
+// delete -----------------------------
+
+function deleteCategory(id, button) {
+
+    if (intValueTest(id, 'Не удалось получить id')) return false;
+
+    var pst = {};
+    pst.data = id;
+
+    pst.selector = button;
+    pst.dataType = 'JSON';
+    pst.type = "DELETE";
+    pst.url = '/jsDonut/admin/category/deleteCategory';
+    pst.successFunction = function (result) {
+        pst.selector.closest('tr').remove();
+    };
+
+    sendAjax(pst);
+}
+
+$(document).ready(function () {
+    $(document).on('click', '.category-delete', function (e) {
+        e.preventDefault();
+        var id = $(this).closest('tr').data('id');
+        deleteCategory(id, $(this));
+        swal('Deleted!');
+    });
+});
+// Scripts
+
+$(function() {
+    $(document).on('click', '.category-add', function () {
+        getFormCreate();
+    });
+    $(document).on('click', '.category-edit', function() {
+        var id = $(this).closest('tr').data('id');
+        getUpdateForm(id, $(this));
+    });
+    $(document).on('click', '.category-close', function() {
+        closeCategory();
+    });
+    $(document).on('click', '.category-update', function() {
+        closeCategory();
+    });
+    $(document).on('click', '.category-delete', function () {
+        closeCategory();
+    });
+});
+
+function closeCategory() {
+
+    $('.container-head').text("Category list");
+    $('.category-add').removeClass('block__display-none');
+    $('.category-list').removeClass('block__display-none');
+    $('.category-form-update').addClass('block__display-none');
+    $('.category-form-create').addClass('block__display-none');
+}
+function intValueTest(value, text) {
+    if (value === 0 || value === undefined) {
+        swal('Ошибка', text, 'error');
+        return true
+    }
+    return false;
+}

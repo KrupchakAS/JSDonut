@@ -81,7 +81,6 @@ $(document).ready(function () {
 
 // save -----------------------------
 
-
 function saveItem(button) {
 
     var pst = {};
@@ -89,19 +88,25 @@ function saveItem(button) {
     pst.type = "POST";
     pst.url = '/jsDonut/admin/filling/createFilling';
     pst.data = {};
-    pst.data = getFormCreate();
+    pst.data = getDataFromForm();
+    pst.successFunction = addNewFilling;
 
     console.log(pst.data);
 
     sendAjax(pst);
 }
 
-function getFormCreate() {
+function getDataFromForm() {
     var filling = {};
 
     filling.name = $('.filling-name-cr').val();
     filling.price = parseFloat($('.filling-price-cr').val());
     filling.calories = parseInt($('.filling-calories-cr').val());
+    return filling;
+}
+
+function getFormCreate() {
+
     $('.filling-name-cr').val('');
     $('.filling-price-cr').val('');
     $('.filling-calories-cr').val('');
@@ -111,30 +116,10 @@ function getFormCreate() {
     $('.filling-form-update').addClass('block__display-none');
     $('.filling-form-create').removeClass('block__display-none');
 
-    return filling;
-}
-
-function getLastFilling() {
-
-    var ajax = {};
-    ajax.type = "GET";
-    ajax.url = "/jsDonut/admin/filling/getLastFilling";
-    ajax.dataType = 'JSON';
-    ajax.successFunction = addNewFilling;
-
-    console.log(ajax);
-
-    sendAjax(ajax);
 }
 
 function addNewFilling(fillingObject) {
-
-    $('.container-head').text("Filling list");
-    $('.filling-list').removeClass('block__display-none');
-    $('.filling-add').removeClass('block__display-none');
-    $('.filling-form-update').addClass('block__display-none');
-    $('.filling-form-create').addClass('block__display-none');
-
+    swal('SAVED!');
     console.log(fillingObject);
 
     $('#filling-table').find('tbody').append(
@@ -146,7 +131,7 @@ function addNewFilling(fillingObject) {
         '<th>' + '<button type="button" class="btn btn-md btn-primary filling-update">' + 'Edit' + '</button>' + '</th>' +
         '<th>' + '<button type="button" class="btn btn-md btn-danger filling-delete">' + 'Delete' + '</button>' + '</th>' +
         '</tr>');
-
+    closeFilling();
 }
 
 $(document).ready(function () {
@@ -154,9 +139,7 @@ $(document).ready(function () {
         e.preventDefault();
         saveItem($(this));
         swal('SAVED!');
-        setTimeout(function () {
-            getLastFilling();
-        }, 200);
+
     });
 });
 
@@ -204,9 +187,6 @@ $(function () {
         closeFilling();
     });
     $(document).on('click', '.filling-update', function () {
-        closeFilling();
-    });
-    $(document).on('click', '.filling-save', function () {
         closeFilling();
     });
     $(document).on('click', '.filling-delete', function () {
