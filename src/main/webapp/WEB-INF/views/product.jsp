@@ -63,7 +63,7 @@
                     </button>
                     <div class="row">
                         <div class="col-md-12 product-list">
-                            <table class="table table-striped product-table">
+                            <table id="product-table" class="table table-striped product-table">
                                 <thead>
                                 <tr>
                                     <th>#</th>

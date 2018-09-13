@@ -82,4 +82,16 @@ public class ProductServiceImpl implements ProductService {
         }
         return null;
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public ProductDTO getLastProduct() {
+        List<Product> productList = productDao.getAll();
+        ProductDTO productDTO = modelMapper.map(productList.get(productList.size()-1),ProductDTO.class);
+        if(productDTO != null){
+            return productDTO;
+        }else {
+            return null;
+        }
+    }
 }

@@ -17,4 +17,6 @@ public interface ProductService {
     ProductDTO getByName(String name);
 
     List<ProductDTO> getAll();
+
+    ProductDTO getLastProduct();
 }

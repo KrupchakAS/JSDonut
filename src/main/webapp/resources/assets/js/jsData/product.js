@@ -136,6 +136,9 @@ function getFormCreate() {
     $('.product-description-cr').val('');
     $('.product-weight-cr').val('');
     $('.product-quantity-cr').val('');
+    $('.product__category-id-cr').val('Choose category');
+    $('.product__filling-id-cr').val('Choose filling');
+    $('.product__dough-id-cr').val('Choose dough');
 
     $('.product-add').addClass('block__display-none');
     $('.product-list').addClass('block__display-none');
@@ -146,11 +149,51 @@ function getFormCreate() {
 }
 
 
+function getLastProduct() {
+
+    var ajax = {};
+    ajax.type = "GET";
+    ajax.url = "/jsDonut/admin/product/getLastProduct";
+    ajax.dataType = 'JSON';
+    ajax.successFunction = addNewProduct;
+
+    console.log(ajax);
+
+    sendAjax(ajax);
+}
+
+function addNewProduct(productObject) {
+
+    $('.container-head').text("Product list");
+    $('.product-list').removeClass('block__display-none');
+    $('.product-add').removeClass('block__display-none');
+    $('.product-form-update').addClass('block__display-none');
+    $('.product-form-create').addClass('block__display-none');
+
+    console.log(productObject);
+
+    $('#product-table').find('tbody').append(
+        '<tr  class="product-table__row" data-id='+productObject.id+'>' +
+        '<th>' + productObject.id + '</th>' +
+        '<th>' + productObject.category.name + '</th>' +
+        '<th>' + productObject.name + '</th>' +
+        '<th>' + productObject.price + '</th>' +
+        '<th>' + productObject.weight + '</th>' +
+        '<th>' + productObject.quantity + '</th>' +
+        '<th>' + '<button type="button" class="btn btn-md btn-primary product-update">' + 'Edit' + '</button>' + '</th>' +
+        '<th>' + '<button type="button" class="btn btn-md btn-danger product-delete">' + 'Delete' + '</button>' + '</th>' +
+        '</tr>');
+
+}
+
 $(document).ready(function () {
     $(document).on('click', '.product-save', function (e) {
         e.preventDefault();
         saveItem($(this));
         swal('SAVED!');
+        setTimeout(function () {
+            getLastProduct();
+        }, 300);
     });
 });
 
