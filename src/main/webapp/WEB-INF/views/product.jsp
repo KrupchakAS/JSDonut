@@ -117,23 +117,28 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Price</label>
-                                            <input required type="number" class="form-control product-price-cr" placeholder="Price">
+                                            <input required type="number" class="form-control product-price-cr"
+                                                   placeholder="Price">
                                         </div>
                                         <div class="form-group">
                                             <label>WorkPrice</label>
-                                            <input required type="number" class="form-control product-workPrice-cr" placeholder="WorkPrice">
+                                            <input required type="number" class="form-control product-workPrice-cr"
+                                                   placeholder="WorkPrice">
                                         </div>
                                         <div class="form-group">
                                             <label>Weight</label>
-                                            <input required type="number" class="form-control product-weight-cr" placeholder="Weight">
+                                            <input required type="number" class="form-control product-weight-cr"
+                                                   placeholder="Weight">
                                         </div>
                                         <div class="form-group">
                                             <label>Quantity</label>
-                                            <input required type="number" class="form-control product-quantity-cr" placeholder="Quantity">
+                                            <input required type="number" class="form-control product-quantity-cr"
+                                                   placeholder="Quantity">
                                         </div>
                                         <div class="form-group">
                                             <label>Calories</label>
-                                            <input required type="number" class="form-control product-calories-cr" placeholder="Calories">
+                                            <input required type="number" class="form-control product-calories-cr"
+                                                   placeholder="Calories">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -187,8 +192,25 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="form-group">
+                                            <label>Sprinkle</label>
+                                            <div class="input-group">
+                                                <select required class="selectpicker" multiple>
+                                                    <option disabled selected>Choose sprinkle</option>
+                                                    <option value="1">Шарики разноцветные(шоколад)</option>
+                                                    <option value="2">Вермишель разноцветная(глазурь)</option>
+                                                    <option value="3">Конфетти разноцветная(глазурь)</option>
+                                                    <option value="4">Кокосовая стружка</option>
+                                                    <option value="5">Мак</option>
+                                                    <option value="6">Вафельная крошка</option>
+                                                    <option value="7">Шоколадная крошка</option>
+                                                    <option value="8">Ваниль</option>
+                                                    <option value="9">Ореховые слайсы</option>
+                                                </select>
+                                            </div>
+                                        </div>
 
+                                    </div>
                                 </div>
                             </form>
                             <div class="row">
@@ -218,23 +240,28 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Price</label>
-                                            <input required type="number" class="form-control product-price-up" placeholder="Price">
+                                            <input required type="number" class="form-control product-price-up"
+                                                   placeholder="Price">
                                         </div>
                                         <div class="form-group">
                                             <label>WorkPrice</label>
-                                            <input required type="number" class="form-control product-workPrice-up" placeholder="WorkPrice">
+                                            <input required type="number" class="form-control product-workPrice-up"
+                                                   placeholder="WorkPrice">
                                         </div>
                                         <div class="form-group">
                                             <label>Weight</label>
-                                            <input required type="number" class="form-control product-weight-up" placeholder="Weight">
+                                            <input required type="number" class="form-control product-weight-up"
+                                                   placeholder="Weight">
                                         </div>
                                         <div class="form-group">
                                             <label>Quantity</label>
-                                            <input required type="number" class="form-control product-quantity-up" placeholder="Quantity">
+                                            <input required type="number" class="form-control product-quantity-up"
+                                                   placeholder="Quantity">
                                         </div>
                                         <div class="form-group">
                                             <label>Calories</label>
-                                            <input required type="number" class="form-control product-calories-up" placeholder="Calories">
+                                            <input required type="number" class="form-control product-calories-up"
+                                                   placeholder="Calories">
                                         </div>
                                     </div>
 
@@ -289,19 +316,22 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="input-group">
-                                        <select required class="selectpicker" multiple>
-                                            <option disabled selected>Choose sprinkles</option>
-                                            <option value="1">Шарики разноцветные(шоколад)</option>
-                                            <option value="2">Вермишель разноцветная(глазурь)</option>
-                                            <option value="3">Конфетти разноцветная(глазурь)</option>
-                                            <option value="4">Кокосовая стружка</option>
-                                            <option value="5">Мак</option>
-                                            <option value="6">Вафельная крошка</option>
-                                            <option value="7">Шоколадная крошка</option>
-                                            <option value="8">Ваниль</option>
-                                            <option value="9">Ореховые слайсы</option>
-                                        </select>
+                                        <div class="form-group">
+                                            <label>Sprinkle</label>
+                                            <div class="input-group">
+                                            <select required class="selectpicker" multiple>
+                                                <option disabled selected>Choose sprinkle</option>
+                                                <option value="1">Шарики разноцветные(шоколад)</option>
+                                                <option value="2">Вермишель разноцветная(глазурь)</option>
+                                                <option value="3">Конфетти разноцветная(глазурь)</option>
+                                                <option value="4">Кокосовая стружка</option>
+                                                <option value="5">Мак</option>
+                                                <option value="6">Вафельная крошка</option>
+                                                <option value="7">Шоколадная крошка</option>
+                                                <option value="8">Ваниль</option>
+                                                <option value="9">Ореховые слайсы</option>
+                                            </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
