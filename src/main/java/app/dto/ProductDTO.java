@@ -1,6 +1,5 @@
 package app.dto;
 
-import app.entity.*;
 
 import java.util.List;
 
@@ -24,17 +23,17 @@ public class ProductDTO {
 
     private Short calories;
 
-    private User user;
+    private UserDTO user;
 
-    private Category category;
+    private CategoryDTO category;
 
-    private List<Order> orderList;
+    private List<OrderDTO> orderList;
 
-    private Filling filling;
+    private FillingDTO filling;
 
-    private Dough dough;
+    private DoughDTO dough;
 
-    private List<Sprinkle> sprinkleList;
+    private List<SprinkleDTO> sprinkleList;
 
     public Integer getId() { return id; }
 
@@ -68,12 +67,6 @@ public class ProductDTO {
 
     public String getImage() {
         return image;
-    }
-
-    public User getUser() { return user; }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public void setImage(String image) {
@@ -112,43 +105,51 @@ public class ProductDTO {
         this.calories = calories;
     }
 
-    public Category getCategory() {
+    public UserDTO getUserDTO() {
+        return user;
+    }
+
+    public void setUserDTO(UserDTO userDTO) {
+        this.user = userDTO;
+    }
+
+    public CategoryDTO getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(CategoryDTO category) {
         this.category = category;
     }
 
-    public List<Order> getOrderList() {
+    public List<OrderDTO> getOrderList() {
         return orderList;
     }
 
-    public void setOrderList(List<Order> orderList) {
+    public void setOrderList(List<OrderDTO> orderList) {
         this.orderList = orderList;
     }
 
-    public Filling getFilling() {
+    public FillingDTO getFilling() {
         return filling;
     }
 
-    public void setFilling(Filling filling) {
+    public void setFilling(FillingDTO filling) {
         this.filling = filling;
     }
 
-    public Dough getDough() {
+    public DoughDTO getDough() {
         return dough;
     }
 
-    public void setDough(Dough dough) {
+    public void setDough(DoughDTO dough) {
         this.dough = dough;
     }
 
-    public List<Sprinkle> getSprinkleList() {
+    public List<SprinkleDTO> getSprinkleList() {
         return sprinkleList;
     }
 
-    public void setSprinkleList(List<Sprinkle> sprinkleList) {
+    public void setSprinkleList(List<SprinkleDTO> sprinkleList) {
         this.sprinkleList = sprinkleList;
     }
 }

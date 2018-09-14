@@ -17,7 +17,7 @@ public class AddressDTO {
 
     private Short apartmentNumber;
 
-    private User user;
+    private UserDTO user;
 
     public Integer getId() {        return id; }
 
@@ -57,11 +57,11 @@ public class AddressDTO {
         this.apartmentNumber = apartmentNumber;
     }
 
-    public User getUser() {
+    public UserDTO getUserDTO() {
         return user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserDTO(UserDTO userDTO) {
+        this.user = userDTO;
     }
 }

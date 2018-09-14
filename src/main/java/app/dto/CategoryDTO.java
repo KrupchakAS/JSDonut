@@ -1,16 +1,12 @@
 package app.dto;
 
-import app.entity.Product;
-
 public class CategoryDTO {
 
     private Integer id;
 
-
     private String name;
 
-
-    private Product product;
+    private ProductDTO product;
 
     public Integer getId() {
         return id;
@@ -28,11 +24,11 @@ public class CategoryDTO {
         this.name = name;
     }
 
-    public Product getProduct() {
+    public ProductDTO getProductDTO() {
         return product;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductDTO(ProductDTO productDTO) {
+        this.product = productDTO;
     }
 }

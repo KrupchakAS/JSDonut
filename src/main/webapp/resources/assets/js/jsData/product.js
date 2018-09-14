@@ -85,6 +85,7 @@ function openProductFormUpdate(productObject) {
     $('.product__filling-id-up').val(productObject.filling.id);
     $('.product__dough-id-up').val(productObject.dough.id);
 
+
     $('.container-head').text("Category: " + productObject.category.name + " Product: " + productObject.name);
     $('.product-list').addClass('block__display-none');
     $('.product-add').addClass('block__display-none');
@@ -92,7 +93,6 @@ function openProductFormUpdate(productObject) {
     $('.product-form-update').removeClass('block__display-none');
 
 }
-
 
 // save -----------------------------------------------------------------
 
@@ -123,10 +123,21 @@ function getDataFromForm() {
     product.quantity = parseInt($('.product-quantity-cr').val());
     product.category = {};
     product.category.id = parseInt($('.product__category-id-cr').val());
+    product.category.name = $('.product__category-id-cr option:selected').text();
     product.filling = {};
     product.filling.id = parseInt($('.product__filling-id-cr').val());
     product.dough = {};
     product.dough.id = parseInt($('.product__dough-id-cr').val());
+    product.List = [];
+    product.sprinkleList = [];
+    $('.product__sprinkle-id-cr :selected').each(function () {
+        product.List.push(parseInt($(this).val()));
+    });
+    for (var i = 0; i < product.List.length; i++) {
+        product.sprinkle = {};
+        product.sprinkle.id = product.List[i];
+        product.sprinkleList.push(product.sprinkle);
+    }
 
     return product;
 }
@@ -143,6 +154,7 @@ function getFormCreate() {
     $('.product__category-id-cr').val('Choose category');
     $('.product__filling-id-cr').val('Choose filling');
     $('.product__dough-id-cr').val('Choose dough');
+    $('.product__sprinkle-id-cr').val('Choose sprinkle');
 
     $('.product-add').addClass('block__display-none');
     $('.product-list').addClass('block__display-none');

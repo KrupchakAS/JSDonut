@@ -73,11 +73,11 @@ public class OrderDTO {
         this.productList = productList;
     }
 
-    public User getUser() {
+    public User getUserDTO() {
         return user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserDTO(User userDTO) {
+        this.user = userDTO;
     }
 }

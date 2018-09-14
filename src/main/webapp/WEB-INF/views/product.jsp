@@ -8,7 +8,7 @@
 
 <html>
 <c:import url="/WEB-INF/views/header.jsp"/>
-<%--<link href="${contextPath}/resources/assets/css/multiselect/bootstrap-select.css" rel="stylesheet">--%>
+<link href="${contextPath}/resources/assets/css/bootstrap-select.css" rel="stylesheet">
 
 <body>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
@@ -205,8 +205,8 @@
                                         <div class="form-group">
                                             <label>Sprinkle</label>
                                             <div class="input-group">
-                                                <select required class="selectpicker" multiple>
-                                                    <option disabled selected>Choose sprinkle</option>
+                                                <select required class="selectpicker form-control product__sprinkle-id-cr" multiple>
+
                                                     <c:choose>
                                                         <c:when test="${sprinkleList.size() > 0}">
                                                             <с:forEach var="sprinkle" items="${sprinkleList}">
@@ -339,8 +339,8 @@
                                         <div class="form-group">
                                             <label>Sprinkle</label>
                                             <div class="input-group">
-                                            <select required class="selectpicker" multiple>
-                                                <option disabled selected>Choose sprinkle</option>
+                                            <select class="selectpicker form-control product__sprinkle-id-up" multiple>
+                                                <option disabled >Choose sprinkle</option>
                                                 <c:choose>
                                                     <c:when test="${sprinkleList.size() > 0}">
                                                         <с:forEach var="sprinkle" items="${sprinkleList}">
@@ -378,7 +378,7 @@
 
 <c:import url="/WEB-INF/views/footer.jsp"/>
 <script type="text/javascript" src="${contextPath}/resources/assets/js/jsData/product.js"></script>
-<script type="text/javascript" src="${contextPath}/resources/assets/js/multiselect/bootstrap-select.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/assets/js/bootstrap-select.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('.selectpicker').selectpicker();

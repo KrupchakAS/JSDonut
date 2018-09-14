@@ -1,5 +1,6 @@
 package app.dto;
 
+
 public class SprinkleDTO {
 
     private Integer id;
