@@ -23,7 +23,7 @@ public class SprinkleController {
     public String openPage(ModelMap modelMap) {
         modelMap.addAttribute("sprinkleActive", "active");;
         modelMap.addAttribute("sprinkleList", sprinkleService.getAll());
-        return "sprinkle";
+        return "adminPages/sprinkle";
     }
 
     @RequestMapping(value = "/sprinkle/getSprinkleById", method = RequestMethod.GET)

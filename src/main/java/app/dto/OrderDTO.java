@@ -23,7 +23,7 @@ public class OrderDTO {
 
     private List<Product> productList;
 
-    private User user;
+    private UserDTO user;
 
     public Integer getId() {
         return id;
@@ -73,11 +73,11 @@ public class OrderDTO {
         this.productList = productList;
     }
 
-    public User getUserDTO() {
+    public UserDTO getUserDTO() {
         return user;
     }
 
-    public void setUserDTO(User userDTO) {
+    public void setUserDTO(UserDTO userDTO) {
         this.user = userDTO;
     }
 }

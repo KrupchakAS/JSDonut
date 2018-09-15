@@ -7,7 +7,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <html>
-<c:import url="/WEB-INF/views/header.jsp"/>
+<c:import url="/WEB-INF/views/adminPages/adminHeader.jsp"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 
 <body>
@@ -25,9 +25,6 @@
 </nav>
 <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
     <div class="profile-sidebar">
-        <div class="profile-userpic">
-            <img src="http://placehold.it/50/30a5ff/fff" class="img-responsive" alt="">
-        </div>
         <div class="profile-usertitle">
             <div class="profile-usertitle-name">ADMIN</div>
             <div class="profile-usertitle-status"><span class="indicator label-success"></span>Online</div>
@@ -236,7 +233,7 @@
 </div>
 
 
-<c:import url="/WEB-INF/views/footer.jsp"/>
+<c:import url="/WEB-INF/views/adminPages/adminFooter.jsp"/>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <script type="text/javascript" src="${contextPath}/resources/assets/js/jsData/product.js"></script>

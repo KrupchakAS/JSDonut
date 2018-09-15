@@ -40,7 +40,7 @@ public class ProductController {
         modelMap.addAttribute("sprinkleList", sprinkleService.getAll());
         modelMap.addAttribute("doughList", doughService.getAll());
         modelMap.addAttribute("categoryList", categoryService.getAll());
-        return "product";
+        return "adminPages/product";
     }
 
     @RequestMapping(value = "/product/getProductById", method = RequestMethod.GET)

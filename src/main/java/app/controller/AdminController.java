@@ -32,7 +32,7 @@ public class AdminController {
 
     @RequestMapping(value = "/adminPanel",method = RequestMethod.GET)
     public String adminPanel(){
-        return "adminPanel";
+        return "adminPages/adminPanel";
     }
 
 }

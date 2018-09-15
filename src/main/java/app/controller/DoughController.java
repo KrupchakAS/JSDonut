@@ -25,7 +25,7 @@ public class DoughController {
     public String openPage(ModelMap modelMap) {
         modelMap.addAttribute("doughActive", "active");
         modelMap.addAttribute("doughList", doughService.getAll());
-        return "dough";
+        return "adminPages/dough";
     }
 
     @RequestMapping(value = "/dough/getDoughById", method = RequestMethod.GET)

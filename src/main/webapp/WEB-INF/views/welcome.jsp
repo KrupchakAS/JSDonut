@@ -5,7 +5,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <html>
-<c:import url="/WEB-INF/views/header.jsp"/>
+<c:import url="/WEB-INF/views/adminPages/adminHeader.jsp"/>
 <body>
 <div>
     <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
@@ -58,7 +58,7 @@
     </tfoot>
 </table>
 <button id="addRow">Add</button>
-<c:import url="/WEB-INF/views/footer.jsp"/>
+<c:import url="/WEB-INF/views/adminPages/adminFooter.jsp"/>
 
 <script>
     $(document).ready(function() {
