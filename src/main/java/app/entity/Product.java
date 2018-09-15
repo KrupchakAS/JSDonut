@@ -8,7 +8,6 @@ import java.util.List;
 @Entity
 @Table(name = "products")
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -66,7 +65,7 @@ public class Product {
 
     @ManyToMany
     @JoinTable(name = "products_sprinkle", joinColumns = @JoinColumn(name = "product_id"),
-    inverseJoinColumns = @JoinColumn(name = "sprinkle_id"))
+            inverseJoinColumns = @JoinColumn(name = "sprinkle_id"))
     private List<Sprinkle> sprinkleList;
 
     public Integer getId() {

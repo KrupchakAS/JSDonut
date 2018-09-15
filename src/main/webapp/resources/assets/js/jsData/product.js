@@ -17,20 +17,31 @@ function updateItem(button) {
 function getItemData() {
     var product = {};
 
-    product.id = parseInt($('.product-id-up').val());
-    product.name = $('.product-name-up').val();
-    product.calories = parseInt($('.product-calories-up').val());
-    product.price = parseFloat($('.product-price-up').val());
-    product.workPrice = parseFloat($('.product-workPrice-up').val());
-    product.description = $('.product-description-up').val();
-    product.weight = parseInt($('.product-weight-up').val());
-    product.quantity = parseInt($('.product-quantity-up').val());
+    product.id = parseInt($('.product-id').val());
+    product.name = $('.product-name').val();
+    product.calories = parseInt($('.product-calories').val());
+    product.price = parseFloat($('.product-price').val());
+    product.workPrice = parseFloat($('.product-workPrice').val());
+    product.description = $('.product-description').val();
+    product.weight = parseInt($('.product-weight').val());
+    product.quantity = parseInt($('.product-quantity').val());
     product.category = {};
-    product.category.id = parseInt($('.product__category-id-up').val());
+    product.category.id = parseInt($('.product__category-id').val());
     product.filling = {};
-    product.filling.id = parseInt($('.product__filling-id-up').val());
+    product.filling.id = parseInt($('.product__filling-id').val());
     product.dough = {};
-    product.dough.id = parseInt($('.product__dough-id-up').val());
+    product.dough.id = parseInt($('.product__dough-id').val());
+    product.List = [];
+    product.sprinkleList = [];
+    $('.product__sprinkle-id :selected').each(function () {
+        product.List.push(parseInt($(this).val()));
+    });
+    for (var i = 0; i < product.List.length; i++) {
+        product.sprinkle = {};
+        product.sprinkle.id = product.List[i];
+        product.sprinkleList.push(product.sprinkle);
+    }
+
 
     return product;
 }
@@ -71,28 +82,40 @@ function getProductById(id, selector) {
 
 // insert into form
 
+function setSelect2Plugin() {
+    $('.selec2-plugin:not(.setect2-plugin__setted)').each(function () {
+        $(this).addClass('setect2-plugin__setted');
+        $(this).select2();
+    });
+}
+
 function openProductFormUpdate(productObject) {
 
-    $('.product-id-up').val(productObject.id);
-    $('.product-name-up').val(productObject.name);
-    $('.product-calories-up').val(productObject.calories);
-    $('.product-price-up').val(productObject.price);
-    $('.product-workPrice-up').val(productObject.workPrice);
-    $('.product-description-up').val(productObject.description);
-    $('.product-weight-up').val(productObject.weight);
-    $('.product-quantity-up').val(productObject.quantity);
-    $('.product__category-id-up').val(productObject.category.id);
-    $('.product__filling-id-up').val(productObject.filling.id);
-    $('.product__dough-id-up').val(productObject.dough.id);
+    $('.product-id').val(productObject.id);
+    $('.product-name').val(productObject.name);
+    $('.product-calories').val(productObject.calories);
+    $('.product-price').val(productObject.price);
+    $('.product-workPrice').val(productObject.workPrice);
+    $('.product-description').val(productObject.description);
+    $('.product-weight').val(productObject.weight);
+    $('.product-quantity').val(productObject.quantity);
+    $('.product__category-id').val(productObject.category.id);
+    $('.product__filling-id').val(productObject.filling.id);
+    $('.product__dough-id').val(productObject.dough.id);
+
 
 
     $('.container-head').text("Category: " + productObject.category.name + " Product: " + productObject.name);
     $('.product-list').addClass('block__display-none');
     $('.product-add').addClass('block__display-none');
-    $('.product-form-create').addClass('block__display-none');
-    $('.product-form-update').removeClass('block__display-none');
+    $('.product-save').addClass('block__display-none');
+    $('.product-update').removeClass('block__display-none');
+    $('.product-form').removeClass('block__display-none');
 
+    setSelect2Plugin();
 }
+
+
 
 // save -----------------------------------------------------------------
 
@@ -111,55 +134,67 @@ function saveItem(button) {
     sendAjax(pst);
 }
 
+function recountPrice() {
+    var fullPrice = parseFloat($('#workPrice').val());
+    var fullWeight = parseFloat($('#weight').val());
+    $('.component :selected').each(function () {
+        fullPrice += getPrice(fullWeight, parseFloat($(this).data('price')));
+    });
+    $('#sprinkles :selected').each(function () {
+        fullPrice += getPrice(fullWeight, parseFloat($(this).data('price')));
+    });
+    $('#price').val(fullPrice);
+}
+
+function getPrice(fullWeight, price) {
+    return fullWeight/100 * price;
+}
+
 function getDataFromForm() {
     var product = {};
 
-    product.name = $('.product-name-cr').val();
-    product.calories = parseInt($('.product-calories-cr').val());
-    product.price = parseFloat($('.product-price-cr').val());
-    product.workPrice = parseFloat($('.product-workPrice-cr').val());
-    product.description = $('.product-description-cr').val();
-    product.weight = parseInt($('.product-weight-cr').val());
-    product.quantity = parseInt($('.product-quantity-cr').val());
+    product.name = $('.product-name').val();
+    product.calories = parseInt($('.product-calories').val());
+    product.price = parseFloat($('.product-price').val());
+    product.workPrice = parseFloat($('.product-workPrice').val());
+    product.description = $('.product-description').val();
+    product.weight = parseInt($('.product-weight').val());
+    product.quantity = parseInt($('.product-quantity').val());
     product.category = {};
-    product.category.id = parseInt($('.product__category-id-cr').val());
-    product.category.name = $('.product__category-id-cr option:selected').text();
+    product.category.id = parseInt($('.product__category-id').val());
+    product.category.name = $('.product__category-id option:selected').text();
     product.filling = {};
-    product.filling.id = parseInt($('.product__filling-id-cr').val());
+    product.filling.id = parseInt($('.product__filling-id').val());
     product.dough = {};
-    product.dough.id = parseInt($('.product__dough-id-cr').val());
+    product.dough.id = parseInt($('.product__dough-id').val());
     product.List = [];
     product.sprinkleList = [];
-    $('.product__sprinkle-id-cr :selected').each(function () {
-        product.List.push(parseInt($(this).val()));
+    $.each($('.selectpicker.form-control.product__sprinkle-id').val(), function (index, value) {
+        product.sprinkleList.push({id: parseInt(value)});
     });
-    for (var i = 0; i < product.List.length; i++) {
-        product.sprinkle = {};
-        product.sprinkle.id = product.List[i];
-        product.sprinkleList.push(product.sprinkle);
-    }
 
     return product;
 }
 
 function getFormCreate() {
 
-    $('.product-name-cr').val('');
-    $('.product-price-cr').val('');
-    $('.product-calories-cr').val('');
-    $('.product-workPrice-cr').val('');
-    $('.product-description-cr').val('');
-    $('.product-weight-cr').val('');
-    $('.product-quantity-cr').val('');
-    $('.product__category-id-cr').val('Choose category');
-    $('.product__filling-id-cr').val('Choose filling');
-    $('.product__dough-id-cr').val('Choose dough');
-    $('.product__sprinkle-id-cr').val('Choose sprinkle');
+    $('.product-name').val('');
+    $('.product-price').val('');
+    $('.product-calories').val('');
+    $('.product-workPrice').val('');
+    $('.product-description').val('');
+    $('.product-weight').val('');
+    $('.product-quantity').val('');
+    $('.product__category-id').val('Choose category');
+    $('.product__filling-id').val('Choose filling');
+    $('.product__dough-id').val('Choose dough');
+    $('.product__sprinkle-id').val('Choose sprinkle');
 
     $('.product-add').addClass('block__display-none');
     $('.product-list').addClass('block__display-none');
-    $('.product-form-update').addClass('block__display-none');
-    $('.product-form-create').removeClass('block__display-none');
+    $('.product-update').addClass('block__display-none');
+    $('.product-save').removeClass('block__display-none');
+    $('.product-form').removeClass('block__display-none');
 
 }
 
@@ -238,6 +273,15 @@ $(function () {
     $(document).on('click', '.product-delete', function () {
         closeProduct();
     });
+    $(document).on('change', '.component', function() {
+        recountPrice();
+    });
+    $(document).on('change', '#sprinkles', function() {
+        recountPrice();
+    });
+    $(document).on('keyup', '.priceChanger', function() {
+        recountPrice();
+    });
 });
 
 
@@ -246,8 +290,8 @@ function closeProduct() {
     $('.container-head').text("Product list");
     $('.product-list').removeClass('block__display-none');
     $('.product-add').removeClass('block__display-none');
-    $('.product-form-update').addClass('block__display-none');
-    $('.product-form-create').addClass('block__display-none');
+    $('.product-form').addClass('block__display-none');
+
 }
 
 function intValueTest(value, text) {

@@ -25,14 +25,16 @@ function getDoughById(id, selector) {
 
 function openCategoryFormUpdate(categoryObject) {
 
-    $('.category-id-up').val(categoryObject.id);
-    $('.category-name-up').val(categoryObject.name);
-
     $('.container-head').text("Category: " + categoryObject.name);
     $('.category-list').addClass('block__display-none');
     $('.category-add').addClass('block__display-none');
-    $('.category-form-create').addClass('block__display-none');
-    $('.category-form-update').removeClass('block__display-none');
+    $('.category-save').addClass('block__display-none');
+    $('.category-form').removeClass('block__display-none');
+    $('.category-update').removeClass('block__display-none');
+
+    $('.category-id').val(categoryObject.id);
+    $('.category-name').val(categoryObject.name);
+
 }
 
 function updateItem(button) {
@@ -52,8 +54,8 @@ function updateItem(button) {
 function getItemData() {
     var category = {};
 
-    category.id = parseInt($('.category-id-up').val());
-    category.name = $('.category-name-up').val();
+    category.id = parseInt($('.category-id').val());
+    category.name = $('.category-name').val();
 
     return category;
 }
@@ -87,18 +89,18 @@ function saveItem(button) {
 
 function getFormCreate() {
 
-    $('.category-name-cr').val('');
-
     $('.category-add').addClass('block__display-none');
     $('.category-list').addClass('block__display-none');
-    $('.category-form-update').addClass('block__display-none');
-    $('.category-form-create').removeClass('block__display-none');
+    $('.category-update').addClass('block__display-none');
+    $('.category-form').removeClass('block__display-none');
+    $('.category-save').removeClass('block__display-none');
+    $('.category-name').val('');
 }
 
 function getDataFromForm() {
     var category = {};
 
-    category.name = $('.category-name-cr').val();
+    category.name = $('.category-name').val();
 
     return category;
 }
@@ -180,8 +182,8 @@ function closeCategory() {
     $('.container-head').text("Category list");
     $('.category-add').removeClass('block__display-none');
     $('.category-list').removeClass('block__display-none');
-    $('.category-form-update').addClass('block__display-none');
-    $('.category-form-create').addClass('block__display-none');
+    $('.category-form').addClass('block__display-none');
+
 }
 function intValueTest(value, text) {
     if (value === 0 || value === undefined) {

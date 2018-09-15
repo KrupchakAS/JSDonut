@@ -26,16 +26,18 @@ function getDoughById(id, selector) {
 
 function openDoughFormUpdate(doughObject) {
 
-    $('.dough-id-up').val(doughObject.id);
-    $('.dough-name-up').val(doughObject.name);
-    $('.dough-calories-up').val(doughObject.calories);
-    $('.dough-price-up').val(doughObject.price);
+    $('.dough-id').val(doughObject.id);
+    $('.dough-name').val(doughObject.name);
+    $('.dough-calories').val(doughObject.calories);
+    $('.dough-price').val(doughObject.price);
 
     $('.container-head').text("Dough: " + doughObject.name);
     $('.dough-list').addClass('block__display-none');
     $('.dough-add').addClass('block__display-none');
-    $('.dough-form-create').addClass('block__display-none');
-    $('.dough-form-update').removeClass('block__display-none');
+    $('.dough-save').addClass('block__display-none');
+    $('.dough-form').removeClass('block__display-none');
+    $('.dough-update').removeClass('block__display-none');
+
 }
 
 function updateItem(button) {
@@ -55,10 +57,10 @@ function updateItem(button) {
 function getItemData() {
     var dough = {};
 
-    dough.id = parseInt($('.dough-id-up').val());
-    dough.name = $('.dough-name-up').val();
-    dough.price = parseFloat($('.dough-price-up').val());
-    dough.calories = parseInt($('.dough-calories-up').val());
+    dough.id = parseInt($('.dough-id').val());
+    dough.name = $('.dough-name').val();
+    dough.price = parseFloat($('.dough-price').val());
+    dough.calories = parseInt($('.dough-calories').val());
 
     return dough;
 }
@@ -92,22 +94,22 @@ function saveItem(button) {
 
 function getFormCreate() {
 
-    $('.dough-name-cr').val('');
-    $('.dough-price-cr').val('');
-    $('.dough-calories-cr').val('');
-
+    $('.dough-name').val('');
+    $('.dough-price').val('');
+    $('.dough-calories').val('');
     $('.dough-add').addClass('block__display-none');
+    $('.dough-update').addClass('block__display-none');
     $('.dough-list').addClass('block__display-none');
-    $('.dough-form-update').addClass('block__display-none');
-    $('.dough-form-create').removeClass('block__display-none');
+    $('.dough-form').removeClass('block__display-none');
+    $('.dough-save').removeClass('block__display-none');
 }
 
 function getDataFromForm() {
     var dough = {};
 
-    dough.name = $('.dough-name-cr').val();
-    dough.price = parseFloat($('.dough-price-cr').val());
-    dough.calories = parseInt($('.dough-calories-cr').val());
+    dough.name = $('.dough-name').val();
+    dough.price = parseFloat($('.dough-price').val());
+    dough.calories = parseInt($('.dough-calories').val());
     return dough;
 }
 
@@ -190,8 +192,7 @@ function closeDough() {
     $('.container-head').text("Dough list");
     $('.dough-add').removeClass('block__display-none');
     $('.dough-list').removeClass('block__display-none');
-    $('.dough-form-update').addClass('block__display-none');
-    $('.dough-form-create').addClass('block__display-none');
+    $('.dough-form').addClass('block__display-none');
 }
 function intValueTest(value, text) {
     if (value === 0 || value === undefined) {

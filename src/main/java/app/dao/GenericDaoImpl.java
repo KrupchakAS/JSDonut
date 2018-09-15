@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
@@ -37,11 +39,6 @@ public abstract class GenericDaoImpl<Entity> implements GenericDao<Entity> {
     @Override
     public Entity getById(Integer id) {
         return entityManager.find(daoClass, id);
-    }
-
-    @Override
-    public Entity getByName(String name){
-        return entityManager.find(daoClass,name);
     }
 
     @Override

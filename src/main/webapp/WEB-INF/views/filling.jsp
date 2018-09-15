@@ -34,11 +34,6 @@
         <div class="clear"></div>
     </div>
     <div class="divider"></div>
-    <form role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-    </form>
     <ul class="nav menu">
         <li class="${categoryActive}"><a href="${contextPath}/jsDonut/admin/category"> Categories</a></li>
         <li class="${productActive}"><a href="${contextPath}/jsDonut/admin/product">Product</a></li>
@@ -104,54 +99,28 @@
                             </table>
                         </div>
 
-                        <div class="col-md-12 filling-form-create block__display-none">
+                        <div class="col-md-12 filling-form block__display-none">
                             <form  method="post" role="form">
                                 <div class="form-group">
+                                    <input required type="hidden" disabled class="form-control filling-id" placeholder="Id">
+                                </div>
+                                <div class="form-group">
                                     <label>Name</label>
-                                    <input required class="form-control filling-name-cr" placeholder="Name">
+                                    <input minlength="1" maxlength="16" class="form-control filling-name" placeholder="Name">
                                 </div>
                                 <div class="form-group">
                                     <label>Calories</label>
-                                    <input required type="number" class="form-control filling-calories-cr" placeholder="Calories">
+                                    <input minlength="1" maxlength="5" type="number" class="form-control filling-calories" placeholder="Calories">
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input required type="number" class="form-control filling-price-cr" placeholder="Price">
+                                    <input minlength="1" maxlength="5" type="number" class="form-control filling-price" placeholder="Price">
                                 </div>
                             </form>
                             <div class="row">
                                 <div class="col-md-6">
                                     <button type="button" class="btn btn-lg btn-success btn-block filling-save">Save
                                     </button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-danger btn-block filling-close">Cancel
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-12 filling-form-update block__display-none">
-                            <form  method="post" role="form">
-                                <div class="form-group">
-                                    <label>Id</label>
-                                    <input required type="number" disabled class="form-control filling-id-up" placeholder="Id">
-                                </div>
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input required class="form-control filling-name-up" placeholder="Name">
-                                </div>
-                                <div class="form-group">
-                                    <label>Calories</label>
-                                    <input required type="number" class="form-control filling-calories-up" placeholder="Calories">
-                                </div>
-                                <div class="form-group">
-                                    <label>Price</label>
-                                    <input required type="number" class="form-control filling-price-up" placeholder="Price">
-                                </div>
-                            </form>
-                            <div class="row">
-                                <div class="col-md-6">
                                     <button type="button" class="btn btn-lg btn-success btn-block filling-update">Update
                                     </button>
                                 </div>

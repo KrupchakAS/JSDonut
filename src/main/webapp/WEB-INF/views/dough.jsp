@@ -33,11 +33,6 @@
         <div class="clear"></div>
     </div>
     <div class="divider"></div>
-    <form role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-    </form>
     <ul class="nav menu">
         <li class="${categoryActive}"><a href="${contextPath}/jsDonut/admin/category"> Categories</a></li>
         <li class="${productActive}"><a href="${contextPath}/jsDonut/admin/product"> Products</a></li>
@@ -102,54 +97,29 @@
                             </table>
                         </div>
 
-                        <div class="col-md-12 dough-form-create block__display-none">
+                        <div class="col-md-12 dough-form block__display-none">
                             <form method="post" role="form">
                                 <div class="form-group">
+                                    <input type="hidden" disabled class="form-control dough-id" placeholder="Id">
+                                </div>
+                                <div class="form-group">
                                     <label>Name</label>
-                                    <input required class="form-control dough-name-cr" placeholder="Name">
+                                    <input minlength="1" maxlength="16" class="form-control dough-name" placeholder="Name">
                                 </div>
                                 <div class="form-group">
                                     <label>Calories</label>
-                                    <input required type="number" class="form-control dough-calories-cr" placeholder="Calories">
+                                    <input minlength="1" maxlength="5" type="number" class="form-control dough-calories" placeholder="Calories">
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input required type="number" class="form-control dough-price-cr" placeholder="Price">
+                                    <input minlength="1" maxlength="5" type="number" class="form-control dough-price" placeholder="Price">
                                 </div>
                             </form>
                             <div class="row">
                                 <div class="col-md-6">
                                     <button type="button" class="btn btn-lg btn-success btn-block dough-save">Save
                                     </button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-danger btn-block dough-close">Cancel
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-md-12 dough-form-update block__display-none">
-                            <form method="post" role="form">
-                                <div class="form-group">
-                                    <label>Id</label>
-                                    <input required type="number" disabled class="form-control dough-id-up" placeholder="Id">
-                                </div>
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input required class="form-control dough-name-up" placeholder="Name">
-                                </div>
-                                <div class="form-group">
-                                    <label>Calories</label>
-                                    <input required type="number" class="form-control dough-calories-up" placeholder="Calories">
-                                </div>
-                                <div class="form-group">
-                                    <label>Price</label>
-                                    <input required type="number" class="form-control dough-price-up" placeholder="Price">
-                                </div>
-                            </form>
-                            <div class="row">
-                                <div class="col-md-6">
                                     <button type="button" class="btn btn-lg btn-success btn-block dough-update">Update
                                     </button>
                                 </div>
@@ -159,7 +129,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

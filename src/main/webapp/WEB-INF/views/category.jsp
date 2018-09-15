@@ -33,11 +33,7 @@
         <div class="clear"></div>
     </div>
     <div class="divider"></div>
-    <form role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-    </form>
+
     <ul class="nav menu">
         <li class="${categoryActive}"><a href="${contextPath}/jsDonut/admin/category"> Categories</a></li>
         <li class="${productActive}"><a href="${contextPath}/jsDonut/admin/product"> Products</a></li>
@@ -97,38 +93,20 @@
                             </table>
                         </div>
 
-                        <div class="col-md-12 category-form-create block__display-none">
+                        <div class="col-md-12 category-form block__display-none">
                             <form method="post" role="form">
                                 <div class="form-group">
+                                    <input required type="hidden" disabled class="form-control category-id" placeholder="Id">
+                                </div>
+                                <div class="form-group">
                                     <label>Name</label>
-                                    <input required class="form-control category-name-cr" placeholder="Name">
+                                    <input minlength="1" maxlength="16" class="form-control category-name" placeholder="Name">
                                 </div>
                             </form>
                             <div class="row">
                                 <div class="col-md-6">
                                     <button type="button" class="btn btn-lg btn-success btn-block category-save">Save
                                     </button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-danger btn-block category-close">Cancel
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-12 category-form-update block__display-none">
-                            <form method="post" role="form">
-                                <div class="form-group">
-                                    <label>Id</label>
-                                    <input required type="number" disabled class="form-control category-id-up" placeholder="Id">
-                                </div>
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input required class="form-control category-name-up" placeholder="Name">
-                                </div>
-                            </form>
-                            <div class="row">
-                                <div class="col-md-6">
                                     <button type="button" class="btn btn-lg btn-success btn-block category-update">Update
                                     </button>
                                 </div>

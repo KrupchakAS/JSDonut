@@ -25,23 +25,16 @@ function getFillingById(id, selector) {
 
 function openFillingFormUpdate(fillingObject) {
 
-    $('.filling-id-up').val(fillingObject.id);
-    $('.filling-name-up').val(fillingObject.name);
-    $('.filling-calories-up').val(fillingObject.calories);
-    $('.filling-price-up').val(fillingObject.price);
-
-
-    // $("#fil-id").text($('.filling-id-up').val());
-    // $("#fil-name").text($('.filling-name-up').val());
-    // $("#fil-price").text(parseFloat($('.filling-price-up').val()));
-    // $("#fil-calories").text($('.filling-calories-up').val());
-
+    $('.filling-id').val(fillingObject.id);
+    $('.filling-name').val(fillingObject.name);
+    $('.filling-calories').val(fillingObject.calories);
+    $('.filling-price').val(fillingObject.price);
 
     $('.container-head').text("Filling: " + fillingObject.name);
     $('.filling-add').addClass('block__display-none');
     $('.filling-list').addClass('block__display-none');
-    $('.filling-form-create').addClass('block__display-none');
-    $('.filling-form-update').removeClass('block__display-none');
+    $('.filling-form').removeClass('block__display-none');
+    $('.filling-save').addClass('block__display-none');
 }
 
 function updateItem(button) {
@@ -61,10 +54,10 @@ function updateItem(button) {
 function getItemData() {
     var filling = {};
 
-    filling.id = parseInt($('.filling-id-up').val());
-    filling.name = $('.filling-name-up').val();
-    filling.price = parseFloat($('.filling-price-up').val());
-    filling.calories = parseInt($('.filling-calories-up').val());
+    filling.id = parseInt($('.filling-id').val());
+    filling.name = $('.filling-name').val();
+    filling.price = parseFloat($('.filling-price').val());
+    filling.calories = parseInt($('.filling-calories').val());
 
 
     return filling;
@@ -99,9 +92,9 @@ function saveItem(button) {
 function getDataFromForm() {
     var filling = {};
 
-    filling.name = $('.filling-name-cr').val();
-    filling.price = parseFloat($('.filling-price-cr').val());
-    filling.calories = parseInt($('.filling-calories-cr').val());
+    filling.name = $('.filling-name').val();
+    filling.price = parseFloat($('.filling-price').val());
+    filling.calories = parseInt($('.filling-calories').val());
     return filling;
 }
 
@@ -113,8 +106,8 @@ function getFormCreate() {
 
     $('.filling-add').addClass('block__display-none');
     $('.filling-list').addClass('block__display-none');
-    $('.filling-form-update').addClass('block__display-none');
-    $('.filling-form-create').removeClass('block__display-none');
+    $('.filling-form').removeClass('block__display-none');
+    $('.filling-update').addClass('block__display-none');
 
 }
 
@@ -199,8 +192,8 @@ function closeFilling() {
     $('.container-head').text("Filling list");
     $('.filling-list').removeClass('block__display-none');
     $('.filling-add').removeClass('block__display-none');
-    $('.filling-form-update').addClass('block__display-none');
-    $('.filling-form-create').addClass('block__display-none');
+    $('.filling-form').addClass('block__display-none');
+
 }
 
 function intValueTest(value, text) {

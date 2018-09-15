@@ -34,11 +34,6 @@
         <div class="clear"></div>
     </div>
     <div class="divider"></div>
-    <form role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-    </form>
     <ul class="nav menu">
         <li class="${categoryActive}"><a href="${contextPath}/jsDonut/admin/category"> Categories</a></li>
         <li class="${productActive}"><a href="${contextPath}/jsDonut/admin/product"> Products</a></li>
@@ -103,58 +98,30 @@
                             </table>
                         </div>
 
-                        <div class="col-md-12 sprinkle-form-create block__display-none">
+                        <div class="col-md-12 sprinkle-form block__display-none">
                             <form method="post" role="form">
                                 <div class="form-group">
+                                    <input disabled type="hidden"  class="form-control sprinkle-id" placeholder="Id">
+                                </div>
+                                <div class="form-group">
                                     <label>Name</label>
-                                    <input required class="form-control sprinkle-name-cr" placeholder="Name">
+                                    <input minlength="1" maxlength="16" class="form-control sprinkle-name" placeholder="Name">
                                 </div>
                                 <div class="form-group">
                                     <label>Calories</label>
-                                    <input required type="number" class="form-control sprinkle-calories-cr"
+                                    <input minlength="1" maxlength="5" type="number" class="form-control sprinkle-calories"
                                            placeholder="Calories">
                                 </div>
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input required type="number" class="form-control sprinkle-price-cr"
-                                           placeholder="Price">
+                                    <input minlength="1" maxlength="5" type="number" class="form-control sprinkle-price" placeholder="Price">
                                 </div>
                             </form>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-success btn-block sprinkle-save">Save
+                                    <button type="button" class="btn btn-lg btn-success btn-block sprinkle-save">
+                                        Save
                                     </button>
-                                </div>
-                                <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-danger btn-block sprinkle-close">
-                                        Cancel
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-12 sprinkle-form-update block__display-none">
-                            <form method="post" role="form">
-                                <div class="form-group">
-                                    <label>Id</label>
-                                    <input disabled type="text" class="form-control sprinkle-id-up" placeholder="Id">
-                                </div>
-                                <div class="form-group">
-                                    <label>Name</label>
-                                    <input type="text" class="form-control sprinkle-name-up" placeholder="Name">
-                                </div>
-                                <div class="form-group">
-                                    <label>Calories</label>
-                                    <input type="number" class="form-control sprinkle-calories-up"
-                                           placeholder="Calories">
-                                </div>
-                                <div class="form-group">
-                                    <label>Price</label>
-                                    <input type="number" class="form-control sprinkle-price-up" placeholder="Price">
-                                </div>
-                            </form>
-                            <div class="row">
-                                <div class="col-md-6">
                                     <button type="button" class="btn btn-lg btn-success btn-block sprinkle-update">
                                         Update
                                     </button>

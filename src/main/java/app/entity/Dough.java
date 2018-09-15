@@ -5,6 +5,9 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "dough")
+@NamedQueries(
+        @NamedQuery(name = "getByName", query = "SELECT dough FROM Dough dough WHERE dough.name = :doughName")
+)
 public class Dough {
 
     @Id

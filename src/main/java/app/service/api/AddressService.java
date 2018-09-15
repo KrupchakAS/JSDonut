@@ -13,8 +13,6 @@ public interface AddressService {
 
     AddressDTO getById(Integer id);
 
-    AddressDTO getByName(String name);
-
     void detach(AddressDTO addressDTO);
 
     List<AddressDTO> getAll();

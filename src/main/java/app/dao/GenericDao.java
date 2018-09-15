@@ -12,8 +12,6 @@ public interface GenericDao<Entity> {
 
     Entity getById(Integer id);
 
-    Entity getByName(String Name);
-
 
 
     List<Entity> getAll();

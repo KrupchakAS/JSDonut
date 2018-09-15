@@ -59,12 +59,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Transactional(readOnly = true)
     @Override
-    public OrderDTO getByName(String name) {
-        return modelMapper.map(orderDao.getByName(name), OrderDTO.class);
-    }
-
-    @Transactional(readOnly = true)
-    @Override
     public List<OrderDTO> getAll() {
         List<Order> orderList = orderDao.getAll();
         if (orderList != null) {

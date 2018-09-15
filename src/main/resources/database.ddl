@@ -31,7 +31,7 @@ CREATE TABLE address (
 
 -- Table: category
 CREATE TABLE category (
-  id   TINYINT     NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id   INT     NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(32) NOT NULL,
   UNIQUE (name)
 )
@@ -110,7 +110,7 @@ CREATE TABLE products (
   calories       SMALLINT     NOT NULL,
   user_id        INT,
   FOREIGN KEY (user_id) REFERENCES users (id),
-  category_id    TINYINT      NOT NULL,
+  category_id    INT      NOT NULL,
   FOREIGN KEY (category_id) REFERENCES category (id),
   dough_id        TINYINT,
   FOREIGN KEY (dough_id) REFERENCES dough (id),

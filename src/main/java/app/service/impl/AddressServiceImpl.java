@@ -61,17 +61,6 @@ public class AddressServiceImpl implements AddressService {
         }
     }
 
-    @Transactional(readOnly = true)
-    @Override
-    public AddressDTO getByName(String name) {
-        Address address = addressDao.getByName(name);
-        if (address != null) {
-            return modelMapper.map(address, AddressDTO.class);
-        } else {
-            return null;
-        }
-    }
-
     @Override
     public void detach(AddressDTO addressDTO) {
 

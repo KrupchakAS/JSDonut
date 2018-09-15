@@ -31,11 +31,6 @@
         <div class="clear"></div>
     </div>
     <div class="divider"></div>
-    <form role="search">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
-    </form>
     <ul class="nav menu">
         <li><a href="${contextPath}/jsDonut/admin/category"> Categories</a></li>
         <li><a href="${contextPath}/jsDonut/admin/product"> Products</a></li>

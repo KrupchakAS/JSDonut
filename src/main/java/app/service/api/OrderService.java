@@ -14,7 +14,7 @@ public interface OrderService {
 
     OrderDTO getById(Integer id);
 
-    OrderDTO getByName(String name);
+
 
     List<OrderDTO> getAll();
 }

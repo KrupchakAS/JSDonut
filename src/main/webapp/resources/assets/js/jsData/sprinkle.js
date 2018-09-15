@@ -25,16 +25,17 @@ function getSprinkleById(id, selector) {
 
 function openSprinkleFormUpdate(sprinkleObject) {
 
-    $('.sprinkle-id-up').val(sprinkleObject.id);
-    $('.sprinkle-name-up').val(sprinkleObject.name);
-    $('.sprinkle-calories-up').val(sprinkleObject.calories);
-    $('.sprinkle-price-up').val(sprinkleObject.price);
+    $('.sprinkle-id').val(sprinkleObject.id);
+    $('.sprinkle-name').val(sprinkleObject.name);
+    $('.sprinkle-calories').val(sprinkleObject.calories);
+    $('.sprinkle-price').val(sprinkleObject.price);
 
     $('.container-head').text("Sprinkle: " + sprinkleObject.name);
     $('.sprinkle-add').addClass('block__display-none');
     $('.sprinkle-list').addClass('block__display-none');
-    $('.sprinkle-form-create').addClass('block__display-none');
-    $('.sprinkle-form-update').removeClass('block__display-none');
+    $('.sprinkle-save').addClass('block__display-none');
+    $('.sprinkle-update').removeClass('block__display-none');
+    $('.sprinkle-form').removeClass('block__display-none');
 }
 
 function updateItem(button) {
@@ -55,10 +56,10 @@ function getItemData() {
 
     var sprinkle = {};
 
-    sprinkle.id = parseInt($('.sprinkle-id-up').val());
-    sprinkle.name = $('.sprinkle-name-up').val();
-    sprinkle.price = parseFloat($('.sprinkle-price-up').val());
-    sprinkle.calories = parseInt($('.sprinkle-calories-up').val());
+    sprinkle.id = parseInt($('.sprinkle-id').val());
+    sprinkle.name = $('.sprinkle-name').val();
+    sprinkle.price = parseFloat($('.sprinkle-price').val());
+    sprinkle.calories = parseInt($('.sprinkle-calories').val());
 
     return sprinkle;
 }
@@ -92,9 +93,9 @@ function saveItem(button) {
 function getDataFromForm() {
     var sprinkle = {};
 
-    sprinkle.name = $('.sprinkle-name-cr').val();
-    sprinkle.price = parseFloat($('.sprinkle-price-cr').val());
-    sprinkle.calories = parseInt($('.sprinkle-calories-cr').val());
+    sprinkle.name = $('.sprinkle-name').val();
+    sprinkle.price = parseFloat($('.sprinkle-price').val());
+    sprinkle.calories = parseInt($('.sprinkle-calories').val());
     return sprinkle;
 }
 
@@ -106,8 +107,9 @@ function getFormCreate() {
 
     $('.sprinkle-add').addClass('block__display-none');
     $('.sprinkle-list').addClass('block__display-none');
-    $('.sprinkle-form-update').addClass('block__display-none');
-    $('.sprinkle-form-create').removeClass('block__display-none');
+    $('.sprinkle-form').removeClass('block__display-none');
+    $('.sprinkle-save').removeClass('block__display-none');
+    $('.sprinkle-update').addClass('block__display-none');
 }
 
 function addNewSprinkle(sprinkleObject) {
@@ -193,8 +195,7 @@ function closeSprinkle() {
     $('.container-head').text("Sprinkle list");
     $('.sprinkle-list').removeClass('block__display-none');
     $('.sprinkle-add').removeClass('block__display-none');
-    $('.sprinkle-form-update').addClass('block__display-none');
-    $('.sprinkle-form-create').addClass('block__display-none');
+    $('.sprinkle-form').addClass('block__display-none');
 }
 
 function intValueTest(value, text) {

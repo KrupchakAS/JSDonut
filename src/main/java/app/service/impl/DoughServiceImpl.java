@@ -4,6 +4,7 @@ package app.service.impl;
 import app.dao.api.DoughDao;
 import app.dto.DoughDTO;
 import app.entity.Dough;
+import app.exception.ObjectExistsException;
 import app.service.api.DoughService;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
@@ -31,6 +32,10 @@ public class DoughServiceImpl implements DoughService {
     @Override
     public DoughDTO create(DoughDTO doughDTO) {
         if (doughDTO != null) {
+            Dough existDough = doughDao.getByName(doughDTO.getName());
+            if (existDough != null) {
+                throw new ObjectExistsException(String.format("Dough with name %s already exists", doughDTO.getName()));
+            }
             Dough dough = modelMapper.map(doughDTO, Dough.class);
             doughDao.create(dough);
             doughDTO.setId(dough.getId());

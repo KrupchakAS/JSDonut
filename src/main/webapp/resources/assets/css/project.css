@@ -5,3 +5,15 @@
 .has-error{
     color:red;
 }
+
+.product-form__margin {
+    margin: 10px;
+}
+
+.product-form__left-part {
+    margin-right: 5px;
+}
+
+.product-form__right-part {
+    margin-left: 5px;
+}
