@@ -75,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <p>Welcome to Donut<a href="${contextPath}/jsDonut/registration">Sign Up </a> Or <a href="${contextPath}/jsDonut/login">Sign In </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <p><a href="/jsDonut/admin/adminPanel">Admin Panel</a> We will glad to see you again <a href="/jsDonut/logout">Sing Out </a></p>
+                    <p> Hi Admin, let's work<a href="/jsDonut/admin/adminPanel">Admin Panel</a> We will glad to see you again <a href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
                     <p>We will glad to see you again <a href="/jsDonut/logout">Sing Out </a></p>
@@ -368,37 +368,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--login-->
 <div class="login-page">
     <div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
-        <h3 class="title">SignIn<span> Form</span></h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit curabitur </p>
+        <h3 class="title">Sign In<span>Form</span></h3>
     </div>
     <div class="widget-shadow">
         <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
-            <h4>Welcome back to Modern Shoppe ! <br> Not a Member? <a href="registration.jsp"> Register Now »</a></h4>
+            <h4>Welcome back to Donut Shop! <br> Not a Member? <a href="${contextPath}/jsDonut/registration"> Sign Up »</a></h4>
         </div>
         <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
             <form method="post" action="/login">
                 <div class="${error != null ? 'has-error' : ''}">
                     <span>${message}</span>
-                    <input type="text" class="user" name="username" placeholder="Login" required="">
-                    <input type="password" name="password" class="lock" placeholder="Password">
-                    <span>${error}</span>
+                    <input type="text" class="user" name="username" placeholder="Login" minlength="4" maxlength="16" required>
+                    <input type="password" name="password" class="lock" placeholder="Password" minlength="4" maxlength="32" required>
+                    <span style="color: red">${error}</span>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <input type="submit" name="Sign In" value="Sign In">
-                    <div class="forgot-grid">
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Remember me</label>
-                        <div class="forgot">
-                            <a href="#">Forgot Password?</a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
                 </div>
             </form>
         </div>
-    </div>
-    <div class="login-page-bottom">
-        <h5> - OR -</h5>
-        <div class="social-btn"><a href="#"><i>Sign In with Facebook</i></a></div>
-        <div class="social-btn sb-two"><a href="#"><i>Sign In with Twitter</i></a></div>
     </div>
 </div>
 <!--//login-->
@@ -409,8 +396,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
                 <h4 class="footer-logo"><a href="welcome.jsp">Modern <b>Shoppe</b> <span class="tag">Everything for Kids world </span>
                 </a></h4>
-                <p>© 2016 Modern Shoppe . All rights reserved | Design by <a href="http://w3layouts.com"
-                                                                             target="_blank">W3layouts</a></p>
+                <p>© 2018 Donut Shopp . All rights reserved | Design by </p>
             </div>
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
                 <h3>Popular</h3>
