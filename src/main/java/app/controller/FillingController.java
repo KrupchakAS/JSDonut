@@ -23,7 +23,7 @@ public class FillingController {
     public String openPage(ModelMap modelMap) {
         modelMap.addAttribute("fillingActive", "active");
         modelMap.addAttribute("fillingList", fillingService.getAll());
-        return "adminPages/filling";
+        return "admin/filling";
     }
 
     @RequestMapping(value = "/filling/getFillingById", method = RequestMethod.GET)

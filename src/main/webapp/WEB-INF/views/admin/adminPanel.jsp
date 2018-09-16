@@ -5,7 +5,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <html>
-<c:import url="/WEB-INF/views/adminPages/adminHeader.jsp"/>
+<c:import url="/WEB-INF/views/admin/adminHeader.jsp"/>
 
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container-fluid">
@@ -47,7 +47,7 @@
 
 
 </div>
-<c:import url="/WEB-INF/views/adminPages/adminFooter.jsp/"/>
+<c:import url="/WEB-INF/views/admin/adminFooter.jsp/"/>
 
 </body>
 </html>

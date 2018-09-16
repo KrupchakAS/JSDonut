@@ -22,7 +22,7 @@ public class CategoryController {
     public String openPage(ModelMap modelMap) {
         modelMap.addAttribute("categoryActive", "active");
         modelMap.addAttribute("categoryList", categoryService.getAll());
-        return "adminPages/category";
+        return "admin/category";
     }
 
     @RequestMapping(value = "/category/getCategoryById", method = RequestMethod.GET)

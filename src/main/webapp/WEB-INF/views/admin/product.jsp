@@ -7,7 +7,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <html>
-<c:import url="/WEB-INF/views/adminPages/adminHeader.jsp"/>
+<c:import url="/WEB-INF/views/admin/adminHeader.jsp"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 
 <body>
@@ -233,9 +233,9 @@
 </div>
 
 
-<c:import url="/WEB-INF/views/adminPages/adminFooter.jsp"/>
+<c:import url="/WEB-INF/views/admin/adminFooter.jsp"/>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-<script type="text/javascript" src="${contextPath}/resources/assets/js/jsData/product.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/assetsAdminPanel/js/jsData/product.js"></script>
 </body>
 </html>

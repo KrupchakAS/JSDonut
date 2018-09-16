@@ -7,7 +7,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <html>
-<c:import url="/WEB-INF/views/adminPages/adminHeader.jsp"/>
+<c:import url="/WEB-INF/views/admin/adminHeader.jsp"/>
 <body>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container-fluid">
@@ -30,6 +30,7 @@
         <div class="clear"></div>
     </div>
     <div class="divider"></div>
+
     <ul class="nav menu">
         <li class="${categoryActive}"><a href="${contextPath}/jsDonut/admin/category"> Categories</a></li>
         <li class="${productActive}"><a href="${contextPath}/jsDonut/admin/product"> Products</a></li>
@@ -44,40 +45,35 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading container-head">
-                    Dough list
+                    Category list
                 </div>
                 <div class="panel-body container-body">
-                    <button type="button" class="btn btn-md btn-success dough-add">
-                        Add Dough
+                    <button type="button" class="btn btn-md btn-success category-add">
+                        Add Category
                     </button>
                     <div class="row">
-                        <div class="col-md-12 dough-list">
-                            <table id="dough-table" class="table table-striped dough-table">
+                        <div class="col-md-12 category-list">
+                            <table id="category-table" class="table table-striped category-table">
                                 <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
-                                    <th>Calories</th>
-                                    <th>Price</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-
                                 <c:choose>
-                                    <c:when test="${doughList.size() > 0}">
-                                        <с:forEach var="dough" items="${doughList}">
-                                            <tr class="dough-table__row" data-id="${dough.id}">
-                                                <th>${dough.id}</th>
-                                                <th>${dough.name}</th>
-                                                <th>${dough.calories}</th>
-                                                <th>${dough.price}</th>
+                                    <c:when test="${categoryList.size() > 0}">
+                                        <с:forEach var="category" items="${categoryList}">
+                                            <tr class="category-table__row" data-id="${category.id}">
+                                                <th>${category.id}</th>
+                                                <th>${category.name}</th>
                                                 <th>
-                                                    <button type="button" class="btn btn-md btn-primary dough-edit">
+                                                    <button type="button" class="btn btn-md btn-primary category-edit">
                                                         Edit
                                                     </button>
                                                 </th>
                                                 <th>
-                                                    <button type="button" class="btn btn-md btn-danger dough-delete">
+                                                    <button type="button" class="btn btn-md btn-danger category-delete">
                                                         Delete
                                                     </button>
                                                 </th>
@@ -86,7 +82,7 @@
                                     </c:when>
                                     <c:otherwise>
                                         <tr>
-                                            <th colspan="4">Not dough</th>
+                                            <th colspan="4">Not category</th>
                                         </tr>
                                     </c:otherwise>
                                 </c:choose>
@@ -94,38 +90,30 @@
                             </table>
                         </div>
 
-                        <div class="col-md-12 dough-form block__display-none">
+                        <div class="col-md-12 category-form block__display-none">
                             <form method="post" role="form">
                                 <div class="form-group">
-                                    <input type="hidden" disabled class="form-control dough-id" placeholder="Id">
+                                    <input required type="hidden" disabled class="form-control category-id" placeholder="Id">
                                 </div>
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input minlength="1" maxlength="16" class="form-control dough-name" placeholder="Name">
-                                </div>
-                                <div class="form-group">
-                                    <label>Calories</label>
-                                    <input minlength="1" maxlength="5" type="number" class="form-control dough-calories" placeholder="Calories">
-                                </div>
-                                <div class="form-group">
-                                    <label>Price</label>
-                                    <input minlength="1" maxlength="5" type="number" class="form-control dough-price" placeholder="Price">
+                                    <input minlength="1" maxlength="16" class="form-control category-name" placeholder="Name">
                                 </div>
                             </form>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-success btn-block dough-save">Save
+                                    <button type="button" class="btn btn-lg btn-success btn-block category-save">Save
                                     </button>
-
-                                    <button type="button" class="btn btn-lg btn-success btn-block dough-update">Update
+                                    <button type="button" class="btn btn-lg btn-success btn-block category-update">Update
                                     </button>
                                 </div>
                                 <div class="col-md-6">
-                                    <button type="button" class="btn btn-lg btn-danger btn-block dough-close">Cancel
+                                    <button type="button" class="btn btn-lg btn-danger btn-block category-close">Cancel
                                     </button>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -133,9 +121,9 @@
     </div>
 </div>
 
-<c:import url="/WEB-INF/views/adminPages/adminFooter.jsp"/>
+<c:import url="/WEB-INF/views/admin/adminFooter.jsp/"/>
 
-<script type="text/javascript" src="${contextPath}/resources/assets/js/jsData/dough.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/assetsAdminPanel/js/jsData/category.js"></script>
 
 </body>
 </html>

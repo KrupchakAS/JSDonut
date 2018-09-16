@@ -7,7 +7,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <html>
-<c:import url="/WEB-INF/views/adminPages/adminHeader.jsp"/>
+<c:import url="/WEB-INF/views/admin/adminHeader.jsp"/>
 <body>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container-fluid">
@@ -137,7 +137,7 @@
         </div>
     </div>
 </div>
-<c:import url="/WEB-INF/views/adminPages/adminFooter.jsp"/>
-<script type="text/javascript" src="${contextPath}/resources/assets/js/jsData/sprinkle.js"></script>
+<c:import url="/WEB-INF/views/admin/adminFooter.jsp"/>
+<script type="text/javascript" src="${contextPath}/resources/assetsAdminPanel/js/jsData/sprinkle.js"></script>
 </body>
 </html>

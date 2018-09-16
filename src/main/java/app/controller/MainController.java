@@ -24,7 +24,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-@SessionAttributes("cartDTO")
 @RequestMapping(value = "/jsDonut")
 public class MainController {
 
@@ -35,25 +34,38 @@ public class MainController {
     private UserValidator userValidator;
 
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public String createModel(ModelMap modelMap, CartDTO cartDTO, HttpSession session){
-        modelMap.addAttribute("userForm",new UserDTO());
-        return "welcome";
+    public String main(){
+        return "main/welcome";
     }
 
-    @RequestMapping(value = "/welcome", method = RequestMethod.POST)
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public String createModel(ModelMap modelMap, HttpSession session){
+        modelMap.addAttribute("userForm",new UserDTO());
+        return "main/registration";
+    }
+
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registration(@Valid @ModelAttribute("userForm") UserDTO userForm, BindingResult bindingResult) {
         userValidator.validate(userForm, bindingResult);
         if (bindingResult.hasErrors()) {
-            return "welcome";
+            return "main/registration";
         }
         userService.create(userForm);
-        return "redirect:/jsDonut/welcome";
+        return "redirect:/jsDonut/registration";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@Valid UserDTO userDTO,BindingResult bindingResult) {
-        userValidator.validate(userDTO, bindingResult);
-        return "redirect:/jsDonut/welcome";
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model model, String error, String logout) {
+
+        if (error != null) {
+            model.addAttribute("error", "Username or password is incorrect.");
+        }
+
+        if (logout != null) {
+            model.addAttribute("message", "Logged out successfully.");
+        }
+
+        return "main/login";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)

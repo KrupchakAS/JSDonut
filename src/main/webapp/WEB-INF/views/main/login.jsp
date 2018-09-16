@@ -1,13 +1,14 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<%@ page pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Modern Shoppe a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Register ::
+    <title>Modern Shoppe a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Home ::
         w3layouts</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,15 +24,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     } </script>
     <!--//for-mobile-apps -->
     <!--Custom Theme files -->
-    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="${contextPath}/resources/assetsMainPages/css/bootstrap.css" rel="stylesheet" type="text/css"
+          media="all"/>
+    <link href="${contextPath}/resources/assetsMainPages/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="${contextPath}/resources/assetsMainPages/css/flexslider.css" type="text/css"
+          media="screen"/>
     <!--//Custom Theme files -->
     <!--js-->
-    <script src="js/jquery-1.11.1.min.js"></script>
-    <script src="js/modernizr.custom.js"></script>
+    <script src="${contextPath}/resources/assetsMainPages/js/jquery-1.11.1.min.js"></script>
+    <script src="${contextPath}/resources/assetsMainPages/js/modernizr.custom.js"></script>
     <!--//js-->
     <!--cart-->
-    <script src="js/simpleCart.min.js"></script>
+    <script src="${contextPath}/resources/assetsMainPages/js/simpleCart.min.js"></script>
     <!--cart-->
     <!--web-fonts-->
     <link href='//fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic'
@@ -42,15 +46,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href='//fonts.googleapis.com/css?family=Fascinate' rel='stylesheet' type='text/css'>
     <!--web-fonts-->
     <!--animation-effect-->
-    <link href="css/animate.min.css" rel="stylesheet">
-    <script src="js/wow.min.js"></script>
+    <link href="${contextPath}/resources/assetsMainPages/css/animate.min.css" rel="stylesheet">
+    <script src="${contextPath}/resources/assetsMainPages/js/wow.min.js"></script>
     <script>
         new WOW().init();
     </script>
     <!--//animation-effect-->
     <!--start-smooth-scrolling-->
-    <script type="text/javascript" src="js/move-top.js"></script>
-    <script type="text/javascript" src="js/easing.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/move-top.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/easing.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function ($) {
             $(".scroll").click(function (event) {
@@ -67,8 +71,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="top-header navbar navbar-default"><!--header-one-->
         <div class="container">
             <div class="nav navbar-nav wow fadeInLeft animated" data-wow-delay=".5s">
-                <h2>Welcome to Modern Shoppe <a href="register.jsp">Register </a> Or <a href="signin.jsp">Sign In </a>
-                </h2>
+                <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
+                    <p>Welcome to Donut<a href="${contextPath}/jsDonut/registration">Sign Up </a> Or <a href="${contextPath}/jsDonut/login">Sign In </a></p>
+                </sec:authorize>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
+                    <p><a href="/jsDonut/admin/adminPanel">Admin Panel</a> We will glad to see you again <a href="/jsDonut/logout">Sing Out </a></p>
+                </sec:authorize>
+                <sec:authorize access="hasRole('ROLE_USER')">
+                    <p>We will glad to see you again <a href="/jsDonut/logout">Sing Out </a></p>
+                </sec:authorize>
             </div>
             <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
                 <ul>
@@ -93,7 +104,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>
             <div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
-                <h1><a href="index.jsp">Modern <b>Shoppe</b><span class="tag">Everything for Kids world </span> </a>
+                <h1><a href="welcome.jsp">Modern <b>Shoppe</b><span class="tag">Everything for Kids world </span> </a>
                 </h1>
             </div>
             <div class="nav navbar-nav navbar-right header-two-right">
@@ -132,7 +143,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <!--navbar-header-->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav top-nav-info">
-                        <li><a href="index.jsp">Home</a></li>
+                        <li><a href="welcome.jsp">Home</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Baby<b class="caret"></b></a>
                             <ul class="dropdown-menu multi-column multi-column1">
@@ -234,7 +245,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     <div class="col-sm-3 menu-grids new-add2">
                                         <a href="products.jsp">
                                             <h6>Kids Special</h6>
-                                            <img src="images/img1.jpg" alt="">
+                                            <img src="${contextPath}/resources/assetsMainPages/images/img1.jpg" alt="">
                                         </a>
                                     </div>
                                     <div class="clearfix"></div>
@@ -347,9 +358,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--breadcrumbs-->
 <div class="breadcrumbs">
     <div class="container">
-        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-            <li class="active">Register</li>
+        <ol class="breadcrumb breadcrumb1 animated wow fadeInUp" data-wow-delay=".5s">
+            <li><a href="welcome.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Sign In</li>
         </ol>
     </div>
 </div>
@@ -357,22 +368,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--login-->
 <div class="login-page">
     <div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
-        <h3 class="title">Sign Up<span> Form</span></h3>
-        <p>Please </p>
+        <h3 class="title">SignIn<span> Form</span></h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit curabitur </p>
     </div>
     <div class="widget-shadow">
         <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
-            <h4>Already have an Account ?<a href="signin.jsp"> Sign In »</a></h4>
+            <h4>Welcome back to Modern Shoppe ! <br> Not a Member? <a href="registration.jsp"> Register Now »</a></h4>
         </div>
-        <div class="login-body">
-            <form class="wow fadeInUp animated" data-wow-delay=".7s">
-                <input type="text" placeholder="First Name" required="">
-                <input type="text" placeholder="Last Name" required="">
-                <input type="text" class="email" placeholder="Email Address" required="">
-                <input type="password" name="password" class="lock" placeholder="Password">
-                <input type="submit" name="Register" value="Register">
+        <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
+            <form method="post" action="/login">
+                <div class="${error != null ? 'has-error' : ''}">
+                    <span>${message}</span>
+                    <input type="text" class="user" name="username" placeholder="Login" required="">
+                    <input type="password" name="password" class="lock" placeholder="Password">
+                    <span>${error}</span>
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <input type="submit" name="Sign In" value="Sign In">
+                    <div class="forgot-grid">
+                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Remember me</label>
+                        <div class="forgot">
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
             </form>
         </div>
+    </div>
+    <div class="login-page-bottom">
+        <h5> - OR -</h5>
+        <div class="social-btn"><a href="#"><i>Sign In with Facebook</i></a></div>
+        <div class="social-btn sb-two"><a href="#"><i>Sign In with Twitter</i></a></div>
     </div>
 </div>
 <!--//login-->
@@ -381,7 +407,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="container">
         <div class="footer-info">
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
-                <h4 class="footer-logo"><a href="index.jsp">Modern <b>Shoppe</b> <span class="tag">Everything for Kids world </span>
+                <h4 class="footer-logo"><a href="welcome.jsp">Modern <b>Shoppe</b> <span class="tag">Everything for Kids world </span>
                 </a></h4>
                 <p>© 2016 Modern Shoppe . All rights reserved | Design by <a href="http://w3layouts.com"
                                                                              target="_blank">W3layouts</a></p>
@@ -410,7 +436,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!--//footer-->
 <!--search jQuery-->
-<script src="js/main.js"></script>
+<script src="${contextPath}/resources/assetsMainPages/js/main.js"></script>
 <!--//search jQuery-->
 <!--smooth-scrolling-of-move-up-->
 <script type="text/javascript">
@@ -431,6 +457,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--Bootstrap core JavaScript
 ================================================== -->
 <!--Placed at the end of the document so the pages load faster -->
-<script src="js/bootstrap.js"></script>
+<script src="${contextPath}/resources/assetsMainPages/js/bootstrap.js"></script>
 </body>
 </html>

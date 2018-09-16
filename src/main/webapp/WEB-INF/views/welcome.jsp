@@ -5,7 +5,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <html>
-<c:import url="/WEB-INF/views/adminPages/adminHeader.jsp"/>
+<c:import url="/WEB-INF/views/admin/adminHeader.jsp"/>
 <body>
 <div>
     <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">

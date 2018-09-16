@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Modern Shoppe a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Products :: w3layouts</title>
+<title>Modern Shoppe a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | FAQ :: w3layouts</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -23,7 +23,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--js-->
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/modernizr.custom.js"></script>
-<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
 <!--//js-->
 <!--cart-->
 <script src="js/simpleCart.min.js"></script>
@@ -59,7 +58,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="top-header navbar navbar-default"><!--header-one-->
 			<div class="container">
 				<div class="nav navbar-nav wow fadeInLeft animated" data-wow-delay=".5s">
-					<h2>Welcome to Modern Shoppe <a href="register.jsp">Register </a> Or <a href="signin.jsp">Sign In </a></h2>
+					<h2>Welcome to Modern Shoppe <a href="registration.jsp">Register </a> Or <a href="login.jsp">Sign In </a></h2>
 				</div>
 				<div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
 					<ul>
@@ -83,7 +82,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
-					<h1><a href="index.jsp">Modern <b>Shoppe</b><span class="tag">Everything for Kids world </span> </a></h1>
+					<h1><a href="welcome.jsp">Modern <b>Shoppe</b><span class="tag">Everything for Kids world </span> </a></h1>
 				</div>
 				<div class="nav navbar-nav navbar-right header-two-right">
 					<div class="header-right my-account">
@@ -118,9 +117,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<!--navbar-header-->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav top-nav-info">
-							<li><a href="index.jsp">Home</a></li>
+							<li><a href="welcome.jsp">Home</a></li>
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle active" data-toggle="dropdown">Baby<b class="caret"></b></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Baby<b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column multi-column1">
 									<div class="row">
 										<div class="col-sm-4 menu-grids menulist1">
@@ -332,373 +331,104 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="breadcrumbs">
 		<div class="container">
 			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-				<li><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-				<li class="active">Products</li>
+				<li><a href="welcome.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<li class="active">FAQ </li>
 			</ol>
 		</div>
 	</div>
 	<!--//breadcrumbs-->
-	<!--products-->
-	<div class="products">	 
+	<!--faq-->
+	<div class="faq-info">
 		<div class="container">
-			<div class="col-md-9 product-model-sec">
-				<div class="product-grids simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".5s">
-					<div class="new-top">
-						<a href="single.jsp"><img src="images/g1.jpg" class="img-responsive" alt=""/></a>
-						<div class="new-text">
-							<ul>
-								<li><a href="single.jsp">Quick View </a></li>
-								<li><input type="number" class="item_quantity" min="1" value="1"></li>
-								<li><a class="item_add" href=""> Add to cart</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="new-bottom">
-						<h5><a class="name" href="single.jsp">Girl Dress </a></h5>
-						<div class="rating">
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span>☆</span>
-						</div>
-						<div class="ofr">
-							<p class="pric1"><del>$2000.00</del></p>
-							<p><span class="item_price">$500.00</span></p>
-						</div>
-					</div>
-				</div>
-				<div class="product-grids product-grids-mdl simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".7s">
-					<div class="new-top">
-						<a href="single.jsp"><img src="images/g5.jpg" class="img-responsive" alt=""/></a>
-						<div class="new-text">
-							<ul>
-								<li><a href="single.jsp">Quick View </a></li>
-								<li><input type="number" class="item_quantity" min="1" value="1"></li>
-								<li><a class="item_add" href=""> Add to cart</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="new-bottom">
-						<h5><a class="name" href="single.jsp">Baby Romper</a></h5>
-						<div class="rating">
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span>☆</span>
-							<span>☆</span>
-						</div>
-						<div class="ofr">
-							<p class="pric1"><del>$1200.00</del></p>
-							<p><span class="item_price">$800.00</span></p>
-						</div>
-					</div>
-				</div>
-				<div class="product-grids simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".9s">
-					<div class="new-top">
-						<a href="single.jsp"><img src="images/g7.jpg" class="img-responsive" alt=""/></a>
-						<div class="new-text">
-							<ul>
-								<li><a href="single.jsp">Quick View </a></li>
-								<li><input type="number" class="item_quantity" min="1" value="1"></li>
-								<li><a class="item_add" href=""> Add to cart</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="new-bottom">
-						<h5><a class="name" href="single.jsp">Bear Diaper Bag</a></h5>
-						<div class="rating">
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span>☆</span>
-						</div>
-						<div class="ofr">
-							<p class="pric1"><del>$570.00</del></p>
-							<p><span class="item_price">$200.00</span></p>
-						</div>
-					</div>
-				</div>
-				<div class="product-grids simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".5s">
-					<div class="new-top">
-						<a href="single.jsp"><img src="images/g3.jpg" class="img-responsive" alt=""/></a>
-						<div class="new-text">
-							<ul>
-								<li><a href="single.jsp">Quick View </a></li>
-								<li><input type="number" class="item_quantity" min="1" value="1"></li>
-								<li><a class="item_add" href=""> Add to cart</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="new-bottom">
-						<h5><a class="name" href="single.jsp">Doctor Play Set</a></h5>
-						<div class="rating">
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-						</div>
-						<div class="ofr">
-							<p class="pric1"><del>$2000.00</del></p>
-							<p><span class="item_price">$500.00</span></p>
-						</div>
-					</div>
-				</div>
-				<div class="product-grids product-grids-mdl simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".7s">
-					<div class="new-top">
-						<a href="single.jsp"><img src="images/g6.jpg" class="img-responsive" alt=""/></a>
-						<div class="new-text">
-							<ul>
-								<li><a href="single.jsp">Quick View </a></li>
-								<li><input type="number" class="item_quantity" min="1" value="1"></li>
-								<li><a class="item_add" href=""> Add to cart</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="new-bottom">
-						<h5><a class="name" href="single.jsp">Baby Frock</a></h5>
-						<div class="rating">
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span>☆</span>
-						</div>
-						<div class="ofr">
-							<p class="pric1"><del>$180.00</del></p>
-							<p><span class="item_price">$100.00</span></p>
-						</div>
-					</div>
-				</div>
-				<div class="product-grids simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".9s">
-					<div class="new-top">
-						<a href="single.jsp"><img src="images/g2.jpg" class="img-responsive" alt=""/></a>
-						<div class="new-text">
-							<ul>
-								<li><a href="single.jsp">Quick View </a></li>
-								<li><input type="number" class="item_quantity" min="1" value="1"></li>
-								<li><a class="item_add" href=""> Add to cart</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="new-bottom">
-						<h5><a class="name" href="single.jsp">Pikachu Onesies</a></h5>
-						<div class="rating">
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span >☆</span>
-							<span>☆</span>
-						</div>
-						<div class="ofr">
-							<p class="pric1"><del>$2000.00</del></p>
-							<p><span class="item_price">$500.00</span></p>
-						</div>
-					</div>
-				</div>
-				<div class="product-grids simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".5s">
-					<div class="new-top">
-						<a href="single.jsp"><img src="images/g8.jpg" class="img-responsive" alt=""/></a>
-						<div class="new-text">
-							<ul>
-								<li><a href="single.jsp">Quick View </a></li>
-								<li><input type="number" class="item_quantity" min="1" value="1"></li>
-								<li><a class="item_add" href=""> Add to cart</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="new-bottom">
-						<h5><a class="name" href="single.jsp">Police Bike</a></h5>
-						<div class="rating">
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span>☆</span>
-							<span>☆</span>
-						</div>
-						<div class="ofr">
-							<p class="pric1"><del>$9050.00</del></p>
-							<p><span class="item_price">$9000.00</span></p>
-						</div>
-					</div>
-				</div>
-				<div class="product-grids product-grids-mdl simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".7s">
-					<div class="new-top">
-						<a href="single.jsp"><img src="images/g10.jpg" class="img-responsive" alt=""/></a>
-						<div class="new-text">
-							<ul>
-								<li><a href="single.jsp">Quick View </a></li>
-								<li><input type="number" class="item_quantity" min="1" value="1"></li>
-								<li><a class="item_add" href=""> Add to cart</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="new-bottom">
-						<h5><a class="name" href="single.jsp">Crocs Sandals</a></h5>
-						<div class="rating">
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span>☆</span>
-						</div>
-						<div class="ofr">
-							<p class="pric1"><del>$25.00</del></p>
-							<p><span class="item_price">$20.00</span></p>
-						</div>
-					</div>
-				</div>
-				<div class="product-grids simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".9s">
-					<div class="new-top">
-						<a href="single.jsp"><img src="images/g12.jpg" class="img-responsive" alt=""/></a>
-						<div class="new-text">
-							<ul>
-								<li><a href="single.jsp">Quick View </a></li>
-								<li><input type="number" class="item_quantity" min="1" value="1"></li>
-								<li><a class="item_add" href=""> Add to cart</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="new-bottom">
-						<h5><a class="name" href="single.jsp">Child Print Bike </a></h5>
-						<div class="rating">
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span class="on">☆</span>
-							<span>☆</span>
-							<span>☆</span>
-						</div>
-						<div class="ofr">
-							<p class="pric1"><del>$4000.00</del></p>
-							<p><span class="item_price">$3100.00</span></p>
-						</div>
-					</div>
-				</div>
+			<div class="title-info">
+				<h3 class="title">Frequently Asked<span> Questions</span></h3>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit curabitur </p>
 			</div>
-			<div class="col-md-3 rsidebar">
-				<div class="rsidebar-top">
-					<div class="slider-left">
-						<h4>Filter By Price</h4>            
-						<div id="slider-range"></div>							
-						<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
-						<!---->
-						<script type='text/javascript'>//<![CDATA[ 
-							$(window).load(function(){
-							 $( "#slider-range" ).slider({
-										range: true,
-										min: 0,
-										max: 9000,
-										values: [ 1000, 7000 ],
-										slide: function( event, ui ) {  $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-										}
-							 });
-							$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
-							});//]]>  
-						</script>
-						<script type="text/javascript" src="js/jquery-ui.js"></script>
-						<!---->
-					</div>
-					<div class="sidebar-row">
-						<h4> Clothes & Shoes </h4>
-						<ul class="faq">
-							<li class="item1"><a href="#">Frocks & Dresses<span class="glyphicon glyphicon-menu-down"></span></a>
-								<ul>
-									<li class="subitem1"><a href="#">Party Wear</a></li>										
-									<li class="subitem1"><a href="#">Night Wear</a></li>										
-									<li class="subitem1"><a href="#">Bath Time</a></li>										
-								</ul>
-							</li>
-							<li class="item2"><a href="#">Shorts & Jeans<span class="glyphicon glyphicon-menu-down"></span></a>
-								<ul>
-									<li class="subitem1"><a href="#">Girls</a></li>										
-									<li class="subitem1"><a href="#">Boys</a></li>										
-									<li class="subitem1"><a href="#">Baby by age</a></li>										
-								</ul>
-							</li>
-							<li class="item3"><a href="#">Protection <span class="glyphicon glyphicon-menu-down"></span></a>
-								<ul>
-									<li class="subitem1"><a href="#">Sweaters</a></li>										
-									<li class="subitem1"><a href="#">Rain Jackets</a></li>										
-									<li class="subitem1"><a href="#">Caps & Gloves</a></li>										
-								</ul>
-							</li>
-						</ul>
-						<!-- script for tabs -->
-						<script type="text/javascript">
-							$(function() {
-							
-								var menu_ul = $('.faq > li > ul'),
-									   menu_a  = $('.faq > li > a');
-								
-								menu_ul.hide();
-							
-								menu_a.click(function(e) {
-									e.preventDefault();
-									if(!$(this).hasClass('active')) {
-										menu_a.removeClass('active');
-										menu_ul.filter(':visible').slideUp('normal');
-										$(this).addClass('active').next().stop(true,true).slideDown('normal');
-									} else {
-										$(this).removeClass('active');
-										$(this).next().stop(true,true).slideUp('normal');
-									}
-								});
-							
-							});
-						</script>
-						<!-- script for tabs -->
-					</div>
-					<div class="sidebar-row">
-						<h4>DISCOUNTS</h4>
-						<div class="row row1 scroll-pane">
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Upto - 10% (20)</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>70% - 60% (5)</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>50% - 40% (7)</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>30% - 20% (2)</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>10% - 5% (5)</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>30% - 20% (7)</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>10% - 5% (2)</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Other(50)</label>
-						</div>
-					</div>
-					<div class="sidebar-row">
-						<h4>Color</h4>
-						<div class="row row1 scroll-pane">
-							<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>White</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Pink</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Gold</label>
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Silver</label>
-						</div>
-					</div>			 
-				</div>
-				<div class="gallery-grid ">
-					<h6>YOU MAY ALSO LIKE</h6>
-					<a href="single.jsp"><img src="images/b1.png" class="img-responsive" alt=""/></a>
-					<div class="gallery-text simpleCart_shelfItem">
-						<h5><a class="name" href="single.jsp">Full Sleeves Romper</a></h5>
-						<p><span class="item_price">60$</span></p>
-						<h4 class="sizes">Sizes: <a href="#"> s</a> - <a href="#">m</a> - <a href="#">l</a> - <a href="#">xl</a> </h4>
-						<ul>
-							<li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-							<li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
-							<li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty" aria-hidden="true"></span></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-	<!--//products-->
+			<ul class="faq">
+				<li class="item1 wow fadeInDown animated" data-wow-delay=".5s"><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor vehicula ipsum nec ?<span class="icon"> </span></a>
+					<ul>
+						<li class="subitem1"><p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore. At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p></li>										
+					</ul>
+				</li>
+				<li class="item2 wow fadeInDown animated" data-wow-delay=".5s"><a href="#">The standard Lorem Ipsum passage Etiam faucibus viverra libero vel efficitur. Ut semper nisl ut laoreet ultrices ?<span class="icon"> </span></a>
+					<ul>
+						<li class="subitem1"><p> Tincidunt ut laoreet dolore At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod  consectetuer adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p></li>										
+					</ul>
+				</li>
+				<li class="item3 wow fadeInDown animated" data-wow-delay=".5s"><a href="#">Consectetuer adipiscing elit Etiam faucibus viverra libero vel efficitur. Ut semper nisl ut laoreet ultrices?<span class="icon"> </span></a>
+					<ul>
+						<li class="subitem1"><p>Dincidunt ut laoreet dolore At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod  consectetuer adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p></li>										
+					</ul>
+				</li>
+				<li class="item4 wow fadeInDown animated" data-wow-delay=".5s"><a href="#">Sed diam nonummy nibh euismod Etiam faucibus viverra libero vel efficitur. Ut semper nisl ut laoreet ultrices?<span class="icon"> </span></a>
+					<ul>
+						<li class="subitem1"><p>At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod  consectetuer adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p></li>										
+					</ul>
+				</li> 
+				<li class="item5 wow fadeInDown animated" data-wow-delay=".5s"><a href="#">Euismod tincidunt laoreet Etiam faucibus viverra libero vel efficitur ?<span class="icon"> </span></a>
+					<ul>
+						<li class="subitem1"><p>At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod  consectetuer adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p></li>										
+					</ul>
+				</li>
+				<li class="item6 wow fadeInDown animated" data-wow-delay=".5s"><a href="#">Voluptas sit aspernatur aut Ut semper nisl ut laoreet ultrices ?<span class="icon"> </span></a>
+					<ul>
+						<li class="subitem1"><p>At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod  consectetuer adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p></li>										
+					</ul>
+				</li>
+				<li class="item7 wow fadeInDown animated" data-wow-delay=".5s"><a href="#">Donec ut quam ligula feugiat Ut semper nisl ut laoreet ultrices ?<span class="icon"> </span></a>
+					<ul>
+						<li class="subitem1"><p>At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod  consectetuer adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p></li>										
+					</ul>
+				</li>
+				<li class="item8 wow fadeInDown animated" data-wow-delay=".5s"><a href="#">The standard Lorem Ipsum Ut semper nisl ut laoreet ultrices passage ?<span class="icon"> </span></a>
+					<ul>
+						<li class="subitem1"><p>Lorem ipsum dolor sit amet At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod  consectetuer adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p></li>										
+					</ul>
+				</li>
+				<li class="item9 wow fadeInDown animated" data-wow-delay=".5s"><a href="#">Consectetuer adipiscing Ut semper nisl ut laoreet ultrices elit ?<span class="icon"> </span></a>
+					<ul>
+						<li class="subitem1"><p>Lorem ipsum dolor sit amet At vero eos et Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod  consectetuer adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p></li>										
+					</ul>
+				</li>
+				<li class="item10 wow fadeInDown animated" data-wow-delay=".5s"><a href="#">Sed diam nonummy Ut semper nisl ut laoreet ultrices nibh euismod ?<span class="icon"> </span></a>
+					<ul>
+						<li class="subitem1"><p>Consectetuer adipiscing elit, sed diam nonummy nibh euismod  consectetuer adipiscing elit, sed diam nonummy nibh euismod accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p></li>										
+					</ul>
+				</li> 
+			</ul>
+			<!-- script for tabs -->
+			<script type="text/javascript">
+				$(function() {
+				
+					var menu_ul = $('.faq > li > ul'),
+						   menu_a  = $('.faq > li > a');
+					
+					menu_ul.hide();
+				
+					menu_a.click(function(e) {
+						e.preventDefault();
+						if(!$(this).hasClass('active')) {
+							menu_a.removeClass('active');
+							menu_ul.filter(':visible').slideUp('normal');
+							$(this).addClass('active').next().stop(true,true).slideDown('normal');
+						} else {
+							$(this).removeClass('active');
+							$(this).next().stop(true,true).slideUp('normal');
+						}
+					});
+				
+				});
+			</script>
+			<!-- script for tabs -->
+		</div>			
+	</div>			
+	<!--//faq-->
 	<!--footer-->
 	<div class="footer">
 		<div class="container">
 			<div class="footer-info">
 				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
-					<h4 class="footer-logo"><a href="index.jsp">Modern <b>Shoppe</b> <span class="tag">Everything for Kids world </span> </a></h4>
+					<h4 class="footer-logo"><a href="welcome.jsp">Modern <b>Shoppe</b> <span class="tag">Everything for Kids world </span> </a></h4>
 					<p>© 2016 Modern Shoppe . All rights reserved | Design by <a href="http://w3layouts.com" target="_blank">W3layouts</a></p>
 				</div>
 				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
@@ -723,18 +453,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-	<!--//footer-->			
-	<!-- the jScrollPane script -->
-	<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
-			<script type="text/javascript" id="sourcecode">
-				$(function()
-				{
-					$('.scroll-pane').jScrollPane();
-				});
-			</script>
-	<!-- //the jScrollPane script -->
-	<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
-	<!-- the mousewheel plugin -->
+	<!--//footer-->		
 	<!--search jQuery-->
 	<script src="js/main.js"></script>
 	<!--//search jQuery-->

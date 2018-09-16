@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Modern Shoppe a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Contact :: w3layouts</title>
+<title>Modern Shoppe a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Checkout :: w3layouts</title>
 <!-- for-mobile-apps -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -39,6 +39,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  new WOW().init();
 </script>
 <!--//animation-effect-->
+<!--close-button-->
+<script>$(document).ready(function(c) {
+	$('.alert-close').on('click', function(c){
+		$('.cart-header').fadeOut('slow', function(c){
+	  		$('.cart-header').remove();
+		});
+	});	  
+});
+</script>
+<script>$(document).ready(function(c) {
+	$('.alert-close1').on('click', function(c){
+		$('.cart-header1').fadeOut('slow', function(c){
+	  		$('.cart-header1').remove();
+		});
+	});	  
+});
+</script>
+<script>$(document).ready(function(c) {
+	$('.alert-close2').on('click', function(c){
+		$('.cart-header2').fadeOut('slow', function(c){
+	  		$('.cart-header2').remove();
+		});
+	});	  
+});
+</script>
+<!--//close-button-->
 <!--start-smooth-scrolling-->
 <script type="text/javascript" src="js/move-top.js"></script>
 <script type="text/javascript" src="js/easing.js"></script>	
@@ -58,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="top-header navbar navbar-default"><!--header-one-->
 			<div class="container">
 				<div class="nav navbar-nav wow fadeInLeft animated" data-wow-delay=".5s">
-					<h2>Welcome to Modern Shoppe <a href="register.jsp">Register </a> Or <a href="signin.jsp">Sign In </a></h2>
+					<h2>Welcome to Modern Shoppe <a href="registration.jsp">Register </a> Or <a href="login.jsp">Sign In </a></h2>
 				</div>
 				<div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
 					<ul>
@@ -82,7 +108,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</ul>
 				</div>
 				<div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
-					<h1><a href="index.jsp">Modern <b>Shoppe</b><span class="tag">Everything for Kids world </span> </a></h1>
+					<h1><a href="welcome.jsp">Modern <b>Shoppe</b><span class="tag">Everything for Kids world </span> </a></h1>
 				</div>
 				<div class="nav navbar-nav navbar-right header-two-right">
 					<div class="header-right my-account">
@@ -117,7 +143,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<!--navbar-header-->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav top-nav-info">
-							<li><a href="index.jsp">Home</a></li>
+							<li><a href="welcome.jsp">Home</a></li>
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Baby<b class="caret"></b></a>
 								<ul class="dropdown-menu multi-column multi-column1">
@@ -331,63 +357,88 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<div class="breadcrumbs">
 		<div class="container">
 			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-				<li><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-				<li class="active">Contact Us</li>
+				<li><a href="welcome.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+				<li class="active">Check Out page</li>
 			</ol>
 		</div>
 	</div>
 	<!--//breadcrumbs-->
-	<!--contact-->
-	<div class="contact">
+	<!--cart-items-->
+	<div class="cart-items">
 		<div class="container">
-			<div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
-				<h3 class="title">How To <span> Find Us</span></h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit curabitur </p>
+			<h3 class="wow fadeInUp animated" data-wow-delay=".5s">My Shopping Cart(3)</h3>
+			<div class="cart-header wow fadeInUp animated" data-wow-delay=".5s">
+				<div class="alert-close"> </div>
+				<div class="cart-sec simpleCart_shelfItem">
+					<div class="cart-item cyc">
+						<a href="single.jsp"><img src="images/g1.jpg" class="img-responsive" alt=""></a>
+					</div>
+					<div class="cart-item-info">
+						<h4><a href="single.jsp"> Lorem Ipsum is not simply </a><span>Pickup time :</span></h4>
+						<ul class="qty">
+							<li><p>Min. order value :</p></li>
+							<li><p>FREE delivery</p></li>
+						</ul>
+						<div class="delivery">
+							<p>Service Charges : $10.00</p>
+							<span>Delivered in 1-1:30 hours</span>
+							<div class="clearfix"></div>
+						</div>	
+					</div>
+					<div class="clearfix"></div>
+				</div>
 			</div>
-			<iframe class="wow zoomIn animated animated" data-wow-delay=".5s" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d57537.641430789925!2d-74.03215321337959!3d40.719122105634035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1456152197129" allowfullscreen=""></iframe>
-		</div>	
-	</div>
-	<div class="address"><!--address-->
-		<div class="container">
-			<div class="address-row">
-				<div class="col-md-6 address-left wow fadeInLeft animated" data-wow-delay=".5s">
-					<div class="address-grid">
-						<h4 class="wow fadeIndown animated" data-wow-delay=".5s">DROP US A LINE </h4>
-						<form>
-							<input class="wow fadeIndown animated" data-wow-delay=".6s" type="text" placeholder="Name" required="">
-							<input class="wow fadeIndown animated" data-wow-delay=".7s" type="text" placeholder="Email" required="">
-							<input class="wow fadeIndown animated" data-wow-delay=".8s" type="text" placeholder="Subject" required="">
-							<textarea class="wow fadeIndown animated" data-wow-delay=".8s" placeholder="Message" required=""></textarea>
-							<input class="wow fadeIndown animated" data-wow-delay=".9s" type="submit" value="SEND">
-						</form>
+			<div class="cart-header1 wow fadeInUp animated" data-wow-delay=".7s">
+				<div class="alert-close1"> </div>
+				<div class="cart-sec simpleCart_shelfItem">
+					<div class="cart-item cyc">
+						<a href="single.jsp"><img src="images/g5.jpg" class="img-responsive" alt=""></a>
 					</div>
+					<div class="cart-item-info">
+						<h4><a href="single.jsp"> Lorem Ipsum is not simply </a><span>Pickup time :</span></h4>
+						<ul class="qty">
+							<li><p>Min. order value :</p></li>
+							<li><p>FREE delivery</p></li>
+						</ul>
+						<div class="delivery">
+						<p>Service Charges : $10.00</p>
+						<span>Delivered in 1-1:30 hours</span>
+						<div class="clearfix"></div>
+					</div>	
+				   </div>
+				   <div class="clearfix"></div>
 				</div>
-				<div class="col-md-6 address-right">
-					<div class="address-info wow fadeInRight animated" data-wow-delay=".5s">
-						<h4>ADDRESS</h4>
-						<p>123 San Sebastian, CG 09-123 Ba,Block(#456),Hill Towers 4567 New York City USA.</p>
+			</div>
+			<div class="cart-header2 wow fadeInUp animated" data-wow-delay=".9s">
+				<div class="alert-close2"> </div>
+				<div class="cart-sec simpleCart_shelfItem">
+					<div class="cart-item cyc">
+						<a href="single.jsp"><img src="images/g9.jpg" class="img-responsive" alt=""></a>
 					</div>
-					<div class="address-info address-mdl wow fadeInRight animated" data-wow-delay=".7s">
-						<h4>PHONE </h4>
-						<p>+222 111 333 4444</p>
-						<p>+222 111 333 5555</p>
+					<div class="cart-item-info">
+						<h4><a href="single.jsp"> Lorem Ipsum is not simply </a><span>Pickup time :</span></h4>
+						<ul class="qty">
+							<li><p>Min. order value :</p></li>
+							<li><p>FREE delivery</p></li>
+						</ul>
+						<div class="delivery">
+							<p>Service Charges : $10.00</p>
+							<span>Delivered in 1-1:30 hours</span>
+							<div class="clearfix"></div>
+						</div>	
 					</div>
-					<div class="address-info wow fadeInRight animated" data-wow-delay=".6s">
-						<h4>MAIL</h4>
-						<p><a href="mailto:example@mail.com"> mail@example.com</a></p>
-						<p><a href="mailto:example@mail.com"> mail2@example.com</a></p>
-					</div>
+					<div class="clearfix"></div>
 				</div>
-			</div>	
-		</div>	
+			</div>		
+		</div>
 	</div>
-	<!--//contact-->	
+	<!--//cart-items-->	
 	<!--footer-->
 	<div class="footer">
 		<div class="container">
 			<div class="footer-info">
 				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
-					<h4 class="footer-logo"><a href="index.jsp">Modern <b>Shoppe</b> <span class="tag">Everything for Kids world </span> </a></h4>
+					<h4 class="footer-logo"><a href="welcome.jsp">Modern <b>Shoppe</b> <span class="tag">Everything for Kids world </span> </a></h4>
 					<p>© 2016 Modern Shoppe . All rights reserved | Design by <a href="http://w3layouts.com" target="_blank">W3layouts</a></p>
 				</div>
 				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
@@ -412,7 +463,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 	</div>
-	<!--//footer-->		
+	<!--//footer-->			
 	<!--search jQuery-->
 	<script src="js/main.js"></script>
 	<!--//search jQuery-->

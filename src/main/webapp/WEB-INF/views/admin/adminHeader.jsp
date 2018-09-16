@@ -13,11 +13,11 @@
     <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <title>Admin Panel DONUT</title>
 
-    <link href="${contextPath}/resources/assets/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/assets/css/styles.css" rel="stylesheet">
-    <link href="${contextPath}/resources/assets/css/project.css" rel="stylesheet">
-    <link href="${contextPath}/resources/assets/css/datatables.css" rel="stylesheet">
-    <link href="${contextPath}/resources/assets/css/sweetalert.css" rel="stylesheet">
+    <link href="${contextPath}/resources/assetsAdminPanel/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/assetsAdminPanel/css/styles.css" rel="stylesheet">
+    <link href="${contextPath}/resources/assetsAdminPanel/css/project.css" rel="stylesheet">
+    <link href="${contextPath}/resources/assetsAdminPanel/css/datatables.css" rel="stylesheet">
+    <link href="${contextPath}/resources/assetsAdminPanel/css/sweetalert.css" rel="stylesheet">
     <!--Custom Font-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i"
           rel="stylesheet">
