@@ -5,7 +5,7 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 .has-error{
-	color: red;
+
 }
 
 body{
@@ -998,7 +998,7 @@ h3.title span {
 /*--//breadcrumbs--*/
 /*--products-page--*/
 .products,.related-products,.login-page,.contact,.cart-items,.about,.faq-info,.codes{
-    padding: 5em 0;
+    padding: 1em 0;
 }
 .rsidebar {
     display: block;
@@ -1460,7 +1460,7 @@ h4.panel-title a {
     -moz-box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.31),0 1px 2px rgba(0, 0, 0, 0.31);
 }
 .login-top {
-    padding: 1.5em;
+    padding: 0.5em;
     border-bottom: 1px solid #DED9D9;
     text-align: center;
 }

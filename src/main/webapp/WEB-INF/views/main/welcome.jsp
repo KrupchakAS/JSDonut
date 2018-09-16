@@ -76,7 +76,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <p> Hi Admin, let's work<a href="/jsDonut/admin/adminPanel">Admin Panel</a> We will glad to see you again <a href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <p>We will glad to see you again <a href="/jsDonut/logout">Sing Out </a></p>
+                    <p>We will glad to see you again, ${pageContext.request.userPrincipal.name} <a href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
             <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
@@ -688,7 +688,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
                 <h4 class="footer-logo"><a href="/jsDonut/welcome">Donut <b>Shop</b> <span class="tag">Everything for you Sweet Dream </span>
                 </a></h4>
-                <p>© 2018 Donut Shop . All rights reserved</p>
+                <p>© 2018 Donut Shop. All rights reserved</p>
             </div>
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
                 <h3>Popular</h3>
