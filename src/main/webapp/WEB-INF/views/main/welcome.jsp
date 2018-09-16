@@ -358,9 +358,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="container">
         <div class="banner-text">
             <div class="col-sm-5 banner-left wow fadeInLeft animated" data-wow-delay=".5s">
-                <h2>On Entire Fashion range</h2>
-                <h3>Coming Soon </h3>
-                <h4>Our New Designs</h4>
+                <h2>Our Special Delicious</h2>
                 <div class="count main-row">
                     <ul id="example">
                         <li><span class="hours">00</span>
@@ -390,16 +388,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="flexslider">
                         <ul class="slides">
                             <li>
-                                <h4>-30%</h4>
-                                <img src="${contextPath}/resources/assetsMainPages/images/b1.png" alt="">
+                                <h4>-15%</h4>
+                                <img src="${contextPath}/resources/assetsMainPages/images/b1.jpg" alt="">
                             </li>
                             <li>
-                                <h4>-25%</h4>
-                                <img src="${contextPath}/resources/assetsMainPages/images/b2.png" alt="">
+                                <h4>-20%</h4>
+                                <img src="${contextPath}/resources/assetsMainPages/images/b2.jpg" alt="">
                             </li>
                             <li>
-                                <h4>-32%</h4>
-                                <img src="${contextPath}/resources/assetsMainPages/images/b3.png" alt="">
+                                <h4>-20%</h4>
+                                <img src="${contextPath}/resources/assetsMainPages/images/b3.jpg" alt="">
                             </li>
                         </ul>
                     </div>
@@ -682,90 +680,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
     </div>
 </div>
-<!--//gallery-->
-<!--trend-->
-<div class="trend wow zoomIn animated" data-wow-delay=".5s">
-    <div class="container">
-        <div class="trend-info">
-            <section class="slider grid">
-                <div class="flexslider trend-slider">
-                    <ul class="slides">
-                        <li>
-                            <div class="col-md-5 trend-left">
-                                <img src="${contextPath}/resources/assetsMainPages/images/t1.png" alt=""/>
-                            </div>
-                            <div class="col-md-7 trend-right">
-                                <h4>TOP 10 TRENDS <span>FOR YOU</span></h4>
-                                <h5>Flat 20% OFF</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus, justo ac
-                                    volutpat vestibulum, dolor massa pharetra nunc, nec facilisis lectus nulla a tortor.
-                                    Duis ultrices nunc a nisi malesuada suscipit. Class aptent taciti sociosqu ad litora
-                                    torquent per conubia nostra, per inceptos himenaeos. Aliquam eu bibendum felis. Sed
-                                    viverra dapibus tincidunt.</p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </li>
-                        <li>
-                            <div class="col-md-5 trend-left">
-                                <img src="${contextPath}/resources/assetsMainPages/images/t2.png" alt=""/>
-                            </div>
-                            <div class="col-md-7 trend-right">
-                                <h4>TOP 10 TRENDS <span>FOR YOU</span></h4>
-                                <h5>Flat 20% OFF</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus, justo ac
-                                    volutpat vestibulum, dolor massa pharetra nunc, nec facilisis lectus nulla a tortor.
-                                    Duis ultrices nunc a nisi malesuada suscipit. Class aptent taciti sociosqu ad litora
-                                    torquent per conubia nostra, per inceptos himenaeos. Aliquam eu bibendum felis. Sed
-                                    viverra dapibus tincidunt.</p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </li>
-                        <li>
-                            <div class="col-md-5 trend-left">
-                                <img src="${contextPath}/resources/assetsMainPages/images/t3.png" alt=""/>
-                            </div>
-                            <div class="col-md-7 trend-right">
-                                <h4>TOP 10 TRENDS <span>FOR YOU</span></h4>
-                                <h5>Flat 20% OFF</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus, justo ac
-                                    volutpat vestibulum, dolor massa pharetra nunc, nec facilisis lectus nulla a tortor.
-                                    Duis ultrices nunc a nisi malesuada suscipit. Class aptent taciti sociosqu ad litora
-                                    torquent per conubia nostra, per inceptos himenaeos. Aliquam eu bibendum felis. Sed
-                                    viverra dapibus tincidunt.</p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </li>
-                        <li>
-                            <div class="col-md-5 trend-left">
-                                <img src="${contextPath}/resources/assetsMainPages/images/t4.png" alt=""/>
-                            </div>
-                            <div class="col-md-7 trend-right">
-                                <h4>TOP 10 TRENDS <span>FOR YOU</span></h4>
-                                <h5>Flat 20% OFF</h5>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tempus, justo ac
-                                    volutpat vestibulum, dolor massa pharetra nunc, nec facilisis lectus nulla a tortor.
-                                    Duis ultrices nunc a nisi malesuada suscipit. Class aptent taciti sociosqu ad litora
-                                    torquent per conubia nostra, per inceptos himenaeos. Aliquam eu bibendum felis. Sed
-                                    viverra dapibus tincidunt.</p>
-                            </div>
-                            <div class="clearfix"></div>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-        </div>
-    </div>
-</div>
 <!--//trend-->
 <!--footer-->
 <div class="footer">
     <div class="container">
         <div class="footer-info">
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
-                <h4 class="footer-logo"><a href="welcome.jsp">Modern <b>Shoppe</b> <span class="tag">Everything for Kids world </span>
+                <h4 class="footer-logo"><a href="/jsDonut/welcome">Donut <b>Shop</b> <span class="tag">Everything for you Sweet Dream </span>
                 </a></h4>
-                <p>© 2016 Modern Shoppe . All rights reserved | Design by <a href="http://w3layouts.com"
-                                                                             target="_blank">W3layouts</a></p>
+                <p>© 2018 Donut Shop . All rights reserved</p>
             </div>
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
                 <h3>Popular</h3>
@@ -776,14 +699,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><a href="faq.jsp">FAQ</a></li>
                     <li><a href="checkout.jsp">Wishlist</a></li>
                 </ul>
-            </div>
-            <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".9s">
-                <h3>Subscribe</h3>
-                <p>Sign Up Now For More Information <br> About Our Company </p>
-                <form>
-                    <input type="text" placeholder="Enter Your Email" required="">
-                    <input type="submit" value="Go">
-                </form>
             </div>
             <div class="clearfix"></div>
         </div>

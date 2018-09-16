@@ -9,7 +9,7 @@
             <form:form method="POST" modelAttribute="userForm" class="form-signin">
                 <div>
                     <label>Enter your login:</label>
-                    <form:input type="text"  minlength="4" maxlength="16" path="login" class="form-control"
+                    <form:input type="text" minlength="4" maxlength="16" path="login" class="form-control"
                                 placeholder="Login"></form:input>
                     <div class="has-error">
                         <form:errors path="login"></form:errors></div>

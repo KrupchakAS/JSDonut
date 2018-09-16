@@ -56,7 +56,6 @@ public class MainController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {
-
         if (error != null) {
             model.addAttribute("error", "Username or password is incorrect.");
         }
@@ -64,7 +63,6 @@ public class MainController {
         if (logout != null) {
             model.addAttribute("message", "Logged out successfully.");
         }
-
         return "main/login";
     }
 
