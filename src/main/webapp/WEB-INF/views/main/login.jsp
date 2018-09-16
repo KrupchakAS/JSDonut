@@ -98,13 +98,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="nav navbar-nav header-two-left">
                 <ul>
-                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 892</li>
+                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+7 965 002 43 21</li>
                     <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                            href="mailto:info@example.com">mail@example.com</a></li>
+                            href="mailto:info@example.com">KrupchakAS@yandex.ru</a></li>
                 </ul>
             </div>
             <div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
-                <h1><a href="welcome.jsp">Modern <b>Shoppe</b><span class="tag">Everything for Kids world </span> </a>
+                <h1><a href="${contextPath}/jsDonut/welcome">Welcome to Donut Shop<b></b><span class="tag">Everything for your Sweet Dream </span> </a>
                 </h1>
             </div>
             <div class="nav navbar-nav navbar-right header-two-right">

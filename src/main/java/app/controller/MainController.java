@@ -51,7 +51,7 @@ public class MainController {
             return "main/registration";
         }
         userService.create(userForm);
-        return "redirect:/jsDonut/registration";
+        return "redirect:/jsDonut/welcome";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

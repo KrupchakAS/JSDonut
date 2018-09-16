@@ -2,6 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 
@@ -96,13 +97,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="nav navbar-nav header-two-left">
                 <ul>
-                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 892</li>
+                    <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+7 965 002 43 21</li>
                     <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                            href="mailto:info@example.com">mail@example.com</a></li>
+                            href="mailto:info@example.com">KrupchakAS@yandex.ru</a></li>
                 </ul>
             </div>
             <div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
-                <h1><a href="welcome.jsp">Modern <b>Shoppe</b><span class="tag">Everything for Kids world </span> </a>
+                <h1><a href="${contextPath}/jsDonut/welcome">Welcome to Donut Shop<b></b><span class="tag">Everything for your Sweet Dream </span> </a>
                 </h1>
             </div>
             <div class="nav navbar-nav navbar-right header-two-right">
@@ -371,16 +372,69 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <div class="widget-shadow">
         <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
-            <h4>Already have an Account ?<a href="login.jsp"> Sign In »</a></h4>
+            <h4>Already have an Account ?<a href="${contextPath}/jsDonut/login"> Sign In »</a></h4>
         </div>
         <div class="login-body">
-            <form class="wow fadeInUp animated" data-wow-delay=".7s">
-                <input type="text" placeholder="First Name" required="">
-                <input type="text" placeholder="Last Name" required="">
-                <input type="text" class="email" placeholder="Email Address" required="">
-                <input type="password" name="password" class="lock" placeholder="Password">
-                <input type="submit" name="Register" value="Register">
-            </form>
+            <form:form method="POST" modelAttribute="userForm" class="form-signin">
+            <div>
+                <label>Enter your login:</label>
+                <form:input type="text"  minlength="4" maxlength="16" path="login" class="form-control"
+                            placeholder="Login"></form:input>
+                <div class="has-error">
+                    <form:errors path="login"></form:errors></div>
+            </div>
+            <div>
+                <label>Enter your firstName:</label>
+                <form:input type="text"  minlength="4" maxlength="16" path="firstName" class="form-control"
+                            placeholder="FirstName"></form:input>
+                <div class="has-error">
+                    <form:errors path="firstName"></form:errors></div>
+            </div>
+            <div>
+                <label>Enter your surName:</label>
+                <form:input type="text" minlength="4" maxlength="16" path="surName" class="form-control"
+                            placeholder="SurName"></form:input>
+                <div class="has-error">
+                    <form:errors path="surName"></form:errors></div>
+            </div>
+            <div>
+                <label>Enter your phoneNumber:</label>
+                <form:input type="text" minlength="4" maxlength="16" path="phoneNumber" class="form-control"
+                            placeholder="PhoneNumber"></form:input>
+                <div class="has-error">
+                    <form:errors path="phoneNumber"></form:errors></div>
+            </div>
+            <div>
+                <label>Enter your birthday:</label>
+                <form:input type="date" value="2000-01-01" min="1900-01-01" max="2004-01-01" path="birthDate"
+                            class="form-control"
+                            placeholder="BirthDate"></form:input>
+                <div class="has-error">
+                    <form:errors path="birthDate"></form:errors></div>
+            </div>
+            <div>
+                <label>Enter your email:</label>
+                <form:input type="text" minlength="4" maxlength="50" path="email" class="form-control" placeholder="Email"></form:input>
+                <div class="has-error">
+                    <form:errors path="email"></form:errors></div>
+            </div>
+            <div>
+                <label>Enter your birthday:</label>
+                <form:input type="password" minlength="4" maxlength="16" path="password" class="form-control"
+                            placeholder="Password"></form:input>
+                <div class="has-error">
+                    <form:errors path="password"></form:errors></div>
+            </div>
+            <div>
+                <label>Enter your confirmPassword:</label>
+                <form:input type="password" minlength="4" maxlength="16" path="confirmPassword" class="form-control"
+                            placeholder="Confirm your password"></form:input>
+                <div class="has-error">
+                    <form:errors path="confirmPassword"></form:errors>
+                </div>
+            </div>
+                <input type="submit" name="Sign up" value="Sign up">
+            </form:form>
         </div>
     </div>
 </div>

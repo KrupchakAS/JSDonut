@@ -16,6 +16,7 @@ import java.util.Date;
 public class UserDTO {
 
     private Integer id;
+
     @Size(min = 4, max = 16, message = "Field must be between 4 and 16 characters.")
     private String login;
 
