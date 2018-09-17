@@ -1,25 +1,23 @@
 package app.dto;
 
-import app.entity.User;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class AddressDTO {
 
     private Integer id;
-
-
+    @Size(min = 2, max = 16, message = "Field must be between 2 and 16 characters.")
     private String city;
-
-
+    @Size(min = 4, max = 16, message = "Field must be between 4 and 16 characters.")
     private Integer postCode;
-
-
+    @Size(min = 1, max = 10, message = "Field must be between 1 and 10 characters.")
     private Short houseNumber;
-
+    @Size(min = 1, max = 10, message = "Field must be between 1 and 10 characters.")
     private Short apartmentNumber;
-
+    @NotNull
     private UserDTO user;
 
-    public Integer getId() {        return id; }
+    public Integer getId() { return id; }
 
     public void setId(Integer id) {
         this.id = id;

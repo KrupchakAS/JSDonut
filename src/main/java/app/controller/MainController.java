@@ -1,9 +1,8 @@
 package app.controller;
 
 
-import app.dto.CartDTO;
 import app.dto.UserDTO;
-import app.exception.MyRuntimeException;
+import app.service.api.CategoryService;
 import app.service.api.UserService;
 import app.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +14,9 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -33,8 +30,12 @@ public class MainController {
     @Autowired
     private UserValidator userValidator;
 
+    @Autowired
+    private CategoryService categoryService;
+
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public String main(){
+    public String main(ModelMap modelMap){
+        modelMap.addAttribute("categoryList",categoryService.getAll());
         return "main/welcome";
     }
 
@@ -75,4 +76,15 @@ public class MainController {
         return "redirect:/jsDonut/welcome";
     }
 
+
+
+    @RequestMapping(value = "/products", method = RequestMethod.GET)
+    public String products(){
+        return "main/products";
+    }
+
+    @RequestMapping(value = "/checkout", method = RequestMethod.GET)
+    public String checkout(){
+        return "main/checkout";
+    }
 }

@@ -1,30 +1,41 @@
 package app.dto;
 
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 public class ProductDTO {
 
     private Integer id;
-
+    @Size(min = 2, max = 16, message = "Field must be between 2 and 16 characters.")
     private String name;
 
+    @NotBlank
     private String description;
 
     private String image;
 
+    @Size(min = 1, max = 5, message = "Field must be between 1 and 5 digits.")
     private Float price;
 
+    @Size(min = 1, max = 5, message = "Field must be between 1 and 5 digits.")
     private Float workPrice;
 
+    @Size(min = 1, max = 5, message = "Field must be between 1 and 5 digits.")
     private Short weight;
 
+    @Size(min = 1, max = 5, message = "Field must be between 1 and 5 digits.")
     private Short quantity;
 
+    @Size(min = 1, max = 5, message = "Field must be between 1 and 5 digits.")
     private Short calories;
 
     private UserDTO user;
 
+    @NotNull
     private CategoryDTO category;
 
     private List<OrderDTO> orderList;

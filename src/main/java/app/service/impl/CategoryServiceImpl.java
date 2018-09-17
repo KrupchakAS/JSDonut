@@ -4,9 +4,9 @@ import app.dao.api.CategoryDao;
 import app.dto.CategoryDTO;
 import app.entity.Category;
 import app.service.api.CategoryService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
-    private static final Logger logger = LoggerFactory.getLogger(CategoryServiceImpl.class);
+    private static final Logger logger = LogManager.getLogger(CategoryServiceImpl.class);
 
     @Autowired
     private CategoryDao categoryDao;

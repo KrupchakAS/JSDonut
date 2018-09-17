@@ -4,9 +4,12 @@ import app.dao.api.AddressDao;
 import app.dto.AddressDTO;
 import app.entity.Address;
 import app.service.api.AddressService;
+
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -18,7 +21,7 @@ import java.util.stream.Collectors;
 @Service
 public class AddressServiceImpl implements AddressService {
 
-    private static final Logger logger = LoggerFactory.getLogger(AddressServiceImpl.class);
+    private static final Logger logger = LogManager.getLogger(AddressServiceImpl.class);
 
     @Autowired
     private AddressDao addressDao;

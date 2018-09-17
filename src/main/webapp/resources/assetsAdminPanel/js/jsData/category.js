@@ -25,15 +25,15 @@ function getDoughById(id, selector) {
 
 function openCategoryFormUpdate(categoryObject) {
 
+    $('.category-id').val(categoryObject.id);
+    $('.category-name').val(categoryObject.name);
+
     $('.container-head').text("Category: " + categoryObject.name);
     $('.category-list').addClass('block__display-none');
     $('.category-add').addClass('block__display-none');
     $('.category-save').addClass('block__display-none');
     $('.category-form').removeClass('block__display-none');
     $('.category-update').removeClass('block__display-none');
-
-    $('.category-id').val(categoryObject.id);
-    $('.category-name').val(categoryObject.name);
 
 }
 
@@ -86,15 +86,16 @@ function saveItem(button) {
     sendAjax(pst);
 }
 
-
 function getFormCreate() {
+
+    $('.category-name').val('');
 
     $('.category-add').addClass('block__display-none');
     $('.category-list').addClass('block__display-none');
     $('.category-update').addClass('block__display-none');
     $('.category-form').removeClass('block__display-none');
     $('.category-save').removeClass('block__display-none');
-    $('.category-name').val('');
+
 }
 
 function getDataFromForm() {
@@ -106,7 +107,7 @@ function getDataFromForm() {
 }
 
 function addNewCategory(categoryObject) {
-    swal('SAVED!');
+    swal('Saved!');
 
     console.log(categoryObject);
 
@@ -156,6 +157,7 @@ $(document).ready(function () {
         swal('Deleted!');
     });
 });
+
 // Scripts
 
 $(function() {

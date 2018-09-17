@@ -1,57 +1,64 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<%@ page pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>Modern Shoppe a Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Products :: w3layouts</title>
-<!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Modern Shoppe Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
-		function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!--//for-mobile-apps -->
-<!--Custom Theme files -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!--//Custom Theme files -->
-<!--js-->
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/modernizr.custom.js"></script>
-<link rel="stylesheet" type="text/css" href="css/jquery-ui.css">
-<!--//js-->
-<!--cart-->
-<script src="js/simpleCart.min.js"></script>
-<!--cart-->
-<!--web-fonts-->
-<link href='//fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic' rel='stylesheet' type='text/css'><link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Fascinate' rel='stylesheet' type='text/css'>
-<!--web-fonts-->
-<!--animation-effect-->
-<link href="css/animate.min.css" rel="stylesheet"> 
-<script src="js/wow.min.js"></script>
-<script>
- new WOW().init();
-</script>
-<!--//animation-effect-->
-<!--start-smooth-scrolling-->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>	
-<script type="text/javascript">
-		jQuery(document).ready(function($) {
-			$(".scroll").click(function(event){		
-				event.preventDefault();
-				$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-			});
-		});
-</script>
-<!--//end-smooth-scrolling-->
+	<title>Donut Shop</title>
+	<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="keywords" content="Donut Shop"/>
+	<script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+	<!--//for-mobile-apps -->
+	<!--Custom Theme files -->
+	<link href="${contextPath}/resources/assetsMainPages/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+	<link href="${contextPath}/resources/assetsMainPages/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+	<link rel="stylesheet" href="${contextPath}/resources/assetsMainPages/css/flexslider.css" type="text/css" media="screen"/>
+	<!--//Custom Theme files -->
+	<!--js-->
+	<script src="${contextPath}/resources/assetsMainPages/js/jquery-1.11.1.min.js"></script>
+	<script src="${contextPath}/resources/assetsMainPages/js/modernizr.custom.js"></script>
+	<!--//js-->
+	<!--cart-->
+	<script src="${contextPath}/resources/assetsMainPages/js/simpleCart.min.js"></script>
+	<!--cart-->
+	<!--web-fonts-->
+	<link href='//fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic'
+		  rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+		  rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Fascinate' rel='stylesheet' type='text/css'>
+	<!--web-fonts-->
+	<!--animation-effect-->
+	<link href="${contextPath}/resources/assetsMainPages/css/animate.min.css" rel="stylesheet">
+	<script src="${contextPath}/resources/assetsMainPages/js/wow.min.js"></script>
+	<script>
+        new WOW().init();
+	</script>
+	<!--//animation-effect-->
+	<!--start-smooth-scrolling-->
+	<script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/move-top.js"></script>
+	<script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/easing.js"></script>
+	<script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+            });
+        });
+	</script>
+	<!--//end-smooth-scrolling-->
 </head>
 <body>
 	<!--header-->
@@ -219,7 +226,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="col-sm-3 menu-grids new-add2">
 											<a href="products.jsp">
 												<h6>Kids Special</h6>
-												<img src="images/img1.jpg" alt="">
+												<img src="${contextPath}/resources/assetsMainPages/images/img1.jpg" alt="">
 											</a>
 										</div>
 										<div class="clearfix"> </div>
@@ -344,7 +351,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-9 product-model-sec">
 				<div class="product-grids simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".5s">
 					<div class="new-top">
-						<a href="single.jsp"><img src="images/g1.jpg" class="img-responsive" alt=""/></a>
+						<a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g1.jpg" class="img-responsive" alt=""/></a>
 						<div class="new-text">
 							<ul>
 								<li><a href="single.jsp">Quick View </a></li>
@@ -370,7 +377,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="product-grids product-grids-mdl simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".7s">
 					<div class="new-top">
-						<a href="single.jsp"><img src="images/g5.jpg" class="img-responsive" alt=""/></a>
+						<a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g5.jpg" class="img-responsive" alt=""/></a>
 						<div class="new-text">
 							<ul>
 								<li><a href="single.jsp">Quick View </a></li>
@@ -396,7 +403,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="product-grids simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".9s">
 					<div class="new-top">
-						<a href="single.jsp"><img src="images/g7.jpg" class="img-responsive" alt=""/></a>
+						<a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g7.jpg" class="img-responsive" alt=""/></a>
 						<div class="new-text">
 							<ul>
 								<li><a href="single.jsp">Quick View </a></li>
@@ -422,7 +429,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="product-grids simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".5s">
 					<div class="new-top">
-						<a href="single.jsp"><img src="images/g3.jpg" class="img-responsive" alt=""/></a>
+						<a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g3.jpg" class="img-responsive" alt=""/></a>
 						<div class="new-text">
 							<ul>
 								<li><a href="single.jsp">Quick View </a></li>
@@ -448,7 +455,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="product-grids product-grids-mdl simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".7s">
 					<div class="new-top">
-						<a href="single.jsp"><img src="images/g6.jpg" class="img-responsive" alt=""/></a>
+						<a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g6.jpg" class="img-responsive" alt=""/></a>
 						<div class="new-text">
 							<ul>
 								<li><a href="single.jsp">Quick View </a></li>
@@ -474,7 +481,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="product-grids simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".9s">
 					<div class="new-top">
-						<a href="single.jsp"><img src="images/g2.jpg" class="img-responsive" alt=""/></a>
+						<a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g2.jpg" class="img-responsive" alt=""/></a>
 						<div class="new-text">
 							<ul>
 								<li><a href="single.jsp">Quick View </a></li>
@@ -500,7 +507,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="product-grids simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".5s">
 					<div class="new-top">
-						<a href="single.jsp"><img src="images/g8.jpg" class="img-responsive" alt=""/></a>
+						<a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g8.jpg" class="img-responsive" alt=""/></a>
 						<div class="new-text">
 							<ul>
 								<li><a href="single.jsp">Quick View </a></li>
@@ -526,7 +533,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="product-grids product-grids-mdl simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".7s">
 					<div class="new-top">
-						<a href="single.jsp"><img src="images/g10.jpg" class="img-responsive" alt=""/></a>
+						<a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g10.jpg" class="img-responsive" alt=""/></a>
 						<div class="new-text">
 							<ul>
 								<li><a href="single.jsp">Quick View </a></li>
@@ -552,7 +559,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="product-grids simpleCart_shelfItem wow fadeInUp animated" data-wow-delay=".9s">
 					<div class="new-top">
-						<a href="single.jsp"><img src="images/g12.jpg" class="img-responsive" alt=""/></a>
+						<a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g12.jpg" class="img-responsive" alt=""/></a>
 						<div class="new-text">
 							<ul>
 								<li><a href="single.jsp">Quick View </a></li>
@@ -598,7 +605,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 							});//]]>  
 						</script>
-						<script type="text/javascript" src="js/jquery-ui.js"></script>
+						<script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/jquery-ui.js"></script>
 						<!---->
 					</div>
 					<div class="sidebar-row">
@@ -676,7 +683,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="gallery-grid ">
 					<h6>YOU MAY ALSO LIKE</h6>
-					<a href="single.jsp"><img src="images/b1.png" class="img-responsive" alt=""/></a>
+					<a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/b1.png" class="img-responsive" alt=""/></a>
 					<div class="gallery-text simpleCart_shelfItem">
 						<h5><a class="name" href="single.jsp">Full Sleeves Romper</a></h5>
 						<p><span class="item_price">60$</span></p>
@@ -725,7 +732,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!--//footer-->			
 	<!-- the jScrollPane script -->
-	<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+	<script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/jquery.jscrollpane.min.js"></script>
 			<script type="text/javascript" id="sourcecode">
 				$(function()
 				{
@@ -733,7 +740,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				});
 			</script>
 	<!-- //the jScrollPane script -->
-	<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+	<script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/jquery.mousewheel.js"></script>
 	<!-- the mousewheel plugin -->
 	<!--search jQuery-->
 	<script src="js/main.js"></script>
@@ -757,6 +764,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!--Bootstrap core JavaScript
     ================================================== -->
     <!--Placed at the end of the document so the pages load faster -->
-    <script src="js/bootstrap.js"></script>
+    <script src="${contextPath}/resources/assetsMainPages/js/bootstrap.js"></script>
 </body>
 </html>

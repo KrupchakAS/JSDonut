@@ -65,7 +65,6 @@ function getItemData() {
     return dough;
 }
 
-
 $(document).ready(function () {
     $(document).on('click', '.dough-update', function (e) {
         e.preventDefault();
@@ -97,6 +96,7 @@ function getFormCreate() {
     $('.dough-name').val('');
     $('.dough-price').val('');
     $('.dough-calories').val('');
+
     $('.dough-add').addClass('block__display-none');
     $('.dough-update').addClass('block__display-none');
     $('.dough-list').addClass('block__display-none');

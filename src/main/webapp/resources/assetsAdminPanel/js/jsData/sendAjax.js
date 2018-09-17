@@ -45,7 +45,7 @@ function sendAjax(ajax) {
 
     request.fail(function (jqXHR, textStatus) {
 
-        alert(jqXHR.statusText);
+        swal(jqXHR.statusText);
 
     });
 

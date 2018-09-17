@@ -3,6 +3,8 @@ package app.service.impl;
 import app.dao.api.UserDao;
 import app.dto.UserDTO;
 import app.entity.User;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,6 +20,8 @@ import java.util.Set;
 @Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
 
+    private static final Logger logger = LogManager.getLogger(FillingServiceImpl.class);
+
     @Autowired
     private UserDao userDao;
 
@@ -30,6 +34,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             UserDTO userDTO = modelMapper.map(user, UserDTO.class);
             Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
             grantedAuthorities.add(new SimpleGrantedAuthority(userDTO.getRole().toString()));
+            logger.debug(String.format(userDTO.getLogin() + " has role: "+ userDTO.getRole().toString()));
             return new org.springframework.security.core.userdetails.User(userDTO.getLogin(), userDTO.getPassword(), grantedAuthorities);
         } else {
             return null;

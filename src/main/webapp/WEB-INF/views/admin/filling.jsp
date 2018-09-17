@@ -135,7 +135,7 @@
     </div>
 </div>
 
-<c:import url="/WEB-INF/views/admin/adminFooter.jsp/"/>
+<c:import url="/WEB-INF/views/admin/adminFooter.jsp"/>
 <script type="text/javascript" src="${contextPath}/resources/assetsAdminPanel/js/jsData/filling.js"></script>
 </body>
 </html>

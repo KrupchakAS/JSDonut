@@ -1,12 +1,13 @@
 package app.dto;
 
+import javax.validation.constraints.Size;
+
 public class CategoryDTO {
 
     private Integer id;
 
+    @Size(min = 2, max = 16, message = "Field must be between 2 and 16 characters.")
     private String name;
-
-    private ProductDTO product;
 
     public Integer getId() {
         return id;
@@ -24,11 +25,4 @@ public class CategoryDTO {
         this.name = name;
     }
 
-    public ProductDTO getProductDTO() {
-        return product;
-    }
-
-    public void setProductDTO(ProductDTO productDTO) {
-        this.product = productDTO;
-    }
 }

@@ -7,22 +7,23 @@ import app.entity.enums.OrderStatus;
 import app.entity.enums.PaymentOption;
 import app.entity.enums.PaymentStatus;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class OrderDTO {
 
     private Integer id;
-
+    @NotNull
     private PaymentOption paymentOption;
-
+    @NotNull
     private DeliveryOption deliveryOption;
-
+    @NotNull
     private PaymentStatus paymentStatus;
-
+    @NotNull
     private OrderStatus orderStatus;
-
+    @NotNull
     private List<Product> productList;
-
+    @NotNull
     private UserDTO user;
 
     public Integer getId() {

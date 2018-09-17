@@ -6,9 +6,10 @@ import app.dto.DoughDTO;
 import app.entity.Dough;
 import app.exception.ObjectExistsException;
 import app.service.api.DoughService;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 @Service
 public class DoughServiceImpl implements DoughService {
 
-    private static final Logger logger = LoggerFactory.getLogger(DoughServiceImpl.class);
+    private static final Logger logger = LogManager.getLogger(DoughServiceImpl.class);
 
     @Autowired
     private DoughDao doughDao;
@@ -40,7 +41,7 @@ public class DoughServiceImpl implements DoughService {
             doughDao.create(dough);
             doughDTO.setId(dough.getId());
         }
-        logger.debug(String.format("Successfully saved dough"));
+        logger.info(String.format("Successfully saved dough"));
         return doughDTO;
     }
 
@@ -50,7 +51,7 @@ public class DoughServiceImpl implements DoughService {
         Dough corn = doughDao.getById(doughDTO.getId());
         if (corn != null)
             doughDao.update(modelMapper.map(doughDTO, Dough.class));
-        logger.debug(String.format("Successfully updated dough"));
+        logger.info(String.format("Successfully updated dough"));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -58,7 +59,7 @@ public class DoughServiceImpl implements DoughService {
     public void delete(DoughDTO doughDTO) {
         if (doughDTO != null)
             doughDao.delete(modelMapper.map(doughDTO, Dough.class));
-        logger.debug(String.format("Successfully deleted dough"));
+        logger.info(String.format("Successfully deleted dough"));
     }
 
     @Transactional(readOnly = true)
