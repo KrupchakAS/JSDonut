@@ -19,4 +19,6 @@ public interface ProductService {
     List<ProductDTO> getAll();
 
     ProductDTO getLastProduct();
+
+    List<ProductDTO> getAllByCategory(Integer categoryId);
 }

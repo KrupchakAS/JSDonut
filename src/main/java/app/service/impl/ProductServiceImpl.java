@@ -98,4 +98,14 @@ public class ProductServiceImpl implements ProductService {
             return null;
         }
     }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<ProductDTO> getAllByCategory(Integer categoryId) {
+        List<Product> productList = productDao.getAllByCategory(categoryId);
+        if (productList != null){
+            return productList.stream().map(product -> modelMapper.map(product,ProductDTO.class)).collect(Collectors.toList());
+        }
+        return null;
+    }
 }

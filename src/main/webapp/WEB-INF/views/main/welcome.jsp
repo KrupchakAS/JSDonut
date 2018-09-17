@@ -149,8 +149,7 @@
                                 <div class="row">
                                     <div class="col-sm-3 menu-grids">
                                         <h4>New Arrivals</h4>
-                                        <ul class="multi-column-dropdown">
-                                            <%--<li><a class="list" href="${contextPath}/jsDonut/products">Diapering</a></li>--%>
+                                        <ul class="category-selector multi-column-dropdown">
                                             <c:choose>
                                                 <c:when test="${categoryList.size() > 0}">
                                                     <с:forEach var="category" items="${categoryList}">

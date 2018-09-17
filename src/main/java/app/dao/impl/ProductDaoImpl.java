@@ -28,4 +28,20 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
             return list.get(0);
         }
     }
+
+    @Override
+    public List<Product> getAllByCategory(Integer categoryId) {
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
+        Root<Product> productRoot = criteriaQuery.from(Product.class);
+        if (categoryId != null) {
+            criteriaQuery.where(entityManager.getCriteriaBuilder().equal(productRoot.get("category_id"), categoryId));
+        }
+        List<Product> list = entityManager.createQuery(criteriaQuery).getResultList();
+        if (list.isEmpty()) {
+            return null;
+        } else {
+            return list;
+        }
+    }
 }

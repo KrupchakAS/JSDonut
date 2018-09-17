@@ -91,6 +91,13 @@ public class ProductController {
         return result;
     }
 
+    @RequestMapping(value = "/product/getProductByCategory", method = RequestMethod.GET)
+    @ResponseBody
+    public AjaxDTO getProductByCategory(@RequestParam(value = "id") @Valid @NotEmpty(message = "Product id cannot be empty") Integer categoryId) {
+        AjaxDTO result = new AjaxDTO();
+        result.setData(productService.getAllByCategory(categoryId));
+        return result;
+    }
 
 
 }
