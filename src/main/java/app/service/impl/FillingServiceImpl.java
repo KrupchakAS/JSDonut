@@ -33,7 +33,7 @@ public class FillingServiceImpl implements FillingService {
             Filling filling = modelMapper.map(fillingDTO, Filling.class);
             fillingDao.create(filling);
             fillingDTO.setId(filling.getId());
-            logger.debug(String.format("Successfully saved filling"));
+            logger.info(String.format("Successfully saved filling"));
         }
         return fillingDTO;
     }
@@ -44,7 +44,7 @@ public class FillingServiceImpl implements FillingService {
         Filling filling = fillingDao.getById(fillingDTO.getId());
         if (filling != null)
             fillingDao.update(modelMapper.map(fillingDTO, Filling.class));
-        logger.debug(String.format("Successfully updated filling"));
+        logger.info(String.format("Successfully updated filling"));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -52,7 +52,7 @@ public class FillingServiceImpl implements FillingService {
     public void delete(FillingDTO fillingDTO) {
         if (fillingDTO != null)
             fillingDao.delete(modelMapper.map(fillingDTO, Filling.class));
-        logger.debug(String.format("Successfully deleted filling"));
+        logger.info(String.format("Successfully deleted filling"));
     }
 
     @Transactional(readOnly = true)

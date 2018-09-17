@@ -31,7 +31,7 @@ public class OrderServiceImpl implements OrderService {
     public void create(OrderDTO orderDTO) {
         if (orderDTO != null)
             orderDao.create(modelMapper.map(orderDTO, Order.class));
-        logger.debug(String.format("Successfully saved order"));
+        logger.info(String.format("Successfully saved order"));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -40,7 +40,7 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderDao.getById(orderDTO.getId());
         if (order != null)
             orderDao.update(modelMapper.map(orderDTO, Order.class));
-        logger.debug(String.format("Successfully updated order"));
+        logger.info(String.format("Successfully updated order"));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -48,7 +48,7 @@ public class OrderServiceImpl implements OrderService {
     public void delete(OrderDTO orderDTO) {
         if (orderDTO != null)
             orderDao.delete(modelMapper.map(orderDTO, Order.class));
-        logger.debug(String.format("Successfully deleted order"));
+        logger.info(String.format("Successfully deleted order"));
     }
 
     @Transactional(readOnly = true)

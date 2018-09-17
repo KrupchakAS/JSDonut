@@ -34,7 +34,7 @@ public class CategoryServiceImpl implements CategoryService {
             categoryDao.create(category);
             categoryDTO.setId(category.getId());
         }
-        logger.debug(String.format("Successfully saved category"));
+        logger.info(String.format("Successfully saved category"));
         return categoryDTO;
     }
 
@@ -44,7 +44,7 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = categoryDao.getById(categoryDTO.getId());
         if (category != null) {
             categoryDao.update(modelMapper.map(categoryDTO, Category.class));
-            logger.debug(String.format("Successfully updated category"));
+            logger.info(String.format("Successfully updated category"));
         }
     }
 
@@ -54,7 +54,7 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = categoryDao.getById(categoryDTO.getId());
         if (category != null)
             categoryDao.delete(modelMapper.map(categoryDTO, Category.class));
-        logger.debug(String.format("Successfully deleted category"));
+        logger.info(String.format("Successfully deleted category"));
     }
 
     @Transactional(readOnly = true)

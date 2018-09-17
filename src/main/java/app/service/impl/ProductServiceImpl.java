@@ -33,7 +33,7 @@ public class ProductServiceImpl implements ProductService {
             Product product = modelMapper.map(productDTO, Product.class);
             productDao.create(product);
             productDTO.setId(product.getId());
-            logger.debug(String.format("Successfully saved product"));
+            logger.info(String.format("Successfully saved product"));
         }
         return productDTO;
     }
@@ -44,7 +44,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = productDao.getById(productDTO.getId());
         if (product != null)
             productDao.update(modelMapper.map(productDTO, Product.class));
-        logger.debug(String.format("Successfully updated product"));
+        logger.info(String.format("Successfully updated product"));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -52,7 +52,7 @@ public class ProductServiceImpl implements ProductService {
     public void delete(ProductDTO productDTO) {
         if (productDTO != null)
             productDao.delete(modelMapper.map(productDTO, Product.class));
-        logger.debug(String.format("Successfully deleted product"));
+        logger.info(String.format("Successfully deleted product"));
     }
 
     @Transactional(readOnly = true)

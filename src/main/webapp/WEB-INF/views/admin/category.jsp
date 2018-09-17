@@ -18,6 +18,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span></button>
             <a class="navbar-brand" href="/jsDonut/admin/adminPanel"><span></span>Admin Panel</a>
+            <a class="navbar-brand" href="/jsDonut/welcome"><span></span>Home</a>
         </div>
     </div><!-- /.container-fluid -->
 </nav>

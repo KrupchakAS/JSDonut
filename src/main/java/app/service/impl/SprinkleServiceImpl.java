@@ -35,7 +35,7 @@ public class SprinkleServiceImpl implements SprinkleService {
             Sprinkle sprinkle= modelMapper.map(sprinkleDTO, Sprinkle.class);
             sprinkleDao.create(sprinkle);
             sprinkleDTO.setId(sprinkle.getId());
-            logger.debug(String.format("Successfully saved sprinkle"));
+            logger.info(String.format("Successfully saved sprinkle"));
         }
         return sprinkleDTO;
     }
@@ -46,7 +46,7 @@ public class SprinkleServiceImpl implements SprinkleService {
         Sprinkle sprinkle = sprinkleDao.getById(sprinkleDTO.getId());
         if (sprinkle != null)
             sprinkleDao.update(modelMapper.map(sprinkleDTO, Sprinkle.class));
-        logger.debug(String.format("Successfully updated sprinkle"));
+        logger.info(String.format("Successfully updated sprinkle"));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -54,7 +54,7 @@ public class SprinkleServiceImpl implements SprinkleService {
     public void delete(SprinkleDTO sprinkleDTO) {
         if (sprinkleDTO != null)
             sprinkleDao.delete(modelMapper.map(sprinkleDTO, Sprinkle.class));
-        logger.debug(String.format("Successfully deleted sprinkle"));
+        logger.info(String.format("Successfully deleted sprinkle"));
     }
 
     @Transactional(readOnly = true)

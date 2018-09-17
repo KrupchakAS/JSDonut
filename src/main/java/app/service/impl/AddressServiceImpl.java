@@ -34,7 +34,7 @@ public class AddressServiceImpl implements AddressService {
     public void create(AddressDTO addressDTO) {
         if (addressDTO != null)
             addressDao.create(modelMapper.map(addressDTO, Address.class));
-        logger.debug(String.format("Successfully saved address"));
+        logger.info(String.format("Successfully saved address"));
 
     }
 
@@ -44,6 +44,7 @@ public class AddressServiceImpl implements AddressService {
         Address address = addressDao.getById(addressDTO.getId());
         if (address != null)
             addressDao.update(modelMapper.map(addressDTO,Address.class));
+        logger.info(String.format("Successfully updated address"));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -51,6 +52,7 @@ public class AddressServiceImpl implements AddressService {
     public void delete(AddressDTO addressDTO) {
         if (addressDTO != null)
             addressDao.delete(modelMapper.map(addressDTO, Address.class));
+        logger.info(String.format("Successfully deleted address"));
     }
 
     @Transactional(readOnly = true)

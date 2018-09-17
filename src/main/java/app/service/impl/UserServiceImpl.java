@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
         if (userDto != null)
             userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
         userDao.create(modelMapper.map(userDto, User.class));
-        logger.debug(String.format("Successfully saved user %s", userDto.getLogin()));
+        logger.info(String.format("Successfully saved user %s", userDto.getLogin()));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -45,14 +45,14 @@ public class UserServiceImpl implements UserService {
         User user = userDao.getById(userDTO.getId());
         if (user != null)
             userDao.update(modelMapper.map(userDTO,User.class));
-        logger.debug(String.format("Successfully update user %s", userDTO.getLogin()));
+        logger.info(String.format("Successfully update user %s", userDTO.getLogin()));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void delete(UserDTO userDTO) {
         if (userDTO != null)
             userDao.delete(modelMapper.map(userDTO, User.class));
-        logger.debug(String.format("Successfully delete user %s", userDTO.getLogin()));
+        logger.info(String.format("Successfully delete user %s", userDTO.getLogin()));
     }
 
     @Transactional(readOnly = true)
