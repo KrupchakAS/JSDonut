@@ -1,6 +1,7 @@
 package app.controller;
 
 
+import app.dto.OrderDTO;
 import app.dto.UserDTO;
 import app.service.api.CategoryService;
 import app.service.api.UserService;
@@ -20,6 +21,7 @@ import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+@SessionAttributes(value = "order")
 @Controller
 @RequestMapping(value = "/jsDonut")
 public class MainController {
@@ -33,8 +35,14 @@ public class MainController {
     @Autowired
     private CategoryService categoryService;
 
+    @ModelAttribute("order")
+    public OrderDTO createOrder(){
+        return new OrderDTO();
+    }
+
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public String main(ModelMap modelMap){
+    public String main(@ModelAttribute ("order") OrderDTO orderDTO, ModelMap modelMap){
+        modelMap.addAttribute("order", new OrderDTO());
         modelMap.addAttribute("categoryList",categoryService.getAll());
         return "main/welcome";
     }

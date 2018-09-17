@@ -23,9 +23,11 @@
     } </script>
     <!--//for-mobile-apps -->
     <!--Custom Theme files -->
-    <link href="${contextPath}/resources/assetsMainPages/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="${contextPath}/resources/assetsMainPages/css/bootstrap.css" rel="stylesheet" type="text/css"
+          media="all"/>
     <link href="${contextPath}/resources/assetsMainPages/css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <link rel="stylesheet" href="${contextPath}/resources/assetsMainPages/css/flexslider.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="${contextPath}/resources/assetsMainPages/css/flexslider.css" type="text/css"
+          media="screen"/>
     <!--//Custom Theme files -->
     <!--js-->
     <script src="${contextPath}/resources/assetsMainPages/js/jquery-1.11.1.min.js"></script>
@@ -77,7 +79,8 @@
                         again <a href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <p>We will glad to see you again ${pageContext.request.userPrincipal.name} <a href="/jsDonut/logout">Sing Out </a></p>
+                    <p>We will glad to see you again ${pageContext.request.userPrincipal.name} <a
+                            href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
             <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
@@ -136,11 +139,12 @@
         <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
             <h4>Already have an Account ?<a href="${contextPath}/jsDonut/login"> Sign In »</a></h4>
         </div>
+
         <div class="login-body">
             <form:form method="POST" modelAttribute="userForm">
                 <div>
                     <span>Enter your login:</span>
-                    <form:input type="text" minlength="4" maxlength="16" path="login" class="form-control"
+                    <form:input type="text" minlength="4" maxlength="16" path="login" class=" form-control"
                                 placeholder="Login"></form:input>
                     <div class="has-error">
                         <form:errors path="login"></form:errors></div>

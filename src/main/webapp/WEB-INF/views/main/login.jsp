@@ -131,6 +131,7 @@
 <div class="login-page">
     <div class="widget-shadow">
         <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
+
             <h4>Welcome back to Donut Shop! <br> Not a Member? <a href="${contextPath}/jsDonut/registration"> Sign Up »</a></h4>
         </div>
         <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
