@@ -148,8 +148,8 @@
                             <ul class="dropdown-menu multi-column multi-column2">
                                 <div class="row">
                                     <div class="col-sm-3 menu-grids">
-                                        <h4>New Arrivals</h4>
-                                        <ul class="category-selector multi-column-dropdown">
+
+                                        <ul style="font-size: 25px" class="category-selector multi-column-dropdown">
                                             <c:choose>
                                                 <c:when test="${categoryList.size() > 0}">
                                                     <с:forEach var="category" items="${categoryList}">
@@ -164,7 +164,7 @@
                                     </div>
                                     <div class="col-sm-3 menu-grids new-add2 ">
                                         <a href="products.jsp">
-                                            <h6>Yuuumi (:</h6>
+
                                             <img src="${contextPath}/resources/assetsMainPages/images/img1.jpg" alt="">
                                         </a>
                                     </div>
