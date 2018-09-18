@@ -93,12 +93,12 @@ public class MainController {
     @RequestMapping(value = "/getProductsByParameters", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO getProductsByParameters(
-            @RequestParam(value = "categoryName",required = false) String categoryName,
+            @RequestParam(value = "categoryId",required = false) Integer categoryId,
             @RequestParam(value = "productName",required = false) String productName,
             @RequestParam(value = "minPrice",required = false) Integer minPrice,
             @RequestParam(value = "maxPrice",required = false) Integer maxPrice) {
         AjaxDTO result = new AjaxDTO();
-        result.setData(productService.getProductsByParameters(categoryName,productName,minPrice,maxPrice));
+        result.setData(productService.getProductsByParameters(categoryId,productName,minPrice,maxPrice));
         return result;
     }
 
@@ -110,7 +110,8 @@ public class MainController {
     }
 
     @RequestMapping(value = "/filter", method = RequestMethod.GET)
-    public String filter(){
+    public String filter(ModelMap modelMap){
+        modelMap.addAttribute("categoryList",categoryService.getAll());
         return "main/filter";
     }
 

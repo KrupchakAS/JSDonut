@@ -63,6 +63,15 @@
     </script>
     <!--//end-smooth-scrolling-->
 </head>
+
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="/jsDonut/welcome"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li><a href="/jsDonut/filter"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Filter</a></li>
+        </ol>
+    </div>
+</div>
 <body>
 <!--header-->
 <div class="header">

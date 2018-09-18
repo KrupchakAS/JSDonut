@@ -111,8 +111,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<ProductDTO> getProductsByParameters(String categoryName, String productsName, Integer minPrice, Integer maxPrice) {
-        List<Product> productList =  productDao.getProductsByParameters(categoryName, productsName, minPrice, maxPrice);
+    public List<ProductDTO> getProductsByParameters(Integer categoryId, String productsName, Integer minPrice, Integer maxPrice) {
+        List<Product> productList =  productDao.getProductsByParameters(categoryId, productsName, minPrice, maxPrice);
         if (productList != null){
             return productList.stream().map(product -> modelMapper.map(product,ProductDTO.class)).collect(Collectors.toList());
         }

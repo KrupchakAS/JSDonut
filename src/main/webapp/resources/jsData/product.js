@@ -253,21 +253,20 @@ $(document).ready(function () {
 
 // GetProductsByParameters
 
-function getProducts(categoryName, productName, minPrice, maxPrice, selector) {
-    if (minPrice !== undefined && minPrice !== null || maxPrice !== undefined && maxPrice !== null) {
-        if (isNumber(minPrice) || isNumber(maxPrice)) {
-            getProductByParameters(categoryName, productName, minPrice, maxPrice, selector);
-        }
-    } else {
-        swal("Product price is not number");
-    }
+function getProducts(categoryId, productName, minPrice, maxPrice, selector) {
+        // if (isNumber(minPrice) || isNumber(maxPrice)) {
+        //     getProductByParameters(categoryId, productName, minPrice, maxPrice, selector);
+        // } else {
+        //     swal("Product price is not number");
+        // }
+    getProductByParameters(categoryId, productName, minPrice, maxPrice, selector);
 }
 
 
-function getProductByParameters(categoryName, productName, minPrice, maxPrice, selector) {
+function getProductByParameters(categoryId, productName, minPrice, maxPrice, selector) {
     var ajax = {};
     ajax.data = {
-        categoryName: categoryName,
+        categoryId: categoryId,
         productName: productName,
         minPrice: minPrice,
         maxPrice: maxPrice
@@ -285,25 +284,27 @@ function addProducts(productList) {
 
     console.log(productList);
 
+    if (productList === null || productList === undefined) {
+        swal('Sorry, but we do not have any delicious by your criteria');
+    }
     for (var i = 0; i < productList.length; i++) {
-
         var productObject = productList[i];
         $('.Product-item').append(
             '<div class="cart-header1 wow fadeInUp animated" data-wow-delay=".7s">' +
-            '<div class="alert-close1"></div>' +
             '<div class="cart-sec simpleCart_shelfItem">' +
             '<div class="cart-item cyc">' +
             '<img src="#" class="img-responsive" alt="">' +
             '</div>' +
             '<div class="cart-item-info">' +
-            '<h4>' +  productObject.name+ '<span>' + productObject.description + '</span></h4>' +
+            '<h4 data-id=' + productObject.id + '>' + productObject.name + '<span style="font-size: 16px">' + productObject.description + '</span></h4>' +
             '<ul class="qty">' +
-            '<li><p>Price for donut: ' + productObject.price + '</p></li>' +
-            '<li><p>Available  quantity : '+ productObject.quantity +'</p></li>' +
-            '<div class="quantity">' +
+            '<li><h4>Price : ' + productObject.price + '₽</h4></li>' +
+            '<h5 style="float: right">' + productObject.category.name + '</h5>'+
+            '<li><p>Available  quantity : ' + productObject.quantity + '</p></li>' +
+            '<div style="display: inline-block" class="quantity">' +
             '<p class="gty">Choose Quantity: </p><input min="1" type="number" value="1" class="item_quantity">' +
             '</div>' +
-            '</ul> </div> <div class="clearfix"></div> </div> </div></br>');
+            '</ul> </div> <div class="clearfix"></div> </div> </div><hr>');
     }
     closeProduct();
 
@@ -340,11 +341,11 @@ $(function () {
     });
     $(document).on('click', '.products-search', function () {
         $('.Product-item').empty();
-        var categoryName = $('.categoryName-Search').val();
+        var categoryId = $('.categoryId-Search').val();
         var productName = $('.productName-Search').val();
         var minPrice = $('.minPrice-Search').val();
         var maxPrice = $('.maxPrice-Search').val();
-        getProducts(categoryName, productName, minPrice, maxPrice, $(this))
+        getProducts(categoryId, productName, minPrice, maxPrice, $(this))
     });
 });
 

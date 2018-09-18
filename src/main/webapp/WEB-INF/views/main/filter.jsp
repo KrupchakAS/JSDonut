@@ -1,7 +1,9 @@
 <%@ page pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="с" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -100,9 +102,8 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="/jsDonut/welcome"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
-            </li>
-
+            <li><a href="/jsDonut/welcome"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li><a href="/jsDonut/filter"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Filter</a></li>
         </ol>
     </div>
 </div>
@@ -178,7 +179,19 @@
     <div class="container">
         <div class="row">
         <form class="form-inline">
-                <input class="form-control categoryName-Search" type="text" placeholder="Enter Category">
+            <select id="category" required class="selec2-plugin form-control categoryId-Search">
+                <option disabled value="0" selected>Choose category</option>
+                <c:choose>
+                    <c:when test="${categoryList.size() > 0}">
+                        <с:forEach var="category" items="${categoryList}">
+                            <option data-id="${category.id}" value="${category.id}">${category.name}</option>
+                        </с:forEach>
+                    </c:when>
+                    <c:otherwise>
+                        <option disabled selected>Category not found</option>
+                    </c:otherwise>
+                </c:choose>
+            </select>
 
                 <input class="form-control productName-Search" type="text" placeholder="Enter Product name">
 
