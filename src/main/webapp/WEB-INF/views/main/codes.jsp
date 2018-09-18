@@ -90,7 +90,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="header-right cart">
 						<a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
-						<h4><a href="checkout.jsp">
+						<h4><a href="filter.jsp">
 								<span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span>) 
 						</a></h4>
 						<div class="cart-box">
@@ -912,7 +912,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="products.jsp">new</a></li>
 						<li><a href="contact.jsp">Contact Us</a></li>
 						<li><a href="faq.jsp">FAQ</a></li>
-						<li><a href="checkout.jsp">Wishlist</a></li>
+						<li><a href="filter.jsp">Wishlist</a></li>
 					</ul>
 				</div>
 				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".9s">

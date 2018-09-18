@@ -9,4 +9,6 @@ public interface ProductDao extends GenericDao<Product>{
     Product getByName(String name);
 
     List<Product> getAllByCategory(Integer categoryId);
+
+    List<Product> getProductsByParameters(String categoryName, String productsName, Integer minPrice, Integer maxPrice);
 }

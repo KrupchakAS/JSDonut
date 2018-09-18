@@ -139,6 +139,6 @@
     </div>
 </div>
 <c:import url="/WEB-INF/views/admin/adminFooter.jsp"/>
-<script type="text/javascript" src="${contextPath}/resources/assetsAdminPanel/js/jsData/sprinkle.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/jsData/sprinkle.js"></script>
 </body>
 </html>

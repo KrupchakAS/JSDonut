@@ -1,11 +1,14 @@
 package app.controller;
 
 
+import app.dto.AjaxDTO;
 import app.dto.OrderDTO;
 import app.dto.UserDTO;
 import app.service.api.CategoryService;
+import app.service.api.ProductService;
 import app.service.api.UserService;
 import app.validator.UserValidator;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -34,6 +37,9 @@ public class MainController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private ProductService productService;
 
     @ModelAttribute("order")
     public OrderDTO createOrder(){
@@ -84,6 +90,17 @@ public class MainController {
         return "redirect:/jsDonut/welcome";
     }
 
+    @RequestMapping(value = "/product/getProductsByParameters", method = RequestMethod.GET)
+    @ResponseBody
+    public AjaxDTO getDough(@RequestParam(value = "categoryName",required = false) String categoryName,
+                            @RequestParam(value = "productName",required = false) String productName,
+                            @RequestParam(value = "minPrice",required = false) Integer minPrice,
+                            @RequestParam(value = "maxPrice",required = false) Integer maxPrice) {
+        AjaxDTO result = new AjaxDTO();
+        result.setData(productService.getProductsByParameters(categoryName,productName,minPrice,maxPrice));
+        return result;
+    }
+
 
 
     @RequestMapping(value = "/products", method = RequestMethod.GET)
@@ -91,8 +108,13 @@ public class MainController {
         return "main/products";
     }
 
-    @RequestMapping(value = "/checkout", method = RequestMethod.GET)
-    public String checkout(){
-        return "main/checkout";
+    @RequestMapping(value = "/filter", method = RequestMethod.GET)
+    public String filter(){
+        return "main/filter";
+    }
+
+    @RequestMapping(value = "/order", method = RequestMethod.GET)
+    public String order(){
+        return "main/order";
     }
 }

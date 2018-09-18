@@ -3,8 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +20,11 @@
     } </script>
     <!--//for-mobile-apps -->
     <!--Custom Theme files -->
-    <link href="${contextPath}/resources/assetsMainPages/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="${contextPath}/resources/assetsMainPages/css/bootstrap.css" rel="stylesheet" type="text/css"
+          media="all"/>
     <link href="${contextPath}/resources/assetsMainPages/css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <link rel="stylesheet" href="${contextPath}/resources/assetsMainPages/css/flexslider.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="${contextPath}/resources/assetsMainPages/css/flexslider.css" type="text/css"
+          media="screen"/>
     <!--//Custom Theme files -->
     <!--js-->
     <script src="${contextPath}/resources/assetsMainPages/js/jquery-1.11.1.min.js"></script>
@@ -48,6 +48,32 @@
         new WOW().init();
     </script>
     <!--//animation-effect-->
+    <!--close-button-->
+    <script>$(document).ready(function (c) {
+        $('.alert-close').on('click', function (c) {
+            $('.cart-header').fadeOut('slow', function (c) {
+                $('.cart-header').remove();
+            });
+        });
+    });
+    </script>
+    <script>$(document).ready(function (c) {
+        $('.alert-close1').on('click', function (c) {
+            $('.cart-header1').fadeOut('slow', function (c) {
+                $('.cart-header1').remove();
+            });
+        });
+    });
+    </script>
+    <script>$(document).ready(function (c) {
+        $('.alert-close2').on('click', function (c) {
+            $('.cart-header2').fadeOut('slow', function (c) {
+                $('.cart-header2').remove();
+            });
+        });
+    });
+    </script>
+    <!--//close-button-->
     <!--start-smooth-scrolling-->
     <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/move-top.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/easing.js"></script>
@@ -62,19 +88,32 @@
     <!--//end-smooth-scrolling-->
 </head>
 <body>
+<!--breadcrumbs-->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="/jsDonut/welcome"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+
+        </ol>
+    </div>
+</div>
+<!--//breadcrumbs-->
 <!--header-->
 <div class="header">
     <div class="top-header navbar navbar-default"><!--header-one-->
         <div class="container">
             <div class="nav navbar-nav wow fadeInLeft animated" data-wow-delay=".5s">
                 <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
-                    <p>Welcome to Donut<a href="${contextPath}/jsDonut/registration">Sign Up </a> Or <a href="${contextPath}/jsDonut/login">Sign In </a></p>
+                    <p>Welcome to Donut Shop<a href="${contextPath}/jsDonut/registration">Sign Up </a> Or <a
+                            href="${contextPath}/jsDonut/login">Sign In </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <p> Hi Admin, let's work<a href="/jsDonut/admin/adminPanel">Admin Panel</a> We will glad to see you again <a href="/jsDonut/logout">Sing Out </a></p>
+                    <p> Hi Admin, let's work<a href="/jsDonut/admin/adminPanel">Admin Panel</a> We will glad to see you
+                        again <a href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <p>We will glad to see you again, ${pageContext.request.userPrincipal.name} <a href="/jsDonut/logout">Sing Out </a></p>
+                    <p>We will glad to see you again, ${pageContext.request.userPrincipal.name} <a
+                            href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
             <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
@@ -100,7 +139,8 @@
                 </ul>
             </div>
             <div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
-                <h1><a href="${contextPath}/jsDonut/welcome">Welcome to Donut Shop<b></b><span class="tag">Everything for your Sweet Dream </span> </a>
+                <h1><a href="${contextPath}/jsDonut/welcome">Welcome to Donut Shop<b></b><span class="tag">Everything for your Sweet Dream </span>
+                </a>
                 </h1>
             </div>
             <div class="nav navbar-nav navbar-right header-two-right">
@@ -110,7 +150,7 @@
                 </div>
                 <div class="header-right cart">
                     <a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
-                    <h4><a href="filter.jsp">
+                    <h4><a href="${contextPath}/jsDonut/filter">
                         <span class="simpleCart_total"> $0.00 </span> (<span id="simpleCart_quantity"
                                                                              class="simpleCart_quantity"> 0 </span>)
                     </a></h4>
@@ -124,39 +164,125 @@
             <div class="clearfix"></div>
         </div>
     </div>
-
 </div>
-<!--//breadcrumbs-->
-<!--login-->
-<div class="login-page">
-    <div class="widget-shadow">
-        <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
-
-            <h4>Welcome back to Donut Shop! <br> Not a Member? <a href="${contextPath}/jsDonut/registration"> Sign Up »</a></h4>
-        </div>
-        <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
-            <form method="post" action="/login">
-                <div class="${error != null ? 'has-error' : ''}">
-                    <span>${message}</span>
-                    <input type="text" class="user" name="username" placeholder="Login" minlength="4" maxlength="16" required>
-                    <input type="password" name="password" class="lock" placeholder="Password" minlength="4" maxlength="32" required>
-                    <span style="color: red">${error}</span>
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <input type="submit" name="Sign In" value="Sign In">
-                </div>
+<div class="top-nav navbar navbar-default"><!--header-three-->
+    <div class="container">
+        <nav class="navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!--navbar-header-->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <div class="clearfix"></div>
+                <!--//navbar-collapse-->
+                <header class="cd-main-header">
+                    <ul class="cd-header-buttons">
+                        <li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
+                    </ul> <!-- cd-header-buttons -->
+                </header>
+            </div>
+            <!--//navbar-header-->
+        </nav>
+        <div id="cd-search" class="cd-search">
+            <form>
+                <input class="categoryName-Search" type="search" placeholder="Enter Category">
+                <input class="productName-Search" type="search" placeholder="Enter Product name">
+                <input class="minPrice-Search" type="search" placeholder="Enter min Price">
+                <input class="maxPrice-Search" type="search" placeholder="Enter max Price">
             </form>
         </div>
     </div>
 </div>
-<!--//login-->
+</div>
+<!--//header-->
+<!--cart-items-->
+<div class="cart-items">
+    <div class="container">
+        <h3 class="wow fadeInUp animated" data-wow-delay=".5s">My Shopping Cart(3)</h3>
+        <div class="cart-header wow fadeInUp animated" data-wow-delay=".5s">
+            <div class="alert-close"></div>
+            <div class="cart-sec simpleCart_shelfItem">
+                <div class="cart-item cyc">
+                    <a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g1.jpg"
+                                              class="img-responsive" alt=""></a>
+                </div>
+                <div class="cart-item-info">
+                    <h4><a href="single.jsp"> Lorem Ipsum is not simply </a><span>Pickup time :</span></h4>
+                    <ul class="qty">
+                        <li><p>Min. order value :</p></li>
+                        <li><p>FREE delivery</p></li>
+                    </ul>
+                    <div class="delivery">
+                        <p>Service Charges : $10.00</p>
+                        <span>Delivered in 1-1:30 hours</span>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="cart-header1 wow fadeInUp animated" data-wow-delay=".7s">
+            <div class="alert-close1"></div>
+            <div class="cart-sec simpleCart_shelfItem">
+                <div class="cart-item cyc">
+                    <a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g5.jpg"
+                                              class="img-responsive" alt=""></a>
+                </div>
+                <div class="cart-item-info">
+                    <h4><a href="single.jsp"> Lorem Ipsum is not simply </a><span>Pickup time :</span></h4>
+                    <ul class="qty">
+                        <li><p>Min. order value :</p></li>
+                        <li><p>FREE delivery</p></li>
+                    </ul>
+                    <div class="delivery">
+                        <p>Service Charges : $10.00</p>
+                        <span>Delivered in 1-1:30 hours</span>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="cart-header2 wow fadeInUp animated" data-wow-delay=".9s">
+            <div class="alert-close2"></div>
+            <div class="cart-sec simpleCart_shelfItem">
+                <div class="cart-item cyc">
+                    <a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g9.jpg"
+                                              class="img-responsive" alt=""></a>
+                </div>
+                <div class="cart-item-info">
+                    <h4><a href="single.jsp"> Lorem Ipsum is not simply </a><span>Pickup time :</span></h4>
+                    <ul class="qty">
+                        <li><p>Min. order value :</p></li>
+                        <li><p>FREE delivery</p></li>
+                    </ul>
+                    <div class="delivery">
+                        <p>Service Charges : 200.00</p>
+                        <span>Delivered in 1-1:30 hours</span>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--//cart-items-->
 <!--footer-->
 <div class="footer">
     <div class="container">
         <div class="footer-info">
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
-                <h4 class="footer-logo"><a href="${contextPath}/jsDonut/welcome">Donut<b>Shop</b> <span class="tag">Everything for you Sweet Dream </span>
+                <h4 class="footer-logo"><a href="welcome.jsp">Modern <b>Shoppe</b> <span class="tag">Everything for Kids world </span>
                 </a></h4>
-                <p>© 2018 Donut Shop . All rights reserved</p>
+                <p>© 2016 Modern Shoppe . All rights reserved | Design by <a href="http://w3layouts.com"
+                                                                             target="_blank">W3layouts</a></p>
             </div>
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
                 <h3>Popular</h3>

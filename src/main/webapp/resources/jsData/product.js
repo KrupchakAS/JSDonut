@@ -253,6 +253,32 @@ $(document).ready(function () {
     });
 });
 
+// GetProductsByParameters
+
+function getProducts(categoryName,productName,minPrice,maxPrice, selector) {
+    if (isNumber(minPrice) && isNumber(maxPrice)) {
+        getProductByParameters(categoryName,productName,minPrice,maxPrice, selector);
+    } else {
+        swal("Product price is not number");
+    }
+}
+
+
+function getProductByParameters(categoryName, productName, minPrice, maxPrice, selector) {
+    var ajax = {};
+    ajax.data = {categoryName: categoryName};
+    ajax.data = {productName: productName};
+    ajax.data = {minPrice: minPrice};
+    ajax.data = {maxPrice: maxPrice};
+    ajax.type = "GET";
+    ajax.url = "/jsDonut/admin/product/getProductsByParameters";
+    ajax.dataType = 'JSON';
+    ajax.selector = selector;
+    ajax.successFunction = openProductFormUpdate;
+
+    sendAjax(ajax);
+}
+
 
 // Scripts
 
@@ -281,6 +307,13 @@ $(function () {
     });
     $(document).on('keyup', '.priceChanger', function() {
         recountPrice();
+    });
+    $(document).on('click', '.products-search', function () {
+        var categoryName = $('.categoryName-Search').val();
+        var productName = $('.productName-Search').val();
+        var minPrice = $('.minPrice-Search').val();
+        var maxPrice = $('.maxPrice-Search').val();
+        getProducts(categoryName, productName, minPrice, maxPrice, $(this))
     });
 });
 
