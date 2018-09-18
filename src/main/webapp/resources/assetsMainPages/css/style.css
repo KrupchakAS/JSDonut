@@ -967,7 +967,7 @@ h3.title span {
 /*--//new--*/
 /*--breadcrumbs--*/
 .breadcrumbs {
-    padding: 1.5em 0;
+    padding: 0.5em 0;
     background: #353F49;
     text-align: center;
 }
@@ -1255,7 +1255,7 @@ input#amount {
 /*--//products-page--*/
 /*--single-page--*/
 .single-info{
-	padding:5em 0;
+	padding:0.5em 0;
 }
 .single-top {
     margin-left:5%;
@@ -1341,7 +1341,7 @@ input#amount {
     font-size: 1em;
     color: #999;
     line-height: 1.8em;
-    margin: 1em 0;
+    margin: 0.2em 0;
 }
 .single-info .quantity p {
     display: inline-block;
@@ -1401,13 +1401,13 @@ input#amount {
 }
 .btn_form a {
     border: 1px solid rgb(133, 139, 145);
-    padding: 0.8em 2em;
+    padding: 0.1em 2em;
     display: inline-block;
     text-decoration: none;
     color: #353F49;
-    font-size: 0.9em;
+    font-size: 1em;
     font-weight: 600;
-    margin: 1em 0;
+
 }
 .btn_form a:hover{
 	color: #ff590f;
@@ -1700,7 +1700,7 @@ h4.panel-title a {
     font-size: 2em;
     font-weight: 900;
     color: #FF590F;
-    margin-bottom: 1.5em;
+    margin-bottom: 0.3em;
 }
 .cart-sec{	
 	margin-bottom:3em;
