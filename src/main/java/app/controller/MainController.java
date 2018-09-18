@@ -90,12 +90,13 @@ public class MainController {
         return "redirect:/jsDonut/welcome";
     }
 
-    @RequestMapping(value = "/product/getProductsByParameters", method = RequestMethod.GET)
+    @RequestMapping(value = "/getProductsByParameters", method = RequestMethod.GET)
     @ResponseBody
-    public AjaxDTO getDough(@RequestParam(value = "categoryName",required = false) String categoryName,
-                            @RequestParam(value = "productName",required = false) String productName,
-                            @RequestParam(value = "minPrice",required = false) Integer minPrice,
-                            @RequestParam(value = "maxPrice",required = false) Integer maxPrice) {
+    public AjaxDTO getProductsByParameters(
+            @RequestParam(value = "categoryName",required = false) String categoryName,
+            @RequestParam(value = "productName",required = false) String productName,
+            @RequestParam(value = "minPrice",required = false) Integer minPrice,
+            @RequestParam(value = "maxPrice",required = false) Integer maxPrice) {
         AjaxDTO result = new AjaxDTO();
         result.setData(productService.getProductsByParameters(categoryName,productName,minPrice,maxPrice));
         return result;

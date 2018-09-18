@@ -139,9 +139,8 @@
         <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
             <h4>Already have an Account ?<a href="${contextPath}/jsDonut/login"> Sign In »</a></h4>
         </div>
-
         <div class="login-body">
-            <form:form method="POST" modelAttribute="userForm">
+            <form:form method="POST" modelAttribute="userForm" class="form-inline">
                 <div>
                     <span>Enter your login:</span>
                     <form:input type="text" minlength="4" maxlength="16" path="login" class=" form-control"

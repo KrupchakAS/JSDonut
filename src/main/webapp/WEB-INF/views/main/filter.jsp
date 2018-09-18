@@ -11,6 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Donut Shop"/>
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
@@ -25,10 +27,16 @@
     <link href="${contextPath}/resources/assetsMainPages/css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <link rel="stylesheet" href="${contextPath}/resources/assetsMainPages/css/flexslider.css" type="text/css"
           media="screen"/>
+    <link href="${contextPath}/resources/assetsAdminPanel/css/sweetalert.css" rel="stylesheet">
     <!--//Custom Theme files -->
     <!--js-->
-    <script src="${contextPath}/resources/assetsMainPages/js/jquery-1.11.1.min.js"></script>
-    <script src="${contextPath}/resources/assetsMainPages/js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/jsData/sendAjax.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/jsData/product.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/bootstrap.js"></script>
+
     <!--//js-->
     <!--cart-->
     <script src="${contextPath}/resources/assetsMainPages/js/simpleCart.min.js"></script>
@@ -92,7 +100,8 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="/jsDonut/welcome"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li><a href="/jsDonut/welcome"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
+            </li>
 
         </ol>
     </div>
@@ -165,112 +174,28 @@
         </div>
     </div>
 </div>
-<div class="top-nav navbar navbar-default"><!--header-three-->
+<div style="padding-bottom : 5px; padding-top: 5px"  class="top-nav navbar navbar-default"><!--header-three-->
     <div class="container">
-        <nav class="navbar" role="navigation">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-            </div>
-            <!--navbar-header-->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <div class="clearfix"></div>
-                <!--//navbar-collapse-->
-                <header class="cd-main-header">
-                    <ul class="cd-header-buttons">
-                        <li><a class="cd-search-trigger" href="#cd-search"> <span></span></a></li>
-                    </ul> <!-- cd-header-buttons -->
-                </header>
-            </div>
-            <!--//navbar-header-->
-        </nav>
-        <div id="cd-search" class="cd-search">
-            <form>
-                <input class="categoryName-Search" type="search" placeholder="Enter Category">
-                <input class="productName-Search" type="search" placeholder="Enter Product name">
-                <input class="minPrice-Search" type="search" placeholder="Enter min Price">
-                <input class="maxPrice-Search" type="search" placeholder="Enter max Price">
-            </form>
+        <div class="row">
+        <form class="form-inline">
+                <input class="form-control categoryName-Search" type="text" placeholder="Enter Category">
+
+                <input class="form-control productName-Search" type="text" placeholder="Enter Product name">
+
+                <input class="form-control minPrice-Search" type="number" placeholder="Enter min Price">
+
+                <input class="form-control maxPrice-Search" type="number" placeholder="Enter max Price">
+
+            <button class="products-search btn btn-success" type="button">Search Yor Delicious</button>
+        </form>
         </div>
     </div>
-</div>
 </div>
 <!--//header-->
 <!--cart-items-->
 <div class="cart-items">
-    <div class="container">
-        <h3 class="wow fadeInUp animated" data-wow-delay=".5s">My Shopping Cart(3)</h3>
-        <div class="cart-header wow fadeInUp animated" data-wow-delay=".5s">
-            <div class="alert-close"></div>
-            <div class="cart-sec simpleCart_shelfItem">
-                <div class="cart-item cyc">
-                    <a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g1.jpg"
-                                              class="img-responsive" alt=""></a>
-                </div>
-                <div class="cart-item-info">
-                    <h4><a href="single.jsp"> Lorem Ipsum is not simply </a><span>Pickup time :</span></h4>
-                    <ul class="qty">
-                        <li><p>Min. order value :</p></li>
-                        <li><p>FREE delivery</p></li>
-                    </ul>
-                    <div class="delivery">
-                        <p>Service Charges : $10.00</p>
-                        <span>Delivered in 1-1:30 hours</span>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        <div class="cart-header1 wow fadeInUp animated" data-wow-delay=".7s">
-            <div class="alert-close1"></div>
-            <div class="cart-sec simpleCart_shelfItem">
-                <div class="cart-item cyc">
-                    <a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g5.jpg"
-                                              class="img-responsive" alt=""></a>
-                </div>
-                <div class="cart-item-info">
-                    <h4><a href="single.jsp"> Lorem Ipsum is not simply </a><span>Pickup time :</span></h4>
-                    <ul class="qty">
-                        <li><p>Min. order value :</p></li>
-                        <li><p>FREE delivery</p></li>
-                    </ul>
-                    <div class="delivery">
-                        <p>Service Charges : $10.00</p>
-                        <span>Delivered in 1-1:30 hours</span>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
-        <div class="cart-header2 wow fadeInUp animated" data-wow-delay=".9s">
-            <div class="alert-close2"></div>
-            <div class="cart-sec simpleCart_shelfItem">
-                <div class="cart-item cyc">
-                    <a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g9.jpg"
-                                              class="img-responsive" alt=""></a>
-                </div>
-                <div class="cart-item-info">
-                    <h4><a href="single.jsp"> Lorem Ipsum is not simply </a><span>Pickup time :</span></h4>
-                    <ul class="qty">
-                        <li><p>Min. order value :</p></li>
-                        <li><p>FREE delivery</p></li>
-                    </ul>
-                    <div class="delivery">
-                        <p>Service Charges : 200.00</p>
-                        <span>Delivered in 1-1:30 hours</span>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-        </div>
+    <div class="Product-item container">
+
     </div>
 </div>
 <!--//cart-items-->
@@ -279,10 +204,9 @@
     <div class="container">
         <div class="footer-info">
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
-                <h4 class="footer-logo"><a href="welcome.jsp">Modern <b>Shoppe</b> <span class="tag">Everything for Kids world </span>
+                <h4 class="footer-logo"><a href="/jsDonut/welcome">Donut <b>Shop</b> <span class="tag">Everything for you Sweet Dream </span>
                 </a></h4>
-                <p>© 2016 Modern Shoppe . All rights reserved | Design by <a href="http://w3layouts.com"
-                                                                             target="_blank">W3layouts</a></p>
+                <p>© 2018 Donut Shop. All rights reserved</p>
             </div>
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
                 <h3>Popular</h3>
@@ -293,14 +217,6 @@
                     <li><a href="faq.jsp">FAQ</a></li>
                     <li><a href="filter.jsp">Wishlist</a></li>
                 </ul>
-            </div>
-            <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".9s">
-                <h3>Subscribe</h3>
-                <p>Sign Up Now For More Information <br> About Our Company </p>
-                <form>
-                    <input type="text" placeholder="Enter Your Email" required="">
-                    <input type="submit" value="Go">
-                </form>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -325,10 +241,5 @@
 
     });
 </script>
-<!--//smooth-scrolling-of-move-up-->
-<!--Bootstrap core JavaScript
-================================================== -->
-<!--Placed at the end of the document so the pages load faster -->
-<script src="${contextPath}/resources/assetsMainPages/js/bootstrap.js"></script>
 </body>
 </html>

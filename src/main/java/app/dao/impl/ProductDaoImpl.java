@@ -50,17 +50,17 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
         Root<Product> productRoot = criteriaQuery.from(Product.class);
-        if (categoryName != null) {
-            criteriaQuery.where(entityManager.getCriteriaBuilder().like(productRoot.get("categoryName"), "%"+categoryName+"%"));
-        }
+//        if (categoryName != null) {
+//            criteriaQuery.where(entityManager.getCriteriaBuilder().like(productRoot.get("categoryName"), "%"+categoryName+"%"));
+//        }
         if (productName != null) {
-            criteriaQuery.where(entityManager.getCriteriaBuilder().like(productRoot.get("productName"), "%"+productName+"%"));
+            criteriaQuery.where(entityManager.getCriteriaBuilder().like(productRoot.get("name"), "%"+productName+"%"));
         }
         if (minPrice != null) {
-            criteriaQuery.where(entityManager.getCriteriaBuilder().gt(productRoot.get("minPrice"), minPrice));
+            criteriaQuery.where(entityManager.getCriteriaBuilder().gt(productRoot.get("price"), minPrice));
         }
         if (maxPrice != null) {
-            criteriaQuery.where(entityManager.getCriteriaBuilder().le(productRoot.get("maxPrice"), maxPrice));
+            criteriaQuery.where(entityManager.getCriteriaBuilder().le(productRoot.get("price"), maxPrice));
         }
         List<Product> list = entityManager.createQuery(criteriaQuery).getResultList();
         if (list.isEmpty()) {

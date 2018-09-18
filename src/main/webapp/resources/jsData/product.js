@@ -104,7 +104,6 @@ function openProductFormUpdate(productObject) {
     $('.product__dough-id').val(productObject.dough.id);
 
 
-
     $('.container-head').text("Category: " + productObject.category.name + " Product: " + productObject.name);
     $('.product-list').addClass('block__display-none');
     $('.product-add').addClass('block__display-none');
@@ -114,7 +113,6 @@ function openProductFormUpdate(productObject) {
 
     setSelect2Plugin();
 }
-
 
 
 // save -----------------------------------------------------------------
@@ -147,7 +145,7 @@ function recountPrice() {
 }
 
 function getPrice(fullWeight, price) {
-    return fullWeight/100 * price;
+    return fullWeight / 100 * price;
 }
 
 function getDataFromForm() {
@@ -255,9 +253,11 @@ $(document).ready(function () {
 
 // GetProductsByParameters
 
-function getProducts(categoryName,productName,minPrice,maxPrice, selector) {
-    if (isNumber(minPrice) && isNumber(maxPrice)) {
-        getProductByParameters(categoryName,productName,minPrice,maxPrice, selector);
+function getProducts(categoryName, productName, minPrice, maxPrice, selector) {
+    if (minPrice !== undefined && minPrice !== null || maxPrice !== undefined && maxPrice !== null) {
+        if (isNumber(minPrice) || isNumber(maxPrice)) {
+            getProductByParameters(categoryName, productName, minPrice, maxPrice, selector);
+        }
     } else {
         swal("Product price is not number");
     }
@@ -266,17 +266,47 @@ function getProducts(categoryName,productName,minPrice,maxPrice, selector) {
 
 function getProductByParameters(categoryName, productName, minPrice, maxPrice, selector) {
     var ajax = {};
-    ajax.data = {categoryName: categoryName};
-    ajax.data = {productName: productName};
-    ajax.data = {minPrice: minPrice};
-    ajax.data = {maxPrice: maxPrice};
+    ajax.data = {
+        categoryName: categoryName,
+        productName: productName,
+        minPrice: minPrice,
+        maxPrice: maxPrice
+    };
     ajax.type = "GET";
-    ajax.url = "/jsDonut/admin/product/getProductsByParameters";
+    ajax.url = "/jsDonut/getProductsByParameters";
     ajax.dataType = 'JSON';
     ajax.selector = selector;
-    ajax.successFunction = openProductFormUpdate;
+    ajax.successFunction = addProducts;
 
     sendAjax(ajax);
+}
+
+function addProducts(productList) {
+
+    console.log(productList);
+
+    for (var i = 0; i < productList.length; i++) {
+
+        var productObject = productList[i];
+        $('.Product-item').append(
+            '<div class="cart-header1 wow fadeInUp animated" data-wow-delay=".7s">' +
+            '<div class="alert-close1"></div>' +
+            '<div class="cart-sec simpleCart_shelfItem">' +
+            '<div class="cart-item cyc">' +
+            '<img src="#" class="img-responsive" alt="">' +
+            '</div>' +
+            '<div class="cart-item-info">' +
+            '<h4>' +  productObject.name+ '<span>' + productObject.description + '</span></h4>' +
+            '<ul class="qty">' +
+            '<li><p>Price for donut: ' + productObject.price + '</p></li>' +
+            '<li><p>Available  quantity : '+ productObject.quantity +'</p></li>' +
+            '<div class="quantity">' +
+            '<p class="gty">Choose Quantity: </p><input min="1" type="number" value="1" class="item_quantity">' +
+            '</div>' +
+            '</ul> </div> <div class="clearfix"></div> </div> </div></br>');
+    }
+    closeProduct();
+
 }
 
 
@@ -299,16 +329,17 @@ $(function () {
     $(document).on('click', '.product-delete', function () {
         closeProduct();
     });
-    $(document).on('change', '.component', function() {
+    $(document).on('change', '.component', function () {
         recountPrice();
     });
-    $(document).on('change', '#sprinkles', function() {
+    $(document).on('change', '#sprinkles', function () {
         recountPrice();
     });
-    $(document).on('keyup', '.priceChanger', function() {
+    $(document).on('keyup', '.priceChanger', function () {
         recountPrice();
     });
     $(document).on('click', '.products-search', function () {
+        $('.Product-item').empty();
         var categoryName = $('.categoryName-Search').val();
         var productName = $('.productName-Search').val();
         var minPrice = $('.minPrice-Search').val();
