@@ -51,7 +51,11 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
         CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
         Root<Product> productRoot = criteriaQuery.from(Product.class);
         if (categoryId != null || productName != null|| minPrice != null|| maxPrice != null) {
-            criteriaQuery.where(criteriaBuilder.equal(productRoot.get("category"), categoryId));
+            criteriaQuery.where(criteriaBuilder.and(
+                    criteriaBuilder.equal(productRoot.get("category"), categoryId),
+                    criteriaBuilder.like(productRoot.get("name"), "%"+productName+"%"),
+                    criteriaBuilder.gt(productRoot.get("price"), minPrice),
+                    criteriaBuilder.le(productRoot.get("price"), maxPrice)));
         }
         List<Product> list = entityManager.createQuery(criteriaQuery).getResultList();
         if (list.isEmpty()) {

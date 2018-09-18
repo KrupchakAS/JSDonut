@@ -114,7 +114,7 @@
         <div class="container">
             <div class="nav navbar-nav wow fadeInLeft animated" data-wow-delay=".5s">
                 <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
-                    <p>Welcome to Donut Shop<a href="${contextPath}/jsDonut/registration">Sign Up </a> Or <a
+                    <p><a href="${contextPath}/jsDonut/registration">Sign Up </a> Or <a
                             href="${contextPath}/jsDonut/login">Sign In </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -199,7 +199,7 @@
 
                 <input class="form-control maxPrice-Search" type="number" placeholder="Enter max Price">
 
-            <button class="products-search btn btn-success" type="button">Search Yor Delicious</button>
+            <button class="products-search btn btn-success" type="button">Search</button>
         </form>
         </div>
     </div>

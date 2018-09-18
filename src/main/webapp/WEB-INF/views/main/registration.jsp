@@ -71,7 +71,7 @@
         <div class="container">
             <div class="nav navbar-nav wow fadeInLeft animated" data-wow-delay=".5s">
                 <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
-                    <p>Welcome to Donut<a href="${contextPath}/jsDonut/registration">Sign Up </a> Or <a
+                    <p><a href="${contextPath}/jsDonut/registration">Sign Up </a> Or <a
                             href="${contextPath}/jsDonut/login">Sign In </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
