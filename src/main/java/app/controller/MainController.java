@@ -5,11 +5,11 @@ import app.dto.AjaxDTO;
 import app.dto.OrderDTO;
 import app.dto.ProductDTO;
 import app.dto.UserDTO;
+import app.exception.ObjectAlreadyInOrder;
 import app.service.api.CategoryService;
 import app.service.api.ProductService;
 import app.service.api.UserService;
 import app.validator.UserValidator;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -107,10 +107,16 @@ public class MainController {
     public AjaxDTO addToOrder(@RequestParam(value = "id")Integer productId,HttpSession session){
         AjaxDTO result = new AjaxDTO();
         ProductDTO productDTO = productService.getById(productId);
+        for(int i =0;i< productDTOList.size();i++){
+            if(productDTO.getId() == productDTOList.get(i).getId()){
+                throw new ObjectAlreadyInOrder(String.format("Product with name %s already in your Order", productDTO.getName()));
+            }
+        }
         productDTOList.add(productDTO);
         OrderDTO orderDTO = (OrderDTO)session.getAttribute("order");
         orderDTO.setProductList(productDTOList);
         result.setData(orderDTO);
+
         return result;
     }
 
