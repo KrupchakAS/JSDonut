@@ -10,6 +10,8 @@ import app.service.api.CategoryService;
 import app.service.api.ProductService;
 import app.service.api.UserService;
 import app.validator.UserValidator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,7 +32,10 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/jsDonut")
 public class MainController {
-    List<ProductDTO> productDTOList = new ArrayList<>();
+
+    private static final Logger logger = LogManager.getLogger(MainController.class);
+
+    private static final List<ProductDTO> productDTOList = new ArrayList<>();
 
     @Autowired
     private UserService userService;
@@ -45,11 +50,13 @@ public class MainController {
     private ProductService productService;
 
 
-
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public String main(ModelMap modelMap,HttpSession session){
-        session.setAttribute("order", new OrderDTO());
-        modelMap.addAttribute("categoryList",categoryService.getAll());
+    public String main(ModelMap modelMap, HttpSession session){
+        if(session.getAttribute("order") == null){
+            session.setAttribute("order", new OrderDTO());
+            logger.info(String.format("Successfully create Cart"));
+        }
+        session.setAttribute("countProductInOrder", productDTOList.size());
         return "main/welcome";
     }
 
@@ -70,7 +77,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout) {
+    public String login(Model model, String error, String logout,HttpSession session) {
         if (error != null) {
             model.addAttribute("error", "Username or password is incorrect.");
         }
@@ -116,7 +123,8 @@ public class MainController {
         OrderDTO orderDTO = (OrderDTO)session.getAttribute("order");
         orderDTO.setProductList(productDTOList);
         result.setData(orderDTO);
-
+        logger.info(String.format("Successfully added Product in Cart: " + productDTO.getName()));
+        logger.info(String.format("ProductCount in Cart: " + productDTOList.size()));
         return result;
     }
 
@@ -127,7 +135,8 @@ public class MainController {
     }
 
     @RequestMapping(value = "/filter", method = RequestMethod.GET)
-    public String filter(ModelMap modelMap){
+    public String filter(ModelMap modelMap,HttpSession session){
+
         modelMap.addAttribute("categoryList",categoryService.getAll());
         return "main/filter";
     }
@@ -136,4 +145,6 @@ public class MainController {
     public String order(){
         return "main/order";
     }
+
+
 }

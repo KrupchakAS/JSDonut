@@ -323,17 +323,17 @@ function getProductByIdToCart(id,selector) {
     ajax.url = "/jsDonut/addProductToOrder";
     ajax.dataType = 'JSON';
     ajax.selector = selector;
-    ajax.successFunction = AddedToCart;
+    ajax.successFunction = AddedToOrder;
 
     sendAjax(ajax);
 }
 
-function AddedToCart(order) {
+function AddedToOrder(order) {
     console.log(order);
     swal('Product Add to Cart');
+    $('.CountProduct').text(order.productList.length.toString());
+
 }
-
-
 
 // Scripts
 
