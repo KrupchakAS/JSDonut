@@ -145,7 +145,7 @@
             <div class="nav navbar-nav navbar-right header-two-right">
                 <div class="header-right my-account">
                     <a href="contact.jsp"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                        CONTACT US</a>
+                         CONTACT US</a>
                 </div>
                 <div class="header-right cart">
                     <a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>

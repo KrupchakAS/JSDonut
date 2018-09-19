@@ -37,6 +37,8 @@ public class MainController {
 
     private static final List<ProductDTO> productDTOList = new ArrayList<>();
 
+    private static final OrderDTO ORDER = new OrderDTO();
+
     @Autowired
     private UserService userService;
 
@@ -49,25 +51,17 @@ public class MainController {
     @Autowired
     private ProductService productService;
 
-
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public String main(ModelMap modelMap, HttpSession session) {
-        if (session.getAttribute("order") == null) {
-            session.setAttribute("order", new OrderDTO());
-            logger.info(String.format("Successfully create Cart"));
-        }
-        if (session.getAttribute("countProductInOrder") == null) {
-            session.setAttribute("countProductInOrder", productDTOList.size());
-        }
+    public String main(HttpSession session) {
+        session.setAttribute("order", ORDER);
+        session.setAttribute("countProductInOrder", productDTOList.size());
         return "main/welcome";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String createModel(ModelMap modelMap, HttpSession session) {
-        if (session.getAttribute("order") == null) {
-            session.setAttribute("order", new OrderDTO());
-            logger.info(String.format("Successfully create Cart"));
-        }
+        session.setAttribute("order", ORDER);
+
         session.setAttribute("countProductInOrder", productDTOList.size());
         modelMap.addAttribute("userForm", new UserDTO());
         return "main/registration";
@@ -136,23 +130,10 @@ public class MainController {
     }
 
 
-    @RequestMapping(value = "/products", method = RequestMethod.GET)
-    public String products(HttpSession session) {
-        session.setAttribute("countProductInOrder", productDTOList.size());
-        if (session.getAttribute("order") == null) {
-            session.setAttribute("order", new OrderDTO());
-            logger.info(String.format("Successfully create Cart"));
-        }
-        return "main/products";
-    }
-
     @RequestMapping(value = "/filter", method = RequestMethod.GET)
     public String filter(ModelMap modelMap, HttpSession session) {
         session.setAttribute("countProductInOrder", productDTOList.size());
-        if (session.getAttribute("order") == null) {
-            session.setAttribute("order", new OrderDTO());
-            logger.info(String.format("Successfully create Cart"));
-        }
+        session.setAttribute("order", ORDER);
         modelMap.addAttribute("categoryList", categoryService.getAll());
         return "main/filter";
     }
@@ -160,10 +141,9 @@ public class MainController {
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public String order(HttpSession session) {
         session.setAttribute("countProductInOrder", productDTOList.size());
-        if (session.getAttribute("order") == null) {
-            session.setAttribute("order", new OrderDTO());
+            session.setAttribute("order", ORDER);
             logger.info(String.format("Successfully create Cart"));
-        }
+
         return "main/order";
     }
 }
