@@ -40,8 +40,8 @@ public class DoughServiceImpl implements DoughService {
             Dough dough = modelMapper.map(doughDTO, Dough.class);
             doughDao.create(dough);
             doughDTO.setId(dough.getId());
+            logger.info(String.format("Successfully saved dough"));
         }
-        logger.info(String.format("Successfully saved dough"));
         return doughDTO;
     }
 

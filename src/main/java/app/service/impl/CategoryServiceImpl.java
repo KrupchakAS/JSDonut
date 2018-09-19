@@ -3,6 +3,7 @@ package app.service.impl;
 import app.dao.api.CategoryDao;
 import app.dto.CategoryDTO;
 import app.entity.Category;
+import app.exception.ObjectExistsException;
 import app.service.api.CategoryService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,11 +31,16 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryDTO create(CategoryDTO categoryDTO) {
         if (categoryDTO != null) {
+            Category categoryex = categoryDao.getByName(categoryDTO.getName());
+            if (categoryex != null) {
+                throw new ObjectExistsException(String.format("Category with name %s already exists", categoryDTO.getName()));
+            }
             Category category = modelMapper.map(categoryDTO, Category.class);
             categoryDao.create(category);
             categoryDTO.setId(category.getId());
+            logger.info(String.format("Successfully saved category"));
         }
-        logger.info(String.format("Successfully saved category"));
+
         return categoryDTO;
     }
 

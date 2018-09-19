@@ -3,6 +3,7 @@ package app.service.impl;
 import app.dao.api.ProductDao;
 import app.dto.ProductDTO;
 import app.entity.Product;
+import app.exception.ObjectExistsException;
 import app.service.api.ProductService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,6 +31,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDTO create(ProductDTO productDTO) {
         if (productDTO != null) {
+            Product productex = productDao.getByName(productDTO.getName());
+            if(productex != null){
+                throw new ObjectExistsException(String.format("Product with name %s already exists", productDTO.getName()));
+            }
             Product product = modelMapper.map(productDTO, Product.class);
             productDao.create(product);
             productDTO.setId(product.getId());

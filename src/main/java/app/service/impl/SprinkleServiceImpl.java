@@ -3,6 +3,7 @@ package app.service.impl;
 import app.dao.api.SprinkleDao;
 import app.dto.SprinkleDTO;
 import app.entity.Sprinkle;
+import app.exception.ObjectExistsException;
 import app.service.api.SprinkleService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,6 +33,10 @@ public class SprinkleServiceImpl implements SprinkleService {
     @Override
     public SprinkleDTO create(SprinkleDTO sprinkleDTO) {
         if (sprinkleDTO != null) {
+            Sprinkle sprinkleex = sprinkleDao.getByName(sprinkleDTO.getName());
+            if(sprinkleex != null){
+                throw new ObjectExistsException(String.format("Sprinkle with name %s already exists", sprinkleDTO.getName()));
+            }
             Sprinkle sprinkle= modelMapper.map(sprinkleDTO, Sprinkle.class);
             sprinkleDao.create(sprinkle);
             sprinkleDTO.setId(sprinkle.getId());

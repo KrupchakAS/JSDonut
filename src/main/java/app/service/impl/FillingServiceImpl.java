@@ -3,6 +3,7 @@ package app.service.impl;
 import app.dao.api.FillingDao;
 import app.dto.FillingDTO;
 import app.entity.Filling;
+import app.exception.ObjectExistsException;
 import app.service.api.FillingService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -30,6 +31,10 @@ public class FillingServiceImpl implements FillingService {
     @Override
     public FillingDTO create(FillingDTO fillingDTO) {
         if (fillingDTO != null) {
+            Filling fillingex = fillingDao.getByName(fillingDTO.getName());
+            if (fillingex != null) {
+                throw new ObjectExistsException(String.format("Filling with name %s already exists", fillingDTO.getName()));
+            }
             Filling filling = modelMapper.map(fillingDTO, Filling.class);
             fillingDao.create(filling);
             fillingDTO.setId(filling.getId());
@@ -92,10 +97,10 @@ public class FillingServiceImpl implements FillingService {
     @Override
     public FillingDTO getLastFilling() {
         List<Filling> fillingList = fillingDao.getAll();
-        FillingDTO fillingDTO = modelMapper.map(fillingList.get(fillingList.size()-1),FillingDTO.class);
-        if(fillingDTO != null){
+        FillingDTO fillingDTO = modelMapper.map(fillingList.get(fillingList.size() - 1), FillingDTO.class);
+        if (fillingDTO != null) {
             return fillingDTO;
-        }else {
+        } else {
             return null;
         }
     }
