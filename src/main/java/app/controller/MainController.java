@@ -51,22 +51,25 @@ public class MainController {
 
 
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public String main(ModelMap modelMap, HttpSession session){
-        if(session.getAttribute("order") == null){
+    public String main(ModelMap modelMap, HttpSession session) {
+        if (session.getAttribute("order") == null) {
             session.setAttribute("order", new OrderDTO());
             logger.info(String.format("Successfully create Cart"));
         }
-        session.setAttribute("countProductInOrder", productDTOList.size());
+        if (session.getAttribute("countProductInOrder") == null) {
+            session.setAttribute("countProductInOrder", productDTOList.size());
+        }
         return "main/welcome";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
-    public String createModel(ModelMap modelMap, HttpSession session){
-        if(session.getAttribute("order") == null){
+    public String createModel(ModelMap modelMap, HttpSession session) {
+        if (session.getAttribute("order") == null) {
             session.setAttribute("order", new OrderDTO());
             logger.info(String.format("Successfully create Cart"));
         }
-        modelMap.addAttribute("userForm",new UserDTO());
+        session.setAttribute("countProductInOrder", productDTOList.size());
+        modelMap.addAttribute("userForm", new UserDTO());
         return "main/registration";
     }
 
@@ -81,7 +84,7 @@ public class MainController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout,HttpSession session) {
+    public String login(Model model, String error, String logout, HttpSession session) {
         if (error != null) {
             model.addAttribute("error", "Username or password is incorrect.");
         }
@@ -104,27 +107,27 @@ public class MainController {
     @RequestMapping(value = "/getProductsByParameters", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO getProductsByParameters(
-            @RequestParam(value = "categoryId",required = false) Integer categoryId,
-            @RequestParam(value = "productName",required = false) String productName,
-            @RequestParam(value = "minPrice",required = false) Integer minPrice,
-            @RequestParam(value = "maxPrice",required = false) Integer maxPrice) {
+            @RequestParam(value = "categoryId", required = false) Integer categoryId,
+            @RequestParam(value = "productName", required = false) String productName,
+            @RequestParam(value = "minPrice", required = false) Integer minPrice,
+            @RequestParam(value = "maxPrice", required = false) Integer maxPrice) {
         AjaxDTO result = new AjaxDTO();
-        result.setData(productService.getProductsByParameters(categoryId,productName,minPrice,maxPrice));
+        result.setData(productService.getProductsByParameters(categoryId, productName, minPrice, maxPrice));
         return result;
     }
 
-    @RequestMapping(value = "/addProductToOrder",method = RequestMethod.GET)
+    @RequestMapping(value = "/addProductToOrder", method = RequestMethod.GET)
     @ResponseBody
-    public AjaxDTO addToOrder(@RequestParam(value = "id")Integer productId,HttpSession session){
+    public AjaxDTO addToOrder(@RequestParam(value = "id") Integer productId, HttpSession session) {
         AjaxDTO result = new AjaxDTO();
         ProductDTO productDTO = productService.getById(productId);
-        for(int i =0;i< productDTOList.size();i++){
-            if(productDTO.getId() == productDTOList.get(i).getId()){
+        for (int i = 0; i < productDTOList.size(); i++) {
+            if (productDTO.getId() == productDTOList.get(i).getId()) {
                 throw new ObjectAlreadyInOrder(String.format("Product with name %s already in your Order", productDTO.getName()));
             }
         }
         productDTOList.add(productDTO);
-        OrderDTO orderDTO = (OrderDTO)session.getAttribute("order");
+        OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
         orderDTO.setProductList(productDTOList);
         result.setData(orderDTO);
         logger.info(String.format("Successfully added Product in Cart: " + productDTO.getName()));
@@ -134,8 +137,9 @@ public class MainController {
 
 
     @RequestMapping(value = "/products", method = RequestMethod.GET)
-    public String products(HttpSession session){
-        if(session.getAttribute("order") == null){
+    public String products(HttpSession session) {
+        session.setAttribute("countProductInOrder", productDTOList.size());
+        if (session.getAttribute("order") == null) {
             session.setAttribute("order", new OrderDTO());
             logger.info(String.format("Successfully create Cart"));
         }
@@ -143,18 +147,20 @@ public class MainController {
     }
 
     @RequestMapping(value = "/filter", method = RequestMethod.GET)
-    public String filter(ModelMap modelMap,HttpSession session){
-        if(session.getAttribute("order") == null){
+    public String filter(ModelMap modelMap, HttpSession session) {
+        session.setAttribute("countProductInOrder", productDTOList.size());
+        if (session.getAttribute("order") == null) {
             session.setAttribute("order", new OrderDTO());
             logger.info(String.format("Successfully create Cart"));
         }
-        modelMap.addAttribute("categoryList",categoryService.getAll());
+        modelMap.addAttribute("categoryList", categoryService.getAll());
         return "main/filter";
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
-    public String order(HttpSession session){
-        if(session.getAttribute("order") == null){
+    public String order(HttpSession session) {
+        session.setAttribute("countProductInOrder", productDTOList.size());
+        if (session.getAttribute("order") == null) {
             session.setAttribute("order", new OrderDTO());
             logger.info(String.format("Successfully create Cart"));
         }
