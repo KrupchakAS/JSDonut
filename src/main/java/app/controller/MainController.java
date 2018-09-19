@@ -3,6 +3,7 @@ package app.controller;
 
 import app.dto.AjaxDTO;
 import app.dto.OrderDTO;
+import app.dto.ProductDTO;
 import app.dto.UserDTO;
 import app.service.api.CategoryService;
 import app.service.api.ProductService;
@@ -23,11 +24,13 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
-@SessionAttributes(value = "order")
 @Controller
 @RequestMapping(value = "/jsDonut")
 public class MainController {
+    List<ProductDTO> productDTOList = new ArrayList<>();
 
     @Autowired
     private UserService userService;
@@ -41,14 +44,11 @@ public class MainController {
     @Autowired
     private ProductService productService;
 
-    @ModelAttribute("order")
-    public OrderDTO createOrder(){
-        return new OrderDTO();
-    }
+
 
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public String main(@ModelAttribute ("order") OrderDTO orderDTO, ModelMap modelMap){
-        modelMap.addAttribute("order", new OrderDTO());
+    public String main(ModelMap modelMap,HttpSession session){
+        session.setAttribute("order", new OrderDTO());
         modelMap.addAttribute("categoryList",categoryService.getAll());
         return "main/welcome";
     }
@@ -102,6 +102,17 @@ public class MainController {
         return result;
     }
 
+    @RequestMapping(value = "/addProductToOrder",method = RequestMethod.GET)
+    @ResponseBody
+    public AjaxDTO addToOrder(@RequestParam(value = "id")Integer productId,HttpSession session){
+        AjaxDTO result = new AjaxDTO();
+        ProductDTO productDTO = productService.getById(productId);
+        productDTOList.add(productDTO);
+        OrderDTO orderDTO = (OrderDTO)session.getAttribute("order");
+        orderDTO.setProductList(productDTOList);
+        result.setData(orderDTO);
+        return result;
+    }
 
 
     @RequestMapping(value = "/products", method = RequestMethod.GET)

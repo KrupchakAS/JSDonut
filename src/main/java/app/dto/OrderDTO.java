@@ -22,7 +22,7 @@ public class OrderDTO {
     @NotNull
     private OrderStatus orderStatus;
     @NotNull
-    private List<Product> productList;
+    private List<ProductDTO> productList;
     @NotNull
     private UserDTO user;
 
@@ -66,11 +66,11 @@ public class OrderDTO {
         this.orderStatus = orderStatus;
     }
 
-    public List<Product> getProductList() {
+    public List<ProductDTO> getProductList() {
         return productList;
     }
 
-    public void setProductList(List<Product> productList) {
+    public void setProductList(List<ProductDTO> productList) {
         this.productList = productList;
     }
 

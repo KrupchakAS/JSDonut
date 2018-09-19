@@ -251,17 +251,16 @@ $(document).ready(function () {
     });
 });
 
-// GetProductsByParameters
+// GetProductsByParameters -------------------------------------------
 
 function getProducts(categoryId, productName, minPrice, maxPrice, selector) {
-        // if (isNumber(minPrice) || isNumber(maxPrice)) {
-        //     getProductByParameters(categoryId, productName, minPrice, maxPrice, selector);
-        // } else {
-        //     swal("Product price is not number");
-        // }
-    getProductByParameters(categoryId, productName, minPrice, maxPrice, selector);
-}
+        if (isNumber(minPrice) || isNumber(maxPrice)) {
+            getProductByParameters(categoryId, productName, minPrice, maxPrice, selector);
+        } else {
+            swal("Product price is not number");
+        }
 
+}
 
 function getProductByParameters(categoryId, productName, minPrice, maxPrice, selector) {
     var ajax = {};
@@ -292,7 +291,7 @@ function addProducts(productList) {
 
         $('.Product-item').append(
         '<div class="single-info"> <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">'+
-            '<h6>'+productObject.name+'</h6>'+
+            '<h6 >'+productObject.name+'</h6>'+
         '<p>'+productObject.description+'</p>'+
             '<span style="color: #c0a16b">Calories: '+productObject.calories+'</span>'+
         '<div class="clearfix"> </div> ' +
@@ -300,13 +299,42 @@ function addProducts(productList) {
             '<p>Available quantity: '+productObject.quantity+'</p>'+
             '<div class="quantity">'+
         '<p class="qty"> Quantity :  </p><input min="1" type="number" value="1" class="item_quantity"></div>'+
-            '<div style="float: right" class=" btn_form"><a href="#" style="color: green" class=" add-cart item_add">ADD TO CART</a>'+
+            '<div style="float: right" data-id="'+productObject.id+'" class="btn_form" ><a href="#" style="color: green"  class="add-cart item_add">ADD TO CART</a>'+
         '</div> </div> <div class="clearfix"> </div> </div><hr>');
     }
 
     closeProduct();
 
 }
+
+// AddProductToOrder ----------------------------------------------
+
+function addToCart(id,selector) {
+    if (isNumber(id)) {
+        getProductByIdToCart(id,selector);
+    } else {
+        alert("Product ID is not number");
+    }
+}
+
+
+function getProductByIdToCart(id,selector) {
+    var ajax = {};
+    ajax.data = {id:id};
+    ajax.type = "GET";
+    ajax.url = "/jsDonut/addProductToOrder";
+    ajax.dataType = 'JSON';
+    ajax.selector = selector;
+    ajax.successFunction = AddedToCart;
+
+    sendAjax(ajax);
+}
+
+function AddedToCart(order) {
+    console.log(order);
+    swal('Product Add to Cart');
+}
+
 
 
 // Scripts
@@ -344,6 +372,11 @@ $(function () {
         var minPrice = $('.minPrice-Search').val();
         var maxPrice = $('.maxPrice-Search').val();
         getProducts(categoryId, productName, minPrice, maxPrice, $(this))
+    });
+
+    $(document).on('click', '.add-cart', function () {
+        var id = $(this).closest('div').data('id');
+        addToCart(id,$(this));
     });
 });
 

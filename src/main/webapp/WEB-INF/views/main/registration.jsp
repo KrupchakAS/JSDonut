@@ -34,7 +34,7 @@
     <script src="${contextPath}/resources/assetsMainPages/js/modernizr.custom.js"></script>
     <!--//js-->
     <!--cart-->
-    <script src="${contextPath}/resources/assetsMainPages/js/simpleCart.min.js"></script>
+    <script src="${contextPath}/resources/assetsMainPages/js/simpleCart.js"></script>
     <!--cart-->
     <!--web-fonts-->
     <link href='//fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic'
@@ -139,7 +139,7 @@
         <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
             <h4>Already have an Account ?<a href="${contextPath}/jsDonut/login"> Sign In »</a></h4>
         </div>
-        <div class="login-body">
+        <div class="login-body form-group">
             <form:form method="POST" modelAttribute="userForm" class="form-inline">
                 <div>
                     <span>Enter your login:</span>
@@ -171,8 +171,7 @@
                 </div>
                 <div>
                     <span>Enter your birthday:</span>
-                    <form:input type="date" value="2000-01-01" min="1900-01-01" max="2004-01-01" path="birthDate"
-                                class="form-control"
+                    <form:input type="date" value="2000-01-01" min="1900-01-01" max="2004-01-01" path="birthDate" class="form-control"
                                 placeholder="BirthDate"></form:input>
                     <div class="has-error">
                         <form:errors path="birthDate"></form:errors></div>
