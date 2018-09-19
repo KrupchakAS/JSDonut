@@ -150,7 +150,7 @@
                 <div class="header-right cart">
                     <a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                     <h4><a href="${contextPath}/jsDonut/order">
-                        (<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)
+                        (<span class="CountProduct">${sessionScope.countProductInOrder}</span>)
                     </a></h4>
                     <div class="cart-box">
                         <p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>

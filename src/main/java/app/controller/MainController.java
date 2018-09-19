@@ -62,6 +62,10 @@ public class MainController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String createModel(ModelMap modelMap, HttpSession session){
+        if(session.getAttribute("order") == null){
+            session.setAttribute("order", new OrderDTO());
+            logger.info(String.format("Successfully create Cart"));
+        }
         modelMap.addAttribute("userForm",new UserDTO());
         return "main/registration";
     }
@@ -130,21 +134,30 @@ public class MainController {
 
 
     @RequestMapping(value = "/products", method = RequestMethod.GET)
-    public String products(){
+    public String products(HttpSession session){
+        if(session.getAttribute("order") == null){
+            session.setAttribute("order", new OrderDTO());
+            logger.info(String.format("Successfully create Cart"));
+        }
         return "main/products";
     }
 
     @RequestMapping(value = "/filter", method = RequestMethod.GET)
     public String filter(ModelMap modelMap,HttpSession session){
-
+        if(session.getAttribute("order") == null){
+            session.setAttribute("order", new OrderDTO());
+            logger.info(String.format("Successfully create Cart"));
+        }
         modelMap.addAttribute("categoryList",categoryService.getAll());
         return "main/filter";
     }
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
-    public String order(){
+    public String order(HttpSession session){
+        if(session.getAttribute("order") == null){
+            session.setAttribute("order", new OrderDTO());
+            logger.info(String.format("Successfully create Cart"));
+        }
         return "main/order";
     }
-
-
 }
