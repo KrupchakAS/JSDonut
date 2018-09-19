@@ -292,13 +292,11 @@ function addProducts(productList) {
         $('.Product-item').append(
         '<div class="single-info"> <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">'+
             '<h6 >'+productObject.name+'</h6>'+
+            '<h3 style="float: right" class="item_price">'+productObject.price+'₽</h3>'+
         '<p>'+productObject.description+'</p>'+
             '<span style="color: #c0a16b">Calories: '+productObject.calories+'</span>'+
         '<div class="clearfix"> </div> ' +
-            '<h3 style="float: right" class="item_price">'+productObject.price+'₽</h3>'+
             '<p>Available quantity: '+productObject.quantity+'</p>'+
-            '<div class="quantity">'+
-        '<p class="qty"> Quantity :  </p><input min="1" type="number" value="1" class="item_quantity"></div>'+
             '<div style="float: right" data-id="'+productObject.id+'" class="btn_form" ><a href="#" style="color: green"  class="add-cart item_add">ADD TO CART</a>'+
         '</div> </div> <div class="clearfix"> </div> </div><hr>');
     }
