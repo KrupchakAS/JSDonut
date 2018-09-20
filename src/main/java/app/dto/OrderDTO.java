@@ -1,7 +1,5 @@
 package app.dto;
 
-import app.entity.Product;
-import app.entity.User;
 import app.entity.enums.DeliveryOption;
 import app.entity.enums.OrderStatus;
 import app.entity.enums.PaymentOption;
@@ -13,17 +11,19 @@ import java.util.List;
 public class OrderDTO {
 
     private Integer id;
-    @NotNull
+
     private PaymentOption paymentOption;
-    @NotNull
+
     private DeliveryOption deliveryOption;
-    @NotNull
+
     private PaymentStatus paymentStatus;
-    @NotNull
+
     private OrderStatus orderStatus;
+
+    private Short totalPrice;
     @NotNull
     private List<ProductDTO> productList;
-    @NotNull
+
     private UserDTO user;
 
     public Integer getId() {
@@ -80,5 +80,13 @@ public class OrderDTO {
 
     public void setUserDTO(UserDTO userDTO) {
         this.user = userDTO;
+    }
+
+    public Short getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Short totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

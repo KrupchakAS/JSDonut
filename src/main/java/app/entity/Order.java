@@ -23,24 +23,21 @@ public class Order {
     private Integer id;
 
     @NotNull(message = "Field can not be null")
-    @Column(name = "paymentOption", insertable = false, updatable = false)
     @Convert(converter = PaymentOptionConverter.class)
     private PaymentOption paymentOption;
 
     @NotNull(message = "Field can not be null")
-    @Column(name = "deliveryOption", insertable = false, updatable = false)
+
     @Convert(converter = DeliveryOptionConverter.class)
     private DeliveryOption deliveryOption;
 
-    @NotNull(message = "Field can not be null")
-    @Column(name = "paymentStatus", insertable = false, updatable = false)
     @Convert(converter = PaymentStatusConverter.class)
     private PaymentStatus paymentStatus;
 
-    @NotNull(message = "Field can not be null")
-    @Column(name = "OrderStatus", insertable = false, updatable = false)
     @Convert(converter = OrderStatusConverter.class)
     private OrderStatus orderStatus;
+    @NotNull(message = "Field can not be null")
+    private Short totalPrice;
 
     @ManyToMany
     @JoinTable(name = "order_products", joinColumns = @JoinColumn(name = "order_id"),
@@ -105,5 +102,13 @@ public class Order {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Short getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Short totalPrice) {
+        this.totalPrice = totalPrice;
     }
 }

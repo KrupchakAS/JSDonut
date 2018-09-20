@@ -159,7 +159,7 @@
                         CONTACT US </a>
                 </div>
                 <div class="header-right cart">
-                    <a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+                    <a href="${contextPath}/jsDonut/order"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                     <h4><a href="${contextPath}/jsDonut/order">
                         (<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)
                     </a></h4>

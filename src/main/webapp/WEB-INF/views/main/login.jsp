@@ -13,6 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="keywords" content="Donut Shop"/>
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
     <script type="application/x-javascript"> addEventListener("load", function () {
         setTimeout(hideURLbar, 0);
     }, false);
@@ -25,10 +27,15 @@
     <link href="${contextPath}/resources/assetsMainPages/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="${contextPath}/resources/assetsMainPages/css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <link rel="stylesheet" href="${contextPath}/resources/assetsMainPages/css/flexslider.css" type="text/css" media="screen"/>
+    <link href="${contextPath}/resources/assetsAdminPanel/css/sweetalert.css" rel="stylesheet">
     <!--//Custom Theme files -->
     <!--js-->
-    <script src="${contextPath}/resources/assetsMainPages/js/jquery-1.11.1.min.js"></script>
-    <script src="${contextPath}/resources/assetsMainPages/js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/jsData/sendAjax.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/jsData/product.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/bootstrap.js"></script>
     <!--//js-->
     <!--cart-->
     <script src="${contextPath}/resources/assetsMainPages/js/simpleCart.min.js"></script>
@@ -109,8 +116,8 @@
                         CONTACT US</a>
                 </div>
                 <div class="header-right cart">
-                    <a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
-                    <h4><a href="${contextPath}/jsDonut/order">
+                    <a href="${contextPath}/jsDonut/order"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+                    <h4><a href="#">
                         (<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)
                     </a></h4>
                     <div class="cart-box">
