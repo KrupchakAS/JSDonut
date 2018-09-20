@@ -332,7 +332,7 @@ function AddedToOrder(order) {
     console.log(order);
     swal('Product Add to Cart');
     $('.CountProduct').text(order.productList.length.toString());
-    $('.PriceForAllProducts').text(order.totalPrice.toString());
+    // $('.PriceForAllProducts').text(order.totalPrice.toString());
 }
 
 //ClearCart
@@ -354,6 +354,34 @@ function setQtyCartZero(productDTOList) {
     $('.CountProduct').text(productDTOList.length.toString());
 
 }
+
+// DeleteProductFromCartById
+
+function deleteProductByIdFromOrder(id, selector) {
+
+    if (intValueTest(id, 'Не удалось получить id')) return false;
+    var ajax = {};
+    ajax.data = {id:id};
+    ajax.type = "GET";
+    ajax.url = "/jsDonut/deleteProductByIdFromOrder";
+    ajax.dataType = 'JSON';
+    ajax.selector = selector;
+    ajax.successFunction = function (order) {
+        ajax.selector.closest('.divForRemove').remove();
+        $('.Total-price').text('TotalPrice: ' + order.totalPrice.toString());
+    };
+
+    sendAjax(ajax);
+}
+
+$(document).ready(function () {
+    $(document).on('click', '.DeleteProductFromCart', function (e) {
+        e.preventDefault();
+        var id = parseInt($(this).closest('div').data('id'));
+        deleteProductByIdFromOrder(id, $(this));
+        swal('Deleted!');
+    });
+});
 
 // Scripts
 

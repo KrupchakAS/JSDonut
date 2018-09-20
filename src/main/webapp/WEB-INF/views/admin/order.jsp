@@ -49,9 +49,6 @@
                     Order list
                 </div>
                 <div class="panel-body container-body">
-                    <button type="button" class="btn btn-md btn-success category-add">
-                        Add order
-                    </button>
                     <div class="row">
                         <div class="col-md-12 order-list">
                             <table id="category-table" class="table table-striped order-table">

@@ -137,7 +137,6 @@ function deleteCategory(id, button) {
 
     var pst = {};
     pst.data = id;
-
     pst.selector = button;
     pst.dataType = 'JSON';
     pst.type = "DELETE";

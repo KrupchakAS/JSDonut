@@ -172,8 +172,11 @@
         <c:choose>
             <c:when test="${sessionScope.order.productList.size() > 0}">
                 <с:forEach var="product" items="${sessionScope.order.productList}">
+                    <div class="divForRemove">
                     <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">
-
+                        <div style="float: right" data-id="${product.id}" class="btn_form">
+                            <a href="#" style="color: red" class="DeleteProductFromCart item_add">x</a>
+                        </div>
                         <span>${product.category.name}</span>
                         <p style="color: #c0a16b;font-size: 20px">${product.name}</p>
                         <h3 style="float: right">${product.price * product.quantity}₽</h3>
@@ -184,6 +187,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <hr>
+                    </div>
                 </с:forEach>
             </c:when>
             <c:otherwise>
@@ -212,7 +216,7 @@
                         </select>
                     </div>
                 </div>
-                <h2 class="wow fadeInRight animated" style="float:right">
+                <h2 class="Total-price wow fadeInRight animated" style="float:right">
                     TotalPrice: ${sessionScope.order.totalPrice}</h2>
             </c:when>
         </c:choose>
