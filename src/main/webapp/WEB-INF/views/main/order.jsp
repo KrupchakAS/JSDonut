@@ -1,7 +1,9 @@
 <%@ page pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="с" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -92,8 +94,10 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="/jsDonut/welcome"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-            <li><a href="/jsDonut/filter"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Filter</a></li>
+            <li><a href="/jsDonut/welcome"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
+            </li>
+            <li><a href="/jsDonut/filter"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Filter</a>
+            </li>
         </ol>
     </div>
 </div>
@@ -145,7 +149,7 @@
             <div class="nav navbar-nav navbar-right header-two-right">
                 <div class="header-right my-account">
                     <a href="contact.jsp"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                         CONTACT US</a>
+                        CONTACT US</a>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -158,24 +162,28 @@
 <!--cart-items-->
 <div class="cart-items">
     <div class="container">
+        <c:choose>
+            <c:when test="${sessionScope.order.productList.size() > 0}">
+                <с:forEach var="product" items="${sessionScope.order.productList}">
+                    <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">
 
-
-        <div class="col-md-6 single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">
-
-            <h6 class="item_price">$600.00</h6>
-            <p></p>
-
-            <div class="quantity">
-                <p class="qty"> Qty :  </p><input min="1" type="number" value="1" class="item_quantity">
-            </div>
-            <div class="btn_form">
-                <a href="#" class="add-cart item_add">ADD TO CART</a>
-            </div>
-        </div>
-        <div class="clearfix"> </div>
-    </div>
-
-
+                        <span>${product.category.name}</span>
+                        <p style="color: #c0a16b;font-size: 20px">${product.name}</p>
+                        <h3 style="float: right">${product.price * product.quantity}₽</h3>
+                        <br>
+                        <br>
+                        <h6 style="color: #1b6d85">${product.description}</h6>
+                        <br>
+                        <h4 style="float: right">Quantity ${product.quantity}</h4>
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr>
+                </с:forEach>
+            </c:when>
+            <c:otherwise>
+                <span>Cart is empty</span>
+            </c:otherwise>
+        </c:choose>
     </div>
 </div>
 <!--//cart-items-->
