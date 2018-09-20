@@ -54,14 +54,14 @@ public class MainController {
                 throw new ObjectAlreadyInOrder(String.format("Product with name %s already in your Order", productDTO.getName()));
             }
         }
-        Float totalPrice = 0.0f;
-        for (int i = 0; i < productDTOList.size(); i++) {
-            totalPrice += productDTOList.get(i).getPrice() * productDTOList.get(i).getQuantity();
-        }
         productDTO.setQuantity(quantity);
         productDTOList.add(productDTO);
         OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
         orderDTO.setProductList(productDTOList);
+        Float totalPrice = 0.0f;
+        for (int i = 0; i < productDTOList.size(); i++) {
+            totalPrice += productDTOList.get(i).getPrice() * productDTOList.get(i).getQuantity();
+        }
         orderDTO.setTotalPrice(totalPrice);
         result.setData(orderDTO);
         logger.info(String.format("Successfully added Product in Cart: " + productDTO.getName()));
@@ -82,7 +82,6 @@ public class MainController {
     public String order(HttpSession session) {
         session.setAttribute("countProductInOrder", productDTOList.size());
         session.setAttribute("order", ORDER);
-
         logger.info(String.format("Successfully create Cart"));
 
         return "main/order";

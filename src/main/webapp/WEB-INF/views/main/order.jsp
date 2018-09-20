@@ -169,6 +169,8 @@
 <!--cart-items-->
 <div class="cart-items">
     <div class="container">
+        <h2 class="wow fadeInRight animated" style="float:inherit">TotalPrice: ${sessionScope.order.totalPrice}</h2>
+        <hr>
         <c:choose>
             <c:when test="${sessionScope.order.productList.size() > 0}">
                 <с:forEach var="product" items="${sessionScope.order.productList}">
