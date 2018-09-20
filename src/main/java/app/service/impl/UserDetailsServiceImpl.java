@@ -20,7 +20,7 @@ import java.util.Set;
 @Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private static final Logger logger = LogManager.getLogger(FillingServiceImpl.class);
+    private static final Logger logger = LogManager.getLogger(UserDetailsServiceImpl.class);
 
     @Autowired
     private UserDao userDao;
