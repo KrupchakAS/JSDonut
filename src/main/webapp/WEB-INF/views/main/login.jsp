@@ -114,7 +114,7 @@
                         (<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)
                     </a></h4>
                     <div class="cart-box">
-                        <p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
+                        <p><a href="#" class="ClearButton simpleCart_empty">Empty cart</a></p>
                         <div class="clearfix"></div>
                     </div>
                 </div>

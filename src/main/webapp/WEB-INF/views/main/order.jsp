@@ -147,16 +147,6 @@
                     <a href="contact.jsp"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
                          CONTACT US</a>
                 </div>
-                <div class="header-right cart">
-                    <a href="#"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
-                    <h4><a href="${contextPath}/jsDonut/order">
-                        (<span class="CountProduct">${sessionScope.countProductInOrder}</span>)
-                    </a></h4>
-                    <div class="cart-box">
-                        <p><a href="javascript:;" class="simpleCart_empty">Empty cart</a></p>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
                 <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
@@ -164,9 +154,7 @@
     </div>
 </div>
 <!--//header-->
-<!--breadcrumbs-->
 
-<!--//breadcrumbs-->
 <!--cart-items-->
 <div class="cart-items">
     <div class="container">
