@@ -296,11 +296,11 @@ function addProducts(productList) {
         '<p>'+productObject.description+'</p>'+
             '<span style="color: #c0a16b">Calories: '+productObject.calories+'</span>'+
         '<div class="clearfix"> </div> ' +
-            '<p>Available quantity: '+productObject.quantity+'</p>'+
+            // '<p>Available quantity: '+productObject.quantity+'</p>'+
+            '<div class="quantity"><p class="qty"> Quantity: </p><input min="1" type="number" value="1" class="item_quantity"></div>'+
             '<div style="float: right" data-id="'+productObject.id+'" class="btn_form" ><a href="#" style="color: green"  class="add-cart item_add">ADD TO CART</a>'+
         '</div> </div> <div class="clearfix"> </div> </div><hr>');
     }
-
     closeProduct();
 
 }
@@ -316,9 +316,9 @@ function addToCart(id,selector) {
 }
 
 
-function getProductByIdToCart(id,selector) {
+function getProductByIdToCart(id,quantity,selector) {
     var ajax = {};
-    ajax.data = {id:id};
+    ajax.data = {id:id, quantity:quantity};
     ajax.type = "GET";
     ajax.url = "/jsDonut/addProductToOrder";
     ajax.dataType = 'JSON';
@@ -332,6 +332,26 @@ function AddedToOrder(order) {
     console.log(order);
     swal('Product Add to Cart');
     $('.CountProduct').text(order.productList.length.toString());
+
+}
+
+//ClearCart
+
+function emptyCart(selector) {
+    var ajax = {};
+    ajax.type = "GET";
+    ajax.url = "/jsDonut/emptyCart";
+    ajax.dataType = 'JSON';
+    ajax.selector = selector;
+    ajax.successFunction = setQtyCartZero;
+
+    sendAjax(ajax);
+}
+
+function setQtyCartZero(productDTOList) {
+    console.log(productDTOList);
+    swal('Cart is Empty');
+    $('.CountProduct').text(productDTOList.length.toString());
 
 }
 
@@ -373,9 +393,14 @@ $(function () {
     });
 
     $(document).on('click', '.add-cart', function () {
+        var quantity= parseInt($('.item_quantity').val());
         var id = $(this).closest('div').data('id');
-        addToCart(id,$(this));
+        addToCart(id,quantity,$(this));
     });
+    $(document).on('click', '.ClearButton', function () {
+        emptyCart($(this));
+    });
+
 });
 
 

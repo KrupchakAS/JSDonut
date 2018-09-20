@@ -61,7 +61,6 @@ public class MainController {
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String createModel(ModelMap modelMap, HttpSession session) {
         session.setAttribute("order", ORDER);
-
         session.setAttribute("countProductInOrder", productDTOList.size());
         modelMap.addAttribute("userForm", new UserDTO());
         return "main/registration";
@@ -112,7 +111,7 @@ public class MainController {
 
     @RequestMapping(value = "/addProductToOrder", method = RequestMethod.GET)
     @ResponseBody
-    public AjaxDTO addToOrder(@RequestParam(value = "id") Integer productId, HttpSession session) {
+    public AjaxDTO addToOrder(@RequestParam(value = "id") Integer productId,@RequestParam(value = "quantity") Short quantity, HttpSession session) {
         AjaxDTO result = new AjaxDTO();
         ProductDTO productDTO = productService.getById(productId);
         for (int i = 0; i < productDTOList.size(); i++) {
@@ -120,6 +119,7 @@ public class MainController {
                 throw new ObjectAlreadyInOrder(String.format("Product with name %s already in your Order", productDTO.getName()));
             }
         }
+        productDTO.setQuantity(quantity);
         productDTOList.add(productDTO);
         OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
         orderDTO.setProductList(productDTOList);
@@ -145,5 +145,14 @@ public class MainController {
             logger.info(String.format("Successfully create Cart"));
 
         return "main/order";
+    }
+
+    @RequestMapping(value = "/emptyCart", method = RequestMethod.GET)
+    @ResponseBody
+    public AjaxDTO addToOrder() {
+        AjaxDTO result = new AjaxDTO();
+        productDTOList.clear();
+        result.setData(productDTOList);
+        return result;
     }
 }

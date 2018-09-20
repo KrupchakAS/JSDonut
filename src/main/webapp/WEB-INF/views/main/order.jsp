@@ -169,7 +169,24 @@
 <!--//breadcrumbs-->
 <!--cart-items-->
 <div class="cart-items">
-    <div class="Product-item container">
+    <div class="container">
+
+
+        <div class="col-md-6 single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">
+
+            <h6 class="item_price">$600.00</h6>
+            <p></p>
+
+            <div class="quantity">
+                <p class="qty"> Qty :  </p><input min="1" type="number" value="1" class="item_quantity">
+            </div>
+            <div class="btn_form">
+                <a href="#" class="add-cart item_add">ADD TO CART</a>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+
 
     </div>
 </div>
