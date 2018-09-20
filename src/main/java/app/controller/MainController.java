@@ -78,13 +78,11 @@ public class MainController {
         return "main/filter";
     }
 
-    @RequestMapping(value = "/order", method = RequestMethod.GET)
+    @RequestMapping(value = "/cart", method = RequestMethod.GET)
     public String order(HttpSession session) {
         session.setAttribute("countProductInOrder", productDTOList.size());
         session.setAttribute("order", ORDER);
-        logger.info(String.format("Successfully create Cart"));
-
-        return "main/order";
+        return "main/cart";
     }
 
     @RequestMapping(value = "/emptyCart", method = RequestMethod.GET)

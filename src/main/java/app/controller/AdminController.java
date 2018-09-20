@@ -15,21 +15,6 @@ import java.util.List;
 @RequestMapping(value = "jsDonut/admin")
 public class AdminController {
 
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private DoughService doughService;
-
-    @Autowired
-    private SprinkleService sprinkleService;
-
-    @Autowired
-    private FillingService fillingService;
-
-    @Autowired
-    private ProductService productService;
-
     @RequestMapping(value = "/adminPanel",method = RequestMethod.GET)
     public String adminPanel(){
         return "admin/adminPanel";

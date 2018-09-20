@@ -154,9 +154,9 @@
                 </h1>
             </div>
             <div class="nav navbar-nav navbar-right header-two-right">
-                <div class="header-right ">
+                <div class="header-right my-account">
                     <a href="contact.jsp"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                        CONTACT US</a>
+                        CONTACT US </a>
                 </div>
                 <div class="clearfix"></div>
             </div>
@@ -169,8 +169,6 @@
 <!--cart-items-->
 <div class="cart-items">
     <div class="container">
-        <h2 class="wow fadeInRight animated" style="float:inherit">TotalPrice: ${sessionScope.order.totalPrice}</h2>
-        <hr>
         <c:choose>
             <c:when test="${sessionScope.order.productList.size() > 0}">
                 <с:forEach var="product" items="${sessionScope.order.productList}">
@@ -182,7 +180,6 @@
                         <br>
                         <br>
                         <h6 style="color: #1b6d85">${product.description}</h6>
-                        <br>
                         <h4 style="float: right">Quantity ${product.quantity}</h4>
                     </div>
                     <div class="clearfix"></div>
@@ -193,6 +190,33 @@
                 <span>Cart is empty</span>
             </c:otherwise>
         </c:choose>
+        <c:choose>
+            <c:when test="${sessionScope.order.productList.size() > 0}">
+                <div class="row">
+                    <div class="col-sm-2 form-group">
+                        <label for="PaymentOption">Payment Option</label>
+                        <select id="PaymentOption" required
+                                class="form-control">
+                            <option disabled value="0">Choose Payment Option</option>
+                            <option data-id="1" value="1">CASH</option>
+                            <option data-id="2" value="2">CARD</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <label for="DeliveryOption">Delivery Option</label>
+                        <select id="DeliveryOption" required
+                                class="form-control">
+                            <option disabled value="0">Choose Delivery Option</option>
+                            <option data-id="1" value="1">PICKUP</option>
+                            <option data-id="2" value="2">DELIVERY</option>
+                        </select>
+                    </div>
+                </div>
+                <h2 class="wow fadeInRight animated" style="float:right">
+                    TotalPrice: ${sessionScope.order.totalPrice}</h2>
+            </c:when>
+        </c:choose>
+
     </div>
 </div>
 <!--//cart-items-->

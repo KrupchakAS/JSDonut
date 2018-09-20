@@ -117,7 +117,7 @@
                 </div>
 
                 <div class="header-right cart">
-                    <a href="${contextPath}/jsDonut/order"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
+                    <a href="${contextPath}/jsDonut/cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                     <h4>
                         (<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)
                     </h4>

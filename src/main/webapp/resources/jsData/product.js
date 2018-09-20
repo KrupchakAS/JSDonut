@@ -332,7 +332,7 @@ function AddedToOrder(order) {
     console.log(order);
     swal('Product Add to Cart');
     $('.CountProduct').text(order.productList.length.toString());
-
+    $('.PriceForAllProducts').text(order.totalPrice.toString());
 }
 
 //ClearCart
@@ -349,7 +349,7 @@ function emptyCart(selector) {
 }
 
 function setQtyCartZero(productDTOList) {
-    console.log(order);
+    console.log(productDTOList);
     swal('Cart is Empty');
     $('.CountProduct').text(productDTOList.length.toString());
 
