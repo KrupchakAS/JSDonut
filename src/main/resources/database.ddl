@@ -81,7 +81,7 @@ CREATE TABLE orders (
   deliveryOption TINYINT  NOT NULL,
   paymentStatus  TINYINT  NOT NULL,
   orderStatus    TINYINT  NOT NULL,
-  totalPrice     SMALLINT NOT NULL,
+  totalPrice     FLOAT NOT NULL,
   user_id        INT      NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (id),
   address_id     INT      NOT NULL,

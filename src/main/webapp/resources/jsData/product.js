@@ -297,8 +297,8 @@ function addProducts(productList) {
             '<span style="color: #c0a16b">Calories: '+productObject.calories+'</span>'+
         '<div class="clearfix"> </div> ' +
             // '<p>Available quantity: '+productObject.quantity+'</p>'+
-            '<div class="quantity"><p class="qty"> Quantity: </p><input min="1" type="number" value="1" class="item_quantity"></div>'+
-            '<div style="float: right" data-id="'+productObject.id+'" class="btn_form" ><a href="#" style="color: green"  class="add-cart item_add">ADD TO CART</a>'+
+            '<div class="quantity"><p class="qty"> Quantity: </p><input min="1" type="number" value="1" name="item_quantity" class="item_quantity">' +
+            '<div style="float: right" data-id="'+productObject.id+'" class="btn_form" ><a href="#" style="color: green"  class="add-cart item_add">ADD TO CART</a></div>'+
         '</div> </div> <div class="clearfix"> </div> </div><hr>');
     }
     closeProduct();
@@ -349,7 +349,7 @@ function emptyCart(selector) {
 }
 
 function setQtyCartZero(productDTOList) {
-    console.log(productDTOList);
+    console.log(order);
     swal('Cart is Empty');
     $('.CountProduct').text(productDTOList.length.toString());
 
@@ -393,7 +393,7 @@ $(function () {
     });
 
     $(document).on('click', '.add-cart', function () {
-        var quantity= parseInt($('.item_quantity').val());
+        var quantity = parseInt($(this).closest('div.quantity').find("input[name='item_quantity']").val());
         var id = $(this).closest('div').data('id');
         addToCart(id,quantity,$(this));
     });

@@ -154,7 +154,7 @@
                 </h1>
             </div>
             <div class="nav navbar-nav navbar-right header-two-right">
-                <div class="header-right my-account">
+                <div class="header-right ">
                     <a href="contact.jsp"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
                         CONTACT US</a>
                 </div>

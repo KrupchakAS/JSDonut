@@ -111,7 +111,7 @@ public class MainController {
 
     @RequestMapping(value = "/addProductToOrder", method = RequestMethod.GET)
     @ResponseBody
-    public AjaxDTO addToOrder(@RequestParam(value = "id") Integer productId,@RequestParam(value = "quantity") Short quantity, HttpSession session) {
+    public AjaxDTO addToOrder(@RequestParam(value = "id") Integer productId, @RequestParam(value = "quantity") Short quantity, HttpSession session) {
         AjaxDTO result = new AjaxDTO();
         ProductDTO productDTO = productService.getById(productId);
         for (int i = 0; i < productDTOList.size(); i++) {
@@ -119,10 +119,15 @@ public class MainController {
                 throw new ObjectAlreadyInOrder(String.format("Product with name %s already in your Order", productDTO.getName()));
             }
         }
+//        Float totalPrice = 0.0f;
+//        for (int i = 0; i < productDTOList.size(); i++) {
+//            totalPrice += productDTOList.get(i).getPrice() * productDTOList.get(i).getQuantity();
+//        }
         productDTO.setQuantity(quantity);
         productDTOList.add(productDTO);
         OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
         orderDTO.setProductList(productDTOList);
+//        orderDTO.setTotalPrice(totalPrice);
         result.setData(orderDTO);
         logger.info(String.format("Successfully added Product in Cart: " + productDTO.getName()));
         logger.info(String.format("ProductCount in Cart: " + productDTOList.size()));
@@ -141,8 +146,8 @@ public class MainController {
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public String order(HttpSession session) {
         session.setAttribute("countProductInOrder", productDTOList.size());
-            session.setAttribute("order", ORDER);
-            logger.info(String.format("Successfully create Cart"));
+        session.setAttribute("order", ORDER);
+        logger.info(String.format("Successfully create Cart"));
 
         return "main/order";
     }

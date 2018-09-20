@@ -122,11 +122,12 @@
                     <a href="contact.jsp"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
                         CONTACT US</a>
                 </div>
+
                 <div class="header-right cart">
                     <a href="${contextPath}/jsDonut/order"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
-                    <h4><a href="#">
+                    <h4>
                         (<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)
-                    </a></h4>
+                    </h4>
                     <div class="cart-box">
                         <p><a href="#" class="ClearButton simpleCart_empty">Empty cart</a></p>
                         <div class="clearfix"></div>

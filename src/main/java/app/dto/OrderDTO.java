@@ -20,7 +20,7 @@ public class OrderDTO {
 
     private OrderStatus orderStatus;
 
-    private Short totalPrice;
+    private Float totalPrice;
     @NotNull
     private List<ProductDTO> productList;
 
@@ -82,11 +82,11 @@ public class OrderDTO {
         this.user = userDTO;
     }
 
-    public Short getTotalPrice() {
+    public Float getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(Short totalPrice) {
+    public void setTotalPrice(Float totalPrice) {
         this.totalPrice = totalPrice;
     }
 }

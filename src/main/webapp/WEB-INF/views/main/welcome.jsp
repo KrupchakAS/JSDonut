@@ -33,7 +33,7 @@
     <!--//Custom Theme files -->
     <!--js-->
 
-    <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/modernizr.custom.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/jsData/sendAjax.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/sweetalert.min.js"></script>
@@ -129,9 +129,9 @@
                 </div>
                 <div class="header-right cart">
                     <a href="${contextPath}/jsDonut/order"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
-                    <h4><a href="#">
+                    <h4>
                         (<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)
-                    </a></h4>
+                    </h4>
                     <div class="cart-box">
                         <p><a href="#" class="ClearButton simpleCart_empty">Empty cart</a></p>
                         <div class="clearfix"></div>

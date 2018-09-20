@@ -37,7 +37,7 @@ public class Order {
     @Convert(converter = OrderStatusConverter.class)
     private OrderStatus orderStatus;
     @NotNull(message = "Field can not be null")
-    private Short totalPrice;
+    private Float totalPrice;
 
     @ManyToMany
     @JoinTable(name = "order_products", joinColumns = @JoinColumn(name = "order_id"),
@@ -104,11 +104,11 @@ public class Order {
         this.user = user;
     }
 
-    public Short getTotalPrice() {
+    public Float getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(Short totalPrice) {
+    public void setTotalPrice(Float totalPrice) {
         this.totalPrice = totalPrice;
     }
 }
