@@ -77,6 +77,9 @@ public class RegAndLogController {
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
+
         return "redirect:/jsDonut/welcome";
     }
+
+
 }

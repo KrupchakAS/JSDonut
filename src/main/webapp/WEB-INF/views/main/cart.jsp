@@ -218,9 +218,15 @@
                 </div>
                 <h2 class="Total-price wow fadeInRight animated" style="float:right">
                     TotalPrice: ${sessionScope.order.totalPrice}</h2>
+                <br>
             </c:when>
         </c:choose>
-
+        <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
+            <h3>For Buy, You Must <a href="${contextPath}/jsDonut/login">Sign in</a></h3>
+        </sec:authorize>
+        <sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
+            <button type="submit">Next Step</button>
+        </sec:authorize>
     </div>
 </div>
 <!--//cart-items-->

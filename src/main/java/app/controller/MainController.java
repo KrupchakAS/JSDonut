@@ -44,9 +44,6 @@ public class MainController {
         return result;
     }
 
-
-
-
     @RequestMapping(value = "/filter", method = RequestMethod.GET)
     public String filter(ModelMap modelMap, HttpSession session) {
         session.setAttribute("countProductInOrder", productDTOList.size());
