@@ -55,7 +55,8 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Name</th>
+                                    <th>productList</th>
+                                    <th>UserLogin</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -64,7 +65,8 @@
                                         <с:forEach var="order" items="${orderList}">
                                             <tr class="order-table__row" data-id="${order.id}">
                                                 <th>${order.id}</th>
-                                                <th>${order.name}</th>
+                                                <th>${order.productList}</th>
+                                                <%--<th>${order.user_id.login}</th>--%>
                                                 <th>
                                                     <button type="button" class="btn btn-md btn-primary order-edit">
                                                         Edit

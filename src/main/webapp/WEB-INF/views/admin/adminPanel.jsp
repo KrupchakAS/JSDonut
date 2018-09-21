@@ -30,7 +30,8 @@
     </div>
     <div class="divider"></div>
     <ul class="nav menu">
-        <li><a href="${contextPath}/jsDonut/admin/category"> Orders</a></li>
+        <li><a href="${contextPath}/jsDonut/admin/order"> Orders</a></li>
+        <li><a href="${contextPath}/jsDonut/admin/category"> Categories</a></li>
         <li><a href="${contextPath}/jsDonut/admin/product"> Products</a></li>
         <li><a href="${contextPath}/jsDonut/admin/sprinkle"> Sprinkles</a></li>
         <li><a href="${contextPath}/jsDonut/admin/dough"> Doughs</a></li>

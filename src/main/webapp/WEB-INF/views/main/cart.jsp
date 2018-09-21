@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/assetsMainPages/css/flexslider.css" type="text/css"
           media="screen"/>
     <link href="${contextPath}/resources/assetsAdminPanel/css/sweetalert.css" rel="stylesheet">
+    <link href="${contextPath}/resources/assetsAdminPanel/css/project.css" rel="stylesheet">
     <!--//Custom Theme files -->
     <!--js-->
     <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/jquery-3.3.1.min.js"></script>
@@ -173,20 +174,20 @@
             <c:when test="${sessionScope.order.productList.size() > 0}">
                 <с:forEach var="product" items="${sessionScope.order.productList}">
                     <div class="divForRemove">
-                    <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">
-                        <div style="float: right" data-id="${product.id}" class="btn_form">
-                            <a href="#" style="color: red" class="DeleteProductFromCart item_add">x</a>
+                        <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">
+                            <div style="float: right" data-id="${product.id}" class="btn_form">
+                                <a href="#" style="color: red" class="DeleteProductFromCart item_add">x</a>
+                            </div>
+                            <span>${product.category.name}</span>
+                            <p style="color: #c0a16b;font-size: 20px">${product.name}</p>
+                            <h3 style="float: right">${product.price * product.quantity}₽</h3>
+                            <br>
+                            <br>
+                            <h6 style="color: #1b6d85">${product.description}</h6>
+                            <h4 style="float: right">Quantity ${product.quantity}</h4>
                         </div>
-                        <span>${product.category.name}</span>
-                        <p style="color: #c0a16b;font-size: 20px">${product.name}</p>
-                        <h3 style="float: right">${product.price * product.quantity}₽</h3>
-                        <br>
-                        <br>
-                        <h6 style="color: #1b6d85">${product.description}</h6>
-                        <h4 style="float: right">Quantity ${product.quantity}</h4>
-                    </div>
-                    <div class="clearfix"></div>
-                    <hr>
+                        <div class="clearfix"></div>
+                        <hr>
                     </div>
                 </с:forEach>
             </c:when>
@@ -194,41 +195,60 @@
                 <span>Cart is empty</span>
             </c:otherwise>
         </c:choose>
+        <h2 class="Total-price wow fadeInRight animated" style="float:right">
+            TotalPrice: ${sessionScope.order.totalPrice}</h2>
+        <br>
+        <hr>
         <c:choose>
-            <c:when test="${sessionScope.order.productList.size() > 0}">
-                <div class="row">
-                    <div class="col-sm-2 form-group">
-                        <label for="PaymentOption">Payment Option</label>
-                        <select id="PaymentOption" required
-                                class="form-control">
-                            <option disabled value="0">Choose Payment Option</option>
-                            <option data-id="1" value="1">CASH</option>
-                            <option data-id="2" value="2">CARD</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-2 form-group">
-                        <label for="DeliveryOption">Delivery Option</label>
-                        <select id="DeliveryOption" required
-                                class="form-control">
-                            <option disabled value="0">Choose Delivery Option</option>
-                            <option data-id="1" value="1">PICKUP</option>
-                            <option data-id="2" value="2">DELIVERY</option>
-                        </select>
-                    </div>
+        <c:when test="${sessionScope.order.productList.size() > 0}">
+        <div style="padding-bottom: 15px" class="container">
+            <div class="col-sm-2 ">
+                <label for="PaymentOption">Payment Option</label>
+                <select id="PaymentOption" required
+                        class="form-control">
+                    <option disabled value="0">Choose Payment Option</option>
+                    <option value="1">CASH</option>
+                    <option value="2">CARD</option>
+                </select>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-sm-5">
+                <label for="DeliveryOption">Delivery Option</label>
+                <select id="DeliveryOption" required class="form-control">
+                    <option disabled value="0">Choose Delivery Option</option>
+                    <option value="1">PICKUP</option>
+                    <option value="2">DELIVERY</option>
+                </select>
+                <div class="delivery-option form-group-sm ">
+                    <p style="padding: 10px; margin: 5px" class="pickup-option">Самовывоз по адресу г.Санкт-Петербург
+                        ул.Бухарестская д.100.</p>
+                    <form method="post" action="/jsDonut/saveAddress">
+                        <input id="City" placeholder="City" minlength="2" maxlength="32" required>
+                        <input id="Street" placeholder="Street" minlength="2" maxlength="32" required>
+                        <input id="HouseNumber" placeholder="HouseNumber" minlength="1" maxlength="8"
+                               required>
+                        <input id="ApartmentNumber" placeholder="ApartmentNumber" minlength="1"
+                               maxlength="8"
+                               required>
+                        <input id="PostCode" placeholder="PostCode" minlength="2" maxlength="16"
+                               required>
+                    </form>
                 </div>
-                <h2 class="Total-price wow fadeInRight animated" style="float:right">
-                    TotalPrice: ${sessionScope.order.totalPrice}</h2>
-                <br>
-            </c:when>
-        </c:choose>
-        <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
-            <h3>For Buy, You Must -> <a href="${contextPath}/jsDonut/login">Sign in</a></h3>
-        </sec:authorize>
-        <sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
-            <button type="submit">Next Step</button>
-        </sec:authorize>
+            </div>
+        </div>
     </div>
+    </c:when>
+    </c:choose>
+    <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
+    <h3>For Buy, You Must -> <a href="${contextPath}/jsDonut/login">Sign in</a></h3>
+    </sec:authorize>
+    <sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
+        <h2 style="padding-left: 270px"><a href="#"><span class="OrderSave label label-success">Save Order</span></a></h2>
+
+    </sec:authorize>
 </div>
+
 <!--//cart-items-->
 <!--footer-->
 <div class="footer">

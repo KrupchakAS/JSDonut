@@ -1,6 +1,7 @@
 package app.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.NotNull;
@@ -37,7 +38,7 @@ public class ProductDTO {
 
     @NotNull
     private CategoryDTO category;
-
+    @JsonIgnore
     private List<OrderDTO> orderList;
 
     private FillingDTO filling;

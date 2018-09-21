@@ -23,19 +23,17 @@ public class Order {
     private Integer id;
 
     @NotNull(message = "Field can not be null")
-    @Convert(converter = PaymentOptionConverter.class)
-    private PaymentOption paymentOption;
+    private Byte paymentOption;
 
     @NotNull(message = "Field can not be null")
+    private Byte deliveryOption;
 
-    @Convert(converter = DeliveryOptionConverter.class)
-    private DeliveryOption deliveryOption;
+    @NotNull(message = "Field can not be null")
+    private Byte paymentStatus;
 
-    @Convert(converter = PaymentStatusConverter.class)
-    private PaymentStatus paymentStatus;
+    @NotNull(message = "Field can not be null")
+    private Byte orderStatus;
 
-    @Convert(converter = OrderStatusConverter.class)
-    private OrderStatus orderStatus;
     @NotNull(message = "Field can not be null")
     private Float totalPrice;
 
@@ -56,36 +54,36 @@ public class Order {
         this.id = id;
     }
 
-    public PaymentOption getPaymentOption() {
+    public Byte getPaymentOption() {
         return paymentOption;
     }
 
-    public void setPaymentOption(PaymentOption paymentOption) {
+    public void setPaymentOption(Byte paymentOption) {
         this.paymentOption = paymentOption;
     }
 
-    public PaymentStatus getPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public void setPaymentStatus(PaymentStatus paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
-
-    public OrderStatus getOrderStatus() {
-        return orderStatus;
-    }
-
-    public void setOrderStatus(OrderStatus orderStatus) {
-        this.orderStatus = orderStatus;
-    }
-
-    public DeliveryOption getDeliveryOption() {
+    public Byte getDeliveryOption() {
         return deliveryOption;
     }
 
-    public void setDeliveryOption(DeliveryOption deliveryOption) {
+    public void setDeliveryOption(Byte deliveryOption) {
         this.deliveryOption = deliveryOption;
+    }
+
+    public Byte getPaymentStatus() {
+        return paymentStatus;
+    }
+
+    public void setPaymentStatus(Byte paymentStatus) {
+        this.paymentStatus = paymentStatus;
+    }
+
+    public Byte getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(Byte orderStatus) {
+        this.orderStatus = orderStatus;
     }
 
     public List<Product> getProductList() {

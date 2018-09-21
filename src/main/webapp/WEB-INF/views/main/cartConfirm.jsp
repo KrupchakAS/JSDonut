@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/assetsMainPages/css/flexslider.css" type="text/css"
           media="screen"/>
     <link href="${contextPath}/resources/assetsAdminPanel/css/sweetalert.css" rel="stylesheet">
+    <link href="${contextPath}/resources/assetsAdminPanel/css/project.css" rel="stylesheet">
     <!--//Custom Theme files -->
     <!--js-->
     <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/jquery-3.3.1.min.js"></script>
@@ -38,10 +39,9 @@
     <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/jsData/product.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/bootstrap.js"></script>
-
     <!--//js-->
     <!--cart-->
-    <script src="${contextPath}/resources/assetsMainPages/js/simpleCart.js"></script>
+    <script src="${contextPath}/resources/assetsMainPages/js/simpleCart.min.js"></script>
     <!--cart-->
     <!--web-fonts-->
     <link href='//fonts.googleapis.com/css?family=Raleway:400,100,100italic,200,200italic,300,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic'
@@ -98,7 +98,7 @@
     <!--//end-smooth-scrolling-->
 </head>
 <body>
-<!--breadcrumbs-->
+
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
@@ -109,14 +109,13 @@
         </ol>
     </div>
 </div>
-<!--//breadcrumbs-->
 <!--header-->
 <div class="header">
     <div class="top-header navbar navbar-default"><!--header-one-->
         <div class="container">
             <div class="nav navbar-nav wow fadeInLeft animated" data-wow-delay=".5s">
                 <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
-                    <p><a href="${contextPath}/jsDonut/registration">Sign Up </a> Or <a
+                    <p>Welcome to Donut Shop<a href="${contextPath}/jsDonut/registration">Sign Up </a> Or <a
                             href="${contextPath}/jsDonut/login">Sign In </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -160,71 +159,54 @@
                     <a href="contact.jsp"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
                         CONTACT US </a>
                 </div>
-                <div class="header-right cart">
-                    <a href="${contextPath}/jsDonut/cart"><span class="glyphicon glyphicon-shopping-cart"
-                                                                aria-hidden="true"></span></a>
-                    <h4>
-                        <%--<span class="PriceForAllProducts">${sessionScope.order.totalPrice.toString()}</span>--%>
-                        (<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)
-                    </h4>
-                    <div class="cart-box">
-                        <p><a href="#" class="ClearButton simpleCart_empty">Empty cart</a></p>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
                 <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
         </div>
     </div>
 </div>
+<!--//header-->
 <div class="row">
-    <div style="border-right: 1px solid #ccc; padding-bottom : 5px; padding-top: 5px; margin-right: 30px;" class="col-sm-2 top-nav navbar navbar-default ">
-
-        <div>
-            <div class="row">
-                <h3 style="color: #00a6d6;  margin-left: 50px">Filter Panel</h3>
-                <form style="padding: 10px; margin: 30px" class=" form-group-sm">
-                    <select style="margin: 10px;" id="category" required class="selec2-plugin form-control categoryId-Search">
-                        <option disabled value="0" selected>Category</option>
-                        <c:choose>
-                            <c:when test="${categoryList.size() > 0}">
-                                <с:forEach var="category" items="${categoryList}">
-                                    <option data-id="${category.id}" value="${category.id}">${category.name}</option>
-                                </с:forEach>
-                            </c:when>
-                            <c:otherwise>
-                                <option disabled selected>Category not found</option>
-                            </c:otherwise>
-                        </c:choose>
-                    </select>
-
-                    <input style="margin: 10px;" class="form-control productName-Search" type="text" placeholder="Product name">
-
-                    <input style="margin: 10px;"  class=" form-control minPrice-Search" type="number" placeholder="min Price">
-
-                    <input style="margin: 10px;" class=" form-control maxPrice-Search" type="number" placeholder="max Price">
-                    <h2 style="margin: 10px;"><a href="#"><span class=" products-search label label-info">Search</span></a></h2>
-
-                </form>
-            </div>
+    <div>
+        <div class="col-sm-2 form-group">
+            <label for="PaymentOption">Payment Option</label>
+            <select id="PaymentOption" required
+                    class="form-control">
+                <option disabled value="0">Choose Payment Option</option>
+                <option data-id="1" value="1">CASH</option>
+                <option data-id="2" value="2">CARD</option>
+            </select>
         </div>
     </div>
 
-    <!--cart-items-->
-    <div class="col-sm-8 cart-items">
-        <div class="Product-item ">
-
+    <div class="col-sm-2 form-group">
+        <label for="DeliveryOption">Delivery Option</label>
+        <select id="DeliveryOption" required class="form-control">
+            <option disabled value="0">Choose Delivery Option</option>
+            <option data-id="1" value="1">PICKUP</option>
+            <option data-id="2" value="2">DELIVERY</option>
+        </select>
+        <div class="form-group-sm">
+            <form class="delivery-option " method="post" action="/jsDonut/saveAddress">
+                <input class="user" name="City" placeholder="City" minlength="2" maxlength="32" required>
+                <input name="Street" class="lock" placeholder="Street" minlength="2" maxlength="32" required>
+                <input class="user" name="HouseNumber" placeholder="HouseNumber" minlength="1" maxlength="8" required>
+                <input name="ApartmentNumber" class="lock" placeholder="ApartmentNumber" minlength="1" maxlength="8"
+                       required>
+                <input class="user" name="PostCode" placeholder="PostCode" minlength="2" maxlength="16" required>
+                <input type="submit" value="Save Address">
+            </form>
         </div>
+        <span class="pickup-option ">Самомвывоз по адресу г.Санкт-Петербург ул.Бухарестская д.100.</span>
     </div>
 </div>
-<!--//cart-items-->
 <!--footer-->
 <div class="footer">
     <div class="container">
         <div class="footer-info">
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
-                <h4 class="footer-logo"><a href="/jsDonut/welcome">Donut <b>Shop</b> <span class="tag">Everything for you Sweet Dream </span>
+                <h4 class="footer-logo"><a href="${contextPath}/jsDonut/welcome">Donut <b>Shop</b> <span
+                        class="tag">Everything for you Sweet Dream  </span>
                 </a></h4>
                 <p>© 2018 Donut Shop. All rights reserved</p>
             </div>
@@ -237,6 +219,14 @@
                     <li><a href="faq.jsp">FAQ</a></li>
                     <li><a href="filter.jsp">Wishlist</a></li>
                 </ul>
+            </div>
+            <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".9s">
+                <h3>Subscribe</h3>
+                <p>Sign Up Now For More Information <br> About Our Company </p>
+                <form>
+                    <input type="text" placeholder="Enter Your Email" required="">
+                    <input type="submit" value="Go">
+                </form>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -261,5 +251,10 @@
 
     });
 </script>
+<!--//smooth-scrolling-of-move-up-->
+<!--Bootstrap core JavaScript
+================================================== -->
+<!--Placed at the end of the document so the pages load faster -->
+<script src="${contextPath}/resources/assetsMainPages/js/bootstrap.js"></script>
 </body>
 </html>

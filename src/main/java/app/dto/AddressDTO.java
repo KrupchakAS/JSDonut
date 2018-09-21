@@ -8,8 +8,10 @@ public class AddressDTO {
     private Integer id;
     @Size(min = 2, max = 16, message = "Field must be between 2 and 16 characters.")
     private String city;
+    @Size(min = 2, max = 16, message = "Field must be between 2 and 16 characters.")
+    private String street;
     @Size(min = 4, max = 16, message = "Field must be between 4 and 16 characters.")
-    private Integer postCode;
+    private String postCode;
     @Size(min = 1, max = 10, message = "Field must be between 1 and 10 characters.")
     private Short houseNumber;
     @Size(min = 1, max = 10, message = "Field must be between 1 and 10 characters.")
@@ -31,11 +33,11 @@ public class AddressDTO {
         this.city = city;
     }
 
-    public Integer getPostCode() {
+    public String getPostCode() {
         return postCode;
     }
 
-    public void setPostCode(Integer postCode) {
+    public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
 
@@ -61,5 +63,13 @@ public class AddressDTO {
 
     public void setUserDTO(UserDTO userDTO) {
         this.user = userDTO;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
     }
 }

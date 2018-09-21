@@ -42,8 +42,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
     }
 
-    public String getUsersLogin() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return (principal instanceof UserDetails) ? ((UserDetails)principal).getUsername() : principal.toString();
-    }
 }

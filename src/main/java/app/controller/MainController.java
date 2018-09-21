@@ -1,17 +1,25 @@
 package app.controller;
 
-import app.dto.AjaxDTO;
-import app.dto.OrderDTO;
-import app.dto.ProductDTO;
+import app.dto.*;
+import app.entity.enums.Converter.DeliveryOptionConverter;
+import app.entity.enums.Converter.PaymentOptionConverter;
+
+import app.entity.enums.DeliveryOption;
+import app.entity.enums.PaymentOption;
 import app.exception.ObjectAlreadyInOrder;
 import app.service.api.CategoryService;
+import app.service.api.OrderService;
 import app.service.api.ProductService;
+import app.service.api.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +39,12 @@ public class MainController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private OrderService orderService;
 
     @RequestMapping(value = "/getProductsByParameters", method = RequestMethod.GET)
     @ResponseBody
@@ -53,10 +67,17 @@ public class MainController {
     }
 
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
-    public String order(HttpSession session) {
+    public String cart(HttpSession session) {
         session.setAttribute("countProductInOrder", productDTOList.size());
         session.setAttribute("order", ORDER);
         return "main/cart";
+    }
+
+    @RequestMapping(value = "/cartConfirm", method = RequestMethod.GET)
+    public String cartConfirm(HttpSession session) {
+        session.setAttribute("countProductInOrder", productDTOList.size());
+        session.setAttribute("order", ORDER);
+        return "main/cartConfirm";
     }
 
     @RequestMapping(value = "/emptyCart", method = RequestMethod.GET)
@@ -93,12 +114,12 @@ public class MainController {
         return result;
     }
 
-    @RequestMapping(value = "/deleteProductByIdFromOrder",method = RequestMethod.GET)
+    @RequestMapping(value = "/deleteProductByIdFromOrder", method = RequestMethod.GET)
     @ResponseBody
-    public AjaxDTO deleteProductById(@RequestParam(value = "id") Integer productId, HttpSession session){
+    public AjaxDTO deleteProductById(@RequestParam(value = "id") Integer productId, HttpSession session) {
         AjaxDTO result = new AjaxDTO();
-        for (int i = 0; i < productDTOList.size();i++){
-            if(productDTOList.get(i).getId() == productId){
+        for (int i = 0; i < productDTOList.size(); i++) {
+            if (productDTOList.get(i).getId() == productId) {
                 productDTOList.remove(productDTOList.get(i));
                 logger.info(String.format("Successfully deleted Product from Cart"));
             }
@@ -111,6 +132,33 @@ public class MainController {
         }
         orderDTO.setTotalPrice(totalPrice);
         result.setData(orderDTO);
+        return result;
+    }
+
+    @RequestMapping(value = "/saveOrder", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxDTO saveOrder(
+                            @RequestBody(required = false) AddressDTO addressDTO,
+                             @RequestBody DeliveryOption deliveryOption,
+                             @RequestBody PaymentOption paymentOption,
+                             HttpSession session) {
+        AjaxDTO result = new AjaxDTO();
+        OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        UserDTO userDTO = userService.getByLogin(name);
+
+        if (addressDTO != null) {
+            addressDTO.setUserDTO(userDTO);
+        }
+
+        orderDTO.setDeliveryOption(deliveryOption);
+        orderDTO.setPaymentOption(paymentOption);
+        orderDTO.setUserDTO(userDTO);
+        orderService.create(orderDTO);
+        result.setData(orderDTO);
+//        session.invalidate();
+//        productDTOList.clear();
         return result;
     }
 }

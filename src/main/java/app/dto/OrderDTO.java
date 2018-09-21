@@ -19,7 +19,7 @@ public class OrderDTO {
     private PaymentStatus paymentStatus;
 
     private OrderStatus orderStatus;
-
+    @NotNull
     private Float totalPrice;
     @NotNull
     private List<ProductDTO> productList;

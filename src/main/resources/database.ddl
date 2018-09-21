@@ -18,7 +18,6 @@ CREATE TABLE users (
 -- Table: address
 CREATE TABLE address (
   id              INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  country         VARCHAR(32) NOT NULL,
   city            VARCHAR(32) NOT NULL,
   street          VARCHAR(32) NOT NULL,
   houseNumber     SMALLINT    NOT NULL,
@@ -84,7 +83,7 @@ CREATE TABLE orders (
   totalPrice     FLOAT NOT NULL,
   user_id        INT      NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (id),
-  address_id     INT      NOT NULL,
+  address_id     INT     ,
   FOREIGN KEY (address_id) REFERENCES address (id)
 )
   ENGINE = InnoDB;

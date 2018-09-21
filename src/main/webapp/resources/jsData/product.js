@@ -254,11 +254,11 @@ $(document).ready(function () {
 // GetProductsByParameters -------------------------------------------
 
 function getProducts(categoryId, productName, minPrice, maxPrice, selector) {
-        if (isNumber(minPrice) || isNumber(maxPrice)) {
-            getProductByParameters(categoryId, productName, minPrice, maxPrice, selector);
-        } else {
-            swal("Product price is not number");
-        }
+    if (isNumber(minPrice) || isNumber(maxPrice)) {
+        getProductByParameters(categoryId, productName, minPrice, maxPrice, selector);
+    } else {
+        swal("Product price is not number");
+    }
 
 }
 
@@ -290,16 +290,16 @@ function addProducts(productList) {
         var productObject = productList[i];
 
         $('.Product-item').append(
-        '<div class="single-info"> <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">'+
+            '<div class="single-info"> <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">'+
             '<h6 >'+productObject.name+'</h6>'+
             '<h3 style="float: right" class="item_price">'+productObject.price+'₽</h3>'+
-        '<p>'+productObject.description+'</p>'+
+            '<p>'+productObject.description+'</p>'+
             '<span style="color: #c0a16b">Calories: '+productObject.calories+'</span>'+
-        '<div class="clearfix"> </div> ' +
+            '<div class="clearfix"> </div> ' +
             // '<p>Available quantity: '+productObject.quantity+'</p>'+
             '<div class="quantity"><p class="qty"> Quantity: </p><input min="1" type="number" value="1" name="item_quantity" class="item_quantity">' +
             '<div style="float: right" data-id="'+productObject.id+'" class="btn_form" ><a href="#" style="color: green"  class="add-cart item_add">ADD TO CART</a></div>'+
-        '</div> </div> <div class="clearfix"> </div> </div><hr>');
+            '</div> </div> <div class="clearfix"> </div> </div><hr>');
     }
     closeProduct();
 
@@ -383,6 +383,42 @@ $(document).ready(function () {
     });
 });
 
+// SaveOrder
+
+function SaveOrder(button) {
+
+    var pst = {};
+    pst.selector = button;
+    pst.type = "POST";
+    pst.url = '/jsDonut/saveOrder';
+    pst.data = {};
+    pst.data = getDataFormForOrder();
+    pst.successFunction = function () {
+        swal('Success');
+    };
+
+    console.log(pst.data);
+
+    sendAjax(pst);
+}
+
+function getDataFormForOrder (){
+    var order = [];
+
+    var deliveryOption = {};
+    var paymentOption = {};
+    deliveryOption.id = parseInt($('#DeliveryOption').val());
+    paymentOption.id = parseInt($('#PaymentOption').val());
+
+    var addressDTO = {};
+    addressDTO.city = $('#City').val();
+    addressDTO.street =$('#Street').val();
+    addressDTO.houseNumber =$('#HouseNumber').val();
+    addressDTO.apartmentNumber = $('#ApartmentNumber').val();
+    addressDTO.postCode = $('#PostCode').val();
+    order.push(deliveryOption,paymentOption,addressDTO);
+    return order;
+}
 // Scripts
 
 $(function () {
@@ -428,6 +464,9 @@ $(function () {
     $(document).on('click', '.ClearButton', function () {
         emptyCart($(this));
     });
+    $(document).on('click', '.OrderSave', function () {
+        SaveOrder($(this));
+    });
 
 });
 
@@ -448,3 +487,12 @@ function intValueTest(value, text) {
     }
     return false;
 }
+
+
+
+
+
+
+
+
+
