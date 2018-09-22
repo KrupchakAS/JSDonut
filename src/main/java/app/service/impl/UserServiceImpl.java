@@ -44,6 +44,7 @@ public class UserServiceImpl implements UserService {
     public void update(UserDTO userDTO) {
         User user = userDao.getById(userDTO.getId());
         if (user != null)
+            userDTO.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
             userDao.update(modelMapper.map(userDTO,User.class));
         logger.info(String.format("Successfully update user %s", userDTO.getLogin()));
     }

@@ -423,22 +423,14 @@ function getDataFormForOrder (){
 
 // ChangeUserPassword -------------------------------------------
 
-function checkPasswords(password,confirmPassword) {
-    if (password === confirmPassword) {
-        ChangeUserPassword(password,confirmPassword, selector);
-    } else {
-        swal("Password don't match.");
-    }
-}
-
-function ChangeUserPassword(password,confirmPassword,button) {
+function ChangeUserPassword(button) {
 
     var pst = {};
     pst.selector = button;
     pst.type = "POST";
     pst.url = '/jsDonut/changeUserPassword';
-    pst.data = {password : password ,
-        confirmPassword : confirmPassword };
+    pst.data = {};
+    pst.data = getPasswords();
     pst.successFunction = function () {
         swal('Password Successfully Changed');
     };
@@ -447,6 +439,26 @@ function ChangeUserPassword(password,confirmPassword,button) {
 
     sendAjax(pst);
 }
+function getPasswords() {
+
+    var passwords={};
+
+    passwords.password = $('.Password').val();
+    passwords.confirmPassword = $('.ConfirmPassword').val();
+
+    if(passwords.password !== passwords.confirmPassword){
+        swal('Password do not match.');
+    }
+
+    return passwords;
+}
+
+$(document).ready(function () {
+    $(document).on('click', '.ChangePass', function (e) {
+        e.preventDefault();
+        ChangeUserPassword($(this));
+    });
+});
 
 
 // Scripts
@@ -497,11 +509,7 @@ $(function () {
     $(document).on('click', '.OrderSave', function () {
         SaveOrder($(this));
     });
-    $(document).on('click', '.ChangePass', function () {
-        var password =  $('.Password').val();
-        var confirmPassword = $('.ConfirmPassword').val();
-        checkPasswords(password,confirmPassword,$(this));
-    });
+
 });
 
 

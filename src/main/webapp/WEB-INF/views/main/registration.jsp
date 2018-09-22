@@ -145,7 +145,7 @@
             <h4>Already have an Account ?<a href="${contextPath}/jsDonut/login"> Sign In »</a></h4>
         </div>
         <div class="login-body form-group">
-            <form:form method="POST" modelAttribute="userForm" class="form-inline">
+            <form:form method="POST" modelAttribute="userForm" class="form-group">
                 <div>
                     <span>Enter your login:</span>
                     <form:input type="text" minlength="4" maxlength="16" path="login" class=" form-control"
@@ -189,7 +189,7 @@
                         <form:errors path="email"></form:errors></div>
                 </div>
                 <div>
-                    <span>Enter your birthday:</span>
+                    <span>Enter your password:</span>
                     <form:input type="password" minlength="4" maxlength="16" path="password" class="form-control"
                                 placeholder="Password"></form:input>
                     <div class="has-error">

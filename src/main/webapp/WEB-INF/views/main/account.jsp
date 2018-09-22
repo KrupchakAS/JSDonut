@@ -169,10 +169,10 @@
 <div class="login-page">
     <div class="widget-shadow">
         <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
-            <h4>${pageContext.request.userPrincipal.name} Account</h4>
+            <h3>${pageContext.request.userPrincipal.name} Change Password</h3>
         </div>
         <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
-            <form method="post" action="/login">
+            <form method="post" action="/jsDonut/changeUserPassword">
                 <div>
                     <input type="password" class="Password"  placeholder="Password" minlength="4" maxlength="16" required>
                     <input type="password" class="ConfirmPassword"  placeholder="ConfirmPassword" minlength="4" maxlength="16" required>

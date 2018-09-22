@@ -1,17 +1,15 @@
 package app.controller;
 
 import app.dto.*;
-import app.entity.enums.Converter.DeliveryOptionConverter;
-import app.entity.enums.Converter.PaymentOptionConverter;
 
 import app.entity.enums.DeliveryOption;
 import app.entity.enums.PaymentOption;
 import app.exception.ObjectAlreadyInOrder;
+import app.exception.UserNotFound;
 import app.service.api.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -171,10 +169,13 @@ public class MainController {
 
     @RequestMapping(value = "/changeUserPassword", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxDTO changeUserPassword(@RequestParam(value = "password") String password, HttpSession session) {
+    public AjaxDTO changeUserPassword(@RequestBody UserDTO userDTO1, HttpSession session) {
         AjaxDTO result = new AjaxDTO();
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-        userDTO.setPassword(password);
+        if (userDTO == null){
+            throw new UserNotFound("User Not Found");
+        }
+        userDTO.setPassword(userDTO1.getPassword());
         userService.update(userDTO);
         return result;
     }
