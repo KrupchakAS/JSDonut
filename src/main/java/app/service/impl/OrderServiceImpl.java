@@ -97,16 +97,6 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<OrderDTO> getAll() {
         List<Order> orderList = orderDao.getAll();
-        if (orderList != null) {
-            return orderList.stream().map(order -> modelMapper.map(order, OrderDTO.class)).collect(Collectors.toList());
-        } else {
-            return null;
-        }
-    }
-    @Transactional(readOnly = true)
-    @Override
-    public List<OrderDTO> getOrdersByUserId(Integer userId) {
-        List<Order> orderList = orderDao.getOrdersByUserId(userId);
         List<OrderDTO> orderDTOList = new ArrayList<>();
         if (orderList != null) {
             for(int i = 0; i < orderList.size();i ++){
@@ -118,7 +108,6 @@ public class OrderServiceImpl implements OrderService {
                 orderDTO.setPaymentStatus(new PaymentStatusConverter().convertToEntityAttribute(orderList.get(i).getPaymentStatus()));
 
                 orderDTO.setId(orderList.get(i).getId());
-
                 List<ProductDTO> productList = orderList.get(i).getProductList().stream().map(product -> modelMapper.map(product, ProductDTO.class)).collect(Collectors.toList());
                 orderDTO.setProductList(productList);
 
@@ -126,7 +115,37 @@ public class OrderServiceImpl implements OrderService {
                 orderDTO.setUserDTO(userDTO);
                 orderDTOList.add(orderDTO);
             }
+            return orderDTOList;
+        } else {
+            return null;
         }
-        return orderDTOList;
+    }
+    @Transactional(readOnly = true)
+    @Override
+    public List<OrderDTO> getOrdersByUserId(Integer userId) {
+        List<Order> orderList = orderDao.getOrdersByUserId(userId);
+        List<OrderDTO> orderDTOList = new ArrayList<>();
+        if (orderList != null) {
+            for (int i = 0; i < orderList.size(); i++) {
+                OrderDTO orderDTO = new OrderDTO();
+                orderDTO.setId(orderList.get(i).getId());
+
+                orderDTO.setPaymentOption(new PaymentOptionConverter().convertToEntityAttribute(orderList.get(i).getPaymentStatus()));
+                orderDTO.setDeliveryOption(new DeliveryOptionConverter().convertToEntityAttribute(orderList.get(i).getDeliveryOption()));
+                orderDTO.setOrderStatus(new OrderStatusConverter().convertToEntityAttribute(orderList.get(i).getOrderStatus()));
+                orderDTO.setPaymentStatus(new PaymentStatusConverter().convertToEntityAttribute(orderList.get(i).getPaymentStatus()));
+
+                List<ProductDTO> productList = orderList.get(i).getProductList().stream().map(product -> modelMapper.map(product, ProductDTO.class)).collect(Collectors.toList());
+                orderDTO.setProductList(productList);
+
+                UserDTO userDTO = modelMapper.map(orderList.get(i).getUser(), UserDTO.class);
+                orderDTO.setUserDTO(userDTO);
+
+                orderDTOList.add(orderDTO);
+            }
+            return orderDTOList;
+        } else {
+            return null;
+        }
     }
 }
