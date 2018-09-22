@@ -199,6 +199,13 @@
                 <span>Cart is empty</span>
             </c:otherwise>
         </c:choose>
+        <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
+            <h3 style="float: right; color: red">To Buy, You Must -> <a href="${contextPath}/jsDonut/login">Sign in</a></h3>
+        </sec:authorize>
+        <sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
+            <h2 style="padding-left: 270px; float: right"><a href="#"><span
+                    class="OrderSave label label-success">Save Order</span></a></h2>
+        </sec:authorize>
         <c:choose>
             <c:when test="${sessionScope.order.productList.size() > 0}">
                 <div style="padding-bottom: 15px" class="container">
@@ -238,13 +245,7 @@
                         </div>
                     </div>
                 </div>
-                <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
-                    <h3>For Buy, You Must -> <a href="${contextPath}/jsDonut/login">Sign in</a></h3>
-                </sec:authorize>
-                <sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
-                    <h2 style="padding-left: 270px"><a href="#"><span
-                            class="OrderSave label label-success">Save Order</span></a></h2>
-                </sec:authorize>
+
             </c:when>
         </c:choose>
     </div>
