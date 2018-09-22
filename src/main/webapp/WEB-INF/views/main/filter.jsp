@@ -202,6 +202,7 @@
                     <input style="margin: 10px;"  class=" form-control minPrice-Search" type="number" placeholder="min Price">
 
                     <input style="margin: 10px;" class=" form-control maxPrice-Search" type="number" placeholder="max Price">
+
                     <h2 style="margin: 10px;"><a href="#"><span class="products-search label label-info">Search</span></a></h2>
 
                 </form>

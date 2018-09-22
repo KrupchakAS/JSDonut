@@ -15,4 +15,6 @@ public interface OrderService {
     OrderDTO getById(Integer id);
 
     List<OrderDTO> getAll();
+
+    List<OrderDTO> getOrdersByUserId(Integer userId);
 }

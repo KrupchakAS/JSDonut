@@ -123,7 +123,8 @@
                         again <a href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <p>Hi, ${pageContext.request.userPrincipal.name}    <a href="/jsDonut/account">My Account</a>     <a href="/jsDonut/logout">Sing Out </a></p>
+                    <p>Hi, ${pageContext.request.userPrincipal.name} <a href="/jsDonut/account">My Account</a> <a
+                            href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
             <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
@@ -167,25 +168,28 @@
 <!--//header-->
 
 <div class="row">
-    <div style="border-right: 1px solid #ccc; padding-bottom : 5px; padding-top: 5px; margin-right: 30px;" class="col-sm-3 top-nav navbar navbar-default ">
+    <div style="border-right: 1px solid #ccc; padding-bottom : 5px; padding-top: 5px; margin-right: 30px;"
+         class="col-sm-3 top-nav navbar navbar-default ">
 
         <div>
             <div class="row">
                 <h3 style="color: #00a6d6;  margin-left: 50px">Account Panel</h3>
                 <br>
+
                 <h5 style="color: #8c8c8c;  margin-left: 50px">${user.firstName} ${user.surName}</h5>
                 <br>
                 <h5 style="color: #8c8c8c;  margin-left: 50px">Дата рождения: ${user.birthDate}</h5>
 
                 <form style="padding: 10px; margin: 30px" class=" form-group-sm">
-
-                    <h4 style="margin: 10px;"><a href="#"><span class="ChangeYourPassword label label-default">Change Password</span></a></h4>
-
+                    <h4 style="margin: 10px;"><a href="#"><span class="ChangeYourPassword label label-default">Change Password</span></a>
+                    </h4>
+                    <h4 style="margin: 10px;"><a href="#"><span
+                            class="MyOrders label label-default">My Orders</span></a></h4>
                 </form>
             </div>
         </div>
     </div>
-    <div  class="PasswordDiv block__display-none login-page">
+    <div class="PasswordDiv block__display-none login-page">
         <div class="widget-shadow">
             <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
 
@@ -193,17 +197,33 @@
             <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
                 <form method="post" action="/jsDonut/changeUserPassword">
                     <div>
-                        <input type="password" class="Password"  placeholder="Password" minlength="4" maxlength="16" required>
-                        <input type="password" class="ConfirmPassword"  placeholder="ConfirmPassword" minlength="4" maxlength="16" required>
+                        <input type="password" class="Password" placeholder="Password" minlength="4" maxlength="16"
+                               required>
+                        <input type="password" class="ConfirmPassword" placeholder="ConfirmPassword" minlength="4"
+                               maxlength="16" required>
                         <input type="submit" class="ChangePass" value="Change">
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <div class="col-sm-8 cart-items">
-        <div class="Order ">
-
+    <div class="Order col-sm-8 cart-items">
+        <div class="container">
+            <c:choose>
+                <c:when test="${orderList.size() > 0}">
+                    <с:forEach var="order" items="${orderList}">
+                    <с:forEach var="product" items="${orderList.productList}">
+                    </с:forEach>
+                        <p style="color: #c0a16b;font-size: 20px">${product.category.name} | ${product.name} | ${product.quantity} ----> Total Price: ${order.totalPrice}</p>
+                        <div class="clearfix"></div>
+                        <hr>
+                    </с:forEach>
+                </c:when>
+                <c:otherwise>
+                    <span>Orders not found</span>
+                </c:otherwise>
+            </c:choose>
+            <hr>
         </div>
     </div>
 </div>

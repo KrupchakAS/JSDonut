@@ -162,6 +162,7 @@ public class MainController {
     public String account(ModelMap modelMap,HttpSession session) {
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         modelMap.addAttribute("user",userDTO);
+        modelMap.addAttribute("orderList",orderService.getById(userDTO.getId()));
         session.setAttribute("countProductInOrder", productDTOList.size());
         session.setAttribute("order", ORDER);
         return "main/account";
