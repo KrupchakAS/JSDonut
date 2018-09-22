@@ -166,19 +166,44 @@
 </div>
 <!--//header-->
 
-<div class="login-page">
-    <div class="widget-shadow">
-        <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
-            <h3>${pageContext.request.userPrincipal.name} Change Password</h3>
+<div class="row">
+    <div style="border-right: 1px solid #ccc; padding-bottom : 5px; padding-top: 5px; margin-right: 30px;" class="col-sm-3 top-nav navbar navbar-default ">
+
+        <div>
+            <div class="row">
+                <h3 style="color: #00a6d6;  margin-left: 50px">Account Panel</h3>
+                <br>
+                <h5 style="color: #8c8c8c;  margin-left: 50px">${user.firstName} ${user.surName}</h5>
+                <br>
+                <h5 style="color: #8c8c8c;  margin-left: 50px">Дата рождения: ${user.birthDate}</h5>
+
+                <form style="padding: 10px; margin: 30px" class=" form-group-sm">
+
+                    <h4 style="margin: 10px;"><a href="#"><span class="ChangeYourPassword label label-default">Change Password</span></a></h4>
+
+                </form>
+            </div>
         </div>
-        <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
-            <form method="post" action="/jsDonut/changeUserPassword">
-                <div>
-                    <input type="password" class="Password"  placeholder="Password" minlength="4" maxlength="16" required>
-                    <input type="password" class="ConfirmPassword"  placeholder="ConfirmPassword" minlength="4" maxlength="16" required>
-                    <input type="submit" class="ChangePass" value="Change">
-                </div>
-            </form>
+    </div>
+    <div  class="PasswordDiv block__display-none login-page">
+        <div class="widget-shadow">
+            <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
+
+            </div>
+            <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
+                <form method="post" action="/jsDonut/changeUserPassword">
+                    <div>
+                        <input type="password" class="Password"  placeholder="Password" minlength="4" maxlength="16" required>
+                        <input type="password" class="ConfirmPassword"  placeholder="ConfirmPassword" minlength="4" maxlength="16" required>
+                        <input type="submit" class="ChangePass" value="Change">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8 cart-items">
+        <div class="Order ">
+
         </div>
     </div>
 </div>

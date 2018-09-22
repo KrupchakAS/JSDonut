@@ -446,9 +446,10 @@ function getPasswords() {
     passwords.password = $('.Password').val();
     passwords.confirmPassword = $('.ConfirmPassword').val();
 
-    if(passwords.password !== passwords.confirmPassword){
-        swal('Password do not match.');
-    }
+    // if($('.Password').val() !== $('.ConfirmPassword').val()){
+    //     swal('Password do not match.');
+    //     return false;
+    // }
 
     return passwords;
 }
@@ -457,6 +458,7 @@ $(document).ready(function () {
     $(document).on('click', '.ChangePass', function (e) {
         e.preventDefault();
         ChangeUserPassword($(this));
+        $('.PasswordDiv').addClass('block__display-none');
     });
 });
 
@@ -509,7 +511,9 @@ $(function () {
     $(document).on('click', '.OrderSave', function () {
         SaveOrder($(this));
     });
-
+    $(document).on('click', '.ChangeYourPassword', function () {
+        $('.PasswordDiv').removeClass('block__display-none');
+    });
 });
 
 
