@@ -78,10 +78,10 @@
                     <p><a href="${contextPath}/jsDonut/registration">Sign Up </a> Or <a href="${contextPath}/jsDonut/login">Sign In </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <p> Hi Admin, let's work<a href="/jsDonut/admin/adminPanel">Admin Panel</a> We will glad to see you again <a href="/jsDonut/logout">Sing Out </a></p>
+                    <p> Hi Admin, let's work<a href="/jsDonut/admin/adminPanel">Admin Panel</a>   <a href="/jsDonut/account">My Account</a>     <a href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <p>We will glad to see you again, ${pageContext.request.userPrincipal.name} <a href="/jsDonut/logout">Sing Out </a></p>
+                    <p>Hi, ${pageContext.request.userPrincipal.name}    <a href="/jsDonut/account">My Account</a>     <a href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
             <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
@@ -135,25 +135,17 @@
 </div>
 <!--//breadcrumbs-->
 <!--login-->
-<div class="login-page">
-    <div class="widget-shadow">
-        <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
-
-            <h4>Welcome back to Donut Shop! <br> Not a Member? <a href="${contextPath}/jsDonut/registration"> Sign Up »</a></h4>
+<div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
+    <form method="post" action="/login">
+        <div class="${error != null ? 'has-error' : ''}">
+            <span>${message}</span>
+            <input type="text" class="user" name="username" placeholder="Login" minlength="4" maxlength="16" required>
+            <input type="password" name="password" class="lock" placeholder="Password" minlength="4" maxlength="32" required>
+            <span style="color: red">${error}</span>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <input type="submit" name="Sign In" value="Sign In">
         </div>
-        <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
-            <form method="post" action="/login">
-                <div class="${error != null ? 'has-error' : ''}">
-                    <span>${message}</span>
-                    <input type="text" class="user" name="username" placeholder="Login" minlength="4" maxlength="16" required>
-                    <input type="password" name="password" class="lock" placeholder="Password" minlength="4" maxlength="32" required>
-                    <span style="color: red">${error}</span>
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <input type="submit" name="Sign In" value="Sign In">
-                </div>
-            </form>
-        </div>
-    </div>
+    </form>
 </div>
 <!--//login-->
 <!--footer-->

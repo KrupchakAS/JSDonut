@@ -7,10 +7,7 @@ import app.entity.enums.Converter.PaymentOptionConverter;
 import app.entity.enums.DeliveryOption;
 import app.entity.enums.PaymentOption;
 import app.exception.ObjectAlreadyInOrder;
-import app.service.api.CategoryService;
-import app.service.api.OrderService;
-import app.service.api.ProductService;
-import app.service.api.UserService;
+import app.service.api.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +42,9 @@ public class MainController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private AddressService addressService;
 
     @RequestMapping(value = "/getProductsByParameters", method = RequestMethod.GET)
     @ResponseBody
@@ -144,14 +144,12 @@ public class MainController {
                              HttpSession session) {
         AjaxDTO result = new AjaxDTO();
         OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName();
-        UserDTO userDTO = userService.getByLogin(name);
+        UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
 
         if (addressDTO != null) {
             addressDTO.setUserDTO(userDTO);
         }
-
+        addressService.create(addressDTO);
         orderDTO.setDeliveryOption(deliveryOption);
         orderDTO.setPaymentOption(paymentOption);
         orderDTO.setUserDTO(userDTO);
@@ -159,6 +157,25 @@ public class MainController {
         result.setData(orderDTO);
 //        session.invalidate();
 //        productDTOList.clear();
+        return result;
+    }
+
+    @RequestMapping(value = "/account", method = RequestMethod.GET)
+    public String account(ModelMap modelMap,HttpSession session) {
+        UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
+        modelMap.addAttribute("user",userDTO);
+        session.setAttribute("countProductInOrder", productDTOList.size());
+        session.setAttribute("order", ORDER);
+        return "main/account";
+    }
+
+    @RequestMapping(value = "/changeUserPassword", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxDTO changeUserPassword(@RequestParam(value = "password") String password, HttpSession session) {
+        AjaxDTO result = new AjaxDTO();
+        UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
+        userDTO.setPassword(password);
+        userService.update(userDTO);
         return result;
     }
 }

@@ -419,6 +419,36 @@ function getDataFormForOrder (){
     order.push(deliveryOption,paymentOption,addressDTO);
     return order;
 }
+
+
+// ChangeUserPassword -------------------------------------------
+
+function checkPasswords(password,confirmPassword) {
+    if (password === confirmPassword) {
+        ChangeUserPassword(password,confirmPassword, selector);
+    } else {
+        swal("Password don't match.");
+    }
+}
+
+function ChangeUserPassword(password,confirmPassword,button) {
+
+    var pst = {};
+    pst.selector = button;
+    pst.type = "POST";
+    pst.url = '/jsDonut/changeUserPassword';
+    pst.data = {password : password ,
+        confirmPassword : confirmPassword };
+    pst.successFunction = function () {
+        swal('Password Successfully Changed');
+    };
+
+    console.log(pst.data);
+
+    sendAjax(pst);
+}
+
+
 // Scripts
 
 $(function () {
@@ -467,7 +497,11 @@ $(function () {
     $(document).on('click', '.OrderSave', function () {
         SaveOrder($(this));
     });
-
+    $(document).on('click', '.ChangePass', function () {
+        var password =  $('.Password').val();
+        var confirmPassword = $('.ConfirmPassword').val();
+        checkPasswords(password,confirmPassword,$(this));
+    });
 });
 
 

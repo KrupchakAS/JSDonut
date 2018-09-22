@@ -123,8 +123,7 @@
                         again <a href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <p>We will glad to see you again, ${pageContext.request.userPrincipal.name} <a
-                            href="/jsDonut/logout">Sing Out </a></p>
+                    <p>Hi, ${pageContext.request.userPrincipal.name}    <a href="/jsDonut/account">My Account</a>     <a href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
             <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
@@ -166,47 +165,31 @@
     </div>
 </div>
 <!--//header-->
-<div class="row">
-    <div>
-        <div class="col-sm-2 form-group">
-            <label for="PaymentOption">Payment Option</label>
-            <select id="PaymentOption" required
-                    class="form-control">
-                <option disabled value="0">Choose Payment Option</option>
-                <option data-id="1" value="1">CASH</option>
-                <option data-id="2" value="2">CARD</option>
-            </select>
-        </div>
-    </div>
 
-    <div class="col-sm-2 form-group">
-        <label for="DeliveryOption">Delivery Option</label>
-        <select id="DeliveryOption" required class="form-control">
-            <option disabled value="0">Choose Delivery Option</option>
-            <option data-id="1" value="1">PICKUP</option>
-            <option data-id="2" value="2">DELIVERY</option>
-        </select>
-        <div class="form-group-sm">
-            <form class="delivery-option " method="post" action="/jsDonut/saveAddress">
-                <input class="user" name="City" placeholder="City" minlength="2" maxlength="32" required>
-                <input name="Street" class="lock" placeholder="Street" minlength="2" maxlength="32" required>
-                <input class="user" name="HouseNumber" placeholder="HouseNumber" minlength="1" maxlength="8" required>
-                <input name="ApartmentNumber" class="lock" placeholder="ApartmentNumber" minlength="1" maxlength="8"
-                       required>
-                <input class="user" name="PostCode" placeholder="PostCode" minlength="2" maxlength="16" required>
-                <input type="submit" value="Save Address">
+<div class="login-page">
+    <div class="widget-shadow">
+        <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
+            <h4>${pageContext.request.userPrincipal.name} Account</h4>
+        </div>
+        <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
+            <form method="post" action="/login">
+                <div>
+                    <input type="password" class="Password"  placeholder="Password" minlength="4" maxlength="16" required>
+                    <input type="password" class="ConfirmPassword"  placeholder="ConfirmPassword" minlength="4" maxlength="16" required>
+                    <input type="submit" class="ChangePass" value="Change">
+                </div>
             </form>
         </div>
-        <span class="pickup-option ">Самомвывоз по адресу г.Санкт-Петербург ул.Бухарестская д.100.</span>
     </div>
 </div>
+
+
 <!--footer-->
 <div class="footer">
     <div class="container">
         <div class="footer-info">
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
-                <h4 class="footer-logo"><a href="${contextPath}/jsDonut/welcome">Donut <b>Shop</b> <span
-                        class="tag">Everything for you Sweet Dream  </span>
+                <h4 class="footer-logo"><a href="${contextPath}/jsDonut/welcome">Donut <b>Shop</b> <span class="tag">Everything for you Sweet Dream  </span>
                 </a></h4>
                 <p>© 2018 Donut Shop. All rights reserved</p>
             </div>

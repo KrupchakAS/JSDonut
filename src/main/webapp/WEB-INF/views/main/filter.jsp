@@ -120,12 +120,10 @@
                             href="${contextPath}/jsDonut/login">Sign In </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <p> Hi Admin, let's work<a href="/jsDonut/admin/adminPanel">Admin Panel</a> We will glad to see you
-                        again <a href="/jsDonut/logout">Sing Out </a></p>
+                    <p> Hi Admin, let's work<a href="/jsDonut/admin/adminPanel">Admin Panel</a>   <a href="/jsDonut/account">My Account</a>     <a href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <p>We will glad to see you again, ${pageContext.request.userPrincipal.name} <a
-                            href="/jsDonut/logout">Sing Out </a></p>
+                    <p>Hi, ${pageContext.request.userPrincipal.name}    <a href="/jsDonut/account">My Account</a>     <a href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
             <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
@@ -204,7 +202,7 @@
                     <input style="margin: 10px;"  class=" form-control minPrice-Search" type="number" placeholder="min Price">
 
                     <input style="margin: 10px;" class=" form-control maxPrice-Search" type="number" placeholder="max Price">
-                    <h2 style="margin: 10px;"><a href="#"><span class=" products-search label label-info">Search</span></a></h2>
+                    <h2 style="margin: 10px;"><a href="#"><span class="products-search label label-info">Search</span></a></h2>
 
                 </form>
             </div>
