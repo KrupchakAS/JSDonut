@@ -207,16 +207,15 @@
             </div>
         </div>
     </div>
-    <div class="Order col-sm-8 cart-items">
+    <div class="Orders col-sm-8 cart-items block__display-none">
         <div class="container">
             <c:choose>
                 <c:when test="${orderList.size() > 0}">
                     <с:forEach var="order" items="${orderList}">
-                    <с:forEach var="product" items="${orderList.productList}">
-                    </с:forEach>
-                        <p style="color: #c0a16b;font-size: 20px">${product.category.name} | ${product.name} | ${product.quantity} ----> Total Price: ${order.totalPrice}</p>
-                        <div class="clearfix"></div>
-                        <hr>
+                        Order №${order.id}
+                        <с:forEach var="product" items="${order.productList}">
+                            <h6 style=" display: inline-block">${product.category.name}</h6>|<h5 style="color: #c0a16b; display: inline-block">   ${product.name}    </h5>|<h6 style="display: inline-block">     Quantity: ${product.quantity}  </h6> ----> <h4 style="display: inline-block">Total Price: ${order.totalPrice}</h4>
+                        </с:forEach>
                     </с:forEach>
                 </c:when>
                 <c:otherwise>

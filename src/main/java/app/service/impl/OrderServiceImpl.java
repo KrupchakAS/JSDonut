@@ -103,7 +103,7 @@ public class OrderServiceImpl implements OrderService {
             return null;
         }
     }
-
+    @Transactional(readOnly = true)
     @Override
     public List<OrderDTO> getOrdersByUserId(Integer userId) {
         List<Order> orderList = orderDao.getOrdersByUserId(userId);

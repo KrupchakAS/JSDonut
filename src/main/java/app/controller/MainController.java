@@ -27,8 +27,6 @@ public class MainController {
 
     public static final List<ProductDTO> productDTOList = new ArrayList<>();
 
-    public static final OrderDTO ORDER = new OrderDTO();
-
     @Autowired
     private CategoryService categoryService;
 
@@ -59,7 +57,9 @@ public class MainController {
     @RequestMapping(value = "/filter", method = RequestMethod.GET)
     public String filter(ModelMap modelMap, HttpSession session) {
         session.setAttribute("countProductInOrder", productDTOList.size());
-        session.setAttribute("order", ORDER);
+        if (session.getAttribute("order") == null) {
+            session.setAttribute("order", new OrderDTO());
+        }
         modelMap.addAttribute("categoryList", categoryService.getAll());
         return "main/filter";
     }
@@ -67,14 +67,18 @@ public class MainController {
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
     public String cart(HttpSession session) {
         session.setAttribute("countProductInOrder", productDTOList.size());
-        session.setAttribute("order", ORDER);
+        if (session.getAttribute("order") == null) {
+            session.setAttribute("order", new OrderDTO());
+        }
         return "main/cart";
     }
 
     @RequestMapping(value = "/cartConfirm", method = RequestMethod.GET)
     public String cartConfirm(HttpSession session) {
         session.setAttribute("countProductInOrder", productDTOList.size());
-        session.setAttribute("order", ORDER);
+        if (session.getAttribute("order") == null) {
+            session.setAttribute("order", new OrderDTO());
+        }
         return "main/cartConfirm";
     }
 
@@ -135,36 +139,32 @@ public class MainController {
 
     @RequestMapping(value = "/saveOrder", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxDTO saveOrder(
-                            @RequestBody(required = false) AddressDTO addressDTO,
-                             @RequestBody DeliveryOption deliveryOption,
-                             @RequestBody PaymentOption paymentOption,
-                             HttpSession session) {
+    public AjaxDTO saveOrder(@RequestBody OrderDTO order, HttpSession session) {
         AjaxDTO result = new AjaxDTO();
         OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
 
-        if (addressDTO != null) {
-            addressDTO.setUserDTO(userDTO);
-        }
-        addressService.create(addressDTO);
-        orderDTO.setDeliveryOption(deliveryOption);
-        orderDTO.setPaymentOption(paymentOption);
+        //addressService.create(addressDTO);
+
+        orderDTO.setDeliveryOption(order.getDeliveryOption());
+        orderDTO.setPaymentOption(order.getPaymentOption());
         orderDTO.setUserDTO(userDTO);
         orderService.create(orderDTO);
         result.setData(orderDTO);
-//        session.invalidate();
-//        productDTOList.clear();
+        session.setAttribute("order", new OrderDTO());
+        productDTOList.clear();
         return result;
     }
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
-    public String account(ModelMap modelMap,HttpSession session) {
+    public String account(ModelMap modelMap, HttpSession session) {
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-        modelMap.addAttribute("user",userDTO);
-        modelMap.addAttribute("orderList",orderService.getById(userDTO.getId()));
+        modelMap.addAttribute("user", userDTO);
+        modelMap.addAttribute("orderList", orderService.getOrdersByUserId(userDTO.getId()));
         session.setAttribute("countProductInOrder", productDTOList.size());
-        session.setAttribute("order", ORDER);
+        if (session.getAttribute("order") == null) {
+            session.setAttribute("order", new OrderDTO());
+        }
         return "main/account";
     }
 
@@ -173,7 +173,7 @@ public class MainController {
     public AjaxDTO changeUserPassword(@RequestBody UserDTO userDTO1, HttpSession session) {
         AjaxDTO result = new AjaxDTO();
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-        if (userDTO == null){
+        if (userDTO == null) {
             throw new UserNotFound("User Not Found");
         }
         userDTO.setPassword(userDTO1.getPassword());

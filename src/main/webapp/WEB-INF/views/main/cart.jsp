@@ -187,16 +187,16 @@
                         <div class="clearfix"></div>
                         <hr>
                     </div>
+                    <h2 class="Total-price wow fadeInRight animated" style="float:right">
+                        TotalPrice: ${sessionScope.order.totalPrice}</h2>
+                    <br>
+                    <hr>
                 </с:forEach>
             </c:when>
             <c:otherwise>
                 <span>Cart is empty</span>
             </c:otherwise>
         </c:choose>
-        <h2 class="Total-price wow fadeInRight animated" style="float:right">
-            TotalPrice: ${sessionScope.order.totalPrice}</h2>
-        <br>
-        <hr>
         <c:choose>
         <c:when test="${sessionScope.order.productList.size() > 0}">
         <div style="padding-bottom: 15px" class="container">

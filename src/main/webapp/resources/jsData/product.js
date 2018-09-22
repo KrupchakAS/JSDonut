@@ -403,20 +403,18 @@ function SaveOrder(button) {
 }
 
 function getDataFormForOrder (){
-    var order = [];
+    var order = {};
 
-    var deliveryOption = {};
-    var paymentOption = {};
-    deliveryOption.id = parseInt($('#DeliveryOption').val());
-    paymentOption.id = parseInt($('#PaymentOption').val());
+    order.deliveryOption = $('#DeliveryOption option:selected').text();
+    order.paymentOption = $('#PaymentOption option:selected').text();
 
-    var addressDTO = {};
-    addressDTO.city = $('#City').val();
-    addressDTO.street =$('#Street').val();
-    addressDTO.houseNumber =$('#HouseNumber').val();
-    addressDTO.apartmentNumber = $('#ApartmentNumber').val();
-    addressDTO.postCode = $('#PostCode').val();
-    order.push(deliveryOption,paymentOption,addressDTO);
+    // var addressDTO = {};
+    // order.addressDTO.city = $('#City').val();
+    // order.addressDTO.street =$('#Street').val();
+    // order.addressDTO.houseNumber =$('#HouseNumber').val();
+    // order.addressDTO.apartmentNumber = $('#ApartmentNumber').val();
+    // order.addressDTO.postCode = $('#PostCode').val();
+
     return order;
 }
 
@@ -513,6 +511,11 @@ $(function () {
     });
     $(document).on('click', '.ChangeYourPassword', function () {
         $('.PasswordDiv').removeClass('block__display-none');
+        $('.Orders').addClass('block__display-none');
+    });
+    $(document).on('click', '.MyOrders', function () {
+        $('.Orders').removeClass('block__display-none');
+        $('.PasswordDiv').addClass('block__display-none');
     });
 });
 

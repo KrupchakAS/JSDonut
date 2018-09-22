@@ -18,7 +18,7 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
         CriteriaQuery<Order> criteriaQuery = criteriaBuilder.createQuery(Order.class);
         Root<Order> userRoot = criteriaQuery.from(Order.class);
         if (userId != null) {
-            criteriaQuery.where(entityManager.getCriteriaBuilder().equal(userRoot.get("user_id"), userId));
+            criteriaQuery.where(entityManager.getCriteriaBuilder().equal(userRoot.get("user"), userId));
         }
         List<Order> list = entityManager.createQuery(criteriaQuery).getResultList();
         if (list.isEmpty()) {

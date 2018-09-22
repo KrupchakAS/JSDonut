@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.dto.OrderDTO;
 import app.dto.UserDTO;
 import app.service.api.UserService;
 import app.validator.UserValidator;
@@ -20,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import static app.controller.MainController.ORDER;
+
 import static app.controller.MainController.productDTOList;
 
 
@@ -36,14 +37,18 @@ public class RegAndLogController {
 
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String main(HttpSession session) {
-        session.setAttribute("order", ORDER);
+        if (session.getAttribute("order")==null) {
+            session.setAttribute("order", new OrderDTO());
+        }
         session.setAttribute("countProductInOrder", productDTOList.size());
         return "main/welcome";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String createModel(ModelMap modelMap, HttpSession session) {
-        session.setAttribute("order", ORDER);
+        if (session.getAttribute("order")==null) {
+            session.setAttribute("order", new OrderDTO());
+        }
         session.setAttribute("countProductInOrder", productDTOList.size());
         modelMap.addAttribute("userForm", new UserDTO());
         return "main/registration";
