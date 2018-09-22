@@ -168,7 +168,7 @@
 <!--//header-->
 
 <!--cart-items-->
-<div class="cart-items">
+<div class="cart-info cart-items ">
     <div class="container">
         <c:choose>
             <c:when test="${sessionScope.order.productList.size() > 0}">
