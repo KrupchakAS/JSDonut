@@ -42,7 +42,6 @@
     <script type="text/javascript" src="${contextPath}/resources/jsData/product.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/bootstrap.js"></script>
 
-    //js-->
     <!--cart-->
     <script src="${contextPath}/resources/assetsMainPages/js/simpleCart.min.js"></script>
     <!--cart-->
@@ -208,19 +207,17 @@
 
                             <div class="payment block__display-none">
                                 <form>
-                                    <div style="margin-bottom: 3px" class="form-group owner">
-                                        <label for="owner">Owner</label>
-                                        <input type="text" class="form-control" id="owner">
+                                    <div style="margin-bottom: 5px" class="form-group owner">
+                                        <input type="text"  placeholder="Owner" class="form-control" id="owner">
                                     </div>
-                                    <div style="margin-bottom: 3px" class="form-group CVV">
-                                        <label for="cvv">CVV</label>
-                                        <input type="text" class="form-control" id="cvv">
+                                    <div style="margin-bottom: 5px" class="form-group CVV">
+                                        <input type="text" placeholder="CVV" class="form-control" id="cvv">
                                     </div>
-                                    <div style="margin-bottom: 3px" class="form-group" id="card-number-field">
-                                        <label for="cardNumber">Card Number</label>
-                                        <input type="text" class="form-control" id="cardNumber">
+                                    <div style="margin-bottom: 5px" class="form-group" id="card-number-field">
+
+                                        <input  type="text" placeholder="Card Number" class="form-control" id="cardNumber">
                                     </div>
-                                    <div style="margin-bottom: 3px" class="form-group" id="expiration-date">
+                                    <div style="margin-bottom: 5px" class="form-group" id="expiration-date">
                                         <label>Expiration Date</label>
                                         <select>
                                             <option value="01">January</option>
@@ -245,7 +242,7 @@
                                             <option value="21"> 2021</option>
                                         </select>
                                     </div>
-                                    <div style="margin-bottom: 3px" class="form-group" id="credit_cards">
+                                    <div style="margin-bottom: 5px" class="form-group" id="credit_cards">
                                         <img src="${contextPath}/resources/assetsMainPages/images/visa.jpg" id="visa">
                                         <img src="${contextPath}/resources/assetsMainPages/images/mastercard.jpg" id="mastercard">
                                     </div>
@@ -263,14 +260,14 @@
                             </select>
                             <br>
                             <div class="delivery-option form-group block__display-none">
-                                <form method="post" action="/jsDonut/saveAddress" class="login">
-                                    <input id="City" placeholder="City" minlength="2" maxlength="32" class="form-control">
-                                    <input id="Street" placeholder="Street" minlength="2" maxlength="32" class="form-control">
-                                    <input id="HouseNumber" placeholder="HouseNumber" minlength="1" maxlength="8"
+                                <form class="login">
+                                    <input style="margin-bottom: 5px" id="City" placeholder="City" minlength="2" maxlength="32" class="form-control">
+                                    <input style="margin-bottom: 5px" id="Street" placeholder="Street" minlength="2" maxlength="32" class="form-control">
+                                    <input style="margin-bottom: 5px" id="HouseNumber" placeholder="HouseNumber" minlength="1" maxlength="8"
                                            class="form-control">
-                                    <input id="ApartmentNumber" placeholder="ApartmentNumber" minlength="1" maxlength="8"
+                                    <input style="margin-bottom: 5px" id="ApartmentNumber" placeholder="ApartmentNumber" minlength="1" maxlength="8"
                                            class="form-control">
-                                    <input id="PostCode" placeholder="PostCode" minlength="2" maxlength="16"
+                                    <input style="margin-bottom: 5px" id="PostCode" placeholder="PostCode" minlength="2" maxlength="16"
                                            class="form-control">
                                 </form>
                             </div>
