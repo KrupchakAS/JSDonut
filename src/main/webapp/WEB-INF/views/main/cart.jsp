@@ -31,6 +31,8 @@
           media="screen"/>
     <link href="${contextPath}/resources/assetsAdminPanel/css/sweetalert.css" rel="stylesheet">
     <link href="${contextPath}/resources/assetsAdminPanel/css/project.css" rel="stylesheet">
+    <link href="${contextPath}/resources/assetsMainPages/css/cardPay.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!--//Custom Theme files -->
     <!--js-->
     <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/jquery-3.3.1.min.js"></script>
@@ -39,7 +41,8 @@
     <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/jsData/product.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/bootstrap.js"></script>
-    <!--//js-->
+
+    //js-->
     <!--cart-->
     <script src="${contextPath}/resources/assetsMainPages/js/simpleCart.min.js"></script>
     <!--cart-->
@@ -201,6 +204,54 @@
                                 <option value="1">CASH</option>
                                 <option value="2">CARD</option>
                             </select>
+                            <br>
+
+                            <div class="payment block__display-none">
+                                <form>
+                                    <div style="margin-bottom: 3px" class="form-group owner">
+                                        <label for="owner">Owner</label>
+                                        <input type="text" class="form-control" id="owner">
+                                    </div>
+                                    <div style="margin-bottom: 3px" class="form-group CVV">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" class="form-control" id="cvv">
+                                    </div>
+                                    <div style="margin-bottom: 3px" class="form-group" id="card-number-field">
+                                        <label for="cardNumber">Card Number</label>
+                                        <input type="text" class="form-control" id="cardNumber">
+                                    </div>
+                                    <div style="margin-bottom: 3px" class="form-group" id="expiration-date">
+                                        <label>Expiration Date</label>
+                                        <select>
+                                            <option value="01">January</option>
+                                            <option value="02">February </option>
+                                            <option value="03">March</option>
+                                            <option value="04">April</option>
+                                            <option value="05">May</option>
+                                            <option value="06">June</option>
+                                            <option value="07">July</option>
+                                            <option value="08">August</option>
+                                            <option value="09">September</option>
+                                            <option value="10">October</option>
+                                            <option value="11">November</option>
+                                            <option value="12">December</option>
+                                        </select>
+                                        <select>
+                                            <option value="16"> 2016</option>
+                                            <option value="17"> 2017</option>
+                                            <option value="18"> 2018</option>
+                                            <option value="19"> 2019</option>
+                                            <option value="20"> 2020</option>
+                                            <option value="21"> 2021</option>
+                                        </select>
+                                    </div>
+                                    <div style="margin-bottom: 3px" class="form-group" id="credit_cards">
+                                        <img src="${contextPath}/resources/assetsMainPages/images/visa.jpg" id="visa">
+                                        <img src="${contextPath}/resources/assetsMainPages/images/mastercard.jpg" id="mastercard">
+                                    </div>
+                                </form>
+                            </div>
+
                         </div>
 
                         <div class="col-sm-3">
@@ -210,7 +261,8 @@
                                 <option value="1">PICKUP</option>
                                 <option value="2">DELIVERY</option>
                             </select>
-                            <div class="delivery-option form-group">
+                            <br>
+                            <div class="delivery-option form-group block__display-none">
                                 <form method="post" action="/jsDonut/saveAddress" class="login">
                                     <input id="City" placeholder="City" minlength="2" maxlength="32" class="form-control">
                                     <input id="Street" placeholder="Street" minlength="2" maxlength="32" class="form-control">
@@ -224,9 +276,7 @@
                             </div>
 
                         </div>
-                        <div class="col-sm-3"><p class="pickup-option">Самовывоз по адресу
-                            г.Санкт-Петербург
-                            ул.Бухарестская д.100.</p></div>
+                        <div class="col-sm-3"><p class="pickup-option">Самовывоз: -> по адресуг.Санкт-Петербургул.Бухарестская д.100.</p></div>
                         <div class="col-sm-3"><h1 style="padding-left: 160px; padding-top: 10px"><a href="#"><span
                                 class="OrderSave label label-success">Save Order</span></a></h1>
                         </div>
@@ -300,6 +350,7 @@
 <!--Bootstrap core JavaScript
 ================================================== -->
 <!--Placed at the end of the document so the pages load faster -->
-<script src="${contextPath}/resources/assetsMainPages/js/bootstrap.js"></script>
+
+
 </body>
 </html>

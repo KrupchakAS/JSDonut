@@ -290,14 +290,14 @@ function addProducts(productList) {
         var productObject = productList[i];
 
         $('.Product-item').append(
-            '<div class="single-info"> <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">'+
-            '<h3 style="float: right" class="item_price">'+productObject.price+'₽</h3>'+
-            '<h6 >'+productObject.name+'</h6>'+
-            '<p>'+productObject.description+'</p>'+
-            '<span style="color: #c0a16b">Calories: '+productObject.calories+'</span>'+
+            '<div class="single-info"> <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">' +
+            '<h3 style="float: right" class="item_price">' + productObject.price + '₽</h3>' +
+            '<h6 >' + productObject.name + '</h6>' +
+            '<p>' + productObject.description + '</p>' +
+            '<span style="color: #c0a16b">Calories: ' + productObject.calories + '</span>' +
             // '<p>Available quantity: '+productObject.quantity+'</p>'+
             '<div style="float: right" class="quantity"><p style="color: red" class="qty">Select Quantity: </p><input min="1" type="number" value="1" name="item_quantity" class="item_quantity">' +
-            '<div style="float: inherit; margin-left: 15px" data-id="'+productObject.id+'" class="btn_form" ><a href="#" style="color: green"  class="add-cart item_add">Add To Cart</a></div>'+
+            '<div style="float: inherit; margin-left: 15px" data-id="' + productObject.id + '" class="btn_form" ><a href="#" style="color: green"  class="add-cart item_add">Add To Cart</a></div>' +
             '</div> </div> </div><hr>');
     }
     closeProduct();
@@ -306,18 +306,18 @@ function addProducts(productList) {
 
 // AddProductToOrder ----------------------------------------------
 
-function addToCart(id,selector) {
+function addToCart(id, selector) {
     if (isNumber(id)) {
-        getProductByIdToCart(id,selector);
+        getProductByIdToCart(id, selector);
     } else {
         alert("Product ID is not number");
     }
 }
 
 
-function getProductByIdToCart(id,quantity,selector) {
+function getProductByIdToCart(id, quantity, selector) {
     var ajax = {};
-    ajax.data = {id:id, quantity:quantity};
+    ajax.data = {id: id, quantity: quantity};
     ajax.type = "GET";
     ajax.url = "/jsDonut/addProductToOrder";
     ajax.dataType = 'JSON';
@@ -360,7 +360,7 @@ function deleteProductByIdFromOrder(id, selector) {
 
     if (intValueTest(id, 'Не удалось получить id')) return false;
     var ajax = {};
-    ajax.data = {id:id};
+    ajax.data = {id: id};
     ajax.type = "GET";
     ajax.url = "/jsDonut/deleteProductByIdFromOrder";
     ajax.dataType = 'JSON';
@@ -401,7 +401,7 @@ function SaveOrder(button) {
     sendAjax(pst);
 }
 
-function getDataFormForOrder (){
+function getDataFormForOrder() {
     var order = {};
 
     order.deliveryOption = $('#DeliveryOption option:selected').text();
@@ -436,9 +436,10 @@ function ChangeUserPassword(button) {
 
     sendAjax(pst);
 }
+
 function getPasswords() {
 
-    var passwords={};
+    var passwords = {};
 
     passwords.password = $('.Password').val();
     passwords.confirmPassword = $('.ConfirmPassword').val();
@@ -500,7 +501,7 @@ $(function () {
     $(document).on('click', '.add-cart', function () {
         var quantity = parseInt($(this).closest('div.quantity').find("input[name='item_quantity']").val());
         var id = $(this).closest('div').data('id');
-        addToCart(id,quantity,$(this));
+        addToCart(id, quantity, $(this));
     });
     $(document).on('click', '.ClearButton', function () {
         emptyCart($(this));
@@ -516,8 +517,31 @@ $(function () {
         $('.Orders').removeClass('block__display-none');
         $('.PasswordDiv').addClass('block__display-none');
     });
+
+
+});
+// Options
+$(document).ready(function () {
+    $('#DeliveryOption').on('change', function () {
+        var a= $('#DeliveryOption').val();
+        if (a == '2') {
+            $('.delivery-option').removeClass('block__display-none');
+        } else {
+            $('.delivery-option').addClass('block__display-none');
+        }
+    });
 });
 
+$(document).ready(function () {
+    $('#PaymentOption').on('change', function () {
+        var a= $('#PaymentOption').val();
+        if (a == '2') {
+            $('.payment').removeClass('block__display-none');
+        } else {
+            $('.payment').addClass('block__display-none');
+        }
+    });
+});
 
 function closeProduct() {
 
