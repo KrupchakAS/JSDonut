@@ -173,12 +173,12 @@
 
         <div>
             <div class="row">
-                <h3 style="color: #00a6d6;  margin-left: 50px">Account Panel</h3>
+                <h3 style="color: tomato;  margin-left: 50px">Account Panel</h3>
                 <br>
 
-                <h5 style="color: #8c8c8c;  margin-left: 50px">${user.firstName} ${user.surName}</h5>
+                <h5 style="color: #23527c;  margin-left: 50px">${user.firstName} ${user.surName}</h5>
                 <br>
-                <h5 style="color: #8c8c8c;  margin-left: 50px">Дата рождения: ${user.birthDate}</h5>
+                <h5 style="color: #23527c;  margin-left: 50px">Дата рождения: ${user.birthDate}</h5>
 
                 <form style="padding: 10px; margin: 30px" class=" form-group-sm">
                     <h4 style="margin: 10px;"><a href="#"><span class="ChangeYourPassword label label-default">Change Password</span></a>

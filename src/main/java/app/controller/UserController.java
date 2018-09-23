@@ -1,7 +1,10 @@
 package app.controller;
 
+import app.dto.AjaxDTO;
 import app.dto.OrderDTO;
 import app.dto.UserDTO;
+import app.exception.UserNotFound;
+import app.service.api.OrderService;
 import app.service.api.UserService;
 import app.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +28,7 @@ import static app.controller.MainController.productDTOList;
 
 @Controller
 @RequestMapping(value = "/jsDonut")
-public class RegAndLogController {
+public class UserController {
 
     @Autowired
     private UserService userService;
@@ -35,11 +36,21 @@ public class RegAndLogController {
     @Autowired
     private UserValidator userValidator;
 
+    @Autowired
+    private OrderService orderService;
+
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String main(HttpSession session) {
         if (session.getAttribute("order")==null) {
             session.setAttribute("order", new OrderDTO());
         }
+        OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
+        orderDTO.setProductList(productDTOList);
+        Float totalPrice = 0.0f;
+        for (int i = 0; i < productDTOList.size(); i++) {
+            totalPrice += productDTOList.get(i).getPrice() * productDTOList.get(i).getQuantity();
+        }
+        orderDTO.setTotalPrice(totalPrice);
         session.setAttribute("countProductInOrder", productDTOList.size());
         return "main/welcome";
     }
@@ -77,14 +88,37 @@ public class RegAndLogController {
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(HttpServletRequest request, HttpServletResponse response) {
+    public String logout(HttpServletRequest request, HttpServletResponse response,HttpSession session) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-
         return "redirect:/jsDonut/welcome";
     }
 
+    @RequestMapping(value = "/account", method = RequestMethod.GET)
+    public String account(ModelMap modelMap, HttpSession session) {
+        UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
+        modelMap.addAttribute("user", userDTO);
+        modelMap.addAttribute("orderList", orderService.getOrdersByUserId(userDTO.getId()));
+        session.setAttribute("countProductInOrder", productDTOList.size());
+        if (session.getAttribute("order") == null) {
+            session.setAttribute("order", new OrderDTO());
+        }
+        return "main/account";
+    }
+
+    @RequestMapping(value = "/changeUserPassword", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxDTO changeUserPassword(@RequestBody UserDTO userDTO1, HttpSession session) {
+        AjaxDTO result = new AjaxDTO();
+        UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (userDTO == null) {
+            throw new UserNotFound("User Not Found");
+        }
+        userDTO.setPassword(userDTO1.getPassword());
+        userService.update(userDTO);
+        return result;
+    }
 
 }

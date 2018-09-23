@@ -73,15 +73,6 @@ public class MainController {
         return "main/cart";
     }
 
-    @RequestMapping(value = "/cartConfirm", method = RequestMethod.GET)
-    public String cartConfirm(HttpSession session) {
-        session.setAttribute("countProductInOrder", productDTOList.size());
-        if (session.getAttribute("order") == null) {
-            session.setAttribute("order", new OrderDTO());
-        }
-        return "main/cartConfirm";
-    }
-
     @RequestMapping(value = "/emptyCart", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO addToOrder() {
@@ -156,28 +147,5 @@ public class MainController {
         return result;
     }
 
-    @RequestMapping(value = "/account", method = RequestMethod.GET)
-    public String account(ModelMap modelMap, HttpSession session) {
-        UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-        modelMap.addAttribute("user", userDTO);
-        modelMap.addAttribute("orderList", orderService.getOrdersByUserId(userDTO.getId()));
-        session.setAttribute("countProductInOrder", productDTOList.size());
-        if (session.getAttribute("order") == null) {
-            session.setAttribute("order", new OrderDTO());
-        }
-        return "main/account";
-    }
 
-    @RequestMapping(value = "/changeUserPassword", method = RequestMethod.POST)
-    @ResponseBody
-    public AjaxDTO changeUserPassword(@RequestBody UserDTO userDTO1, HttpSession session) {
-        AjaxDTO result = new AjaxDTO();
-        UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-        if (userDTO == null) {
-            throw new UserNotFound("User Not Found");
-        }
-        userDTO.setPassword(userDTO1.getPassword());
-        userService.update(userDTO);
-        return result;
-    }
 }
