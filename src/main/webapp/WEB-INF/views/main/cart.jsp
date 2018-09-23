@@ -186,68 +186,64 @@
                             <h6 style="color: #1b6d85">${product.description}</h6>
                             <h4 style="float: right">Quantity ${product.quantity}</h4>
                         </div>
-                        <div class="clearfix"></div>
-                        <hr>
                     </div>
-                    <h2 class="Total-price wow fadeInRight animated" style="float:right">
-                        TotalPrice: ${sessionScope.order.totalPrice}</h2>
-                    <br>
                     <hr>
                 </с:forEach>
+                <h2 class="Total-price wow fadeInRight animated" style="float:right">
+                    TotalPrice: ${sessionScope.order.totalPrice}</h2>
             </c:when>
             <c:otherwise>
                 <span>Cart is empty</span>
             </c:otherwise>
         </c:choose>
         <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
-            <h3 style="float: right; color: red">To Buy, You Must -> <a href="${contextPath}/jsDonut/login">Sign in</a></h3>
+            <h3 style="float: right; color: red">To Buy, You Must -> <a href="${contextPath}/jsDonut/login">Sign in</a>
+            </h3>
         </sec:authorize>
         <sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
-            <h2 style="padding-left: 270px; float: right"><a href="#"><span
-                    class="OrderSave label label-success">Save Order</span></a></h2>
-        </sec:authorize>
-        <c:choose>
-            <c:when test="${sessionScope.order.productList.size() > 0}">
-                <div style="padding-bottom: 15px" class="container">
-                    <div class="col-sm-2 ">
-                        <label for="PaymentOption">Payment Option</label>
-                        <select id="PaymentOption" required
-                                class="form-control">
-                            <option disabled value="0">Choose Payment Option</option>
-                            <option value="1">CASH</option>
-                            <option value="2">CARD</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="col-sm-5">
-                        <label for="DeliveryOption">Delivery Option</label>
-                        <select id="DeliveryOption" required class="form-control">
-                            <option disabled value="0">Choose Delivery Option</option>
-                            <option value="1">PICKUP</option>
-                            <option value="2">DELIVERY</option>
-                        </select>
-                        <div class="delivery-option form-group-sm ">
-                            <p style="padding: 10px; margin: 5px" class="pickup-option">Самовывоз по адресу
-                                г.Санкт-Петербург
-                                ул.Бухарестская д.100.</p>
-                            <form method="post" action="/jsDonut/saveAddress">
-                                <input id="City" placeholder="City" minlength="2" maxlength="32" required>
-                                <input id="Street" placeholder="Street" minlength="2" maxlength="32" required>
-                                <input id="HouseNumber" placeholder="HouseNumber" minlength="1" maxlength="8"
-                                       required>
-                                <input id="ApartmentNumber" placeholder="ApartmentNumber" minlength="1"
-                                       maxlength="8"
-                                       required>
-                                <input id="PostCode" placeholder="PostCode" minlength="2" maxlength="16"
-                                       required>
-                            </form>
-                        </div>
-                    </div>
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <label for="PaymentOption">Payment Option</label>
+                    <select id="PaymentOption"
+                            class="form-control">
+                        <option disabled value="0">Choose Payment Option</option>
+                        <option value="1">CASH</option>
+                        <option value="2">CARD</option>
+                    </select>
                 </div>
 
-            </c:when>
-        </c:choose>
+                <div class="col-sm-3">
+                    <label for="DeliveryOption">Delivery Option</label>
+                    <select id="DeliveryOption" class="form-control">
+                        <option disabled value="0">Choose Delivery Option</option>
+                        <option value="1">PICKUP</option>
+                        <option value="2">DELIVERY</option>
+                    </select>
+                    <div class="delivery-option form-group">
+                        <form method="post" action="/jsDonut/saveAddress" class="login">
+                            <input id="City" placeholder="City" minlength="2" maxlength="32" class="form-control">
+                            <input id="Street" placeholder="Street" minlength="2" maxlength="32" class="form-control">
+                            <input id="HouseNumber" placeholder="HouseNumber" minlength="1" maxlength="8"
+                                   class="form-control">
+                            <input id="ApartmentNumber" placeholder="ApartmentNumber" minlength="1" maxlength="8"
+                                   class="form-control">
+                            <input id="PostCode" placeholder="PostCode" minlength="2" maxlength="16"
+                                   class="form-control">
+                        </form>
+                    </div>
+
+                </div>
+                <div class="col-sm-3"><p class="pickup-option">Самовывоз по адресу
+                    г.Санкт-Петербург
+                    ул.Бухарестская д.100.</p></div>
+                <div class="col-sm-3"><h1 style="padding-left: 160px; padding-top: 10px"><a href="#"><span
+                        class="OrderSave label label-success">Save Order</span></a></h1>
+                </div>
+
+            </div>
+        </sec:authorize>
+
     </div>
 </div>
 
