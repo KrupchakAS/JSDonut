@@ -273,7 +273,8 @@
                             </div>
 
                         </div>
-                        <div class="col-sm-3"><p class="pickup-option">Самовывоз: -> по адресуг.Санкт-Петербургул.Бухарестская д.100.</p></div>
+                        <br>
+                        <div class="col-sm-3"><p class="pickup-option">PICKUP: -> Saint-Petersburg str.Buharestskaya 100.</p></div>
                         <div class="col-sm-3"><h1 style="padding-left: 160px; padding-top: 10px"><a href="#"><span
                                 class="OrderSave label label-success">Save Order</span></a></h1>
                         </div>
