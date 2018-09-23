@@ -146,6 +146,7 @@
 </div>
 <!--//header-->
 <!--banner-->
+<a style="display:block" href="${contextPath}/jsDonut/filter">
 <div   class="banner">
     <div class="container">
         <div class="banner-text">
@@ -212,6 +213,7 @@
         </div>
     </div>
 </div>
+</a>
 <!--//banner-->
 <!--new-->
 <div class="new">
