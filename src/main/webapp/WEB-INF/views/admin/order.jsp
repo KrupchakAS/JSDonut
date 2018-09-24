@@ -58,6 +58,10 @@
                                     <th>productList</th>
 
                                     <th>UserLogin</th>
+                                    <th>OrderStatus</th>
+                                    <th>PaymentStatus</th>
+                                    <th>PaymentOption</th>
+                                    <th>DeliveryOption</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -71,10 +75,14 @@
                                                 ${product.category.name}
                                                 ${product.name}
                                                 (Qty)${product.quantity}
-                                            <br>
+                                                <br>
                                         </с:forEach>
                                                 </th>
                                                 <th>${order.getUserDTO().login}</th>
+                                                <th>${order.getOrderStatus()}</th>
+                                                <th>${order.getPaymentStatus()}</th>
+                                                <th>${order.getPaymentOption()}</th>
+                                                <th>${order.getDeliveryOption()}</th>
                                                 <th>
                                                     <button type="button" class="btn btn-md btn-primary order-edit">
                                                         Edit
