@@ -98,6 +98,7 @@ public class UserController {
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String account(ModelMap modelMap, HttpSession session) {
+
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         modelMap.addAttribute("user", userDTO);
         modelMap.addAttribute("orderList", orderService.getOrdersByUserId(userDTO.getId()));
@@ -117,6 +118,22 @@ public class UserController {
             throw new UserNotFound("User Not Found");
         }
         userDTO.setPassword(userDTO1.getPassword());
+        userService.update(userDTO);
+        return result;
+    }
+
+    @RequestMapping(value = "/changeUserInfo", method = RequestMethod.POST)
+    @ResponseBody
+    public AjaxDTO changeUserInfo(@RequestBody UserDTO userDTO1, HttpSession session) {
+        AjaxDTO result = new AjaxDTO();
+        UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
+        if (userDTO == null) {
+            throw new UserNotFound("User Not Found");
+        }
+        userDTO.setFirstName(userDTO1.getFirstName());
+        userDTO.setSurName(userDTO1.getSurName());
+        userDTO.setPhoneNumber(userDTO1.getPhoneNumber());
+        userDTO.setBirthDate(userDTO1.getBirthDate());
         userService.update(userDTO);
         return result;
     }

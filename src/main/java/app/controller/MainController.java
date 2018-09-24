@@ -60,6 +60,7 @@ public class MainController {
         if (session.getAttribute("order") == null) {
             session.setAttribute("order", new OrderDTO());
         }
+        modelMap.addAttribute("allProducts",productService.getAll());
         modelMap.addAttribute("categoryList", categoryService.getAll());
         return "main/filter";
     }

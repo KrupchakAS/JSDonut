@@ -304,6 +304,8 @@ function addProducts(productList) {
 
 }
 
+
+
 // AddProductToOrder ----------------------------------------------
 
 function addToCart(id, selector) {
@@ -460,8 +462,50 @@ $(document).ready(function () {
     });
 });
 
+//ChangeUserInfo ---------------------------
+
+function ChangeUserInfo(button) {
+
+    var pst = {};
+    pst.selector = button;
+    pst.type = "POST";
+    pst.url = '/jsDonut/changeUserInfo';
+    pst.data = {};
+    pst.data = getInfo();
+    pst.successFunction = function () {
+        swal('Info Successfully Changed');
+    };
+
+    console.log(pst.data);
+
+    sendAjax(pst);
+}
+
+function getInfo() {
+
+    var userinfo = {};
+
+    userinfo.firstName = $('.firstName').val();
+    userinfo.surName = $('.surName').val();
+    userinfo.phoneNumber = $('.phoneNumber').val();
+    userinfo.birthDate = $('.birthDate').val();
+
+    return userinfo;
+}
+
+$(document).ready(function () {
+    $(document).on('click', '.ChangeInfo', function (e) {
+        e.preventDefault();
+        ChangeUserInfo($(this));
+        $('.InfoDiv').addClass('block__display-none');
+    });
+});
 
 // Scripts
+
+$(document).ready(function () {
+    $('.DefaultProducts').removeClass('block__display-none');
+});
 
 $(function () {
     $(document).on('click', '.product-add', function () {
@@ -495,7 +539,8 @@ $(function () {
         var productName = $('.productName-Search').val();
         var minPrice = $('.minPrice-Search').val();
         var maxPrice = $('.maxPrice-Search').val();
-        getProducts(categoryId, productName, minPrice, maxPrice, $(this))
+        getProducts(categoryId, productName, minPrice, maxPrice, $(this));
+        $('.DefaultProducts').addClass('block__display-none');
     });
 
     $(document).on('click', '.add-cart', function () {
@@ -512,14 +557,23 @@ $(function () {
     $(document).on('click', '.ChangeYourPassword', function () {
         $('.PasswordDiv').removeClass('block__display-none');
         $('.Orders').addClass('block__display-none');
+        $('.InfoDiv').addClass('block__display-none');
     });
     $(document).on('click', '.MyOrders', function () {
         $('.Orders').removeClass('block__display-none');
         $('.PasswordDiv').addClass('block__display-none');
+        $('.InfoDiv').addClass('block__display-none');
+    });
+    $(document).on('click', '.ChangeUserInfo', function () {
+        $('.Orders').addClass('block__display-none');
+        $('.PasswordDiv').addClass('block__display-none');
+        $('.InfoDiv').removeClass('block__display-none');
     });
 
 
 });
+
+
 // Options
 $(document).ready(function () {
     $('#DeliveryOption').on('change', function () {

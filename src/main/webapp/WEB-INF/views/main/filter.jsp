@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/assetsMainPages/css/flexslider.css" type="text/css"
           media="screen"/>
     <link href="${contextPath}/resources/assetsAdminPanel/css/sweetalert.css" rel="stylesheet">
+    <link href="${contextPath}/resources/assetsAdminPanel/css/project.css" rel="stylesheet">
     <!--//Custom Theme files -->
     <!--js-->
     <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/jquery-3.3.1.min.js"></script>
@@ -120,10 +121,12 @@
                             href="${contextPath}/jsDonut/login">Sign In </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <p> Hi Admin, let's work<a href="/jsDonut/admin/adminPanel">Admin Panel</a>   <a href="/jsDonut/account">My Account</a>     <a href="/jsDonut/logout">Sing Out </a></p>
+                    <p> Hi Admin, let's work<a href="/jsDonut/admin/adminPanel">Admin Panel</a> <a
+                            href="/jsDonut/account">My Account</a> <a href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <p>Hi, ${pageContext.request.userPrincipal.name}    <a href="/jsDonut/account">My Account</a>     <a href="/jsDonut/logout">Sing Out </a></p>
+                    <p>Hi, ${pageContext.request.userPrincipal.name} <a href="/jsDonut/account">My Account</a> <a
+                            href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
             <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
@@ -177,13 +180,15 @@
     </div>
 </div>
 <div class="row">
-    <div style="border-right: 1px solid #ccc; padding-bottom : 5px; padding-top: 5px; margin-right: 30px;" class="col-sm-2 top-nav navbar navbar-default ">
+    <div style="border-right: 1px solid #ccc; padding-bottom : 5px; padding-top: 5px; margin-right: 30px;"
+         class="col-sm-2 top-nav navbar navbar-default ">
 
         <div>
             <div class="row">
                 <h3 style="color: #00a6d6;  margin-left: 50px">Filter Panel</h3>
                 <form style="padding: 10px; margin: 30px" class=" form-group-sm">
-                    <select style="margin: 10px;" id="category" required class="selec2-plugin form-control categoryId-Search">
+                    <select style="margin: 10px;" id="category" required
+                            class="selec2-plugin form-control categoryId-Search">
                         <option disabled value="0" selected>Category</option>
                         <c:choose>
                             <c:when test="${categoryList.size() > 0}">
@@ -197,16 +202,51 @@
                         </c:choose>
                     </select>
 
-                    <input style="margin: 10px;" class="form-control productName-Search" type="text" placeholder="Product name">
+                    <input style="margin: 10px;" class="form-control productName-Search" type="text"
+                           placeholder="Product name">
 
-                    <input style="margin: 10px;"  class=" form-control minPrice-Search" type="number" placeholder="min Price">
+                    <input style="margin: 10px;" class=" form-control minPrice-Search" type="number"
+                           placeholder="min Price">
 
-                    <input style="margin: 10px;" class=" form-control maxPrice-Search" type="number" placeholder="max Price">
+                    <input style="margin: 10px;" class=" form-control maxPrice-Search" type="number"
+                           placeholder="max Price">
 
-                    <h2 style="margin: 10px;"><a href="#"><span class="products-search label label-info">Search</span></a></h2>
+                    <h2 style="margin: 10px;"><a href="#"><span
+                            class="products-search label label-info">Search</span></a></h2>
 
                 </form>
             </div>
+        </div>
+    </div>
+
+    <div class="DefaultProducts col-sm-8 cart-items block__display-none">
+        <div>
+            <c:choose>
+                <c:when test="${allProducts.size() > 0}">
+                    <с:forEach var="product" items="${allProducts}">
+                        <div class="single-info">
+                            <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated"
+                                 data-wow-delay=".5s">
+                                <h3 style="float: right" class="item_price">${product.price}₽</h3>
+                                <h6>${product.name}</h6>
+                                <p>${product.description}</p>
+                                <span style="color: #c0a16b">Calories: ${product.calories}</span>
+                                <div style="float: right" class="quantity"><p style="color: red" class="qty">Select
+                                    Quantity: </p><input min="1" type="number" value="1" name="item_quantity"
+                                                         class="item_quantity">
+                                    <div style="float: inherit; margin-left: 15px" data-id="${product.id}"
+                                         class="btn_form"><a href="#" style="color: green" class="add-cart item_add">Add
+                                        To Cart</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </с:forEach>
+                </c:when>
+                <c:otherwise>
+                    <span>not found</span>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
 

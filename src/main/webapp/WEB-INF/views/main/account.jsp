@@ -181,6 +181,8 @@
                 <h5 style="color: #23527c;  margin-left: 50px">Дата рождения: ${user.birthDate}</h5>
 
                 <form style="padding: 10px; margin: 30px" class=" form-group-sm">
+                    <h4 style="margin: 10px;"><a href="#"><span
+                            class="ChangeUserInfo label label-default">Change my Info</span></a></h4>
                     <h4 style="margin: 10px;"><a href="#"><span class="ChangeYourPassword label label-default">Change Password</span></a>
                     </h4>
                     <h4 style="margin: 10px;"><a href="#"><span
@@ -189,11 +191,23 @@
             </div>
         </div>
     </div>
+    <div class="InfoDiv block__display-none login-page">
+        <div class="widget-shadow">
+            <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
+                <form method="post" action="/jsDonut/changeUserInfo">
+                    <div>
+                        <input type="text" class="firstName" placeholder="firstName" minlength="2" maxlength="16">
+                        <input type="text" class="surName" placeholder="surName" minlength="2" maxlength="16">
+                        <input type="text" class="phoneNumber" placeholder="phoneNumber" minlength="10" maxlength="10">
+                        <input type="date" class="birthDate" placeholder="birthDate">
+                        <input type="submit" class="ChangeInfo" value="Change">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="PasswordDiv block__display-none login-page">
         <div class="widget-shadow">
-            <div class="login-top wow fadeInUp animated" data-wow-delay=".7s">
-
-            </div>
             <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
                 <form method="post" action="/jsDonut/changeUserPassword">
                     <div>
@@ -211,16 +225,16 @@
         <div class="container">
             <c:choose>
                 <c:when test="${orderList.size() > 0}">
-                    <с:forEach var="order" items="${orderList}">
-                        Order №${order.id} ---- <h4 style="display: inline-block">Total Price: ${order.totalPrice}</h4>
+                    <с:forEach  var="order" items="${orderList}">
+                        Order №${order.id}  <h5 style="display: inline-block">Total Price: ${order.totalPrice}</h5>
                         <с:forEach var="product" items="${order.productList}">
                             <div>
                                 <h6 style=" display: inline-block">${product.category.name}</h6>|<h5
                                     style="color: #c0a16b; display: inline-block"> ${product.name} </h5>|<h6
                                     style="display: inline-block"> Quantity: ${product.quantity}</h6>
                             </div>
-                            <hr>
                         </с:forEach>
+                        <hr>
                     </с:forEach>
                 </c:when>
                 <c:otherwise>
