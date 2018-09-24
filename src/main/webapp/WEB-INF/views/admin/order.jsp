@@ -56,6 +56,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>productList</th>
+
                                     <th>UserLogin</th>
                                 </tr>
                                 </thead>
@@ -65,16 +66,18 @@
                                         <с:forEach var="order" items="${orderList}">
                                             <tr class="order-table__row" data-id="${order.id}">
                                                 <th>${order.id}</th>
-                                                <th>${order.productList}</th>
-                                                <%--<th>${order.user_id.login}</th>--%>
+                                                <th>
+                                        <с:forEach var="product" items="${order.productList}">
+                                                ${product.category.name}
+                                                ${product.name}
+                                                (Qty)${product.quantity}
+                                            <br>
+                                        </с:forEach>
+                                                </th>
+                                                <th>${order.getUserDTO().login}</th>
                                                 <th>
                                                     <button type="button" class="btn btn-md btn-primary order-edit">
                                                         Edit
-                                                    </button>
-                                                </th>
-                                                <th>
-                                                    <button type="button" class="btn btn-md btn-danger order-delete">
-                                                        Delete
                                                     </button>
                                                 </th>
                                             </tr>

@@ -188,6 +188,7 @@
                             <h6 style="color: #1b6d85">${product.description}</h6>
                             <h4 style="float: right">Quantity ${product.quantity}</h4>
                         </div>
+                        <hr>
                     </div>
                     <hr>
                 </с:forEach>

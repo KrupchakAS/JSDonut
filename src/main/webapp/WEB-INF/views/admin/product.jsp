@@ -131,7 +131,7 @@
 
                                         <div class="form-group">
                                             <label for="price">Full price</label>
-                                            <input id="price" disabled="disabled" minlength="1" maxlength="5" type="number" class="form-control product-price"
+                                            <input id="price" minlength="1" maxlength="5" type="number" class="form-control product-price"
                                                    placeholder="Price">
                                         </div>
                                     </div>

@@ -229,9 +229,9 @@
                         Order №${order.id}  <h5 style="display: inline-block">Total Price: ${order.totalPrice}</h5>
                         <с:forEach var="product" items="${order.productList}">
                             <div>
-                                <h6 style=" display: inline-block">${product.category.name}</h6>|<h5
-                                    style="color: #c0a16b; display: inline-block"> ${product.name} </h5>|<h6
-                                    style="display: inline-block"> Quantity: ${product.quantity}</h6>
+                                <h6 style=" display: inline-block">${product.category.name}</h6>|
+                                <h5 style="color: #c0a16b; display: inline-block"> ${product.name} </h5>|
+                                <h6 style="display: inline-block"> Quantity: ${product.quantity}</h6>
                             </div>
                         </с:forEach>
                         <hr>
