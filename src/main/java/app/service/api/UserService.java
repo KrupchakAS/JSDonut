@@ -9,7 +9,7 @@ import java.util.List;
 public interface UserService {
     void create(UserDTO entity);
 
-    void update(UserDTO entity);
+    void updatePassword(UserDTO entity);
 
     void delete(UserDTO entity);
 
@@ -20,4 +20,6 @@ public interface UserService {
     UserDTO getByLogin(String login);
 
     UserDTO getByEmail(String email);
+
+    void updateInfo(UserDTO entity);
 }

@@ -170,7 +170,7 @@
 <!--//header-->
 
 <!--cart-items-->
-<div class="cart-info cart-items ">
+<div class="cart-info cart-items block__display-none">
     <div class="container">
         <c:choose>
             <c:when test="${sessionScope.order.productList.size() > 0}">

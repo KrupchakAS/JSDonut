@@ -505,6 +505,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $('.DefaultProducts').removeClass('block__display-none');
+    $('.cart-info').removeClass('block__display-none');
 });
 
 $(function () {
@@ -553,6 +554,7 @@ $(function () {
     });
     $(document).on('click', '.OrderSave', function () {
         SaveOrder($(this));
+        $('.cart-info').addClass('block__display-none');
     });
     $(document).on('click', '.ChangeYourPassword', function () {
         $('.PasswordDiv').removeClass('block__display-none');

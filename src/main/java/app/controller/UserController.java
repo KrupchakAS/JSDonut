@@ -118,7 +118,7 @@ public class UserController {
             throw new UserNotFound("User Not Found");
         }
         userDTO.setPassword(userDTO1.getPassword());
-        userService.update(userDTO);
+        userService.updatePassword(userDTO);
         return result;
     }
 
@@ -134,7 +134,7 @@ public class UserController {
         userDTO.setSurName(userDTO1.getSurName());
         userDTO.setPhoneNumber(userDTO1.getPhoneNumber());
         userDTO.setBirthDate(userDTO1.getBirthDate());
-        userService.update(userDTO);
+        userService.updateInfo(userDTO);
         return result;
     }
 
