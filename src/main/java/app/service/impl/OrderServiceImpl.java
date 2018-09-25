@@ -59,6 +59,20 @@ public class OrderServiceImpl implements OrderService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
+    public void updateStatuses(OrderDTO orderDTO) {
+        Order order = orderDao.getById(orderDTO.getId());
+        if (order != null) {
+            order.setDeliveryOption(new DeliveryOptionConverter().convertToDatabaseColumn(orderDTO.getDeliveryOption()));
+            order.setPaymentOption(new PaymentOptionConverter().convertToDatabaseColumn(orderDTO.getPaymentOption()));
+            order.setOrderStatus(new OrderStatusConverter().convertToDatabaseColumn(orderDTO.getOrderStatus()));
+            order.setPaymentStatus(new PaymentStatusConverter().convertToDatabaseColumn(orderDTO.getPaymentStatus()));
+            orderDao.update(order);
+        }
+        logger.info(String.format("Successfully updated order"));
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    @Override
     public void update(OrderDTO orderDTO) {
         Order order = orderDao.getById(orderDTO.getId());
         if (order != null) {
@@ -69,12 +83,13 @@ public class OrderServiceImpl implements OrderService {
             order.setDeliveryOption(new DeliveryOptionConverter().convertToDatabaseColumn(orderDTO.getDeliveryOption()));
             order.setPaymentOption(new PaymentOptionConverter().convertToDatabaseColumn(orderDTO.getPaymentOption()));
             order.setOrderStatus((byte) 1);
+            order.setPaymentStatus((byte) 1);
             if (new PaymentOptionConverter().convertToDatabaseColumn(orderDTO.getPaymentOption()) == 1) {
                 order.setPaymentStatus((byte) 1);
             } else {
                 order.setPaymentStatus((byte) 2);
             }
-            orderDao.update(modelMapper.map(orderDTO, Order.class));
+            orderDao.update(order);
         }
         logger.info(String.format("Successfully updated order"));
     }
@@ -90,7 +105,17 @@ public class OrderServiceImpl implements OrderService {
     @Transactional(readOnly = true)
     @Override
     public OrderDTO getById(Integer id) {
-        return modelMapper.map(orderDao.getById(id), OrderDTO.class);
+        Order order = orderDao.getById(id);
+        OrderDTO orderDTO = new OrderDTO();
+        orderDTO.setId(order.getId());
+        orderDTO.setTotalPrice(order.getTotalPrice());
+        orderDTO.setProductList(order.getProductList().stream().map(product -> modelMapper.map(product, ProductDTO.class)).collect(Collectors.toList()));
+        orderDTO.setUserDTO(modelMapper.map(order.getUser(),UserDTO.class));
+        orderDTO.setPaymentOption(new PaymentOptionConverter().convertToEntityAttribute(order.getPaymentOption()));
+        orderDTO.setDeliveryOption(new DeliveryOptionConverter().convertToEntityAttribute(order.getDeliveryOption()));
+        orderDTO.setOrderStatus(new OrderStatusConverter().convertToEntityAttribute(order.getOrderStatus()));
+        orderDTO.setPaymentStatus(new PaymentStatusConverter().convertToEntityAttribute(order.getPaymentStatus()));
+        return orderDTO;
     }
 
     @Transactional(readOnly = true)
@@ -102,7 +127,7 @@ public class OrderServiceImpl implements OrderService {
             for(int i = 0; i < orderList.size();i ++){
                 OrderDTO orderDTO = new OrderDTO();
 
-                orderDTO.setPaymentOption(new PaymentOptionConverter().convertToEntityAttribute(orderList.get(i).getPaymentStatus()));
+                orderDTO.setPaymentOption(new PaymentOptionConverter().convertToEntityAttribute(orderList.get(i).getPaymentOption()));
                 orderDTO.setDeliveryOption(new DeliveryOptionConverter().convertToEntityAttribute(orderList.get(i).getDeliveryOption()));
                 orderDTO.setOrderStatus(new OrderStatusConverter().convertToEntityAttribute(orderList.get(i).getOrderStatus()));
                 orderDTO.setPaymentStatus(new PaymentStatusConverter().convertToEntityAttribute(orderList.get(i).getPaymentStatus()));

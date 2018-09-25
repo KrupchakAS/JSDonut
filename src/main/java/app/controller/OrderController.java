@@ -50,7 +50,8 @@ public class OrderController {
     public AjaxDTO updateOrder(@RequestBody OrderDTO orderDTO) {
         AjaxDTO result = new AjaxDTO();
         if (orderDTO != null) {
-            orderService.update(orderDTO);
+            orderService.updateStatuses(orderDTO);
+            result.setData(orderDTO);
         }
         return result;
     }

@@ -17,4 +17,6 @@ public interface OrderService {
     List<OrderDTO> getAll();
 
     List<OrderDTO> getOrdersByUserId(Integer userId);
+
+    void updateStatuses(OrderDTO orderDTO);
 }

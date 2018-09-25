@@ -251,6 +251,8 @@ $(document).ready(function () {
     });
 });
 
+
+
 // GetProductsByParameters -------------------------------------------
 
 function getProducts(categoryId, productName, minPrice, maxPrice, selector) {
