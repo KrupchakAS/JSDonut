@@ -68,10 +68,10 @@ function setSelect2Plugin() {
 function openOrderFormUpdate(orderObject) {
 
     $('.order-id').val(orderObject.id);
-    $('#PaymentOption-update').val(orderObject.paymentOption);
-    $('#DeliveryOption-update').val(orderObject.deliveryOption);
-    $('#PaymentStatus-update').val(orderObject.paymentStatus);
-    $('#OrderStatus-update').val(orderObject.orderStatus);
+    $('#PaymentOption-update option:selected').text(orderObject.paymentOption);
+    $('#DeliveryOption-update option:selected').text(orderObject.deliveryOption);
+    $('#PaymentStatus-update option:selected').text(orderObject.paymentStatus);
+    $('#OrderStatus-update option:selected').text(orderObject.orderStatus);
 
     $('.container-head').text("Order: " + orderObject.id);
     $('.order-list').addClass('block__display-none');

@@ -114,7 +114,7 @@
                                         <label for="PaymentOption-update">Payment Option</label>
                                         <select id="PaymentOption-update"
                                                 class="form-control ">
-                                            <option disabled value="0">Choose Payment Option</option>
+                                            <option value="0">Choose Payment Option</option>
                                             <option value="1">CASH</option>
                                             <option value="2">CARD</option>
                                         </select>
@@ -125,7 +125,7 @@
                                         <label for="DeliveryOption-update">Delivery Option</label>
                                         <select id="DeliveryOption-update"
                                                 class="form-control ">
-                                            <option disabled value="0">Choose Delivery Option</option>
+                                            <option value="0">Choose Delivery Option</option>
                                             <option value="1">PICKUP</option>
                                             <option value="2">DELIVERY</option>
                                         </select>
@@ -136,7 +136,7 @@
                                         <label for="PaymentStatus-update">Payment Status</label>
                                         <select id="PaymentStatus-update"
                                                 class="form-control ">
-                                            <option disabled value="0">Choose Payment Status</option>
+                                            <option value="0">Choose Payment Status</option>
                                             <option value="1">NOT_PAID</option>
                                             <option value="2">PAID</option>
                                         </select>
@@ -147,7 +147,7 @@
                                         <label for="OrderStatus-update">Order Status</label>
                                         <select id="OrderStatus-update"
                                                 class="form-control ">
-                                            <option disabled value="0">Choose Order Status</option>
+                                            <option value="0">Choose Order Status</option>
                                             <option value="1">AWAITING_PAYMENT</option>
                                             <option value="2">AWAITING_SHIPMENT</option>
                                             <option value="3">SHIPPED</option>
