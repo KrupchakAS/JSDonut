@@ -38,7 +38,7 @@ public class DoughController {
 
     @ResponseBody
     @RequestMapping(value = "/dough/createDough", method = RequestMethod.POST)
-    public AjaxDTO createDough(@RequestBody DoughDTO doughDTO){
+    public AjaxDTO createDough(@Valid @RequestBody DoughDTO doughDTO){
         AjaxDTO result = new AjaxDTO();
         if(doughDTO != null){
             doughService.create(doughDTO);
@@ -49,7 +49,7 @@ public class DoughController {
 
     @ResponseBody
     @RequestMapping(value = "/dough/updateDough", method = RequestMethod.POST)
-    public AjaxDTO updateDough(@RequestBody DoughDTO doughDTO){
+    public AjaxDTO updateDough(@Valid @RequestBody DoughDTO doughDTO){
         AjaxDTO result = new AjaxDTO();
         if(doughDTO != null){
             doughService.update(doughDTO);

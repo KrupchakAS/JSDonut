@@ -36,7 +36,7 @@ public class SprinkleController {
 
     @ResponseBody
     @RequestMapping(value = "/sprinkle/createSprinkle", method = RequestMethod.POST)
-    public AjaxDTO createSprinkle(@RequestBody SprinkleDTO sprinkleDTO){
+    public AjaxDTO createSprinkle(@Valid @RequestBody SprinkleDTO sprinkleDTO){
         AjaxDTO result = new AjaxDTO();
         if(sprinkleDTO != null){
             sprinkleService.create(sprinkleDTO);
@@ -47,7 +47,7 @@ public class SprinkleController {
 
     @ResponseBody
     @RequestMapping(value = "/sprinkle/updateSprinkle", method = RequestMethod.POST)
-    public AjaxDTO updateSprinkle(@RequestBody SprinkleDTO sprinkleDTO){
+    public AjaxDTO updateSprinkle(@Valid @RequestBody SprinkleDTO sprinkleDTO){
 
         AjaxDTO result = new AjaxDTO();
         if(sprinkleDTO != null){

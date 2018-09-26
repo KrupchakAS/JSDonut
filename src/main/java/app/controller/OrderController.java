@@ -28,7 +28,7 @@ public class OrderController {
 
     @RequestMapping(value = "/order/getOrderById", method = RequestMethod.GET)
     @ResponseBody
-    public AjaxDTO getOrder(@RequestParam(value = "id") @Valid @NotEmpty(message = "Dough id cannot be empty") Integer orderId) {
+    public AjaxDTO getOrder(@RequestParam(value = "id") @Valid @NotEmpty(message = "Order id cannot be empty") Integer orderId) {
         AjaxDTO result = new AjaxDTO();
         result.setData(orderService.getById(orderId));
         return result;
@@ -36,7 +36,7 @@ public class OrderController {
 
     @ResponseBody
     @RequestMapping(value = "/order/createOrder", method = RequestMethod.POST)
-    public AjaxDTO createOrder(@RequestBody OrderDTO orderDTO) {
+    public AjaxDTO createOrder(@Valid @RequestBody OrderDTO orderDTO) {
         AjaxDTO result = new AjaxDTO();
         if (orderDTO != null) {
             orderService.create(orderDTO);
@@ -47,7 +47,7 @@ public class OrderController {
 
     @ResponseBody
     @RequestMapping(value = "/order/updateOrder", method = RequestMethod.POST)
-    public AjaxDTO updateOrder(@RequestBody OrderDTO orderDTO) {
+    public AjaxDTO updateOrder(@Valid @RequestBody OrderDTO orderDTO) {
         AjaxDTO result = new AjaxDTO();
         if (orderDTO != null) {
             orderService.updateStatuses(orderDTO);

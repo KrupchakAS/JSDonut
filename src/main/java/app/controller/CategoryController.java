@@ -27,7 +27,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/category/getCategoryById", method = RequestMethod.GET)
     @ResponseBody
-    public AjaxDTO getCategory(@RequestParam(value = "id") @Valid @NotEmpty(message = "Dough id cannot be empty") Integer categoryId) {
+    public AjaxDTO getCategory(@RequestParam(value = "id") @Valid @NotEmpty(message = "Category id cannot be empty") Integer categoryId) {
         AjaxDTO result = new AjaxDTO();
         result.setData(categoryService.getById(categoryId));
         return result;
@@ -35,7 +35,7 @@ public class CategoryController {
 
     @ResponseBody
     @RequestMapping(value = "/category/createCategory", method = RequestMethod.POST)
-    public AjaxDTO createCategory(@RequestBody CategoryDTO categoryDTO) {
+    public AjaxDTO createCategory(@Valid @RequestBody CategoryDTO categoryDTO) {
         AjaxDTO result = new AjaxDTO();
         if (categoryDTO != null) {
             categoryService.create(categoryDTO);
@@ -46,7 +46,7 @@ public class CategoryController {
 
     @ResponseBody
     @RequestMapping(value = "/category/updateCategory", method = RequestMethod.POST)
-    public AjaxDTO updateCategory(@RequestBody CategoryDTO categoryDTO) {
+    public AjaxDTO updateCategory(@Valid @RequestBody CategoryDTO categoryDTO) {
         AjaxDTO result = new AjaxDTO();
         if (categoryDTO != null) {
             categoryService.update(categoryDTO);
@@ -56,7 +56,7 @@ public class CategoryController {
 
     @ResponseBody
     @RequestMapping(value = "/category/deleteCategory", method = RequestMethod.DELETE)
-    public AjaxDTO deleteCategory(@RequestBody Integer id) {
+    public AjaxDTO deleteCategory(@Valid @NotEmpty(message = "Category id cannot be empty") @RequestBody Integer id) {
         CategoryDTO categoryDTO = categoryService.getById(id);
         AjaxDTO result = new AjaxDTO();
         if (categoryDTO != null) {

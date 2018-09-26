@@ -1,6 +1,7 @@
 package app.dto;
 
 import app.entity.enums.Role;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -38,6 +39,7 @@ public class UserDTO {
     @Temporal(TemporalType.DATE)
     private Date birthDate;
 
+    @Email
     @Size(min = 4,max = 32, message = "Field must be between 4 and 32 characters.")
     private String email;
 

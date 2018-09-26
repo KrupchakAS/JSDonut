@@ -20,22 +20,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-
+    @NotNull(message = "Field can not be null")
     @Column(name = "login")
     private String login;
-
+    @NotNull(message = "Field can not be null")
     @Column(name = "password")
     private String password;
-
+    @NotNull(message = "Field can not be null")
     @Column(name = "firstName")
     private String firstName;
-
+    @NotNull(message = "Field can not be null")
     @Column(name = "surName")
     private String surName;
-
+    @NotNull(message = "Field can not be null")
     @Column(name = "phoneNumber")
     private String phoneNumber;
-
+    @NotNull(message = "Field can not be null")
     @Past
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Temporal(TemporalType.DATE)

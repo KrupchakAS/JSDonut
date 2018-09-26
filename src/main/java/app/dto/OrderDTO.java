@@ -11,17 +11,17 @@ import java.util.List;
 public class OrderDTO {
 
     private Integer id;
-
+    @NotNull
     private PaymentOption paymentOption;
-
+    @NotNull
     private DeliveryOption deliveryOption;
 
     private PaymentStatus paymentStatus;
 
     private OrderStatus orderStatus;
-    @NotNull
+
     private Float totalPrice;
-    @NotNull
+
     private List<ProductDTO> productList;
 
     private UserDTO user;

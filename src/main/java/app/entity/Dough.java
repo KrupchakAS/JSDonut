@@ -5,9 +5,6 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "dough")
-@NamedQueries(
-        @NamedQuery(name = "getByName", query = "SELECT dough FROM Dough dough WHERE dough.name = :doughName")
-)
 public class Dough {
 
     @Id
@@ -15,15 +12,15 @@ public class Dough {
     @Column(name = "id")
     private Integer id;
 
-    @NotNull(message = "Field can not be null")
+    @NotNull(message = "Field can not be Null")
     @Column(name = "name")
     private String name;
 
-    @NotNull(message = "Field can not be null")
+    @NotNull(message = "Field can not be Null")
     @Column(name = "price")
     private Float price;
 
-    @NotNull(message = "Field can not be null")
+    @NotNull(message = "Field can not be Null")
     @Column(name = "calories")
     private Short calories;
 

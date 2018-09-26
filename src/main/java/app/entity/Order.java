@@ -37,11 +37,13 @@ public class Order {
     @NotNull(message = "Field can not be null")
     private Float totalPrice;
 
+    @NotNull(message = "Field can not be null")
     @ManyToMany
     @JoinTable(name = "order_products", joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> productList;
 
+    @NotNull(message = "Field can not be null")
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

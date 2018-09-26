@@ -12,19 +12,19 @@ public class Address {
     @Column(name = "id")
     private Integer id;
 
-    @NotNull(message = "Field can not be null")
+    @NotNull(message = "Field can not be Null")
     @Column(name = "city")
     private String city;
 
-    @NotNull(message = "Field can not be null")
+    @NotNull(message = "Field can not be Null")
     @Column(name = "postCode")
     private String postCode;
 
-    @NotNull(message = "Field can not be null")
+    @NotNull(message = "Field can not be Null")
     @Column(name = "houseNumber")
     private Short houseNumber;
 
-    @NotNull(message = "Field can not be null")
+    @NotNull(message = "Field can not be Null")
     @Column(name = "apartmentNumber")
     private Short apartmentNumber;
 

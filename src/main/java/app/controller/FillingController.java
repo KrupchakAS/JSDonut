@@ -36,7 +36,7 @@ public class FillingController {
 
     @ResponseBody
     @RequestMapping(value = "/filling/createFilling", method = RequestMethod.POST)
-    public AjaxDTO createFilling(@RequestBody FillingDTO fillingDTO) throws InterruptedException {
+    public AjaxDTO createFilling(@Valid @RequestBody FillingDTO fillingDTO) throws InterruptedException {
         AjaxDTO result = new AjaxDTO();
         if(fillingDTO != null){
             fillingService.create(fillingDTO);
@@ -47,7 +47,7 @@ public class FillingController {
 
     @ResponseBody
     @RequestMapping(value = "/filling/updateFilling", method = RequestMethod.POST)
-    public AjaxDTO updateFilling(@RequestBody FillingDTO fillingDTO){
+    public AjaxDTO updateFilling(@Valid @RequestBody FillingDTO fillingDTO){
         AjaxDTO result = new AjaxDTO();
         if(fillingDTO != null){
             fillingService.update(fillingDTO);

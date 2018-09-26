@@ -53,7 +53,7 @@ public class ProductController {
 
     @ResponseBody
     @RequestMapping(value = "/product/createProduct", method = RequestMethod.POST)
-    public AjaxDTO createProduct(@RequestBody ProductDTO productDTO){
+    public AjaxDTO createProduct(@Valid @RequestBody ProductDTO productDTO){
         AjaxDTO result = new AjaxDTO();
         if(productDTO != null){
             productService.create(productDTO);
@@ -64,7 +64,7 @@ public class ProductController {
 
     @ResponseBody
     @RequestMapping(value = "/product/updateProduct", method = RequestMethod.POST)
-    public AjaxDTO updateProduct(@RequestBody ProductDTO productDTO){
+    public AjaxDTO updateProduct(@Valid @RequestBody ProductDTO productDTO){
         AjaxDTO result = new AjaxDTO();
         if(productDTO != null){
             productService.update(productDTO);
@@ -74,7 +74,7 @@ public class ProductController {
 
     @ResponseBody
     @RequestMapping(value = "/product/deleteProduct", method = RequestMethod.DELETE)
-    public AjaxDTO deleteProduct(@RequestBody Integer id){
+    public AjaxDTO deleteProduct(@Valid @RequestBody Integer id){
         ProductDTO productDTO = productService.getById(id);
         AjaxDTO result = new AjaxDTO();
         if(productDTO != null){

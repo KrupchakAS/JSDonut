@@ -13,7 +13,7 @@ public class Category {
     @Column(name = "id")
     private Integer id;
 
-    @NotNull(message = "Field can not be null")
+    @NotNull(message = "Field can not be Null")
     @Column(name = "name")
     private String name;
 

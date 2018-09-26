@@ -2,10 +2,7 @@ package app.controller;
 
 import app.dto.*;
 
-import app.entity.enums.DeliveryOption;
-import app.entity.enums.PaymentOption;
 import app.exception.ObjectAlreadyInOrder;
-import app.exception.UserNotFound;
 import app.service.api.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,6 +13,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -85,7 +84,7 @@ public class MainController {
 
     @RequestMapping(value = "/addProductToOrder", method = RequestMethod.GET)
     @ResponseBody
-    public AjaxDTO addToOrder(@RequestParam(value = "id") Integer productId, @RequestParam(value = "quantity") Short quantity, HttpSession session) {
+    public AjaxDTO addToOrder(@Valid @NotNull @RequestParam(value = "id") Integer productId, @Valid @NotNull @RequestParam(value = "quantity") Short quantity, HttpSession session) {
         AjaxDTO result = new AjaxDTO();
         ProductDTO productDTO = productService.getById(productId);
         for (int i = 0; i < productDTOList.size(); i++) {
@@ -110,7 +109,7 @@ public class MainController {
 
     @RequestMapping(value = "/deleteProductByIdFromOrder", method = RequestMethod.GET)
     @ResponseBody
-    public AjaxDTO deleteProductById(@RequestParam(value = "id") Integer productId, HttpSession session) {
+    public AjaxDTO deleteProductById(@Valid @NotNull @RequestParam(value = "id") Integer productId, HttpSession session) {
         AjaxDTO result = new AjaxDTO();
         for (int i = 0; i < productDTOList.size(); i++) {
             if (productDTOList.get(i).getId() == productId) {
@@ -131,7 +130,7 @@ public class MainController {
 
     @RequestMapping(value = "/saveOrder", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxDTO saveOrder(@RequestBody OrderDTO order, HttpSession session) {
+    public AjaxDTO saveOrder(@Valid @RequestBody OrderDTO order, HttpSession session) {
         AjaxDTO result = new AjaxDTO();
         OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
