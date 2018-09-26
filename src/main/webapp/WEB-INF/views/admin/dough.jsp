@@ -70,9 +70,9 @@
                                         <с:forEach var="dough" items="${doughList}">
                                             <tr class="dough-table__row" data-id="${dough.id}">
                                                 <th>${dough.id}</th>
-                                                <th>${dough.name}</th>
-                                                <th>${dough.calories}</th>
-                                                <th>${dough.price}</th>
+                                                <th id="DouName-${dough.id}">${dough.name}</th>
+                                                <th id="DouCal-${dough.id}">${dough.calories}</th>
+                                                <th id="DouPr-${dough.id}">${dough.price}</th>
                                                 <th>
                                                     <button type="button" class="btn btn-md btn-primary dough-edit">
                                                         Edit

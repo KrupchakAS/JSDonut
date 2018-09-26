@@ -42,18 +42,19 @@ public class DoughController {
         AjaxDTO result = new AjaxDTO();
         if(doughDTO != null){
             doughService.create(doughDTO);
-            result.setData(doughDTO);
         }
+        result.setData(doughDTO);
         return result;
     }
 
     @ResponseBody
     @RequestMapping(value = "/dough/updateDough", method = RequestMethod.POST)
-    public AjaxDTO updateDough(@Valid @RequestBody DoughDTO doughDTO){
+    public AjaxDTO updateDough( @RequestBody DoughDTO doughDTO){
         AjaxDTO result = new AjaxDTO();
         if(doughDTO != null){
             doughService.update(doughDTO);
         }
+        result.setData(doughDTO);
         return result;
     }
 

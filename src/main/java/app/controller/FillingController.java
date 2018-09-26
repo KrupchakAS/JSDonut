@@ -51,6 +51,7 @@ public class FillingController {
         AjaxDTO result = new AjaxDTO();
         if(fillingDTO != null){
             fillingService.update(fillingDTO);
+            result.setData(fillingDTO);
         }
         return result;
     }

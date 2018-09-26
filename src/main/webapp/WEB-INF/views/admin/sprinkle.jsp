@@ -71,9 +71,9 @@
                                         <с:forEach var="sprinkle" items="${sprinkleList}">
                                             <tr class="sprinkle-table__row" data-id="${sprinkle.id}">
                                                 <th>${sprinkle.id}</th>
-                                                <th>${sprinkle.name}</th>
-                                                <th>${sprinkle.calories}</th>
-                                                <th>${sprinkle.price}</th>
+                                                <th id="SprinkleName-${sprinkle.id}">${sprinkle.name}</th>
+                                                <th id="SprinkleCal-${sprinkle.id}">${sprinkle.calories}</th>
+                                                <th id="SprinklePrice-${sprinkle.id}">${sprinkle.price}</th>
                                                 <th>
                                                     <button type="button" class="btn btn-md btn-primary sprinkle-edit">
                                                         Edit

@@ -68,6 +68,7 @@ public class ProductController {
         AjaxDTO result = new AjaxDTO();
         if(productDTO != null){
             productService.update(productDTO);
+            result.setData(productDTO);
         }
         return result;
     }

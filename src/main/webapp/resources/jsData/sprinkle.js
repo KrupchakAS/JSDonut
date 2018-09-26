@@ -46,7 +46,11 @@ function updateItem(button) {
     pst.url = '/jsDonut/admin/sprinkle/updateSprinkle';
     pst.data = {};
     pst.data = getItemData();
-
+    pst.successFunction = function (sprinkle) {
+        $('#SprinkleName-' + sprinkle.id).html(sprinkle.name);
+        $('#SprinkleCal-' + sprinkle.id).html(sprinkle.calories);
+        $('#SprinklePrice-' + sprinkle.id).html(sprinkle.price);
+    };
     console.log(pst.data);
 
     sendAjax(pst);
@@ -122,7 +126,7 @@ function addNewSprinkle(sprinkleObject) {
         '<th>' + sprinkleObject.name + '</th>' +
         '<th>' + sprinkleObject.calories + '</th>' +
         '<th>' + sprinkleObject.price + '</th>' +
-        '<th>' + '<button type="button" class="btn btn-md btn-primary sprinkle-update">' + 'Edit' + '</button>' + '</th>' +
+        '<th>' + '<button type="button" class="btn btn-md btn-primary sprinkle-edit">' + 'Edit' + '</button>' + '</th>' +
         '<th>' + '<button type="button" class="btn btn-md btn-danger sprinkle-delete">' + 'Delete' + '</button>' + '</th>' +
         '</tr>');
 

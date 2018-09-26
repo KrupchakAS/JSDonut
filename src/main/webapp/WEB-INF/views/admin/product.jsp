@@ -74,11 +74,11 @@
                                         <с:forEach var="product" items="${productList}">
                                             <tr class="product-table__row" data-id="${product.id}">
                                                 <th>${product.id}</th>
-                                                <th>${product.category.name}</th>
-                                                <th>${product.name}</th>
-                                                <th>${product.price}</th>
-                                                <th>${product.weight}</th>
-                                                <th>${product.quantity}</th>
+                                                <th id="ProdCategory-${product.id}">${product.category.name}</th>
+                                                <th id="ProdName-${product.id}">${product.name}</th>
+                                                <th id="ProdPrice-${product.id}">${product.price}</th>
+                                                <th id="ProdWeight-${product.id}">${product.weight}</th>
+                                                <th id="ProdQuantity-${product.id}">${product.quantity}</th>
                                                 <th>
                                                     <button type="button" class="btn btn-md btn-primary product-edit">
                                                         Edit
@@ -208,7 +208,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="calories">Calories</label>
-                                            <input id="calories" disabled="disabled" minlength="1" maxlength="5" type="number" class="form-control product-calories"
+                                            <input id="calories" minlength="1" maxlength="5" type="number" class="form-control product-calories"
                                                    placeholder="Calories">
                                         </div>
                                     </div>

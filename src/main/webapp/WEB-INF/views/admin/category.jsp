@@ -68,7 +68,7 @@
                                         <с:forEach var="category" items="${categoryList}">
                                             <tr class="category-table__row" data-id="${category.id}">
                                                 <th>${category.id}</th>
-                                                <th>${category.name}</th>
+                                                <th id="CatName">${category.name}</th>
                                                 <th>
                                                     <button type="button" class="btn btn-md btn-primary category-edit">
                                                         Edit

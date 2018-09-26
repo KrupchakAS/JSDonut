@@ -71,10 +71,10 @@
                                     <c:when test="${fillingList.size() > 0}">
                                         <с:forEach var="filling" items="${fillingList}">
                                             <tr class="filling-table__row"  data-id="${filling.id}">
-                                                <th id="fil-id">${filling.id}</th>
-                                                <th id="fil-name">${filling.name}</th>
-                                                <th id="fil-calories">${filling.calories}</th>
-                                                <th id="fil-price">${filling.price}</th>
+                                                <th>${filling.id}</th>
+                                                <th id="FilName-${filling.id}">${filling.name}</th>
+                                                <th id="FilCal-${filling.id}">${filling.calories}</th>
+                                                <th id="FilPr-${filling.id}">${filling.price}</th>
                                                 <th>
                                                     <button type="button" class="btn btn-md btn-primary filling-edit">
                                                         Edit

@@ -1,4 +1,3 @@
-
 // update --------------------
 
 function getUpdateForm(doughId, selector) {
@@ -8,6 +7,7 @@ function getUpdateForm(doughId, selector) {
         alert("Dough ID is not number");
     }
 }
+
 function isNumber(value) {
     return (value !== undefined && value !== null && value > 0);
 }
@@ -48,6 +48,11 @@ function updateItem(button) {
     pst.url = '/jsDonut/admin/dough/updateDough';
     pst.data = {};
     pst.data = getItemData();
+    pst.successFunction = function (dough) {
+        $('#DouName-' + dough.id).html(dough.name);
+        $('#DouCal-' + dough.id).html(dough.calories);
+        $('#DouPr-' + dough.id).html(dough.price);
+    };
 
     console.log(pst.data);
 
@@ -119,12 +124,12 @@ function addNewDough(doughObject) {
     console.log(doughObject);
 
     $('#dough-table').find('tbody').append(
-        '<tr  class="dough-table__row" data-id='+doughObject.id+'>' +
+        '<tr  class="dough-table__row" data-id=' + doughObject.id + '>' +
         '<th>' + doughObject.id + '</th>' +
         '<th>' + doughObject.name + '</th>' +
         '<th>' + doughObject.calories + '</th>' +
         '<th>' + doughObject.price + '</th>' +
-        '<th>' + '<button type="button" class="btn btn-md btn-primary dough-update">' + 'Edit' + '</button>' + '</th>' +
+        '<th>' + '<button type="button" class="btn btn-md btn-primary dough-edit">' + 'Edit' + '</button>' + '</th>' +
         '<th>' + '<button type="button" class="btn btn-md btn-danger dough-delete">' + 'Delete' + '</button>' + '</th>' +
         '</tr>');
 
@@ -168,18 +173,18 @@ $(document).ready(function () {
 });
 // Scripts
 
-$(function() {
+$(function () {
     $(document).on('click', '.dough-add', function () {
         getFormCreate();
     });
-    $(document).on('click', '.dough-edit', function() {
+    $(document).on('click', '.dough-edit', function () {
         var id = $(this).closest('tr').data('id');
         getUpdateForm(id, $(this));
     });
-    $(document).on('click', '.dough-close', function() {
+    $(document).on('click', '.dough-close', function () {
         closeDough();
     });
-    $(document).on('click', '.dough-update', function() {
+    $(document).on('click', '.dough-update', function () {
         closeDough();
     });
     $(document).on('click', '.dough-delete', function () {
@@ -194,6 +199,7 @@ function closeDough() {
     $('.dough-list').removeClass('block__display-none');
     $('.dough-form').addClass('block__display-none');
 }
+
 function intValueTest(value, text) {
     if (value === 0 || value === undefined) {
         swal('Ошибка', text, 'error');

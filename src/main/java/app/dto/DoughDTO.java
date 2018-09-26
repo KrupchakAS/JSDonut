@@ -1,16 +1,16 @@
 package app.dto;
 
 
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotNull;
 
 public class DoughDTO {
 
     private Integer id;
-    @Size(min = 2, max = 16, message = "Field must be between 2 and 16 characters.")
+    @NotNull
     private String name;
-    @Size(min = 1, max = 5, message = "Field must be between 1 and 5 digits.")
+    @NotNull
     private Float price;
-    @Size(min = 1, max = 6, message = "Field must be between 1 and 5 digits.")
+    @NotNull
     private Short calories;
 
     public Integer getId() {

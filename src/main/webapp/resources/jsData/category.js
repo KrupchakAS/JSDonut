@@ -45,6 +45,9 @@ function updateItem(button) {
     pst.url = '/jsDonut/admin/category/updateCategory';
     pst.data = {};
     pst.data = getItemData();
+    pst.successFunction = function (category) {
+        $('#CatName').text(category.name)
+    };
 
     console.log(pst.data);
 

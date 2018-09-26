@@ -9,10 +9,10 @@ function updateOrder(button) {
     pst.data = {};
     pst.data = getItemOrder();
     pst.successFunction = function (order) {
-        $('#PayOpt').text(order.paymentOption);
-        $('#DelOpt').text(order.deliveryOption);
-        $('#PayStat').text(order.paymentStatus);
-        $('#OrdStat').text(order.orderStatus);
+        $('#PayOpt-'+order.id).text(order.paymentOption);
+        $('#DelOpt-'+order.id).text(order.deliveryOption);
+        $('#PayStat-'+order.id).text(order.paymentStatus);
+        $('#OrdStat-'+order.id).text(order.orderStatus);
     };
     console.log(pst.data);
 

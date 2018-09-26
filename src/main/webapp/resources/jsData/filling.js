@@ -33,8 +33,11 @@ function openFillingFormUpdate(fillingObject) {
     $('.container-head').text("Filling: " + fillingObject.name);
     $('.filling-add').addClass('block__display-none');
     $('.filling-list').addClass('block__display-none');
-    $('.filling-form').removeClass('block__display-none');
     $('.filling-save').addClass('block__display-none');
+    $('.filling-form').removeClass('block__display-none');
+    $('.filling-update').removeClass('block__display-none');
+
+
 }
 
 function updateItem(button) {
@@ -45,6 +48,11 @@ function updateItem(button) {
     pst.url = '/jsDonut/admin/filling/updateFilling';
     pst.data = {};
     pst.data = getItemData();
+    pst.successFunction = function (filling) {
+        $('#FilName-' + filling.id).html(filling.name);
+        $('#FilCal-' + filling.id).html(filling.calories);
+        $('#FilPr-' + filling.id).html(filling.price);
+    };
 
     console.log(pst.data);
 
@@ -116,12 +124,12 @@ function addNewFilling(fillingObject) {
     console.log(fillingObject);
 
     $('#filling-table').find('tbody').append(
-        '<tr  class="filling-table__row" data-id='+fillingObject.id+'>' +
+        '<tr  class="filling-table__row" data-id=' + fillingObject.id + '>' +
         '<th>' + fillingObject.id + '</th>' +
         '<th>' + fillingObject.name + '</th>' +
         '<th>' + fillingObject.calories + '</th>' +
         '<th>' + fillingObject.price + '</th>' +
-        '<th>' + '<button type="button" class="btn btn-md btn-primary filling-update">' + 'Edit' + '</button>' + '</th>' +
+        '<th>' + '<button type="button" class="btn btn-md btn-primary filling-edit">' + 'Edit' + '</button>' + '</th>' +
         '<th>' + '<button type="button" class="btn btn-md btn-danger filling-delete">' + 'Delete' + '</button>' + '</th>' +
         '</tr>');
     closeFilling();
@@ -193,6 +201,8 @@ function closeFilling() {
     $('.filling-list').removeClass('block__display-none');
     $('.filling-add').removeClass('block__display-none');
     $('.filling-form').addClass('block__display-none');
+
+
 
 }
 

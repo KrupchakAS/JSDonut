@@ -48,10 +48,10 @@ public class SprinkleController {
     @ResponseBody
     @RequestMapping(value = "/sprinkle/updateSprinkle", method = RequestMethod.POST)
     public AjaxDTO updateSprinkle(@Valid @RequestBody SprinkleDTO sprinkleDTO){
-
         AjaxDTO result = new AjaxDTO();
         if(sprinkleDTO != null){
             sprinkleService.update(sprinkleDTO);
+            result.setData(sprinkleDTO);
         }
         return result;
     }

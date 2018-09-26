@@ -51,6 +51,7 @@ public class CategoryController {
         if (categoryDTO != null) {
             categoryService.update(categoryDTO);
         }
+        result.setData(categoryDTO);
         return result;
     }
 

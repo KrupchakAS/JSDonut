@@ -8,6 +8,14 @@ function updateItem(button) {
     pst.url = '/jsDonut/admin/product/updateProduct';
     pst.data = {};
     pst.data = getItemData();
+    pst.successFunction = function (product) {
+        $('#ProdCategory-' + product.id).html(product.category.name);
+        $('#ProdName-' + product.id).html(product.name);
+        $('#ProdPrice-' + product.id).html(product.price);
+        $('#ProdWeight-' + product.id).html(product.weight);
+        $('#ProdQuantity-' + product.id).html(product.quantity);
+
+    };
 
     console.log(pst.data);
 
@@ -27,6 +35,7 @@ function getItemData() {
     product.quantity = parseInt($('.product-quantity').val());
     product.category = {};
     product.category.id = parseInt($('.product__category-id').val());
+    product.category.name = $('#product__category-id option:selected').text();
     product.filling = {};
     product.filling.id = parseInt($('.product__filling-id').val());
     product.dough = {};
@@ -208,7 +217,7 @@ function addNewProduct(productObject) {
         '<th>' + productObject.price + '</th>' +
         '<th>' + productObject.weight + '</th>' +
         '<th>' + productObject.quantity + '</th>' +
-        '<th>' + '<button type="button" class="btn btn-md btn-primary product-update">' + 'Edit' + '</button>' + '</th>' +
+        '<th>' + '<button type="button" class="btn btn-md btn-primary product-edit">' + 'Edit' + '</button>' + '</th>' +
         '<th>' + '<button type="button" class="btn btn-md btn-danger product-delete">' + 'Delete' + '</button>' + '</th>' +
         '</tr>');
 
@@ -250,7 +259,6 @@ $(document).ready(function () {
         swal('Deleted!');
     });
 });
-
 
 
 // GetProductsByParameters -------------------------------------------
@@ -305,7 +313,6 @@ function addProducts(productList) {
     closeProduct();
 
 }
-
 
 
 // AddProductToOrder ----------------------------------------------
@@ -581,7 +588,7 @@ $(function () {
 // Options
 $(document).ready(function () {
     $('#DeliveryOption').on('change', function () {
-        var a= $('#DeliveryOption').val();
+        var a = $('#DeliveryOption').val();
         if (a == '2') {
             $('.delivery-option').removeClass('block__display-none');
         } else {
@@ -592,7 +599,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     $('#PaymentOption').on('change', function () {
-        var a= $('#PaymentOption').val();
+        var a = $('#PaymentOption').val();
         if (a == '2') {
             $('.payment').removeClass('block__display-none');
         } else {
