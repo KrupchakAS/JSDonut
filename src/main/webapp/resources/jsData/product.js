@@ -35,7 +35,7 @@ function getItemData() {
     product.quantity = parseInt($('.product-quantity').val());
     product.category = {};
     product.category.id = parseInt($('.product__category-id').val());
-    product.category.name = $('#product__category-id option:selected').text();
+    product.category.name = $('.product__category-id option:selected').text();
     product.filling = {};
     product.filling.id = parseInt($('.product__filling-id').val());
     product.dough = {};
