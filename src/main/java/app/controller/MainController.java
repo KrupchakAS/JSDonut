@@ -88,7 +88,7 @@ public class MainController {
         AjaxDTO result = new AjaxDTO();
         ProductDTO productDTO = productService.getById(productId);
         for (int i = 0; i < productDTOList.size(); i++) {
-            if (productDTO.getId() == productDTOList.get(i).getId()) {
+            if (productDTOList.get(i).getId().equals(productDTO.getId())) {
                 throw new ObjectAlreadyInOrder(String.format("Product with name %s already in your Order", productDTO.getName()));
             }
         }
@@ -102,8 +102,8 @@ public class MainController {
         }
         orderDTO.setTotalPrice(totalPrice);
         result.setData(orderDTO);
-        logger.info(String.format("Successfully added Product in Cart: " + productDTO.getName()));
-        logger.info(String.format("ProductCount in Cart: " + productDTOList.size()));
+        logger.info(String.format("Successfully added Product in Cart: %s", productDTO.getName()));
+        logger.info(String.format("ProductCount in Cart: %d", productDTOList.size()));
         return result;
     }
 
@@ -112,9 +112,9 @@ public class MainController {
     public AjaxDTO deleteProductById(@Valid @NotNull @RequestParam(value = "id") Integer productId, HttpSession session) {
         AjaxDTO result = new AjaxDTO();
         for (int i = 0; i < productDTOList.size(); i++) {
-            if (productDTOList.get(i).getId() == productId) {
+            if (productId.equals(productDTOList.get(i).getId())) {
                 productDTOList.remove(productDTOList.get(i));
-                logger.info(String.format("Successfully deleted Product from Cart"));
+                logger.info("Successfully deleted Product from Cart");
             }
         }
         OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");

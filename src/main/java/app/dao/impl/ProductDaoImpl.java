@@ -5,10 +5,8 @@ import app.dao.api.ProductDao;
 import app.entity.Product;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Join;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -49,16 +47,27 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
 
     @Override
     public List<Product> getProductsByParameters(Integer categoryId, String productName, Integer minPrice, Integer maxPrice) {
+
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
         Root<Product> productRoot = criteriaQuery.from(Product.class);
-        if (categoryId != null || productName != null|| minPrice != null|| maxPrice != null) {
-            criteriaQuery.where(criteriaBuilder.and(
-                    criteriaBuilder.equal(productRoot.get("category"), categoryId),
-                    criteriaBuilder.like(productRoot.get("name"), "%"+productName+"%"),
-                    criteriaBuilder.gt(productRoot.get("price"), minPrice),
-                    criteriaBuilder.le(productRoot.get("price"), maxPrice)));
+
+        List<Predicate> params = new ArrayList<>();
+        if (categoryId != null) {
+            params.add(criteriaBuilder.equal(productRoot.get("category"), categoryId));
         }
+        if (productName != null) {
+            params.add(criteriaBuilder.like(productRoot.get("name"), "%"+productName+"%"));
+        }
+        if (minPrice != null) {
+            params.add(criteriaBuilder.gt(productRoot.get("price"), minPrice));
+        }
+        if (maxPrice != null) {
+            params.add(criteriaBuilder.le(productRoot.get("price"), maxPrice));
+        }
+
+        criteriaQuery.where(params.toArray(new Predicate[]{}));
+
         List<Product> list = entityManager.createQuery(criteriaQuery).getResultList();
         if (list.isEmpty()) {
             return null;

@@ -4,6 +4,7 @@ import app.dto.AjaxDTO;
 import app.dto.OrderDTO;
 import app.dto.UserDTO;
 import app.exception.UserNotFound;
+import app.service.api.AddressService;
 import app.service.api.OrderService;
 import app.service.api.UserService;
 import app.validator.UserValidator;
@@ -38,6 +39,9 @@ public class UserController {
 
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private AddressService addressService;
 
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String main(HttpSession session) {
@@ -98,9 +102,9 @@ public class UserController {
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String account(ModelMap modelMap, HttpSession session) {
-
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         modelMap.addAttribute("user", userDTO);
+        modelMap.addAttribute("userAddresses", addressService.getAddressesByUserId(userDTO.getId()));
         modelMap.addAttribute("orderList", orderService.getOrdersByUserId(userDTO.getId()));
         session.setAttribute("countProductInOrder", productDTOList.size());
         if (session.getAttribute("order") == null) {

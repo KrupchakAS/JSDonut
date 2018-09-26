@@ -66,15 +66,21 @@ public class AddressServiceImpl implements AddressService {
         }
     }
 
-    @Override
-    public void detach(AddressDTO addressDTO) {
 
-    }
 
     @Transactional(readOnly = true)
     @Override
     public List<AddressDTO> getAll() {
         List<Address> addressList = addressDao.getAll();
+        if (addressList != null) {
+            return addressList.stream().map(address -> modelMapper.map(address, AddressDTO.class)).collect(Collectors.toList());
+        }
+        return null;
+    }
+
+    @Override
+    public List<AddressDTO> getAddressesByUserId(Integer id) {
+        List<Address> addressList = addressDao.getAddressesByUserId(id);
         if (addressList != null) {
             return addressList.stream().map(address -> modelMapper.map(address, AddressDTO.class)).collect(Collectors.toList());
         }

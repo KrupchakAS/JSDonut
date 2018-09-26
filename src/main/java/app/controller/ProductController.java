@@ -1,9 +1,7 @@
 package app.controller;
 
 import app.dto.AjaxDTO;
-import app.dto.DoughDTO;
 import app.dto.ProductDTO;
-import app.dto.SprinkleDTO;
 import app.service.api.*;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +10,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequestMapping(value = "/jsDonut/admin")

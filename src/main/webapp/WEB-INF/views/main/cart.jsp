@@ -249,7 +249,6 @@
                                     </div>
                                 </form>
                             </div>
-
                         </div>
 
                         <div class="col-sm-3">
@@ -272,10 +271,10 @@
                                            class="form-control">
                                 </form>
                             </div>
-
+                            <div class="PickUpDiv block__display-none"><p class="pickup-option">PICKUP: -> Saint-Petersburg str.Buharestskaya 100.</p></div>
                         </div>
                         <br>
-                        <div class="col-sm-3"><p class="pickup-option">PICKUP: -> Saint-Petersburg str.Buharestskaya 100.</p></div>
+
                         <div class="col-sm-3"><h1 style="padding-left: 160px; padding-top: 10px"><a href="#"><span
                                 class="OrderSave label label-success">Save Order</span></a></h1>
                         </div>

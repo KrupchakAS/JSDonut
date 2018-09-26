@@ -264,22 +264,30 @@ $(document).ready(function () {
 // GetProductsByParameters -------------------------------------------
 
 function getProducts(categoryId, productName, minPrice, maxPrice, selector) {
-    if (isNumber(minPrice) || isNumber(maxPrice)) {
-        getProductByParameters(categoryId, productName, minPrice, maxPrice, selector);
+    /*if (isNumber(minPrice) || isNumber(maxPrice)) {
+
     } else {
         swal("Product price is not number");
-    }
-
+    }*/
+    getProductByParameters(categoryId, productName, minPrice, maxPrice, selector);
 }
 
 function getProductByParameters(categoryId, productName, minPrice, maxPrice, selector) {
     var ajax = {};
-    ajax.data = {
-        categoryId: categoryId,
-        productName: productName,
-        minPrice: minPrice,
-        maxPrice: maxPrice
-    };
+    ajax.data = {};
+    if (categoryId.length > 0) {
+        ajax.data.categoryId = parseInt(categoryId);
+    }
+    if (productName.length > 0) {
+        ajax.data.productName = productName;
+    }
+    if (minPrice.length > 0) {
+        ajax.data.minPrice = parseInt(minPrice);
+    }
+    if (maxPrice.length > 0) {
+        ajax.data.maxPrice = parseInt(maxPrice);
+    }
+
     ajax.type = "GET";
     ajax.url = "/jsDonut/getProductsByParameters";
     ajax.dataType = 'JSON';
@@ -295,21 +303,23 @@ function addProducts(productList) {
 
     if (productList === null || productList === undefined) {
         swal('Sorry, but we do not have any delicious by your criteria');
-    }
-    for (var i = 0; i < productList.length; i++) {
-        var productObject = productList[i];
+    } else {
+        for (var i = 0; i < productList.length; i++) {
+            var productObject = productList[i];
 
-        $('.Product-item').append(
-            '<div class="single-info"> <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">' +
-            '<h3 style="float: right" class="item_price">' + productObject.price + '₽</h3>' +
-            '<h6 >' + productObject.name + '</h6>' +
-            '<p>' + productObject.description + '</p>' +
-            '<span style="color: #c0a16b">Calories: ' + productObject.calories + '</span>' +
-            // '<p>Available quantity: '+productObject.quantity+'</p>'+
-            '<div style="float: right" class="quantity"><p style="color: red" class="qty">Select Quantity: </p><input min="1" type="number" value="1" name="item_quantity" class="item_quantity">' +
-            '<div style="float: inherit; margin-left: 15px" data-id="' + productObject.id + '" class="btn_form" ><a href="#" style="color: green"  class="add-cart item_add">Add To Cart</a></div>' +
-            '</div> </div> </div><hr>');
+            $('.Product-item').append(
+                '<div class="single-info"> <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">' +
+                '<h3 style="float: right" class="item_price">' + productObject.price + '₽</h3>' +
+                '<h6 >' + productObject.name + '</h6>' +
+                '<p>' + productObject.description + '</p>' +
+                '<span style="color: #c0a16b">Calories: ' + productObject.calories + '</span>' +
+                // '<p>Available quantity: '+productObject.quantity+'</p>'+
+                '<div style="float: right" class="quantity"><p style="color: red" class="qty">Select Quantity: </p><input min="1" type="number" value="1" name="item_quantity" class="item_quantity">' +
+                '<div style="float: inherit; margin-left: 15px" data-id="' + productObject.id + '" class="btn_form" ><a href="#" style="color: green"  class="add-cart item_add">Add To Cart</a></div>' +
+                '</div> </div> </div><hr>');
+        }
     }
+
     closeProduct();
 
 }
@@ -587,12 +597,17 @@ $(function () {
 
 // Options
 $(document).ready(function () {
+    $('.PickUpDiv').removeClass('block__display-none');
     $('#DeliveryOption').on('change', function () {
         var a = $('#DeliveryOption').val();
         if (a == '2') {
             $('.delivery-option').removeClass('block__display-none');
+            $('.PickUpDiv').addClass('block__display-none');
+
         } else {
+            $('.PickUpDiv').removeClass('block__display-none');
             $('.delivery-option').addClass('block__display-none');
+
         }
     });
 });

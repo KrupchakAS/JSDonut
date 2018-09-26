@@ -135,7 +135,7 @@ public class OrderServiceImpl implements OrderService {
                 orderDTO.setId(orderList.get(i).getId());
                 List<ProductDTO> productList = orderList.get(i).getProductList().stream().map(product -> modelMapper.map(product, ProductDTO.class)).collect(Collectors.toList());
                 orderDTO.setProductList(productList);
-
+                orderDTO.setTotalPrice(orderList.get(i).getTotalPrice());
                 UserDTO userDTO = modelMapper.map(orderList.get(i).getUser(),UserDTO.class);
                 orderDTO.setUserDTO(userDTO);
                 orderDTOList.add(orderDTO);
@@ -162,7 +162,7 @@ public class OrderServiceImpl implements OrderService {
 
                 List<ProductDTO> productList = orderList.get(i).getProductList().stream().map(product -> modelMapper.map(product, ProductDTO.class)).collect(Collectors.toList());
                 orderDTO.setProductList(productList);
-
+                orderDTO.setTotalPrice(orderList.get(i).getTotalPrice());
                 UserDTO userDTO = modelMapper.map(orderList.get(i).getUser(), UserDTO.class);
                 orderDTO.setUserDTO(userDTO);
 

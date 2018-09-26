@@ -13,8 +13,9 @@ public interface AddressService {
 
     AddressDTO getById(Integer id);
 
-    void detach(AddressDTO addressDTO);
 
     List<AddressDTO> getAll();
+
+    List<AddressDTO> getAddressesByUserId (Integer id);
 
 }
