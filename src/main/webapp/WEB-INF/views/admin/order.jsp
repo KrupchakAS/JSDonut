@@ -56,13 +56,13 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>productList</th>
-                                    <th>User Login</th>
+                                    <th>Product List</th>
+                                    <th>User Name</th>
                                     <th>User Phone</th>
-                                    <th>PaymentOption</th>
-                                    <th>DeliveryOption</th>
-                                    <th>PaymentStatus</th>
-                                    <th>OrderStatus</th>
+                                    <th>Payment Option</th>
+                                    <th>Delivery Option</th>
+                                    <th>Payment Status</th>
+                                    <th>Order Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
