@@ -125,12 +125,12 @@ function addNewFilling(fillingObject) {
 
     $('#filling-table').find('tbody').append(
         '<tr  class="filling-table__row" data-id=' + fillingObject.id + '>' +
-        '<th>' + fillingObject.id + '</th>' +
-        '<th>' + fillingObject.name + '</th>' +
-        '<th>' + fillingObject.calories + '</th>' +
-        '<th>' + fillingObject.price + '</th>' +
-        '<th>' + '<button type="button" class="btn btn-md btn-primary filling-edit">' + 'Edit' + '</button>' + '</th>' +
-        '<th>' + '<button type="button" class="btn btn-md btn-danger filling-delete">' + 'Delete' + '</button>' + '</th>' +
+        '<td>' + fillingObject.id + '</td>' +
+        '<td>' + fillingObject.name + '</td>' +
+        '<td>' + fillingObject.calories + '</td>' +
+        '<td>' + fillingObject.price + '</td>' +
+        '<td>' + '<button type="button" class="btn btn-md btn-primary filling-edit">' + 'Edit' + '</button>' + '</td>' +
+        '<td>' + '<button type="button" class="btn btn-md btn-danger filling-delete">' + 'Delete' + '</button>' + '</td>' +
         '</tr>');
     closeFilling();
 }

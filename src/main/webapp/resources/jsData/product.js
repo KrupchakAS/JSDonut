@@ -211,14 +211,14 @@ function addNewProduct(productObject) {
 
     $('#product-table').find('tbody').append(
         '<tr  class="product-table__row" data-id=' + productObject.id + '>' +
-        '<th>' + productObject.id + '</th>' +
-        '<th>' + productObject.category.name + '</th>' +
-        '<th>' + productObject.name + '</th>' +
-        '<th>' + productObject.price + '</th>' +
-        '<th>' + productObject.weight + '</th>' +
-        '<th>' + productObject.quantity + '</th>' +
-        '<th>' + '<button type="button" class="btn btn-md btn-primary product-edit">' + 'Edit' + '</button>' + '</th>' +
-        '<th>' + '<button type="button" class="btn btn-md btn-danger product-delete">' + 'Delete' + '</button>' + '</th>' +
+        '<td>' + productObject.id + '</td>' +
+        '<td>' + productObject.category.name + '</td>' +
+        '<td>' + productObject.name + '</td>' +
+        '<td>' + productObject.price + '</td>' +
+        '<td>' + productObject.weight + '</td>' +
+        '<td>' + productObject.quantity + '</td>' +
+        '<td>' + '<button type="button" class="btn btn-md btn-primary product-edit">' + 'Edit' + '</button>' + '</td>' +
+        '<td>' + '<button type="button" class="btn btn-md btn-danger product-delete">' + 'Delete' + '</button>' + '</td>' +
         '</tr>');
 
     closeProduct();
@@ -310,6 +310,7 @@ function addProducts(productList) {
             $('.Product-item').append(
                 '<div class="single-info"> <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">' +
                 '<h3 style="float: right" class="item_price">' + productObject.price + '₽</h3>' +
+                '(<span>'+productObject.category.name+'</span>)'+
                 '<h6 >' + productObject.name + '</h6>' +
                 '<p>' + productObject.description + '</p>' +
                 '<span style="color: #c0a16b">Calories: ' + productObject.calories + '</span>' +

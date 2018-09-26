@@ -67,18 +67,18 @@
                                     <c:when test="${categoryList.size() > 0}">
                                         <с:forEach var="category" items="${categoryList}">
                                             <tr class="category-table__row" data-id="${category.id}">
-                                                <th>${category.id}</th>
-                                                <th id="CatName">${category.name}</th>
-                                                <th>
+                                                <td>${category.id}</td>
+                                                <td id="CatName">${category.name}</td>
+                                                <td>
                                                     <button type="button" class="btn btn-md btn-primary category-edit">
                                                         Edit
                                                     </button>
-                                                </th>
-                                                <th>
+                                                </td>
+                                                <td>
                                                     <button type="button" class="btn btn-md btn-danger category-delete">
                                                         Delete
                                                     </button>
-                                                </th>
+                                                </td>
                                             </tr>
                                         </с:forEach>
                                     </c:when>

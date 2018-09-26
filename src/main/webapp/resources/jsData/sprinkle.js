@@ -122,12 +122,12 @@ function addNewSprinkle(sprinkleObject) {
 
     $('#sprinkle-table').find('tbody').append(
         '<tr  class="sprinkle-table__row" data-id=' + sprinkleObject.id + '>' +
-        '<th>' + sprinkleObject.id + '</th>' +
-        '<th>' + sprinkleObject.name + '</th>' +
-        '<th>' + sprinkleObject.calories + '</th>' +
-        '<th>' + sprinkleObject.price + '</th>' +
-        '<th>' + '<button type="button" class="btn btn-md btn-primary sprinkle-edit">' + 'Edit' + '</button>' + '</th>' +
-        '<th>' + '<button type="button" class="btn btn-md btn-danger sprinkle-delete">' + 'Delete' + '</button>' + '</th>' +
+        '<td>' + sprinkleObject.id + '</td>' +
+        '<td>' + sprinkleObject.name + '</td>' +
+        '<td>' + sprinkleObject.calories + '</td>' +
+        '<td>' + sprinkleObject.price + '</td>' +
+        '<td>' + '<button type="button" class="btn btn-md btn-primary sprinkle-edit">' + 'Edit' + '</button>' + '</td>' +
+        '<td>' + '<button type="button" class="btn btn-md btn-danger sprinkle-delete">' + 'Delete' + '</button>' + '</td>' +
         '</tr>');
 
     closeSprinkle();

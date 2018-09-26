@@ -69,20 +69,20 @@
                                     <c:when test="${doughList.size() > 0}">
                                         <с:forEach var="dough" items="${doughList}">
                                             <tr class="dough-table__row" data-id="${dough.id}">
-                                                <th>${dough.id}</th>
-                                                <th id="DouName-${dough.id}">${dough.name}</th>
-                                                <th id="DouCal-${dough.id}">${dough.calories}</th>
-                                                <th id="DouPr-${dough.id}">${dough.price}</th>
-                                                <th>
+                                                <td>${dough.id}</td>
+                                                <td id="DouName-${dough.id}">${dough.name}</td>
+                                                <td id="DouCal-${dough.id}">${dough.calories}</td>
+                                                <td id="DouPr-${dough.id}">${dough.price}</td>
+                                                <td>
                                                     <button type="button" class="btn btn-md btn-primary dough-edit">
                                                         Edit
                                                     </button>
-                                                </th>
-                                                <th>
+                                                </td>
+                                                <td>
                                                     <button type="button" class="btn btn-md btn-danger dough-delete">
                                                         Delete
                                                     </button>
-                                                </th>
+                                                </td>
                                             </tr>
                                         </с:forEach>
                                     </c:when>

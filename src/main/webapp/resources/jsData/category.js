@@ -116,10 +116,10 @@ function addNewCategory(categoryObject) {
 
     $('#category-table').find('tbody').append(
         '<tr  class="category-table__row" data-id='+categoryObject.id+'>' +
-        '<th>' + categoryObject.id + '</th>' +
-        '<th>' + categoryObject.name + '</th>' +
-        '<th>' + '<button type="button" class="btn btn-md btn-primary category-update">' + 'Edit' + '</button>' + '</th>' +
-        '<th>' + '<button type="button" class="btn btn-md btn-danger category-delete">' + 'Delete' + '</button>' + '</th>' +
+        '<td>' + categoryObject.id + '</td>' +
+        '<td>' + categoryObject.name + '</td>' +
+        '<td>' + '<button type="button" class="btn btn-md btn-primary category-update">' + 'Edit' + '</button>' + '</td>' +
+        '<td>' + '<button type="button" class="btn btn-md btn-danger category-delete">' + 'Delete' + '</button>' + '</td>' +
         '</tr>');
 
     closeCategory();

@@ -70,20 +70,20 @@
                                     <c:when test="${sprinkleList.size() > 0}">
                                         <с:forEach var="sprinkle" items="${sprinkleList}">
                                             <tr class="sprinkle-table__row" data-id="${sprinkle.id}">
-                                                <th>${sprinkle.id}</th>
-                                                <th id="SprinkleName-${sprinkle.id}">${sprinkle.name}</th>
-                                                <th id="SprinkleCal-${sprinkle.id}">${sprinkle.calories}</th>
-                                                <th id="SprinklePrice-${sprinkle.id}">${sprinkle.price}</th>
-                                                <th>
+                                                <td>${sprinkle.id}</td>
+                                                <td id="SprinkleName-${sprinkle.id}">${sprinkle.name}</td>
+                                                <td id="SprinkleCal-${sprinkle.id}">${sprinkle.calories}</td>
+                                                <td id="SprinklePrice-${sprinkle.id}">${sprinkle.price}</td>
+                                                <td>
                                                     <button type="button" class="btn btn-md btn-primary sprinkle-edit">
                                                         Edit
                                                     </button>
-                                                </th>
-                                                <th>
+                                                </td>
+                                                <td>
                                                     <button type="button" class="btn btn-md btn-danger sprinkle-delete">
                                                         Delete
                                                     </button>
-                                                </th>
+                                                </td>
                                             </tr>
                                         </с:forEach>
                                     </c:when>

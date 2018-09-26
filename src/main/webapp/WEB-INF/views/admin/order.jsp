@@ -70,26 +70,26 @@
                                     <c:when test="${orderList.size() > 0}">
                                         <с:forEach var="order" items="${orderList}">
                                             <tr class="order-table__row" data-id="${order.id}">
-                                                <th>${order.id}</th>
-                                                <th>
+                                                <td>${order.id}</td>
+                                                <td>
                                                     <с:forEach var="product" items="${order.productList}">
                                                         ${product.category.name}
                                                         ${product.name}
                                                         (Qty)${product.quantity}
                                                         <br>
                                                     </с:forEach>
-                                                </th>
-                                                <th>${order.getUserDTO().login}</th>
-                                                <th>${order.getUserDTO().phoneNumber}</th>
-                                                <th id="PayOpt-${order.id}">${order.getPaymentOption()}</th>
-                                                <th id="DelOpt-${order.id}">${order.getDeliveryOption()}</th>
-                                                <th id="PayStat-${order.id}">${order.getPaymentStatus()}</th>
-                                                <th id="OrdStat-${order.id}">${order.getOrderStatus()}</th>
-                                                <th>
+                                                </td>
+                                                <td>${order.getUserDTO().firstName}</td>
+                                                <td>${order.getUserDTO().phoneNumber}</td>
+                                                <td id="PayOpt-${order.id}">${order.getPaymentOption()}</td>
+                                                <td id="DelOpt-${order.id}">${order.getDeliveryOption()}</td>
+                                                <td id="PayStat-${order.id}">${order.getPaymentStatus()}</td>
+                                                <td id="OrdStat-${order.id}">${order.getOrderStatus()}</td>
+                                                <td>
                                                     <button type="button" class="btn btn-md btn-primary order-edit">
                                                         Edit
                                                     </button>
-                                                </th>
+                                                </td>
                                             </tr>
                                         </с:forEach>
                                     </c:when>

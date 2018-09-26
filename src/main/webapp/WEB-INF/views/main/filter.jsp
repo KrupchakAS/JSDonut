@@ -228,6 +228,7 @@
                             <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated"
                                  data-wow-delay=".5s">
                                 <h3 style="float: right" class="item_price">${product.price}₽</h3>
+                                <span>(${product.category.name})</span>
                                 <h6>${product.name}</h6>
                                 <p>${product.description}</p>
                                 <span style="color: #c0a16b">Calories: ${product.calories}</span>
@@ -252,7 +253,7 @@
 
     <!--cart-items-->
     <div class="col-sm-8 cart-items">
-        <div class="Product-item ">
+        <div class="Product-item">
 
         </div>
     </div>

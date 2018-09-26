@@ -71,20 +71,20 @@
                                     <c:when test="${fillingList.size() > 0}">
                                         <с:forEach var="filling" items="${fillingList}">
                                             <tr class="filling-table__row"  data-id="${filling.id}">
-                                                <th>${filling.id}</th>
-                                                <th id="FilName-${filling.id}">${filling.name}</th>
-                                                <th id="FilCal-${filling.id}">${filling.calories}</th>
-                                                <th id="FilPr-${filling.id}">${filling.price}</th>
-                                                <th>
+                                                <td>${filling.id}</td>
+                                                <td id="FilName-${filling.id}">${filling.name}</td>
+                                                <td id="FilCal-${filling.id}">${filling.calories}</td>
+                                                <td id="FilPr-${filling.id}">${filling.price}</td>
+                                                <td>
                                                     <button type="button" class="btn btn-md btn-primary filling-edit">
                                                         Edit
                                                     </button>
-                                                </th>
-                                                <th>
+                                                </td>
+                                                <td>
                                                     <button type="button" class="btn btn-md btn-danger filling-delete">
                                                         Delete
                                                     </button>
-                                                </th>
+                                                </td>
                                             </tr>
                                         </с:forEach>
                                     </c:when>

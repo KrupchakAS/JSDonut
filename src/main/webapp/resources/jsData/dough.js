@@ -125,12 +125,12 @@ function addNewDough(doughObject) {
 
     $('#dough-table').find('tbody').append(
         '<tr  class="dough-table__row" data-id=' + doughObject.id + '>' +
-        '<th>' + doughObject.id + '</th>' +
-        '<th>' + doughObject.name + '</th>' +
-        '<th>' + doughObject.calories + '</th>' +
-        '<th>' + doughObject.price + '</th>' +
-        '<th>' + '<button type="button" class="btn btn-md btn-primary dough-edit">' + 'Edit' + '</button>' + '</th>' +
-        '<th>' + '<button type="button" class="btn btn-md btn-danger dough-delete">' + 'Delete' + '</button>' + '</th>' +
+        '<td>' + doughObject.id + '</td>' +
+        '<td>' + doughObject.name + '</td>' +
+        '<td>' + doughObject.calories + '</td>' +
+        '<td>' + doughObject.price + '</td>' +
+        '<td>' + '<button type="button" class="btn btn-md btn-primary dough-edit">' + 'Edit' + '</button>' + '</td>' +
+        '<td>' + '<button type="button" class="btn btn-md btn-danger dough-delete">' + 'Delete' + '</button>' + '</td>' +
         '</tr>');
 
     closeDough();
