@@ -221,12 +221,12 @@
             </div>
         </div>
     </div>
-    <div class="Orders col-sm-8 cart-items block__display-none">
+    <div class="Orders col-sm-6 cart-items block__display-none">
         <div class="container">
             <c:choose>
                 <c:when test="${orderList.size() > 0}">
                     <с:forEach  var="order" items="${orderList}">
-                        Order №${order.id} <h4>OrderStatus: (${order.getOrderStatus()})</h4> ------ <h4>PaymentStatus: (${order.getPaymentStatus()})</h4> ------<h3>Total Price: ${order.totalPrice}</h3>
+                        Order №${order.id} <h4>Order Status: (${order.getOrderStatus()})</h4><h4>Payment Status: (${order.getPaymentStatus()})</h4><h3 style="padding-left: 700px; color: #c0a16b">Total Price: ${order.totalPrice}</h3>
                         <с:forEach var="product" items="${order.productList}">
                             <div>
                                 <h6 style=" display: inline-block">${product.category.name}</h6>|<h5

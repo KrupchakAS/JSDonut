@@ -24,6 +24,10 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static app.controller.MainController.productDTOList;
 
 
@@ -105,7 +109,12 @@ public class UserController {
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         modelMap.addAttribute("user", userDTO);
         modelMap.addAttribute("userAddresses", addressService.getAddressesByUserId(userDTO.getId()));
-        modelMap.addAttribute("orderList", orderService.getOrdersByUserId(userDTO.getId()));
+        List<OrderDTO> orderDTOList = orderService.getOrdersByUserId(userDTO.getId());
+        List<OrderDTO> orderDTOListTotal = new ArrayList<>();
+        for(int i = orderDTOList.size()-1; i >= 0; i--){
+            orderDTOListTotal.add(orderDTOList.get(i));
+        }
+        modelMap.addAttribute("orderList", orderDTOListTotal);
         session.setAttribute("countProductInOrder", productDTOList.size());
         if (session.getAttribute("order") == null) {
             session.setAttribute("order", new OrderDTO());
