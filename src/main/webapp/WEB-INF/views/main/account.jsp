@@ -226,7 +226,8 @@
             <c:choose>
                 <c:when test="${orderList.size() > 0}">
                     <с:forEach  var="order" items="${orderList}">
-                        Order №${order.id} <h4>Order Status: (${order.getOrderStatus()})</h4><h4>Payment Status: (${order.getPaymentStatus()})</h4><h3 style="padding-left: 700px; color: #c0a16b">Total Price: ${order.totalPrice}</h3>
+                        Order №${order.id} <h4>Order Status: (${order.getOrderStatus()})</h4><h4>Payment Status: (${order.getPaymentStatus()})</h4>
+                        <br>
                         <с:forEach var="product" items="${order.productList}">
                             <div>
                                 <h6 style=" display: inline-block">${product.category.name}</h6>|<h5
@@ -234,6 +235,7 @@
                                     style="display: inline-block"> Quantity: ${product.quantity}</h6>
                             </div>
                         </с:forEach>
+                        <h3 style="padding-left: 700px;color: #c0a16b">Total Price: ${order.totalPrice}</h3>
                         <hr>
                     </с:forEach>
                 </c:when>
