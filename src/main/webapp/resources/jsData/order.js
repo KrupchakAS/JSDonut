@@ -8,7 +8,12 @@ function updateOrder(button) {
     pst.url = '/jsDonut/admin/order/updateOrder';
     pst.data = {};
     pst.data = getItemOrder();
-
+    pst.successFunction = function (order) {
+        $('#PayOpt').text(order.paymentOption);
+        $('#DelOpt').text(order.deliveryOption);
+        $('#PayStat').text(order.paymentStatus);
+        $('#OrdStat').text(order.orderStatus);
+    };
     console.log(pst.data);
 
     sendAjax(pst);

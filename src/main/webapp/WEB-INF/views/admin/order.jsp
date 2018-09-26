@@ -81,10 +81,10 @@
                                                 </th>
                                                 <th>${order.getUserDTO().login}</th>
                                                 <th>${order.getUserDTO().phoneNumber}</th>
-                                                <th>${order.getPaymentOption()}</th>
-                                                <th>${order.getDeliveryOption()}</th>
-                                                <th>${order.getPaymentStatus()}</th>
-                                                <th>${order.getOrderStatus()}</th>
+                                                <th id="PayOpt">${order.getPaymentOption()}</th>
+                                                <th id="DelOpt">${order.getDeliveryOption()}</th>
+                                                <th id="PayStat">${order.getPaymentStatus()}</th>
+                                                <th id="OrdStat">${order.getOrderStatus()}</th>
                                                 <th>
                                                     <button type="button" class="btn btn-md btn-primary order-edit">
                                                         Edit
