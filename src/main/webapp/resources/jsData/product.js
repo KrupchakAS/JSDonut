@@ -430,11 +430,11 @@ function getDataFormForOrder() {
     if($('#DeliveryAddresses option:selected').val() != 0){
         order.address.id = parseInt($('#DeliveryAddresses option:selected').val());
     } else {
-        order.address.city = $('#City').val();
-        order.address.street = $('#Street').val();
-        order.address.houseNumber = $('#HouseNumber').val();
-        order.address.apartmentNumber = $('#ApartmentNumber').val();
-        order.address.postCode = $('#PostCode').val();
+            order.address.city = $('#City').val();
+            order.address.street = $('#Street').val();
+            order.address.houseNumber = $('#HouseNumber').val();
+            order.address.apartmentNumber = $('#ApartmentNumber').val();
+            order.address.postCode = $('#PostCode').val();
     }
 
     return order;
@@ -464,13 +464,11 @@ function getPasswords() {
 
     var passwords = {};
 
-    passwords.password = $('.Password').val();
-    passwords.confirmPassword = $('.ConfirmPassword').val();
+    if($('.Password').val().length >= 4 && $('.ConfirmPassword').val().length >= 4){
+        passwords.password = $('.Password').val();
+        passwords.confirmPassword = $('.ConfirmPassword').val();
 
-    // if($('.Password').val() != $('.ConfirmPassword').val()){
-    //     swal('Password do not match.');
-    //     return false;
-    // }
+    }
 
     return passwords;
 }
