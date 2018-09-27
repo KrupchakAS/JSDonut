@@ -15,10 +15,10 @@ public class AddressDTO {
     @Size(min = 4, max = 16, message = "Field must be between 4 and 16 characters.")
     private String postCode;
 
-    @Size(min = 1, max = 10, message = "Field must be between 1 and 10 characters.")
+    @NotNull
     private Short houseNumber;
 
-    @Size(min = 1, max = 10, message = "Field must be between 1 and 10 characters.")
+    @NotNull
     private Short apartmentNumber;
 
     @NotNull

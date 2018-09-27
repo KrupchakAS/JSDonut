@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="с" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -192,8 +193,7 @@
                     </div>
                     <hr>
                 </с:forEach>
-                <h2 class="Total-price wow fadeInRight animated" style="float:right">
-                    TotalPrice: ${sessionScope.order.totalPrice}</h2>
+
                 <sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
                     <div class="row">
                         <div class="col-sm-3">
@@ -259,27 +259,50 @@
                                 <option value="2">DELIVERY</option>
                             </select>
                             <br>
-                            <div class="delivery-option form-group block__display-none">
-                                <form class="login">
-                                    <input style="margin-bottom: 5px" id="City" placeholder="City" minlength="2" maxlength="32" class="form-control">
-                                    <input style="margin-bottom: 5px" id="Street" placeholder="Street" minlength="2" maxlength="32" class="form-control">
-                                    <input style="margin-bottom: 5px" id="HouseNumber" placeholder="HouseNumber" minlength="1" maxlength="8"
-                                           class="form-control">
-                                    <input style="margin-bottom: 5px" id="ApartmentNumber" placeholder="ApartmentNumber" minlength="1" maxlength="8"
-                                           class="form-control">
-                                    <input style="margin-bottom: 5px" id="PostCode" placeholder="PostCode" minlength="2" maxlength="16"
-                                           class="form-control">
-                                </form>
+
+                            <div class="form-group AddressesDiv block__display-none">
+                                <label for="DeliveryAddresses">Addresses</label>
+                                <select id="DeliveryAddresses" class="form-control">
+                                    <option value="0" data-price="0" data-calories="0">Choose address</option>
+                                    <c:choose>
+                                        <c:when test="${userAddresses.size() > 0}">
+                                            <с:forEach var="address" items="${userAddresses}">
+                                                <option data-id="${address.id}" value="${address.id}">${address.city}, str.${address.street}, ${address.houseNumber}, ${address.apartmentNumber}.</option>
+                                            </с:forEach>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <option disabled selected>Addresses not found</option>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </select>
                             </div>
-                            <div class="PickUpDiv block__display-none"><p class="pickup-option">PICKUP: -> Saint-Petersburg str.Buharestskaya 100.</p></div>
                         </div>
                         <br>
+                        <div class="col-sm-3 delivery-option form-group block__display-none">
+                            <br><br><br>
+                                <div><label>Or Add new Address</label></div>
 
-                        <div class="col-sm-3"><h1 style="padding-left: 160px; padding-top: 10px"><a href="#"><span
-                                class="OrderSave label label-success">Save Order</span></a></h1>
+                            <form class="login">
+                                <input style="margin-bottom: 5px" id="City" placeholder="City" minlength="2" maxlength="32" class="form-control">
+                                <input style="margin-bottom: 5px" id="Street" placeholder="Street" minlength="2" maxlength="32" class="form-control">
+                                <input style="margin-bottom: 5px" id="HouseNumber" placeholder="HouseNumber" minlength="1" maxlength="8"
+                                       class="form-control">
+                                <input style="margin-bottom: 5px" id="ApartmentNumber" placeholder="ApartmentNumber" minlength="1" maxlength="8"
+                                       class="form-control">
+                                <input style="margin-bottom: 5px" id="PostCode" placeholder="PostCode" minlength="2" maxlength="16"
+                                       class="form-control">
+                            </form>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="PickUpDiv block__display-none"><p class="pickup-option">PICKUP: -> Saint-Petersburg str.Buharestskaya 100.</p></div>
                         </div>
 
                     </div>
+                    <h3 class="Total-price wow fadeInRight animated" style="padding-left: 955px; color: black">
+                        TotalPrice: ${sessionScope.order.totalPrice}₽</h3>
+
+                    <h2 style="padding-left: 1050px;"><a href="#"><span
+                            class="OrderSave label label-success">Save Order</span></a></h2>
                 </sec:authorize>
                 <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
                     <h3 style="padding-left: 660px; color: red">To Buy, You Must -> <a href="${contextPath}/jsDonut/login">Sign in</a>

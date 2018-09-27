@@ -15,6 +15,9 @@ public class Address {
     @NotNull(message = "Field can not be Null")
     @Column(name = "city")
     private String city;
+    @NotNull(message = "Field can not be Null")
+    @Column(name = "street")
+    private String street;
 
     @NotNull(message = "Field can not be Null")
     @Column(name = "postCode")
@@ -78,5 +81,13 @@ public class Address {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
     }
 }

@@ -603,12 +603,13 @@ $(document).ready(function () {
         var a = $('#DeliveryOption').val();
         if (a == '2') {
             $('.delivery-option').removeClass('block__display-none');
+            $('.AddressesDiv').removeClass('block__display-none');
             $('.PickUpDiv').addClass('block__display-none');
 
         } else {
             $('.PickUpDiv').removeClass('block__display-none');
             $('.delivery-option').addClass('block__display-none');
-
+            $('.AddressesDiv').addClass('block__display-none');
         }
     });
 });

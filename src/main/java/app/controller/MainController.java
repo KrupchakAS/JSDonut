@@ -65,7 +65,9 @@ public class MainController {
     }
 
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
-    public String cart(HttpSession session) {
+    public String cart(ModelMap modelMap,HttpSession session) {
+        UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
+        modelMap.addAttribute("userAddresses", addressService.getAddressesByUserId(userDTO.getId()));
         session.setAttribute("countProductInOrder", productDTOList.size());
         if (session.getAttribute("order") == null) {
             session.setAttribute("order", new OrderDTO());

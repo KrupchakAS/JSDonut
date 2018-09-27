@@ -108,7 +108,6 @@ public class UserController {
     public String account(ModelMap modelMap, HttpSession session) {
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         modelMap.addAttribute("user", userDTO);
-        modelMap.addAttribute("userAddresses", addressService.getAddressesByUserId(userDTO.getId()));
         List<OrderDTO> orderDTOList = orderService.getOrdersByUserId(userDTO.getId());
         List<OrderDTO> orderDTOListTotal = new ArrayList<>();
         for(int i = orderDTOList.size()-1; i >= 0; i--){
