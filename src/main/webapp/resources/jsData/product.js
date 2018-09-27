@@ -263,7 +263,7 @@ $(document).ready(function () {
 
 // GetProductsByParameters -------------------------------------------
 
-function getProductByParameters(categoryId,fillingId,doughId, productName, minPrice, maxPrice, selector) {
+function getProductByParameters(categoryId, fillingId, doughId, productName, minPrice, maxPrice, selector) {
     var ajax = {};
     ajax.data = {};
     if (categoryId !== null && categoryId.length > 0) {
@@ -307,10 +307,10 @@ function addProducts(productList) {
             $('.Product-item').append(
                 '<div class="single-info"> <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">' +
                 '<h3 style="float: right" class="item_price">' + productObject.price + '₽</h3>' +
-                '(<span>'+productObject.category.name+'</span>)'+
+                '(<span>' + productObject.category.name + '</span>)' +
                 '<h6 >' + productObject.name + '</h6>' +
                 '<p>' + productObject.description + '</p>' +
-                '<span>Filling: '+productObject.filling.name+'</span><span>Dough: '+productObject.dough.name+ '</span>'+
+                '<span>Filling: ' + productObject.filling.name + '</span><span>Dough: ' + productObject.dough.name + '</span>' +
                 '<span style="color: #c0a16b">Calories: ' + productObject.calories + '</span>' +
                 // '<p>Available quantity: '+productObject.quantity+'</p>'+
                 '<div style="float: right" class="quantity"><p style="color: red" class="qty">Select Quantity: </p><input min="1" type="number" value="1" name="item_quantity" class="item_quantity">' +
@@ -426,15 +426,18 @@ function getDataFormForOrder() {
 
     order.deliveryOption = $('#DeliveryOption option:selected').text();
     order.paymentOption = $('#PaymentOption option:selected').text();
-    order.address = {};
-    if($('#DeliveryAddresses option:selected').val() != 0){
-        order.address.id = parseInt($('#DeliveryAddresses option:selected').val());
-    } else {
+
+    if ($('#DeliveryOption option:selected').val() == 2) {
+        order.address = {};
+        if ($('#DeliveryAddresses option:selected').val() != 0) {
+            order.address.id = parseInt($('#DeliveryAddresses option:selected').val());
+        } else {
             order.address.city = $('#City').val();
             order.address.street = $('#Street').val();
             order.address.houseNumber = $('#HouseNumber').val();
             order.address.apartmentNumber = $('#ApartmentNumber').val();
             order.address.postCode = $('#PostCode').val();
+        }
     }
 
     return order;
@@ -464,7 +467,7 @@ function getPasswords() {
 
     var passwords = {};
 
-    if($('.Password').val().length >= 4 && $('.ConfirmPassword').val().length >= 4){
+    if ($('.Password').val().length >= 4 && $('.ConfirmPassword').val().length >= 4) {
         passwords.password = $('.Password').val();
         passwords.confirmPassword = $('.ConfirmPassword').val();
 
@@ -561,7 +564,7 @@ $(function () {
         var productName = $('.productName-Search').val();
         var minPrice = $('.minPrice-Search').val();
         var maxPrice = $('.maxPrice-Search').val();
-        getProductByParameters(categoryId,fillingId,doughId, productName, minPrice, maxPrice, $(this));
+        getProductByParameters(categoryId, fillingId, doughId, productName, minPrice, maxPrice, $(this));
         $('.DefaultProducts').addClass('block__display-none');
     });
 
@@ -634,6 +637,7 @@ $(document).ready(function () {
         }
     });
 });
+
 //---------------------------------
 function closeProduct() {
 

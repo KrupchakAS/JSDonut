@@ -146,13 +146,14 @@ public class MainController {
         AjaxDTO result = new AjaxDTO();
         OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-        if (order.getAddress().getId() != null) {
-            orderDTO.setAddress(addressService.getById(order.getAddress().getId()));
-        }
-        else {
-            order.getAddress().setUserDTO(userDTO);
-            addressService.create(order.getAddress());
-            orderDTO.setAddress(order.getAddress());
+        if (order.getAddress()!= null) {
+            if (order.getAddress().getId() != null) {
+                orderDTO.setAddress(addressService.getById(order.getAddress().getId()));
+            } else if (order.getAddress() != null) {
+                order.getAddress().setUserDTO(userDTO);
+                addressService.create(order.getAddress());
+                orderDTO.setAddress(order.getAddress());
+            }
         }
         orderDTO.setDeliveryOption(order.getDeliveryOption());
         orderDTO.setPaymentOption(order.getPaymentOption());

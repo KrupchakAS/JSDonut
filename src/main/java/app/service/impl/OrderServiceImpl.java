@@ -45,7 +45,9 @@ public class OrderServiceImpl implements OrderService {
             order.setTotalPrice(orderDTO.getTotalPrice());
             List<Product> productList = orderDTO.getProductList().stream().map(productDTO -> modelMapper.map(productDTO, Product.class)).collect(Collectors.toList());
             order.setProductList(productList);
-            order.setAddress(modelMapper.map(orderDTO.getAddress(), Address.class));
+            if(orderDTO.getAddress() != null) {
+                order.setAddress(modelMapper.map(orderDTO.getAddress(), Address.class));
+            }
             order.setUser(modelMapper.map(orderDTO.getUserDTO(), User.class));
             order.setDeliveryOption(new DeliveryOptionConverter().convertToDatabaseColumn(orderDTO.getDeliveryOption()));
             order.setPaymentOption(new PaymentOptionConverter().convertToDatabaseColumn(orderDTO.getPaymentOption()));
@@ -57,7 +59,7 @@ public class OrderServiceImpl implements OrderService {
             }
             orderDao.create(order);
         }
-        logger.info(String.format("Successfully saved order"));
+        logger.info("Successfully saved order");
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -71,7 +73,7 @@ public class OrderServiceImpl implements OrderService {
             order.setPaymentStatus(new PaymentStatusConverter().convertToDatabaseColumn(orderDTO.getPaymentStatus()));
             orderDao.update(order);
         }
-        logger.info(String.format("Successfully updated order"));
+        logger.info("Successfully updated order");
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -95,7 +97,7 @@ public class OrderServiceImpl implements OrderService {
             }
             orderDao.update(order);
         }
-        logger.info(String.format("Successfully updated order"));
+        logger.info("Successfully updated order");
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -103,7 +105,7 @@ public class OrderServiceImpl implements OrderService {
     public void delete(OrderDTO orderDTO) {
         if (orderDTO != null)
             orderDao.delete(modelMapper.map(orderDTO, Order.class));
-        logger.info(String.format("Successfully deleted order"));
+        logger.info("Successfully deleted order");
     }
 
     @Transactional(readOnly = true)
