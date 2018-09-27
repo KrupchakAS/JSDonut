@@ -18,5 +18,4 @@ public interface DoughService {
 
     List<DoughDTO> getAll();
 
-    DoughDTO getLastDough();
 }

@@ -38,7 +38,7 @@ public class ProductServiceImpl implements ProductService {
             Product product = modelMapper.map(productDTO, Product.class);
             productDao.create(product);
             productDTO.setId(product.getId());
-            logger.info(String.format("Successfully saved product"));
+            logger.info("Successfully saved product");
         }
         return productDTO;
     }
@@ -49,7 +49,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = productDao.getById(productDTO.getId());
         if (product != null)
             productDao.update(modelMapper.map(productDTO, Product.class));
-        logger.info(String.format("Successfully updated product"));
+        logger.info("Successfully updated product");
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -57,7 +57,7 @@ public class ProductServiceImpl implements ProductService {
     public void delete(ProductDTO productDTO) {
         if (productDTO != null)
             productDao.delete(modelMapper.map(productDTO, Product.class));
-        logger.info(String.format("Successfully deleted product"));
+        logger.info("Successfully deleted product");
     }
 
     @Transactional(readOnly = true)
@@ -90,18 +90,6 @@ public class ProductServiceImpl implements ProductService {
             return productList.stream().map(product -> modelMapper.map(product,ProductDTO.class)).collect(Collectors.toList());
         }
         return null;
-    }
-
-    @Transactional(readOnly = true)
-    @Override
-    public ProductDTO getLastProduct() {
-        List<Product> productList = productDao.getAll();
-        ProductDTO productDTO = modelMapper.map(productList.get(productList.size()-1),ProductDTO.class);
-        if(productDTO != null){
-            return productDTO;
-        }else {
-            return null;
-        }
     }
 
     @Transactional(readOnly = true)

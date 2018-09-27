@@ -35,7 +35,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             UserDTO userDTO = modelMapper.map(user, UserDTO.class);
             Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
             grantedAuthorities.add(new SimpleGrantedAuthority(userDTO.getRole().toString()));
-            logger.info(String.format(userDTO.getLogin() + " has role: "+ userDTO.getRole().toString()));
+            logger.info(userDTO.getLogin() + " has role: " + userDTO.getRole().toString());
             return new org.springframework.security.core.userdetails.User(userDTO.getLogin(), userDTO.getPassword(), grantedAuthorities);
         } else {
             return null;

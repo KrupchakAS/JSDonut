@@ -69,8 +69,6 @@ public class AddressServiceImpl implements AddressService {
         }
     }
 
-
-
     @Transactional(readOnly = true)
     @Override
     public List<AddressDTO> getAll() {
@@ -81,6 +79,7 @@ public class AddressServiceImpl implements AddressService {
         return null;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<AddressDTO> getAddressesByUserId(Integer id) {
         List<Address> addressList = addressDao.getAddressesByUserId(id);

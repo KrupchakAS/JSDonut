@@ -31,14 +31,14 @@ public class FillingServiceImpl implements FillingService {
     @Override
     public FillingDTO create(FillingDTO fillingDTO) {
         if (fillingDTO != null) {
-            Filling fillingex = fillingDao.getByName(fillingDTO.getName());
-            if (fillingex != null) {
+            Filling fillingEx = fillingDao.getByName(fillingDTO.getName());
+            if (fillingEx != null) {
                 throw new ObjectExistsException(String.format("Filling with name %s already exists", fillingDTO.getName()));
             }
             Filling filling = modelMapper.map(fillingDTO, Filling.class);
             fillingDao.create(filling);
             fillingDTO.setId(filling.getId());
-            logger.info(String.format("Successfully saved filling"));
+            logger.info("Successfully saved filling");
         }
         return fillingDTO;
     }
@@ -49,7 +49,7 @@ public class FillingServiceImpl implements FillingService {
         Filling filling = fillingDao.getById(fillingDTO.getId());
         if (filling != null)
             fillingDao.update(modelMapper.map(fillingDTO, Filling.class));
-        logger.info(String.format("Successfully updated filling"));
+        logger.info("Successfully updated filling");
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -57,7 +57,7 @@ public class FillingServiceImpl implements FillingService {
     public void delete(FillingDTO fillingDTO) {
         if (fillingDTO != null)
             fillingDao.delete(modelMapper.map(fillingDTO, Filling.class));
-        logger.info(String.format("Successfully deleted filling"));
+        logger.info("Successfully deleted filling");
     }
 
     @Transactional(readOnly = true)
@@ -93,15 +93,4 @@ public class FillingServiceImpl implements FillingService {
         }
     }
 
-    @Transactional(readOnly = true)
-    @Override
-    public FillingDTO getLastFilling() {
-        List<Filling> fillingList = fillingDao.getAll();
-        FillingDTO fillingDTO = modelMapper.map(fillingList.get(fillingList.size() - 1), FillingDTO.class);
-        if (fillingDTO != null) {
-            return fillingDTO;
-        } else {
-            return null;
-        }
-    }
 }

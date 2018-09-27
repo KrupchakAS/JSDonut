@@ -13,7 +13,6 @@ public interface AddressService {
 
     AddressDTO getById(Integer id);
 
-
     List<AddressDTO> getAll();
 
     List<AddressDTO> getAddressesByUserId (Integer id);

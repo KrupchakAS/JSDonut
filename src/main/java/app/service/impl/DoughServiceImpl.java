@@ -40,7 +40,7 @@ public class DoughServiceImpl implements DoughService {
             Dough dough = modelMapper.map(doughDTO, Dough.class);
             doughDao.create(dough);
             doughDTO.setId(dough.getId());
-            logger.info(String.format("Successfully saved dough"));
+            logger.info("Successfully saved dough");
         }
         return doughDTO;
     }
@@ -51,7 +51,7 @@ public class DoughServiceImpl implements DoughService {
         Dough corn = doughDao.getById(doughDTO.getId());
         if (corn != null)
             doughDao.update(modelMapper.map(doughDTO, Dough.class));
-        logger.info(String.format("Successfully updated dough"));
+        logger.info("Successfully updated dough");
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -59,7 +59,7 @@ public class DoughServiceImpl implements DoughService {
     public void delete(DoughDTO doughDTO) {
         if (doughDTO != null)
             doughDao.delete(modelMapper.map(doughDTO, Dough.class));
-        logger.info(String.format("Successfully deleted dough"));
+        logger.info("Successfully deleted dough");
     }
 
     @Transactional(readOnly = true)
@@ -90,18 +90,6 @@ public class DoughServiceImpl implements DoughService {
         List<Dough> cornList = doughDao.getAll();
         if (cornList != null) {
             return cornList.stream().map(corn -> modelMapper.map(corn, DoughDTO.class)).collect(Collectors.toList());
-        } else {
-            return null;
-        }
-    }
-
-    @Transactional(readOnly = true)
-    @Override
-    public DoughDTO getLastDough() {
-        List<Dough> doughList = doughDao.getAll();
-        DoughDTO doughDTO = modelMapper.map(doughList.get(doughList.size() - 1), DoughDTO.class);
-        if (doughDTO != null) {
-            return doughDTO;
         } else {
             return null;
         }

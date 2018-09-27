@@ -15,6 +15,7 @@ public class Address {
     @NotNull(message = "Field can not be Null")
     @Column(name = "city")
     private String city;
+
     @NotNull(message = "Field can not be Null")
     @Column(name = "street")
     private String street;

@@ -33,14 +33,14 @@ public class SprinkleServiceImpl implements SprinkleService {
     @Override
     public SprinkleDTO create(SprinkleDTO sprinkleDTO) {
         if (sprinkleDTO != null) {
-            Sprinkle sprinkleex = sprinkleDao.getByName(sprinkleDTO.getName());
-            if(sprinkleex != null){
+            Sprinkle sprinkleEx = sprinkleDao.getByName(sprinkleDTO.getName());
+            if(sprinkleEx != null){
                 throw new ObjectExistsException(String.format("Sprinkle with name %s already exists", sprinkleDTO.getName()));
             }
             Sprinkle sprinkle= modelMapper.map(sprinkleDTO, Sprinkle.class);
             sprinkleDao.create(sprinkle);
             sprinkleDTO.setId(sprinkle.getId());
-            logger.info(String.format("Successfully saved sprinkle"));
+            logger.info("Successfully saved sprinkle");
         }
         return sprinkleDTO;
     }
@@ -51,7 +51,7 @@ public class SprinkleServiceImpl implements SprinkleService {
         Sprinkle sprinkle = sprinkleDao.getById(sprinkleDTO.getId());
         if (sprinkle != null)
             sprinkleDao.update(modelMapper.map(sprinkleDTO, Sprinkle.class));
-        logger.info(String.format("Successfully updated sprinkle"));
+        logger.info("Successfully updated sprinkle");
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -59,7 +59,7 @@ public class SprinkleServiceImpl implements SprinkleService {
     public void delete(SprinkleDTO sprinkleDTO) {
         if (sprinkleDTO != null)
             sprinkleDao.delete(modelMapper.map(sprinkleDTO, Sprinkle.class));
-        logger.info(String.format("Successfully deleted sprinkle"));
+        logger.info("Successfully deleted sprinkle");
     }
 
     @Transactional(readOnly = true)
@@ -92,18 +92,6 @@ public class SprinkleServiceImpl implements SprinkleService {
             return sprinkleList.stream().map(sprinkle -> modelMapper.map(sprinkle, SprinkleDTO.class)).collect(Collectors.toList());
         } else {
             return new ArrayList<>();
-        }
-    }
-
-    @Transactional(readOnly = true)
-    @Override
-    public SprinkleDTO getLastSprinkle() {
-        List<Sprinkle> sprinkleList = sprinkleDao.getAll();
-        SprinkleDTO sprinkleDTO = modelMapper.map(sprinkleList.get(sprinkleList.size()-1),SprinkleDTO.class);
-        if(sprinkleDTO != null){
-            return sprinkleDTO;
-        }else {
-            return null;
         }
     }
 }

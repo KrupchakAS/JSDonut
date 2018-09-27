@@ -19,8 +19,6 @@ public interface ProductService {
 
     List<ProductDTO> getAll();
 
-    ProductDTO getLastProduct();
-
     List<ProductDTO> getAllByCategory(Integer categoryId);
 
     List<ProductDTO> getProductsByParameters(Integer categoryId,Integer fillingId, Integer doughId, String productsName, Integer minPrice, Integer maxPrice);

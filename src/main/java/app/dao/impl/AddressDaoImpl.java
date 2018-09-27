@@ -12,6 +12,7 @@ import java.util.List;
 
 @Repository
 public class AddressDaoImpl extends GenericDaoImpl<Address> implements AddressDao {
+
     @Override
     public List<Address> getAddressesByUserId(Integer userId) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();

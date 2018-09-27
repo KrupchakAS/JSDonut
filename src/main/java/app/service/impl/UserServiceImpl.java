@@ -33,10 +33,11 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void create(UserDTO userDto) {
-        if (userDto != null)
+        if (userDto != null) {
             userDto.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
-        userDao.create(modelMapper.map(userDto, User.class));
-        logger.info(String.format("Successfully saved user %s", userDto.getLogin()));
+            userDao.create(modelMapper.map(userDto, User.class));
+            logger.info(String.format("Successfully saved user %s", userDto.getLogin()));
+        }
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -45,7 +46,7 @@ public class UserServiceImpl implements UserService {
         User user = userDao.getById(userDTO.getId());
         if (user != null)
             userDTO.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
-            userDao.update(modelMapper.map(userDTO,User.class));
+        userDao.update(modelMapper.map(userDTO, User.class));
         logger.info(String.format("Successfully update user %s", userDTO.getLogin()));
     }
 
@@ -54,15 +55,16 @@ public class UserServiceImpl implements UserService {
     public void updateInfo(UserDTO userDTO) {
         User user = userDao.getById(userDTO.getId());
         if (user != null)
-        userDao.update(modelMapper.map(userDTO,User.class));
+            userDao.update(modelMapper.map(userDTO, User.class));
         logger.info(String.format("Successfully update user %s", userDTO.getLogin()));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     public void delete(UserDTO userDTO) {
-        if (userDTO != null)
+        if (userDTO != null) {
             userDao.delete(modelMapper.map(userDTO, User.class));
-        logger.info(String.format("Successfully delete user %s", userDTO.getLogin()));
+            logger.info(String.format("Successfully delete user %s", userDTO.getLogin()));
+        }
     }
 
     @Transactional(readOnly = true)
@@ -70,9 +72,8 @@ public class UserServiceImpl implements UserService {
     public UserDTO getById(Integer id) {
         User user = userDao.getById(id);
         if (user != null) {
-            logger.debug(String.format("Successfully got user with id %d", user.getId()));
+            logger.info(String.format("Successfully got user with id %d and login %s", user.getId(), user.getLogin()));
             return modelMapper.map(user, UserDTO.class);
-
         } else {
             return null;
         }
@@ -83,7 +84,7 @@ public class UserServiceImpl implements UserService {
     public UserDTO getByLogin(String login) {
         User user = userDao.getByLogin(login);
         if (user != null) {
-            logger.debug(String.format("Successfully got user with login %s", user.getLogin()));
+            logger.info(String.format("Successfully got user with login %s", user.getLogin()));
             return modelMapper.map(user, UserDTO.class);
         } else {
             return null;
@@ -95,7 +96,7 @@ public class UserServiceImpl implements UserService {
     public UserDTO getByEmail(String email) {
         User user = userDao.getByEmail(email);
         if (user != null) {
-            logger.debug(String.format("Successfully got user with email %s", user.getEmail()));
+            logger.info(String.format("Successfully got user with email %s", user.getEmail()));
             return modelMapper.map(user, UserDTO.class);
         } else {
             return null;

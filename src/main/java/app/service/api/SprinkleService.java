@@ -17,6 +17,4 @@ public interface SprinkleService {
     SprinkleDTO getByName(String name);
 
     List<SprinkleDTO> getAll();
-
-    SprinkleDTO getLastSprinkle();
 }

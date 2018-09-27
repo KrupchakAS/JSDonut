@@ -12,6 +12,7 @@ import java.util.List;
 
 @Repository
 public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
+
     @Override
     public List<Order> getOrdersByUserId(Integer userId) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();

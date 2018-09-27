@@ -16,16 +16,12 @@ import java.util.List;
 @Repository
 public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
 
-    @PersistenceContext
-    protected EntityManager entityManager;
-
     @Override
     public User getByLogin(String login) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<User> criteriaQuery = criteriaBuilder.createQuery(User.class);
         Root<User> userRoot = criteriaQuery.from(User.class);
         if (login != null) {
-            //criteriaQuery.select(userRoot.get("login"));
             criteriaQuery.where(entityManager.getCriteriaBuilder().equal(userRoot.get("login"), login));
         }
         List<User> list = entityManager.createQuery(criteriaQuery).getResultList();
@@ -44,7 +40,6 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
         Root<User> userRoot = criteriaQuery.from(User.class);
 
         if (email != null) {
-            //criteriaQuery.select(userRoot.get("email"));
             criteriaQuery.where(entityManager.getCriteriaBuilder().equal(userRoot.get("email"), email));
         }
         List<User> list = entityManager.createQuery(criteriaQuery).getResultList();
