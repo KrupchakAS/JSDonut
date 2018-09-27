@@ -52,10 +52,10 @@ public class User {
     @Column(name = "role")
     private Role role = Role.ROLE_USER;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     private List<Order> ordersList;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user")
     private Set<Address> addressList;
 
     public Integer getId() {

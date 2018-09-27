@@ -31,11 +31,12 @@ public class AddressServiceImpl implements AddressService {
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
-    public void create(AddressDTO addressDTO) {
-        if (addressDTO != null)
-            addressDao.create(modelMapper.map(addressDTO, Address.class));
+    public AddressDTO create(AddressDTO addressDTO) {
+        Address address = modelMapper.map(addressDTO, Address.class);
+        addressDao.create(address);
+        addressDTO.setId(address.getId());
         logger.info("Successfully saved address");
-
+        return addressDTO;
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

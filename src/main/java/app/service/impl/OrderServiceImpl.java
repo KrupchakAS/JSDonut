@@ -1,9 +1,11 @@
 package app.service.impl;
 
 import app.dao.api.OrderDao;
+import app.dto.AddressDTO;
 import app.dto.OrderDTO;
 import app.dto.ProductDTO;
 import app.dto.UserDTO;
+import app.entity.Address;
 import app.entity.Order;
 import app.entity.Product;
 import app.entity.User;
@@ -43,6 +45,7 @@ public class OrderServiceImpl implements OrderService {
             order.setTotalPrice(orderDTO.getTotalPrice());
             List<Product> productList = orderDTO.getProductList().stream().map(productDTO -> modelMapper.map(productDTO, Product.class)).collect(Collectors.toList());
             order.setProductList(productList);
+            order.setAddress(modelMapper.map(orderDTO.getAddress(), Address.class));
             order.setUser(modelMapper.map(orderDTO.getUserDTO(), User.class));
             order.setDeliveryOption(new DeliveryOptionConverter().convertToDatabaseColumn(orderDTO.getDeliveryOption()));
             order.setPaymentOption(new PaymentOptionConverter().convertToDatabaseColumn(orderDTO.getPaymentOption()));
@@ -79,6 +82,7 @@ public class OrderServiceImpl implements OrderService {
             order.setTotalPrice(orderDTO.getTotalPrice());
             List<Product> productList = orderDTO.getProductList().stream().map(productDTO -> modelMapper.map(productDTO, Product.class)).collect(Collectors.toList());
             order.setProductList(productList);
+            order.setAddress(modelMapper.map(orderDTO.getAddress(),Address.class));
             order.setUser(modelMapper.map(orderDTO.getUserDTO(), User.class));
             order.setDeliveryOption(new DeliveryOptionConverter().convertToDatabaseColumn(orderDTO.getDeliveryOption()));
             order.setPaymentOption(new PaymentOptionConverter().convertToDatabaseColumn(orderDTO.getPaymentOption()));
@@ -107,6 +111,7 @@ public class OrderServiceImpl implements OrderService {
     public OrderDTO getById(Integer id) {
         Order order = orderDao.getById(id);
         OrderDTO orderDTO = new OrderDTO();
+        orderDTO.setAddress(modelMapper.map(order.getAddress(),AddressDTO.class));
         orderDTO.setId(order.getId());
         orderDTO.setTotalPrice(order.getTotalPrice());
         orderDTO.setProductList(order.getProductList().stream().map(product -> modelMapper.map(product, ProductDTO.class)).collect(Collectors.toList()));
@@ -136,6 +141,9 @@ public class OrderServiceImpl implements OrderService {
                 List<ProductDTO> productList = orderList.get(i).getProductList().stream().map(product -> modelMapper.map(product, ProductDTO.class)).collect(Collectors.toList());
                 orderDTO.setProductList(productList);
                 orderDTO.setTotalPrice(orderList.get(i).getTotalPrice());
+
+                AddressDTO addressDTO = modelMapper.map(orderList.get(i).getAddress(), AddressDTO.class);
+                orderDTO.setAddress(addressDTO);
                 UserDTO userDTO = modelMapper.map(orderList.get(i).getUser(),UserDTO.class);
                 orderDTO.setUserDTO(userDTO);
                 orderDTOList.add(orderDTO);
@@ -162,6 +170,8 @@ public class OrderServiceImpl implements OrderService {
 
                 List<ProductDTO> productList = orderList.get(i).getProductList().stream().map(product -> modelMapper.map(product, ProductDTO.class)).collect(Collectors.toList());
                 orderDTO.setProductList(productList);
+                AddressDTO addressDTO = modelMapper.map(orderList.get(i).getAddress(), AddressDTO.class);
+                orderDTO.setAddress(addressDTO);
                 orderDTO.setTotalPrice(orderList.get(i).getTotalPrice());
                 UserDTO userDTO = modelMapper.map(orderList.get(i).getUser(), UserDTO.class);
                 orderDTO.setUserDTO(userDTO);

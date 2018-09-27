@@ -109,11 +109,13 @@ public class UserController {
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         modelMap.addAttribute("user", userDTO);
         List<OrderDTO> orderDTOList = orderService.getOrdersByUserId(userDTO.getId());
-        List<OrderDTO> orderDTOListTotal = new ArrayList<>();
-        for(int i = orderDTOList.size()-1; i >= 0; i--){
-            orderDTOListTotal.add(orderDTOList.get(i));
+        if(orderDTOList != null) {
+            List<OrderDTO> orderDTOListTotal = new ArrayList<>();
+            for (int i = orderDTOList.size() - 1; i >= 0; i--) {
+                orderDTOListTotal.add(orderDTOList.get(i));
+            }
+            modelMap.addAttribute("orderList", orderDTOListTotal);
         }
-        modelMap.addAttribute("orderList", orderDTOListTotal);
         session.setAttribute("countProductInOrder", productDTOList.size());
         if (session.getAttribute("order") == null) {
             session.setAttribute("order", new OrderDTO());

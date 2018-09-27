@@ -26,6 +26,8 @@ public class OrderDTO {
 
     private UserDTO user;
 
+    private AddressDTO address;
+
     public Integer getId() {
         return id;
     }
@@ -88,5 +90,13 @@ public class OrderDTO {
 
     public void setTotalPrice(Float totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public AddressDTO getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressDTO address) {
+        this.address = address;
     }
 }

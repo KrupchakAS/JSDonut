@@ -428,13 +428,16 @@ function getDataFormForOrder() {
 
     order.deliveryOption = $('#DeliveryOption option:selected').text();
     order.paymentOption = $('#PaymentOption option:selected').text();
-
-    // var addressDTO = {};
-    // order.addressDTO.city = $('#City').val();
-    // order.addressDTO.street =$('#Street').val();
-    // order.addressDTO.houseNumber =$('#HouseNumber').val();
-    // order.addressDTO.apartmentNumber = $('#ApartmentNumber').val();
-    // order.addressDTO.postCode = $('#PostCode').val();
+    order.address = {};
+    if($('#DeliveryAddresses option:selected').val() != 0){
+        order.address.id = parseInt($('#DeliveryAddresses option:selected').val());
+    } else {
+        order.address.city = $('#City').val();
+        order.address.street = $('#Street').val();
+        order.address.houseNumber = $('#HouseNumber').val();
+        order.address.apartmentNumber = $('#ApartmentNumber').val();
+        order.address.postCode = $('#PostCode').val();
+    }
 
     return order;
 }
@@ -610,6 +613,15 @@ $(document).ready(function () {
             $('.PickUpDiv').removeClass('block__display-none');
             $('.delivery-option').addClass('block__display-none');
             $('.AddressesDiv').addClass('block__display-none');
+        }
+    });
+    $('.addressForm').removeClass('block__display-none');
+    $('#DeliveryAddresses').on('change', function () {
+        var a = $('#DeliveryAddresses').val();
+        if (a == '0') {
+            $('.addressForm').removeClass('block__display-none');
+        } else {
+            $('.addressForm').addClass('block__display-none');
         }
     });
 });

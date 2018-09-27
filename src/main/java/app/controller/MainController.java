@@ -59,13 +59,13 @@ public class MainController {
         if (session.getAttribute("order") == null) {
             session.setAttribute("order", new OrderDTO());
         }
-        modelMap.addAttribute("allProducts",productService.getAll());
+        modelMap.addAttribute("allProducts", productService.getAll());
         modelMap.addAttribute("categoryList", categoryService.getAll());
         return "main/filter";
     }
 
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
-    public String cart(ModelMap modelMap,HttpSession session) {
+    public String cart(ModelMap modelMap, HttpSession session) {
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         modelMap.addAttribute("userAddresses", addressService.getAddressesByUserId(userDTO.getId()));
         session.setAttribute("countProductInOrder", productDTOList.size());
@@ -136,9 +136,14 @@ public class MainController {
         AjaxDTO result = new AjaxDTO();
         OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-
-        //addressService.create(addressDTO);
-
+        if (order.getAddress().getId() != null) {
+            orderDTO.setAddress(addressService.getById(order.getAddress().getId()));
+        }
+        else {
+            order.getAddress().setUserDTO(userDTO);
+            addressService.create(order.getAddress());
+            orderDTO.setAddress(order.getAddress());
+        }
         orderDTO.setDeliveryOption(order.getDeliveryOption());
         orderDTO.setPaymentOption(order.getPaymentOption());
         orderDTO.setUserDTO(userDTO);

@@ -270,9 +270,6 @@
                                                 <option data-id="${address.id}" value="${address.id}">${address.city}, str.${address.street}, ${address.houseNumber}, ${address.apartmentNumber}.</option>
                                             </с:forEach>
                                         </c:when>
-                                        <c:otherwise>
-                                            <option disabled selected>Addresses not found</option>
-                                        </c:otherwise>
                                     </c:choose>
                                 </select>
                             </div>
@@ -281,8 +278,7 @@
                         <div class="col-sm-3 delivery-option form-group block__display-none">
                             <br><br><br>
                                 <div><label>Or Add new Address</label></div>
-
-                            <form class="login">
+                            <form class="addressForm login block__display-none">
                                 <input style="margin-bottom: 5px" id="City" placeholder="City" minlength="2" maxlength="32" class="form-control">
                                 <input style="margin-bottom: 5px" id="Street" placeholder="Street" minlength="2" maxlength="32" class="form-control">
                                 <input style="margin-bottom: 5px" id="HouseNumber" placeholder="HouseNumber" minlength="1" maxlength="8"

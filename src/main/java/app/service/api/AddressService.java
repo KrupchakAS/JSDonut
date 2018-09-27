@@ -5,7 +5,7 @@ import app.dto.AddressDTO;
 import java.util.List;
 
 public interface AddressService {
-    void create(AddressDTO addressDTO);
+    AddressDTO create(AddressDTO addressDTO);
 
     void update(AddressDTO addressDTO);
 
