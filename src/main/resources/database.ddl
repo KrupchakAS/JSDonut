@@ -124,7 +124,7 @@ CREATE TABLE products (
 INSERT INTO users VALUES
   (1, 'admin', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', 'Андрей', 'Крупчак', '9650024321',
    'krupchakas@yandex.ru', '1989/02/23', 'ROLE_ADMIN');
-INSERT INTO address VALUES (1, 'Россия', 'Санкт-Петербург', 'Бухарестская', '114', '24', '192288', '1');
+INSERT INTO address VALUES (1, 'Санкт-Петербург', 'Бухарестская', '114', '24', '192288', '1');
 
 INSERT INTO category VALUE (1, 'Донатсы');
 INSERT INTO category VALUE (2, 'Пироженные');

@@ -46,7 +46,7 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
     }
 
     @Override
-    public List<Product> getProductsByParameters(Integer categoryId, String productName, Integer minPrice, Integer maxPrice) {
+    public List<Product> getProductsByParameters(Integer categoryId, Integer fillingId, Integer doughId, String productName, Integer minPrice, Integer maxPrice) {
 
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
@@ -55,6 +55,12 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
         List<Predicate> params = new ArrayList<>();
         if (categoryId != null) {
             params.add(criteriaBuilder.equal(productRoot.get("category"), categoryId));
+        }
+        if (fillingId != null) {
+            params.add(criteriaBuilder.equal(productRoot.get("filling"), fillingId));
+        }
+        if (doughId != null) {
+            params.add(criteriaBuilder.equal(productRoot.get("dough"), doughId));
         }
         if (productName != null) {
             params.add(criteriaBuilder.like(productRoot.get("name"), "%"+productName+"%"));

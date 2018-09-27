@@ -187,8 +187,7 @@
             <div class="row">
                 <h3 style="color: #00a6d6;  margin-left: 50px">Filter Panel</h3>
                 <form style="padding: 10px; margin: 30px" class=" form-group-sm">
-                    <select style="margin: 10px;" id="category" required
-                            class="selec2-plugin form-control categoryId-Search">
+                    <select style="margin: 10px;" id="category" class="selec2-plugin form-control categoryId-Search">
                         <option disabled value="0" selected>Category</option>
                         <c:choose>
                             <c:when test="${categoryList.size() > 0}">
@@ -198,6 +197,34 @@
                             </c:when>
                             <c:otherwise>
                                 <option disabled selected>Category not found</option>
+                            </c:otherwise>
+                        </c:choose>
+                    </select>
+
+                    <select style="margin: 10px;" id="filling" class="selec2-plugin form-control fillingId-Search">
+                        <option disabled value="0" selected>Filling</option>
+                        <c:choose>
+                            <c:when test="${fillingList.size() > 0}">
+                                <с:forEach var="filling" items="${fillingList}">
+                                    <option data-id="${filling.id}" value="${filling.id}">${filling.name}</option>
+                                </с:forEach>
+                            </c:when>
+                            <c:otherwise>
+                                <option disabled selected>Filling not found</option>
+                            </c:otherwise>
+                        </c:choose>
+                    </select>
+
+                    <select style="margin: 10px;" id="dough" class="selec2-plugin form-control doughId-Search">
+                        <option disabled value="0" selected>Dough</option>
+                        <c:choose>
+                            <c:when test="${doughList.size() > 0}">
+                                <с:forEach var="dough" items="${doughList}">
+                                    <option data-id="${dough.id}" value="${dough.id}">${dough.name}</option>
+                                </с:forEach>
+                            </c:when>
+                            <c:otherwise>
+                                <option disabled selected>Dough not found</option>
                             </c:otherwise>
                         </c:choose>
                     </select>
@@ -231,6 +258,7 @@
                                 <span>(${product.category.name})</span>
                                 <h6>${product.name}</h6>
                                 <p>${product.description}</p>
+                                <span>Filling: ${product.filling.name}</span><span>Dough: ${product.dough.name}</span>
                                 <span style="color: #c0a16b">Calories: ${product.calories}</span>
                                 <div style="float: right" class="quantity"><p style="color: red" class="qty">Select
                                     Quantity: </p><input min="1" type="number" value="1" name="item_quantity"

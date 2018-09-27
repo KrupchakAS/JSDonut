@@ -263,20 +263,17 @@ $(document).ready(function () {
 
 // GetProductsByParameters -------------------------------------------
 
-function getProducts(categoryId, productName, minPrice, maxPrice, selector) {
-    /*if (isNumber(minPrice) || isNumber(maxPrice)) {
-
-    } else {
-        swal("Product price is not number");
-    }*/
-    getProductByParameters(categoryId, productName, minPrice, maxPrice, selector);
-}
-
-function getProductByParameters(categoryId, productName, minPrice, maxPrice, selector) {
+function getProductByParameters(categoryId,fillingId,doughId, productName, minPrice, maxPrice, selector) {
     var ajax = {};
     ajax.data = {};
-    if (categoryId.length > 0) {
+    if (categoryId !== null && categoryId.length > 0) {
         ajax.data.categoryId = parseInt(categoryId);
+    }
+    if (fillingId !== null && fillingId.length > 0) {
+        ajax.data.fillingId = parseInt(fillingId);
+    }
+    if (doughId !== null && doughId.length > 0) {
+        ajax.data.doughId = parseInt(doughId);
     }
     if (productName.length > 0) {
         ajax.data.productName = productName;
@@ -313,6 +310,7 @@ function addProducts(productList) {
                 '(<span>'+productObject.category.name+'</span>)'+
                 '<h6 >' + productObject.name + '</h6>' +
                 '<p>' + productObject.description + '</p>' +
+                '<span>Filling: '+productObject.filling.name+'</span><span>Dough: '+productObject.dough.name+ '</span>'+
                 '<span style="color: #c0a16b">Calories: ' + productObject.calories + '</span>' +
                 // '<p>Available quantity: '+productObject.quantity+'</p>'+
                 '<div style="float: right" class="quantity"><p style="color: red" class="qty">Select Quantity: </p><input min="1" type="number" value="1" name="item_quantity" class="item_quantity">' +
@@ -469,7 +467,7 @@ function getPasswords() {
     passwords.password = $('.Password').val();
     passwords.confirmPassword = $('.ConfirmPassword').val();
 
-    // if($('.Password').val() !== $('.ConfirmPassword').val()){
+    // if($('.Password').val() != $('.ConfirmPassword').val()){
     //     swal('Password do not match.');
     //     return false;
     // }
@@ -560,10 +558,12 @@ $(function () {
     $(document).on('click', '.products-search', function () {
         $('.Product-item').empty();
         var categoryId = $('.categoryId-Search').val();
+        var fillingId = $('.fillingId-Search').val();
+        var doughId = $('.doughId-Search').val();
         var productName = $('.productName-Search').val();
         var minPrice = $('.minPrice-Search').val();
         var maxPrice = $('.maxPrice-Search').val();
-        getProducts(categoryId, productName, minPrice, maxPrice, $(this));
+        getProductByParameters(categoryId,fillingId,doughId, productName, minPrice, maxPrice, $(this));
         $('.DefaultProducts').addClass('block__display-none');
     });
 
@@ -599,7 +599,7 @@ $(function () {
 });
 
 
-// Options
+// OptionsInCart
 $(document).ready(function () {
     $('.PickUpDiv').removeClass('block__display-none');
     $('#DeliveryOption').on('change', function () {
@@ -636,7 +636,7 @@ $(document).ready(function () {
         }
     });
 });
-
+//---------------------------------
 function closeProduct() {
 
     $('.container-head').text("Product list");
