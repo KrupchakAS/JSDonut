@@ -78,13 +78,6 @@ public class ProductController {
         return result;
     }
 
-    @RequestMapping(value = "/product/getLastProduct", method = RequestMethod.GET)
-    @ResponseBody
-    public AjaxDTO getLastProduct() {
-        AjaxDTO result = new AjaxDTO();
-        result.setData(productService.getLastProduct());
-        return result;
-    }
 
     @RequestMapping(value = "/product/getProductByCategory", method = RequestMethod.GET)
     @ResponseBody

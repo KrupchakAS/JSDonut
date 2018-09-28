@@ -68,11 +68,4 @@ public class FillingController {
         return result;
     }
 
-    @RequestMapping(value = "/filling/getLastFilling", method = RequestMethod.GET)
-    @ResponseBody
-    public AjaxDTO getLastFilling() {
-        AjaxDTO result = new AjaxDTO();
-        result.setData(fillingService.getLastFilling());
-        return result;
-    }
 }

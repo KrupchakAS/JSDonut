@@ -104,8 +104,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<ProductDTO> getProductsByParameters(Integer categoryId, Integer fillingId, Integer doughId, String productsName, Integer minPrice, Integer maxPrice) {
-        List<Product> productList =  productDao.getProductsByParameters(categoryId, fillingId , doughId, productsName, minPrice, maxPrice);
+    public List<ProductDTO> getProductsByParameters(Integer categoryId, Integer fillingId, Integer doughId,List<Integer> sprinkleIdList, String productsName, Integer minPrice, Integer maxPrice) {
+        List<Product> productList =  productDao.getProductsByParameters(categoryId, fillingId , doughId, sprinkleIdList, productsName, minPrice, maxPrice);
         if (productList != null){
             return productList.stream().map(product -> modelMapper.map(product,ProductDTO.class)).collect(Collectors.toList());
         }

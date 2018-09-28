@@ -67,11 +67,4 @@ public class SprinkleController {
         return result;
     }
 
-    @RequestMapping(value = "/sprinkle/getLastSprinkle", method = RequestMethod.GET)
-    @ResponseBody
-    public AjaxDTO getLastSprinkle() {
-        AjaxDTO result = new AjaxDTO();
-        result.setData(sprinkleService.getLastSprinkle());
-        return result;
-    }
 }

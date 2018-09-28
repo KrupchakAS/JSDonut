@@ -130,17 +130,6 @@
                             href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
-            <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
-                <ul>
-                    <li><a href="#"> </a></li>
-                    <li><a href="#" class="pin"> </a></li>
-                    <li><a href="#" class="in"> </a></li>
-                    <li><a href="#" class="be"> </a></li>
-                    <li><a href="#" class="you"> </a></li>
-                    <li><a href="#" class="vimeo"> </a></li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
         </div>
     </div>
     <div class="header-two navbar navbar-default"><!--header-two-->
@@ -149,7 +138,7 @@
                 <ul>
                     <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+7 965 002 43 21</li>
                     <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                            href="mailto:info@example.com">KrupchakAS@yandex.ru</a></li>
+                            href="#">KrupchakAS@yandex.ru</a></li>
                 </ul>
             </div>
             <div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
@@ -158,11 +147,6 @@
                 </h1>
             </div>
             <div class="nav navbar-nav navbar-right header-two-right">
-                <div class="header-right my-account">
-                    <a href="contact.jsp"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                        CONTACT US </a>
-                </div>
-                <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -325,22 +309,14 @@
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
                 <h3>Popular</h3>
                 <ul>
-                    <li><a href="about.jsp">About Us</a></li>
-                    <li><a href="products.jsp">new</a></li>
-                    <li><a href="contact.jsp">Contact Us</a></li>
-                    <li><a href="faq.jsp">FAQ</a></li>
-                    <li><a href="filter.jsp">Wishlist</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">new</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Wishlist</a></li>
                 </ul>
             </div>
-            <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".9s">
-                <h3>Subscribe</h3>
-                <p>Sign Up Now For More Information <br> About Our Company </p>
-                <form>
-                    <input type="text" placeholder="Enter Your Email" required="">
-                    <input type="submit" value="Go">
-                </form>
-            </div>
-            <div class="clearfix"></div>
+
         </div>
     </div>
 </div>

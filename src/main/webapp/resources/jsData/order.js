@@ -63,13 +63,6 @@ function getOrderById(id, selector) {
 
 // insert into form
 
-function setSelect2Plugin() {
-    $('.selec2-plugin:not(.setect2-plugin__setted)').each(function () {
-        $(this).addClass('setect2-plugin__setted');
-        $(this).select2();
-    });
-}
-
 function openOrderFormUpdate(orderObject) {
 
     $('.order-id').val(orderObject.id);

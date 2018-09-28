@@ -112,7 +112,6 @@ function openProductFormUpdate(productObject) {
     $('.product__filling-id').val(productObject.filling.id);
     $('.product__dough-id').val(productObject.dough.id);
 
-
     $('.container-head').text("Category: " + productObject.category.name + " Product: " + productObject.name);
     $('.product-list').addClass('block__display-none');
     $('.product-add').addClass('block__display-none');
@@ -174,7 +173,6 @@ function getDataFromForm() {
     product.filling.id = parseInt($('.product__filling-id').val());
     product.dough = {};
     product.dough.id = parseInt($('.product__dough-id').val());
-    product.List = [];
     product.sprinkleList = [];
     $.each($('.selectpicker.form-control.product__sprinkle-id').val(), function (index, value) {
         product.sprinkleList.push({id: parseInt(value)});
@@ -263,9 +261,10 @@ $(document).ready(function () {
 
 // GetProductsByParameters -------------------------------------------
 
-function getProductByParameters(categoryId, fillingId, doughId, productName, minPrice, maxPrice, selector) {
+function getProductByParameters(categoryId, fillingId, doughId,sprinkleIdList, productName, minPrice, maxPrice, selector) {
     var ajax = {};
     ajax.data = {};
+
     if (categoryId !== null && categoryId.length > 0) {
         ajax.data.categoryId = parseInt(categoryId);
     }
@@ -274,6 +273,9 @@ function getProductByParameters(categoryId, fillingId, doughId, productName, min
     }
     if (doughId !== null && doughId.length > 0) {
         ajax.data.doughId = parseInt(doughId);
+    }
+    if(sprinkleIdList !== null && sprinkleIdList.length > 0){
+        ajax.data.sprinkleIdList = sprinkleIdList;
     }
     if (productName.length > 0) {
         ajax.data.productName = productName;
@@ -284,6 +286,7 @@ function getProductByParameters(categoryId, fillingId, doughId, productName, min
     if (maxPrice.length > 0) {
         ajax.data.maxPrice = parseInt(maxPrice);
     }
+console.log(ajax.data);
 
     ajax.type = "GET";
     ajax.url = "/jsDonut/getProductsByParameters";
@@ -323,7 +326,6 @@ function addProducts(productList) {
 
 }
 
-
 // AddProductToOrder ----------------------------------------------
 
 function addToCart(id, selector) {
@@ -351,7 +353,6 @@ function AddedToOrder(order) {
     console.log(order);
     swal('Product Add to Cart');
     $('.CountProduct').text(order.productList.length.toString());
-    // $('.PriceForAllProducts').text(order.totalPrice.toString());
 }
 
 //ClearCart
@@ -564,7 +565,11 @@ $(function () {
         var productName = $('.productName-Search').val();
         var minPrice = $('.minPrice-Search').val();
         var maxPrice = $('.maxPrice-Search').val();
-        getProductByParameters(categoryId, fillingId, doughId, productName, minPrice, maxPrice, $(this));
+        var sprinkleIdList = [];
+        $.each($('.sprinkleId-Search').val(), function (index, value) {
+            sprinkleIdList.push(parseInt(value));
+        });
+        getProductByParameters(categoryId, fillingId, doughId, sprinkleIdList, productName, minPrice, maxPrice, $(this));
         $('.DefaultProducts').addClass('block__display-none');
     });
 

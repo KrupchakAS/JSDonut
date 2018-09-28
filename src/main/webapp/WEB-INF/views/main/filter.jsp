@@ -39,7 +39,7 @@
     <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/jsData/product.js"></script>
     <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/bootstrap.js"></script>
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
     <!--//js-->
     <!--cart-->
     <script src="${contextPath}/resources/assetsMainPages/js/simpleCart.js"></script>
@@ -129,17 +129,7 @@
                             href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
-            <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
-                <ul>
-                    <li><a href="#"> </a></li>
-                    <li><a href="#" class="pin"> </a></li>
-                    <li><a href="#" class="in"> </a></li>
-                    <li><a href="#" class="be"> </a></li>
-                    <li><a href="#" class="you"> </a></li>
-                    <li><a href="#" class="vimeo"> </a></li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
+
         </div>
     </div>
     <div class="header-two navbar navbar-default"><!--header-two-->
@@ -148,7 +138,7 @@
                 <ul>
                     <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+7 965 002 43 21</li>
                     <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                            href="mailto:info@example.com">KrupchakAS@yandex.ru</a></li>
+                            href="#">KrupchakAS@yandex.ru</a></li>
                 </ul>
             </div>
             <div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
@@ -157,10 +147,6 @@
                 </h1>
             </div>
             <div class="nav navbar-nav navbar-right header-two-right">
-                <div class="header-right my-account">
-                    <a href="contact.jsp"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                        CONTACT US </a>
-                </div>
                 <div class="header-right cart">
                     <a href="${contextPath}/jsDonut/cart"><span class="glyphicon glyphicon-shopping-cart"
                                                                 aria-hidden="true"></span></a>
@@ -181,13 +167,13 @@
 </div>
 <div class="row">
     <div style="border-right: 1px solid #ccc; padding-bottom : 5px; padding-top: 5px; margin-right: 30px;"
-         class="col-sm-2 top-nav navbar navbar-default ">
+         class="col-sm-3 top-nav navbar navbar-default ">
 
         <div>
             <div class="row">
                 <h3 style="color: #00a6d6;  margin-left: 50px">Filter Panel</h3>
-                <form style="padding: 10px; margin: 30px" class=" form-group-sm">
-                    <select style="margin: 10px;" id="category" class="selec2-plugin form-control categoryId-Search">
+                <form style="padding: 5px; margin: 30px" class=" form-group-sm">
+                    <select style="margin-bottom: 5px" id="category" class="form-control categoryId-Search">
                         <option disabled value="0" selected>Category</option>
                         <c:choose>
                             <c:when test="${categoryList.size() > 0}">
@@ -201,7 +187,7 @@
                         </c:choose>
                     </select>
 
-                    <select style="margin: 10px;" id="filling" class="selec2-plugin form-control fillingId-Search">
+                    <select style="margin-bottom: 5px" id="filling" class="form-control fillingId-Search">
                         <option disabled value="0" selected>Filling</option>
                         <c:choose>
                             <c:when test="${fillingList.size() > 0}">
@@ -215,7 +201,7 @@
                         </c:choose>
                     </select>
 
-                    <select style="margin: 10px;" id="dough" class="selec2-plugin form-control doughId-Search">
+                    <select style="margin-bottom: 5px" id="dough" class="form-control doughId-Search">
                         <option disabled value="0" selected>Dough</option>
                         <c:choose>
                             <c:when test="${doughList.size() > 0}">
@@ -229,16 +215,30 @@
                         </c:choose>
                     </select>
 
-                    <input style="margin: 10px;" class="form-control productName-Search" type="text"
+                    <select  id="sprinkles" name="sprinkles[]" class="form-control sprinkleId-Search" multiple="multiple">
+                        <option disabled value="0" >Sprinkle</option>
+                        <c:choose>
+                            <c:when test="${sprinkleList.size() > 0}">
+                                <с:forEach var="sprinkle" items="${sprinkleList}">
+                                    <option data-id="${sprinkle.id}" value="${sprinkle.id}">${sprinkle.name}</option>
+                                </с:forEach>
+                            </c:when>
+                            <c:otherwise>
+                                <option disabled selected>Sprinkle not found</option>
+                            </c:otherwise>
+                        </c:choose>
+                    </select>
+
+                    <input style="margin-bottom: 5px;margin-top: 5px" class="form-control productName-Search" type="text"
                            placeholder="Product name">
 
-                    <input style="margin: 10px;" class=" form-control minPrice-Search" type="number"
+                    <input style="margin-bottom: 5px" class=" form-control minPrice-Search" type="number"
                            placeholder="min Price">
 
-                    <input style="margin: 10px;" class=" form-control maxPrice-Search" type="number"
+                    <input style="margin-bottom: 5px" class=" form-control maxPrice-Search" type="number"
                            placeholder="max Price">
 
-                    <h2 style="margin: 10px;"><a href="#"><span
+                    <h2 ><a href="#"><span
                             class="products-search label label-info">Search</span></a></h2>
 
                 </form>
@@ -299,11 +299,11 @@
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
                 <h3>Popular</h3>
                 <ul>
-                    <li><a href="about.jsp">About Us</a></li>
-                    <li><a href="products.jsp">new</a></li>
-                    <li><a href="contact.jsp">Contact Us</a></li>
-                    <li><a href="faq.jsp">FAQ</a></li>
-                    <li><a href="filter.jsp">Wishlist</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">new</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Wishlist</a></li>
                 </ul>
             </div>
             <div class="clearfix"></div>
@@ -313,6 +313,7 @@
 <!--//footer-->
 <!--search jQuery-->
 <script src="${contextPath}/resources/assetsMainPages/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <!--//search jQuery-->
 <!--smooth-scrolling-of-move-up-->
 <script type="text/javascript">
@@ -329,5 +330,8 @@
 
     });
 </script>
+<script>$(document).ready(function() {
+    $('.sprinkleId-Search').select2();
+});</script>
 </body>
 </html>

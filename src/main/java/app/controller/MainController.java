@@ -47,17 +47,21 @@ public class MainController {
     @Autowired
     private DoughService doughService;
 
+    @Autowired
+    private SprinkleService sprinkleService;
+
     @RequestMapping(value = "/getProductsByParameters", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO getProductsByParameters(
             @RequestParam(value = "categoryId", required = false) Integer categoryId,
             @RequestParam(value = "fillingId", required = false) Integer fillingId,
             @RequestParam(value = "doughId", required = false) Integer doughId,
+            @RequestParam(value = "sprinkleIdList", required = false) List<Integer> sprinkleIdList,
             @RequestParam(value = "productName", required = false) String productName,
             @RequestParam(value = "minPrice", required = false) Integer minPrice,
             @RequestParam(value = "maxPrice", required = false) Integer maxPrice) {
         AjaxDTO result = new AjaxDTO();
-        result.setData(productService.getProductsByParameters(categoryId, fillingId,  doughId, productName, minPrice, maxPrice));
+        result.setData(productService.getProductsByParameters(categoryId, fillingId,  doughId, sprinkleIdList, productName, minPrice, maxPrice));
         return result;
     }
 
@@ -71,6 +75,7 @@ public class MainController {
         modelMap.addAttribute("categoryList", categoryService.getAll());
         modelMap.addAttribute("fillingList", fillingService.getAll());
         modelMap.addAttribute("doughList", doughService.getAll());
+        modelMap.addAttribute("sprinkleList", sprinkleService.getAll());
         return "main/filter";
     }
 

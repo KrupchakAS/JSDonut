@@ -96,17 +96,8 @@
                     <p>Hi, ${pageContext.request.userPrincipal.name}    <a href="/jsDonut/account">My Account</a>     <a href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
-            <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
-                <ul>
-                    <li><a href="#"> </a></li>
-                    <li><a href="#" class="pin"> </a></li>
-                    <li><a href="#" class="in"> </a></li>
-                    <li><a href="#" class="be"> </a></li>
-                    <li><a href="#" class="you"> </a></li>
-                    <li><a href="#" class="vimeo"> </a></li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
+
+
         </div>
     </div>
     <div class="header-two navbar navbar-default"><!--header-two-->
@@ -115,7 +106,7 @@
                 <ul>
                     <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+7 965 002 43 21</li>
                     <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                            href="mailto:info@example.com">KrupchakAS@yandex.ru</a></li>
+                            href="#">KrupchakAS@yandex.ru</a></li>
                 </ul>
             </div>
             <div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
@@ -123,10 +114,7 @@
                 </h1>
             </div>
             <div class="nav navbar-nav navbar-right header-two-right">
-                <div class="header-right my-account">
-                    <a href="contact.jsp"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                         CONTACT US </a>
-                </div>
+
                 <div class="header-right cart">
                     <a href="${contextPath}/jsDonut/cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                     <h4>
@@ -181,15 +169,15 @@
                     <div class="flexslider">
                         <ul class="slides">
                             <li>
-                                <h4>-15%</h4>
+                                <h4></h4>
                                 <img src="${contextPath}/resources/assetsMainPages/images/b1.jpg" alt="">
                             </li>
                             <li>
-                                <h4>-20%</h4>
+                                <h4></h4>
                                 <img src="${contextPath}/resources/assetsMainPages/images/b2.jpg" alt="">
                             </li>
                             <li>
-                                <h4>-20%</h4>
+                                <h4></h4>
                                 <img src="${contextPath}/resources/assetsMainPages/images/b3.jpg" alt="">
                             </li>
                         </ul>
@@ -216,264 +204,10 @@
 </a>
 <!--//banner-->
 <!--new-->
-<div class="new">
-    <div class="container">
-        <div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
-            <h3 class="title">New <span>Arrivals</span></h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit curabitur </p>
-        </div>
-        <div class="new-info">
-            <div class="col-md-3 new-grid simpleCart_shelfItem wow flipInY animated" data-wow-delay=".5s">
-                <div class="new-top">
-                    <a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g9.jpg" class="img-responsive" alt=""/></a>
-                    <div class="new-text">
-                        <ul>
-                            <li><a class="item_add" href=""> Add to cart</a></li>
-                            <li><a href="single.jsp">Quick View </a></li>
-                            <li><a href="products.jsp">Show Details </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="new-bottom">
-                    <h5><a class="name" href="single.jsp">Baby Red Dress </a></h5>
-                    <div class="rating">
-                        <span class="on">☆</span>
-                        <span class="on">☆</span>
-                        <span class="on">☆</span>
-                        <span class="on">☆</span>
-                        <span>☆</span>
-                    </div>
-                    <div class="ofr">
-                        <p class="pric1">
-                            <del>$2000.00</del>
-                        </p>
-                        <p><span class="item_price">$500.00</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 new-grid new-mdl simpleCart_shelfItem wow flipInY animated" data-wow-delay=".7s">
-                <div class="new-top">
-                    <a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g10.jpg" class="img-responsive" alt=""/></a>
-                    <div class="new-text">
-                        <ul>
-                            <li><a class="item_add" href=""> Add to cart</a></li>
-                            <li><a href="single.jsp">Quick View </a></li>
-                            <li><a href="products.jsp">Show Details </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="new-bottom">
-                    <h5><a class="name" href="single.jsp">Crocs Sandals </a></h5>
-                    <div class="rating">
-                        <span class="on">☆</span>
-                        <span class="on">☆</span>
-                        <span class="on">☆</span>
-                        <span class="on">☆</span>
-                        <span>☆</span>
-                    </div>
-                    <div class="ofr">
-                        <p><span class="item_price">$50.00</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 new-grid new-mdl1 simpleCart_shelfItem wow flipInY animated" data-wow-delay=".9s">
-                <div class="new-top">
-                    <a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g11.jpg" class="img-responsive" alt=""/></a>
-                    <div class="new-text">
-                        <ul>
-                            <li><a class="item_add" href=""> Add to cart</a></li>
-                            <li><a href="single.jsp">Quick View </a></li>
-                            <li><a href="products.jsp">Show Details </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="new-bottom">
-                    <h5><a class="name" href="single.jsp">Pink Sip Cup </a></h5>
-                    <div class="rating">
-                        <span class="on">☆</span>
-                        <span class="on">☆</span>
-                        <span class="on">☆</span>
-                        <span class="on">☆</span>
-                        <span>☆</span>
-                    </div>
-                    <div class="ofr">
-                        <p><span class="item_price">$150.00</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 new-grid simpleCart_shelfItem wow flipInY animated" data-wow-delay="1.1s">
-                <div class="new-top">
-                    <a href="single.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g12.jpg" class="img-responsive" alt=""/></a>
-                    <div class="new-text">
-                        <ul>
-                            <li><a class="item_add" href=""> Add to cart</a></li>
-                            <li><a href="single.jsp">Quick View </a></li>
-                            <li><a href="products.jsp">Show Details </a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="new-bottom">
-                    <h5><a class="name" href="single.jsp">Child Print Bike </a></h5>
-                    <div class="rating">
-                        <span class="on">☆</span>
-                        <span class="on">☆</span>
-                        <span class="on">☆</span>
-                        <span class="on">☆</span>
-                        <span>☆</span>
-                    </div>
-                    <div class="ofr">
-                        <p class="pric1">
-                            <del>$5050.00</del>
-                        </p>
-                        <p><span class="item_price">$3020.00</span></p>
-                    </div>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
+
 <!--//new-->
 <!--gallery-->
-<div class="gallery">
-    <div class="container">
-        <div class="title-info wow fadeInUp animated" data-wow-delay=".5s">
-            <h3 class="title">Popular<span> Products</span></h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit curabitur </p>
-        </div>
-        <div class="gallery-info">
-            <div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay=".5s">
-                <a href="products.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g1.jpg" class="img-responsive" alt=""/></a>
-                <div class="gallery-text simpleCart_shelfItem">
-                    <h5><a class="name" href="single.jsp">Baby Girls' Dress </a></h5>
-                    <p><span class="item_price">100$</span></p>
-                    <h4 class="sizes">Sizes: <a href="#"> s</a> - <a href="#">m</a> - <a href="#">l</a> - <a
-                            href="#">xl</a></h4>
-                    <ul>
-                        <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-                        <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart"
-                                                               aria-hidden="true"></span></a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty"
-                                              aria-hidden="true"></span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 gallery-grid gallery-grid1 wow flipInY animated" data-wow-delay=".7s">
-                <a href="products.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g2.jpg" class="img-responsive" alt=""/></a>
-                <div class="gallery-text simpleCart_shelfItem">
-                    <h5><a class="name" href="single.jsp">Pokemon Onesies</a></h5>
-                    <p><span class="item_price">79$</span></p>
-                    <h4 class="sizes">Sizes: <a href="#"> s</a> - <a href="#">m</a> - <a href="#">l</a> - <a
-                            href="#">xl</a></h4>
-                    <ul>
-                        <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-                        <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart"
-                                                               aria-hidden="true"></span></a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty"
-                                              aria-hidden="true"></span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 gallery-grid gallery-grid2 wow flipInY animated" data-wow-delay=".9s">
-                <a href="products.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g3.jpg" class="img-responsive" alt=""/></a>
-                <div class="gallery-text simpleCart_shelfItem">
-                    <h5><a class="name" href="single.jsp">Doctor Play Set</a></h5>
-                    <p><span class="item_price">30$</span></p>
-                    <h4 class="sizes">Sizes: <a href="#"> s</a> - <a href="#">m</a> - <a href="#">l</a> - <a
-                            href="#">xl</a></h4>
-                    <ul>
-                        <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-                        <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart"
-                                                               aria-hidden="true"></span></a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty"
-                                              aria-hidden="true"></span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay="1.1s">
-                <a href="products.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g4.jpg" class="img-responsive" alt=""/></a>
-                <div class="gallery-text simpleCart_shelfItem">
-                    <h5><a class="name" href="single.jsp">Cap & Gloves Set</a></h5>
-                    <p><span class="item_price">15$</span></p>
-                    <h4 class="sizes">Sizes: <a href="#"> s</a> - <a href="#">m</a> - <a href="#">l</a> - <a
-                            href="#">xl</a></h4>
-                    <ul>
-                        <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-                        <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart"
-                                                               aria-hidden="true"></span></a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty"
-                                              aria-hidden="true"></span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay=".5s">
-                <a href="products.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g5.jpg" class="img-responsive" alt=""/></a>
-                <div class="gallery-text simpleCart_shelfItem">
-                    <h5><a class="name" href="single.jsp">Full Sleeves Romper</a></h5>
-                    <p><span class="item_price">60$</span></p>
-                    <h4 class="sizes">Sizes: <a href="#"> s</a> - <a href="#">m</a> - <a href="#">l</a> - <a
-                            href="#">xl</a></h4>
-                    <ul>
-                        <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-                        <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart"
-                                                               aria-hidden="true"></span></a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty"
-                                              aria-hidden="true"></span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 gallery-grid gallery-grid1 wow flipInY animated" data-wow-delay=".7s">
-                <a href="products.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g6.jpg" class="img-responsive" alt=""/></a>
-                <div class="gallery-text simpleCart_shelfItem">
-                    <h5><a class="name" href="single.jsp">Party Wear Frock</a></h5>
-                    <p><span class="item_price">80$</span></p>
-                    <h4 class="sizes">Sizes: <a href="#"> s</a> - <a href="#">m</a> - <a href="#">l</a> - <a
-                            href="#">xl</a></h4>
-                    <ul>
-                        <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-                        <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart"
-                                                               aria-hidden="true"></span></a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty"
-                                              aria-hidden="true"></span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 gallery-grid gallery-grid2 wow flipInY animated" data-wow-delay=".9s">
-                <a href="products.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g7.jpg" class="img-responsive" alt=""/></a>
-                <div class="gallery-text simpleCart_shelfItem">
-                    <h5><a class="name" href="single.jsp">Bear Diaper Bag</a></h5>
-                    <p><span class="item_price">110$</span></p>
-                    <h4 class="sizes">Sizes: <a href="#"> s</a> - <a href="#">m</a> - <a href="#">l</a> - <a
-                            href="#">xl</a></h4>
-                    <ul>
-                        <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-                        <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart"
-                                                               aria-hidden="true"></span></a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty"
-                                              aria-hidden="true"></span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3 gallery-grid wow flipInY animated" data-wow-delay="1.1s">
-                <a href="products.jsp"><img src="${contextPath}/resources/assetsMainPages/images/g8.jpg" class="img-responsive" alt=""/></a>
-                <div class="gallery-text simpleCart_shelfItem">
-                    <h5><a class="name" href="single.jsp">Battery Police Bike</a></h5>
-                    <p><span class="item_price">300$</span></p>
-                    <h4 class="sizes">Sizes: <a href="#"> s</a> - <a href="#">m</a> - <a href="#">l</a> - <a
-                            href="#">xl</a></h4>
-                    <ul>
-                        <li><a href="#"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span></a></li>
-                        <li><a class="item_add" href="#"><span class="glyphicon glyphicon glyphicon-shopping-cart"
-                                                               aria-hidden="true"></span></a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon glyphicon-heart-empty"
-                                              aria-hidden="true"></span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-</div>
+
 <!--//trend-->
 <!--footer-->
 <div class="footer">
@@ -487,11 +221,11 @@
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
                 <h3>Popular</h3>
                 <ul>
-                    <li><a href="about.jsp">About Us</a></li>
-                    <li><a href="products.jsp">new</a></li>
-                    <li><a href="contact.jsp">Contact Us</a></li>
-                    <li><a href="faq.jsp">FAQ</a></li>
-                    <li><a href="filter.jsp">Wishlist</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">new</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Wishlist</a></li>
                 </ul>
             </div>
             <div class="clearfix"></div>

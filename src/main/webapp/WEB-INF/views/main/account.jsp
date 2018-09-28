@@ -127,16 +127,6 @@
                             href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
-            <div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated" data-wow-delay=".5s">
-                <ul>
-                    <li><a href="#"> </a></li>
-                    <li><a href="#" class="pin"> </a></li>
-                    <li><a href="#" class="in"> </a></li>
-                    <li><a href="#" class="be"> </a></li>
-                    <li><a href="#" class="you"> </a></li>
-                    <li><a href="#" class="vimeo"> </a></li>
-                </ul>
-            </div>
             <div class="clearfix"></div>
         </div>
     </div>
@@ -146,7 +136,7 @@
                 <ul>
                     <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+7 965 002 43 21</li>
                     <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-                            href="mailto:info@example.com">KrupchakAS@yandex.ru</a></li>
+                            href="#">KrupchakAS@yandex.ru</a></li>
                 </ul>
             </div>
             <div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
@@ -155,10 +145,7 @@
                 </h1>
             </div>
             <div class="nav navbar-nav navbar-right header-two-right">
-                <div class="header-right my-account">
-                    <a href="contact.jsp"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                        CONTACT US </a>
-                </div>
+
                 <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
@@ -225,8 +212,18 @@
         <div class="container">
             <c:choose>
                 <c:when test="${orderList.size() > 0}">
-                    <с:forEach  var="order" items="${orderList}">
-                        Order №${order.id} <h4>Order Status: (${order.getOrderStatus()})</h4><h4>Payment Status: (${order.getPaymentStatus()})</h4>
+                    <с:forEach var="order" items="${orderList}">
+                        Order №${order.id} <h4 style="color: #ce8483">Order Status: (${order.getOrderStatus()})</h4><h4 style="color: #ce8483">Payment
+                        Status:(${order.getPaymentStatus()})</h4>
+                        <c:choose>
+                            <c:when test="${order.getAddress() != null}">
+                                <h4 style="color: #ce8483">Address Delivery:
+                                    (${order.getAddress().city},${order.getAddress().street},${order.getAddress().houseNumber},${order.getAddress().apartmentNumber})</h4>
+                            </c:when>
+                            <c:otherwise>
+                                <h4 style="color: #ce8483">PICKUP: -> Saint-Petersburg str.Buharestskaya 100.</h4>
+                            </c:otherwise>
+                        </c:choose>
                         <br>
                         <с:forEach var="product" items="${order.productList}">
                             <div>
@@ -261,21 +258,14 @@
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
                 <h3>Popular</h3>
                 <ul>
-                    <li><a href="about.jsp">About Us</a></li>
-                    <li><a href="products.jsp">new</a></li>
-                    <li><a href="contact.jsp">Contact Us</a></li>
-                    <li><a href="faq.jsp">FAQ</a></li>
-                    <li><a href="filter.jsp">Wishlist</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">new</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Wishlist</a></li>
                 </ul>
             </div>
-            <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".9s">
-                <h3>Subscribe</h3>
-                <p>Sign Up Now For More Information <br> About Our Company </p>
-                <form>
-                    <input type="text" placeholder="Enter Your Email" required="">
-                    <input type="submit" value="Go">
-                </form>
-            </div>
+
             <div class="clearfix"></div>
         </div>
     </div>
