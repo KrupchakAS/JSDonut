@@ -140,12 +140,17 @@
                 </ul>
             </div>
             <div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
-                <h1><a href="${contextPath}/jsDonut/welcome">Welcome to Donut Shop<b></b><span class="tag">Everything for your Sweet Dream </span>
-                </a>
-                </h1>
+                <h1><a href="${contextPath}/jsDonut/welcome">Welcome to Donut Shop<b></b><span class="tag">Everything for your Sweet Dream </span></a></h1>
             </div>
             <div class="nav navbar-nav navbar-right header-two-right">
-
+                <div class="header-right cart">
+                    <a href="${contextPath}/jsDonut/cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a><h4>
+                    (<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)</h4>
+                    <div class="cart-box">
+                        <p><a href="#" class="ClearButton simpleCart_empty">Empty cart</a></p>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
                 <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
@@ -214,14 +219,13 @@
                 <c:when test="${orderList.size() > 0}">
                     <с:forEach var="order" items="${orderList}">
                         Order №${order.id} <h4 style="color: #ce8483">Order Status: (${order.getOrderStatus()})</h4><h4 style="color: #ce8483">Payment
-                        Status:(${order.getPaymentStatus()})</h4>
+                        Status: (${order.getPaymentStatus()})</h4>
                         <c:choose>
                             <c:when test="${order.getAddress() != null}">
-                                <h4 style="color: #ce8483">Address Delivery:
-                                    (${order.getAddress().city},${order.getAddress().street},${order.getAddress().houseNumber},${order.getAddress().apartmentNumber})</h4>
+                                <h4 style="color: #ce8483">Address Delivery: (${order.getAddress().city},${order.getAddress().street},${order.getAddress().houseNumber},${order.getAddress().apartmentNumber})</h4>
                             </c:when>
                             <c:otherwise>
-                                <h4 style="color: #ce8483">PICKUP: -> Saint-Petersburg str.Buharestskaya 100.</h4>
+                                <h4 style="color: #ce8483">PICKUP: (Saint-Petersburg str.Buharestskaya 100.)</h4>
                             </c:otherwise>
                         </c:choose>
                         <br>

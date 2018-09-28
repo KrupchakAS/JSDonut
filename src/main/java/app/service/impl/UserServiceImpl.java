@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService {
         if (user != null)
             userDTO.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
         userDao.update(modelMapper.map(userDTO, User.class));
-        logger.info(String.format("Successfully update user %s", userDTO.getLogin()));
+        logger.info(String.format("Successfully update password user %s", userDTO.getLogin()));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
         User user = userDao.getById(userDTO.getId());
         if (user != null)
             userDao.update(modelMapper.map(userDTO, User.class));
-        logger.info(String.format("Successfully update user %s", userDTO.getLogin()));
+        logger.info(String.format("Successfully update info user %s", userDTO.getLogin()));
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

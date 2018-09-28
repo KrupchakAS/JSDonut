@@ -179,7 +179,7 @@
                 </с:forEach>
 
                 <sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
-                    <div class="row">
+                    <div class="Order-Info row">
                         <div class="col-sm-3">
                             <label for="PaymentOption">Payment Option</label>
                             <select id="PaymentOption"

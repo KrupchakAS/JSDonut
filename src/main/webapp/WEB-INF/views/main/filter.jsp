@@ -148,12 +148,8 @@
             </div>
             <div class="nav navbar-nav navbar-right header-two-right">
                 <div class="header-right cart">
-                    <a href="${contextPath}/jsDonut/cart"><span class="glyphicon glyphicon-shopping-cart"
-                                                                aria-hidden="true"></span></a>
-                    <h4>
-                        <%--<span class="PriceForAllProducts">${sessionScope.order.totalPrice.toString()}</span>--%>
-                        (<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)
-                    </h4>
+                    <a href="${contextPath}/jsDonut/cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a><h4>
+                        (<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)</h4>
                     <div class="cart-box">
                         <p><a href="#" class="ClearButton simpleCart_empty">Empty cart</a></p>
                         <div class="clearfix"></div>
