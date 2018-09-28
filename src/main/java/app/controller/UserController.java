@@ -149,4 +149,8 @@ public class UserController {
         return result;
     }
 
+    @RequestMapping(value = "/403", method = RequestMethod.GET)
+    public String page403(){
+        return "403";
+    }
 }

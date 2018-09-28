@@ -175,7 +175,7 @@
                 <form style="padding: 10px; margin: 30px" class=" form-group-sm">
                     <h4 style="margin: 10px;"><a href="#"><span
                             class="ChangeUserInfo label label-default">Change my Info</span></a></h4>
-                    <h4 style="margin: 10px;"><a href="#"><span class="ChangeYourPassword label label-default">Change Password</span></a>
+                    <h4 style="margin: 10px;"><a href="#"><span class="ChangeYourPassword label label-default">Change my Password</span></a>
                     </h4>
                     <h4 style="margin: 10px;"><a href="#"><span
                             class="MyOrders label label-default">My Orders</span></a></h4>

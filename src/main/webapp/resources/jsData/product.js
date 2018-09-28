@@ -471,7 +471,8 @@ function getPasswords() {
     if ($('.Password').val().length >= 4 && $('.ConfirmPassword').val().length >= 4) {
         passwords.password = $('.Password').val();
         passwords.confirmPassword = $('.ConfirmPassword').val();
-
+    }else {
+        swal('!!!');
     }
 
     return passwords;

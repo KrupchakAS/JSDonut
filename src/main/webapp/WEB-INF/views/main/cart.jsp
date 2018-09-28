@@ -290,7 +290,7 @@
                 </sec:authorize>
             </c:when>
             <c:otherwise>
-                <span>Cart is empty</span>
+                <h2>Cart is empty</h2>
             </c:otherwise>
         </c:choose>
     </div>
@@ -339,11 +339,5 @@
 
     });
 </script>
-<!--//smooth-scrolling-of-move-up-->
-<!--Bootstrap core JavaScript
-================================================== -->
-<!--Placed at the end of the document so the pages load faster -->
-
-
 </body>
 </html>

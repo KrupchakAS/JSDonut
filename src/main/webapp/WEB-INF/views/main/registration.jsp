@@ -159,7 +159,7 @@
                     <div class="has-error">
                         <form:errors path="phoneNumber"></form:errors></div>
                 </div>
-                <div>
+                <div style="padding-bottom: 7px">
                     <span>Enter your birthday:</span>
                     <form:input type="date" value="2000-01-01" min="1900-01-01" max="2004-01-01" path="birthDate" class="form-control"
                                 placeholder="BirthDate"></form:input>
