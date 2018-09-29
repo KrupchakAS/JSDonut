@@ -78,9 +78,13 @@
                                     </td>
                                     <td>
                                         <c:choose>
-                                            <c:when test="${top10users.size() > 0}">
+                                            <c:when  test="${top10users.size() > 0}">
+
+                                                <c:set var="count" value="0" scope="page"/>
                                                 <с:forEach var="user" items="${top10users}">
-                                                    ${user.firstName}-${user.surName}
+
+                                                    <c:set var="count" value="${count+1}" scope="page"/>
+                                                    ${count})${user.firstName}-${user.surName}
                                                     <br>
                                                 </с:forEach>
                                             </c:when>
