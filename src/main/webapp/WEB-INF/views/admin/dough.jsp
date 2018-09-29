@@ -32,6 +32,7 @@
     </div>
     <div class="divider"></div>
     <ul class="nav menu">
+        <li class="${statisticActive}"><a href="${contextPath}/jsDonut/admin/statistic"> Statistic</a></li>
         <li class="${orderActive}"><a href="${contextPath}/jsDonut/admin/order"> Orders</a></li>
         <li class="${categoryActive}"><a href="${contextPath}/jsDonut/admin/category"> Categories</a></li>
         <li class="${productActive}"><a href="${contextPath}/jsDonut/admin/product"> Products</a></li>

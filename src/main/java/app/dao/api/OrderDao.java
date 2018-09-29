@@ -15,7 +15,7 @@ public interface OrderDao extends GenericDao<Order>{
 
     List<Product> getTop10Products();
 
-    Integer getProceedsForMonth();
+    List<Order> getOrdersForMonth();
 
-    Integer getProceedsForWeek();
+    List<Order> getOrdersForWeek();
 }

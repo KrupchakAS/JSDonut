@@ -19,4 +19,8 @@ public interface OrderService {
     List<OrderDTO> getOrdersByUserId(Integer userId);
 
     void updateStatuses(OrderDTO orderDTO);
+
+    Float getProceedsForLastMonth();
+
+    Float getProceedsForLastWeek();
 }

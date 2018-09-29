@@ -203,4 +203,24 @@ public class OrderServiceImpl implements OrderService {
             return null;
         }
     }
+    @Transactional(readOnly = true)
+    @Override
+    public Float getProceedsForLastMonth() {
+        List<Order> orderList = orderDao.getOrdersForMonth();
+        Float proceeds = 0.0f;
+        for (int i =0; i< orderList.size();i++){
+            proceeds += orderList.get(i).getTotalPrice();
+        }
+        return proceeds;
+    }
+    @Transactional(readOnly = true)
+    @Override
+    public Float getProceedsForLastWeek() {
+        List<Order> orderList = orderDao.getOrdersForWeek();
+        Float proceeds = 0.0f;
+        for (int i =0; i< orderList.size();i++){
+            proceeds += orderList.get(i).getTotalPrice();
+        }
+        return proceeds;
+    }
 }

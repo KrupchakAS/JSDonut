@@ -287,6 +287,9 @@
                 <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
                     <h3 style="padding-left: 660px; color: red">To Buy, You Must -> <a href="${contextPath}/jsDonut/login">Sign in</a>
                     </h3>
+                    <h3 class="Total-price wow fadeInRight animated" style="padding-left: 955px; color: black">
+                        TotalPrice: ${sessionScope.order.totalPrice}₽</h3>
+
                 </sec:authorize>
             </c:when>
             <c:otherwise>
