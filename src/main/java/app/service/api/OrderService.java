@@ -1,6 +1,8 @@
 package app.service.api;
 
 import app.dto.OrderDTO;
+import app.entity.Product;
+import app.entity.User;
 
 import java.util.List;
 
@@ -23,4 +25,8 @@ public interface OrderService {
     Float getProceedsForLastMonth();
 
     Float getProceedsForLastWeek();
+
+    List<User> getTop10Users();
+
+    List<Product> getTop10Products();
 }

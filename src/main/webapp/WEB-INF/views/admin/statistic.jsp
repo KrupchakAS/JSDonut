@@ -55,25 +55,36 @@
                             <table id="category-table" class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th>ProceedsForLastMonth</th>
-                                    <th>ProceedsForLastWeek</th>
+                                    <th>Proceeds For Last Month</th>
+                                    <th>Proceeds For Last Week</th>
+                                    <th>TOP 10 Customers</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>
                                         <c:choose>
-                                        <c:when test="${ProceedsForLastMonth != null}">
+                                            <c:when test="${ProceedsForLastMonth != null}">
                                                 ${ProceedsForLastMonth}
-                                        </c:when>
-                                    </c:choose>
+                                            </c:when>
+                                        </c:choose>
                                     </td>
                                     <td>
                                         <c:choose>
-                                        <c:when test="${ProceedsForLastWeek != null}">
+                                            <c:when test="${ProceedsForLastWeek != null}">
                                                 ${ProceedsForLastWeek}
-                                        </c:when>
-                                    </c:choose>
+                                            </c:when>
+                                        </c:choose>
+                                    </td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${top10users.size() > 0}">
+                                                <с:forEach var="user" items="${top10users}">
+                                                    ${user.firstName}-${user.surName}
+                                                    <br>
+                                                </с:forEach>
+                                            </c:when>
+                                        </c:choose>
                                     </td>
                                 </tr>
                                 </tbody>

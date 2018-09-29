@@ -32,15 +32,6 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
         }
     }
 
-    @Override
-    public List<User> getTop10Users() {
-        return null;
-    }
-
-    @Override
-    public List<Product> getTop10Products() {
-        return null;
-    }
     @SuppressWarnings("unchecked")
     @Override
     public List<Order> getOrdersForMonth() {
