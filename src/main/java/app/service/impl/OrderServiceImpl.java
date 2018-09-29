@@ -242,7 +242,6 @@ public class OrderServiceImpl implements OrderService {
             top10Users.put(orderList.get(i).getUser(), countOrders);
         }
 
-        System.out.println(top10Users.toString());
         Map<User, Integer> sorted = top10Users
                 .entrySet()
                 .stream()
@@ -250,7 +249,6 @@ public class OrderServiceImpl implements OrderService {
                 .collect(
                         toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2,
                                 LinkedHashMap::new));
-        System.out.println(sorted.toString());
 
         List<User> userList = new ArrayList<>(sorted.keySet());
         List<User> userList2 = new ArrayList<>();
@@ -282,7 +280,6 @@ public class OrderServiceImpl implements OrderService {
             }
             top10Products.put(productList.get(i), countOrders);
         }
-        System.out.println(top10Products.toString());
 
         Map<Product, Integer> sorted = top10Products
                 .entrySet()
@@ -291,7 +288,6 @@ public class OrderServiceImpl implements OrderService {
                 .collect(
                         toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2,
                                 LinkedHashMap::new));
-        System.out.println(sorted.toString());
 
         List<Product> productList1 = new ArrayList<>(sorted.keySet());
         List<Product> productList2 = new ArrayList<>();
