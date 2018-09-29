@@ -61,7 +61,7 @@ public class MainController {
             @RequestParam(value = "minPrice", required = false) Integer minPrice,
             @RequestParam(value = "maxPrice", required = false) Integer maxPrice) {
         AjaxDTO result = new AjaxDTO();
-        result.setData(productService.getProductsByParameters(categoryId, fillingId,  doughId, sprinkleIdList, productName, minPrice, maxPrice));
+        result.setData(productService.getProductsByParameters(categoryId, fillingId, doughId, sprinkleIdList, productName, minPrice, maxPrice));
         return result;
     }
 
@@ -82,7 +82,12 @@ public class MainController {
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
     public String cart(ModelMap modelMap, HttpSession session) {
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-        modelMap.addAttribute("userAddresses", addressService.getAddressesByUserId(userDTO.getId()));
+        if (userDTO != null) {
+            List<AddressDTO> addressDTOList = addressService.getAddressesByUserId(userDTO.getId());
+            if (addressDTOList != null) {
+                modelMap.addAttribute("userAddresses", addressDTOList);
+            }
+        }
         session.setAttribute("countProductInOrder", productDTOList.size());
         if (session.getAttribute("order") == null) {
             session.setAttribute("order", new OrderDTO());
@@ -151,7 +156,7 @@ public class MainController {
         AjaxDTO result = new AjaxDTO();
         OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-        if (order.getAddress()!= null) {
+        if (order.getAddress() != null) {
             if (order.getAddress().getId() != null) {
                 orderDTO.setAddress(addressService.getById(order.getAddress().getId()));
             } else if (order.getAddress() != null) {
@@ -169,6 +174,5 @@ public class MainController {
         productDTOList.clear();
         return result;
     }
-
 
 }

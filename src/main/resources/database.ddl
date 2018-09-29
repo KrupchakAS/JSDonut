@@ -75,15 +75,16 @@ CREATE TABLE products_sprinkle (
 
 -- Table: Order
 CREATE TABLE orders (
-  id             INT      NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  paymentOption  TINYINT  NOT NULL,
-  deliveryOption TINYINT  NOT NULL,
-  paymentStatus  TINYINT  NOT NULL,
-  orderStatus    TINYINT  NOT NULL,
-  totalPrice     FLOAT NOT NULL,
-  user_id        INT      NOT NULL,
+  id             INT     NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  paymentOption  TINYINT NOT NULL,
+  deliveryOption TINYINT NOT NULL,
+  paymentStatus  TINYINT NOT NULL,
+  orderStatus    TINYINT NOT NULL,
+  totalPrice     FLOAT   NOT NULL,
+  purchaseDate   DATE    NOT NULL,
+  user_id        INT     NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users (id),
-  address_id     INT     ,
+  address_id     INT,
   FOREIGN KEY (address_id) REFERENCES address (id)
 )
   ENGINE = InnoDB;

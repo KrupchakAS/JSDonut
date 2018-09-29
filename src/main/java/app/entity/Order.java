@@ -8,9 +8,12 @@ import app.entity.enums.DeliveryOption;
 import app.entity.enums.OrderStatus;
 import app.entity.enums.PaymentOption;
 import app.entity.enums.PaymentStatus;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -36,6 +39,12 @@ public class Order {
 
     @NotNull(message = "Field can not be null")
     private Float totalPrice;
+
+    @NotNull(message = "Field can not be null")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Temporal(TemporalType.DATE)
+    @Column(name = "purchaseDate")
+    private Date purchaseDate;
 
     @NotNull(message = "Field can not be null")
     @ManyToMany
@@ -122,5 +131,13 @@ public class Order {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Date getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 }

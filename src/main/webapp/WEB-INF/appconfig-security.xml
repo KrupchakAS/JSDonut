@@ -11,7 +11,6 @@
 
     <http auto-config="true">
         <intercept-url pattern="/jsDonut/admin/*" access="hasRole('ROLE_ADMIN')"/>
-        <!--<intercept-url pattern="jsDonut/login" access="hasRole('ROLE_ANONYMOUS')"/>-->
         <access-denied-handler error-page="/jsDonut/403"/>
         <form-login login-page="/jsDonut/login" default-target-url="/jsDonut/welcome" authentication-failure-url="/jsDonut/login?error"/>
         <logout logout-success-url="/jsDonut/welcome"/>

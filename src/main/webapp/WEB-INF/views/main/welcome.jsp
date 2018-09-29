@@ -96,8 +96,6 @@
                     <p>Hi, ${pageContext.request.userPrincipal.name}    <a href="/jsDonut/account">My Account</a>     <a href="/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
-
-
         </div>
     </div>
     <div class="header-two navbar navbar-default"><!--header-two-->
@@ -118,7 +116,6 @@
                 <div class="header-right cart">
                     <a href="${contextPath}/jsDonut/cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                     <h4>
-                        <%--<span class="PriceForAllProducts">${sessionScope.order.totalPrice.toString()}</span>--%>
                         (<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)
                     </h4>
                     <div class="cart-box">

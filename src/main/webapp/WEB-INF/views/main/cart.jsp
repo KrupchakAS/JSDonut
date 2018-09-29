@@ -118,7 +118,7 @@
         <div class="container">
             <div class="nav navbar-nav wow fadeInLeft animated" data-wow-delay=".5s">
                 <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
-                    <p>Welcome to Donut Shop<a href="${contextPath}/jsDonut/registration">Sign Up </a> Or <a
+                    <p>Welcome to Donut Shop<a href="/jsDonut/registration">Sign Up </a> Or <a
                             href="${contextPath}/jsDonut/login">Sign In </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
@@ -179,7 +179,7 @@
                 </с:forEach>
 
                 <sec:authorize access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')">
-                    <div class="Order-Info row">
+                    <div class="row">
                         <div class="col-sm-3">
                             <label for="PaymentOption">Payment Option</label>
                             <select id="PaymentOption"

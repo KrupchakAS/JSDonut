@@ -6,6 +6,7 @@ import app.entity.enums.PaymentOption;
 import app.entity.enums.PaymentStatus;
 
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.List;
 
 public class OrderDTO {
@@ -21,6 +22,8 @@ public class OrderDTO {
     private OrderStatus orderStatus;
 
     private Float totalPrice;
+
+    private Date purchaseDate;
 
     private List<ProductDTO> productList;
 
@@ -98,5 +101,13 @@ public class OrderDTO {
 
     public void setAddress(AddressDTO address) {
         this.address = address;
+    }
+
+    public Date getPurchaseDate() {
+        return purchaseDate;
+    }
+
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 }

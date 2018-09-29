@@ -3,6 +3,8 @@ package app.dao.impl;
 import app.dao.GenericDaoImpl;
 import app.dao.api.OrderDao;
 import app.entity.Order;
+import app.entity.Product;
+import app.entity.User;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -27,5 +29,26 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
         } else {
             return list;
         }
+    }
+
+    @Override
+    public List<User> getTop10Users() {
+        return null;
+    }
+
+    @Override
+    public List<Product> getTop10Products() {
+        return null;
+    }
+
+    @Override
+    public Integer getProceedsForMonth() {
+
+        return null;
+    }
+
+    @Override
+    public Integer getProceedsForWeek() {
+        return null;
     }
 }
