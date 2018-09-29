@@ -58,6 +58,7 @@
                                     <th>Proceeds For Last Month</th>
                                     <th>Proceeds For Last Week</th>
                                     <th>TOP 10 Customers</th>
+                                    <th>TOP 10 Products</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -79,12 +80,22 @@
                                     <td>
                                         <c:choose>
                                             <c:when  test="${top10users.size() > 0}">
-
                                                 <c:set var="count" value="0" scope="page"/>
                                                 <с:forEach var="user" items="${top10users}">
-
                                                     <c:set var="count" value="${count+1}" scope="page"/>
                                                     ${count})${user.firstName}-${user.surName}
+                                                    <br>
+                                                </с:forEach>
+                                            </c:when>
+                                        </c:choose>
+                                    </td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when  test="${top10products.size() > 0}">
+                                                <c:set var="count" value="0" scope="page"/>
+                                                <с:forEach var="product" items="${top10products}">
+                                                    <c:set var="count" value="${count+1}" scope="page"/>
+                                                    ${count})${product.category.name}-${product.name}
                                                     <br>
                                                 </с:forEach>
                                             </c:when>

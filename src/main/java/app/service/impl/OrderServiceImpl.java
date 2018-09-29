@@ -227,6 +227,7 @@ public class OrderServiceImpl implements OrderService {
         return proceeds;
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<User> getTop10Users() {
         List<Order> orderList = orderDao.getAll();
@@ -263,9 +264,44 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Product> getTop10Products() {
         List<Order> orderList = orderDao.getAll();
-        return null;
+        Map<Product, Integer> top10Products = new HashMap<>();
+        List<Product> productList = new ArrayList<>();
+        for (int i = 0; i < orderList.size(); i++) {
+            productList.addAll(orderList.get(i).getProductList());
+        }
+        for (int i = 0; i < productList.size(); i++) {
+            int countOrders = 0;
+            for (int j = 0; j < productList.size(); j++) {
+                if (productList.get(i).getId().equals(productList.get(j).getId())) {
+                    countOrders++;
+                }
+            }
+            top10Products.put(productList.get(i), countOrders);
+        }
+        System.out.println(top10Products.toString());
+
+        Map<Product, Integer> sorted = top10Products
+                .entrySet()
+                .stream()
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                .collect(
+                        toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2,
+                                LinkedHashMap::new));
+        System.out.println(sorted.toString());
+
+        List<Product> productList1 = new ArrayList<>(sorted.keySet());
+        List<Product> productList2 = new ArrayList<>();
+        if (productList1.size() > 10) {
+            for (int i = 0; i < 10; i++) {
+                productList2.add(productList1.get(i));
+            }
+            return productList2;
+        } else {
+            return productList1;
+        }
     }
 }

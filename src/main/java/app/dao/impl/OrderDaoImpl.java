@@ -35,7 +35,7 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
     @SuppressWarnings("unchecked")
     @Override
     public List<Order> getOrdersForMonth() {
-        TypedQuery<Order> q = entityManager.createQuery("from Order WHERE month(purchaseDate) = month(now())-1",Order.class);
+        TypedQuery<Order> q = entityManager.createQuery("FROM Order WHERE month(purchaseDate) = month(now())-1",Order.class);
 //        Select * from table where date between '01-01-2014' and '14-01-2014' - Between(example)
         List<Order> list = q.getResultList();
         if (list.isEmpty()) {
@@ -47,7 +47,7 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
     @SuppressWarnings("unchecked")
     @Override
     public List<Order> getOrdersForWeek() {
-        TypedQuery<Order> q = entityManager.createQuery("from Order WHERE WEEK (purchaseDate) = WEEK( current_date ) - 1 AND YEAR( purchaseDate) = YEAR( current_date )", Order.class);
+        TypedQuery<Order> q = entityManager.createQuery("FROM Order WHERE WEEK (purchaseDate) = WEEK( current_date ) - 1 AND YEAR( purchaseDate) = YEAR( current_date )", Order.class);
         List<Order> list = q.getResultList();
         if (list.isEmpty()) {
             return null;

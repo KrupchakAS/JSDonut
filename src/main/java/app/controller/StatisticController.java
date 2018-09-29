@@ -20,7 +20,7 @@ public class StatisticController {
         modelMap.addAttribute("ProceedsForLastMonth", orderService.getProceedsForLastMonth());
         modelMap.addAttribute("ProceedsForLastWeek", orderService.getProceedsForLastWeek());
         modelMap.addAttribute("top10users",orderService.getTop10Users());
-
+        modelMap.addAttribute("top10products", orderService.getTop10Products());
         return "admin/statistic";
     }
 }
