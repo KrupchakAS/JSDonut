@@ -25,14 +25,17 @@
             WEB-INF/appconfig-security.xml
         </param-value>
     </context-param>
-
+    <error-page>
+        <error-code>403</error-code>
+        <location>/jsDonut/403</location>
+    </error-page>
     <error-page>
         <error-code>404</error-code>
         <location>/jsDonut/404</location>
     </error-page>
     <error-page>
-        <error-code>403</error-code>
-        <location>/jsDonut/403</location>
+        <error-code>405</error-code>
+        <location>/jsDonut/405</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>

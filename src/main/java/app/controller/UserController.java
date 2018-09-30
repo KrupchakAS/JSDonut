@@ -157,6 +157,9 @@ public class UserController {
     @RequestMapping(value = "/404", method = RequestMethod.GET)
     public String page404(){ return "404";
     }
+    @RequestMapping(value = "/405", method = RequestMethod.GET)
+    public String page405(){ return "405";
+    }
     @RequestMapping(value = "/500", method = RequestMethod.GET)
     public String page500(){ return "500";
     }
