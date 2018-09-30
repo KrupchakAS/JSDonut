@@ -272,13 +272,13 @@ public class OrderServiceImpl implements OrderService {
             productList.addAll(orderList.get(i).getProductList());
         }
         for (int i = 0; i < productList.size(); i++) {
-            int countOrders = 0;
+            int countInOrders = 0;
             for (int j = 0; j < productList.size(); j++) {
                 if (productList.get(i).getId().equals(productList.get(j).getId())) {
-                    countOrders++;
+                    countInOrders++;
                 }
             }
-            top10Products.put(productList.get(i), countOrders);
+            top10Products.put(productList.get(i), countInOrders);
         }
 
         Map<Product, Integer> sorted = top10Products

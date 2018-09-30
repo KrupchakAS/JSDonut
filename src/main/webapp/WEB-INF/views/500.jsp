@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404</title>
+    <title>403</title>
     <link href="${contextPath}/resources/assetsMainPages/css/bootstrap.css" rel="stylesheet"/>
 <body>
 
@@ -15,7 +15,7 @@
     <div class="row margin-top-10">
         <div class="col-lg-6 col-lg-offset-3">
             <div class="lock-screen">
-                <h1><span class="color">Error 404</span><br><span class="color">Not Found</span><br/></h1>
+                <h1><span class="color">Ooops! Error</span><br/><span class="color">We will fix it soon :)</span></h1>
                 <h1><a class="color" href="/jsDonut/welcome">Home Page</a></h1>
             </div>
         </div>
