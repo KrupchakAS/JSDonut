@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>app</groupId>
     <artifactId>JSDonut</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>war</packaging>
     <name>Maven Webapp</name>
     <url>http://maven.apache.org</url>
@@ -91,11 +91,17 @@
             <version>2.1</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.3.1</version>
-            <scope>test</scope>
+            <version>4.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.8.9</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
@@ -149,6 +155,52 @@
             <version>3.5.5</version>
         </dependency>
 
+        <!-- MQ -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+            <version>5.0.7.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.jms</groupId>
+            <artifactId>javax.jms-api</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly</groupId>
+            <artifactId>wildfly-jms-client-bom</artifactId>
+            <version>14.0.0.Beta2</version>
+            <type>pom</type>
+        </dependency>
+        <!-- Websockets -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+            <version>5.0.7.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-messaging</artifactId>
+            <version>5.0.7.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.ejb</groupId>
+            <artifactId>javax.ejb-api</artifactId>
+            <version>3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>2.1</version>
+        </dependency>
+
+
         <!-- https://mvnrepository.com/artifact/org.webjars/bootstrap -->
     </dependencies>
     <properties>
@@ -163,7 +215,7 @@
                 <version>3.5.5</version>
                 <configuration>
                     <changeLogFile>
-                       // C:\Users\tooto\Desktop\TChat\src\main\resources\changelog\db.changelog-1.0.xml
+                        C:\Users\tooto\Desktop\TChat\src\main\resources\changelog\db.changelog-1.0.xml
                     </changeLogFile>
                     <url>jdbc:mysql://localhost:3306/JSProject</url>
                     <username>root</username>
@@ -180,6 +232,30 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <!-- Build an executable JAR -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.1.0</version>
+                <!--<configuration>-->
+                    <!--<archive>-->
+                        <!--<manifest>-->
+                            <!--<addClasspath>true</addClasspath>-->
+                            <!--<classpathPrefix>lib/</classpathPrefix>-->
+                            <!--<mainClass>app.MainClass</mainClass>-->
+                        <!--</manifest>-->
+                    <!--</archive>-->
+                <!--</configuration>-->
+            </plugin>
         </plugins>
     </build>
+    <!--<distributionManagement>-->
+        <!--<repository>-->
+            <!--<uniqueVersion>false</uniqueVersion>-->
+            <!--<id>corp1</id>-->
+            <!--<name>Corporate Repository</name>-->
+            <!--<url>C:/Users/mi/.m2</url>-->
+            <!--<layout>default</layout>-->
+        <!--</repository>-->
+    <!--</distributionManagement>-->
 </project>

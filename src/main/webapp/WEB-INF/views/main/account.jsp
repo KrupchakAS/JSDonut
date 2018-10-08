@@ -102,9 +102,9 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="/jsDonut/welcome"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
+            <li><a href="${contextPath}/jsDonut/welcome"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
             </li>
-            <li><a href="/jsDonut/filter"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Filter</a>
+            <li><a href="${contextPath}/jsDonut/filter"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Filter</a>
             </li>
         </ol>
     </div>
@@ -119,12 +119,12 @@
                             href="${contextPath}/jsDonut/login">Sign In </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <p> Hi Admin, let's work<a href="/jsDonut/admin/adminPanel">Admin Panel</a> We will glad to see you
-                        again <a href="/jsDonut/logout">Sing Out </a></p>
+                    <p> Hi Admin, let's work<a href="${contextPath}/jsDonut/admin/adminPanel">Admin Panel</a> We will glad to see you
+                        again <a href="${contextPath}/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <p>Hi, ${pageContext.request.userPrincipal.name} <a href="/jsDonut/account">My Account</a> <a
-                            href="/jsDonut/logout">Sing Out </a></p>
+                    <p>Hi, ${pageContext.request.userPrincipal.name} <a href="${contextPath}/jsDonut/account">My Account</a> <a
+                            href="${contextPath}/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
             <div class="clearfix"></div>
@@ -186,7 +186,7 @@
     <div class="InfoDiv block__display-none login-page">
         <div class="widget-shadow">
             <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
-                <form method="post" action="/jsDonut/changeUserInfo">
+                <form method="post" action="${contextPath}/jsDonut/changeUserInfo">
                     <div>
                         <input type="text" class="firstName" placeholder="firstName" minlength="2" maxlength="16">
                         <input type="text" class="surName" placeholder="surName" minlength="2" maxlength="16">
@@ -201,7 +201,7 @@
     <div class="PasswordDiv block__display-none login-page">
         <div class="widget-shadow">
             <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
-                <form method="post" action="/jsDonut/changeUserPassword">
+                <form method="post" action="${contextPath}/jsDonut/changeUserPassword">
                     <div>
                         <input type="password" class="Password" placeholder="Password" minlength="4" maxlength="16"
                                required>

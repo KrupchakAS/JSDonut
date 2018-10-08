@@ -68,6 +68,14 @@
     </script>
     <!--//end-smooth-scrolling-->
 </head>
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="${contextPath}/jsDonut/welcome"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li><a href="${contextPath}/jsDonut/filter"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Filter</a></li>
+        </ol>
+    </div>
+</div>
 <body>
 <!--header-->
 <div class="header">
@@ -78,10 +86,10 @@
                     <p><a href="${contextPath}/jsDonut/registration">Sign Up </a> Or <a href="${contextPath}/jsDonut/login">Sign In </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <p> Hi Admin, let's work<a href="/jsDonut/admin/adminPanel">Admin Panel</a> We will glad to see you again <a href="/jsDonut/logout">Sing Out </a></p>
+                    <p> Hi Admin, let's work<a href="${contextPath}/jsDonut/admin/adminPanel">Admin Panel</a> We will glad to see you again <a href="${contextPath}/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <p>We will glad to see you again, ${pageContext.request.userPrincipal.name} <a href="/jsDonut/logout">Sing Out </a></p>
+                    <p>We will glad to see you again, ${pageContext.request.userPrincipal.name} <a href="${contextPath}/jsDonut/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
 
@@ -129,7 +137,7 @@
             <h4>Welcome back to Donut Shop! <br> Not a Member? <a href="${contextPath}/jsDonut/registration"> Sign Up »</a></h4>
         </div>
         <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
-            <form method="post" action="/login">
+            <form method="post" action="${contextPath}/login">
                 <div class="${error != null ? 'has-error' : ''}">
                     <span>${message}</span>
                     <input type="text" class="user" name="username" placeholder="Login" minlength="4" maxlength="16" required>

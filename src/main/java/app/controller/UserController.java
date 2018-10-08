@@ -4,6 +4,7 @@ import app.dto.AjaxDTO;
 import app.dto.OrderDTO;
 import app.dto.UserDTO;
 import app.exception.UserNotFound;
+import app.message.MessageSender;
 import app.service.api.AddressService;
 import app.service.api.OrderService;
 import app.service.api.UserService;
@@ -18,6 +19,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -44,9 +46,12 @@ public class UserController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private MessageSender messageSender;
+
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public String main(HttpSession session) {
-        if (session.getAttribute("order")==null) {
+    public String welcome(HttpSession session) {
+        if (session.getAttribute("order") == null) {
             session.setAttribute("order", new OrderDTO());
         }
         OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
@@ -56,13 +61,17 @@ public class UserController {
             totalPrice += productDTOList.get(i).getPrice() * productDTOList.get(i).getQuantity();
         }
         orderDTO.setTotalPrice(totalPrice);
+
+        messageSender.sendMessage("ATATA");
+        System.out.println("ATATA");
+
         session.setAttribute("countProductInOrder", productDTOList.size());
         return "main/welcome";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String createModel(ModelMap modelMap, HttpSession session) {
-        if (session.getAttribute("order")==null) {
+        if (session.getAttribute("order") == null) {
             session.setAttribute("order", new OrderDTO());
         }
         session.setAttribute("countProductInOrder", productDTOList.size());
@@ -93,7 +102,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(HttpServletRequest request, HttpServletResponse response,HttpSession session) {
+    public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
@@ -106,7 +115,7 @@ public class UserController {
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         modelMap.addAttribute("user", userDTO);
         List<OrderDTO> orderDTOList = orderService.getOrdersByUserId(userDTO.getId());
-        if(orderDTOList != null) {
+        if (orderDTOList != null) {
             List<OrderDTO> orderDTOListTotal = new ArrayList<>();
             for (int i = orderDTOList.size() - 1; i >= 0; i--) {
                 orderDTOListTotal.add(orderDTOList.get(i));
@@ -150,17 +159,28 @@ public class UserController {
     }
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)
-    public String page403(){
+    public String page403() {
         return "403";
     }
 
     @RequestMapping(value = "/404", method = RequestMethod.GET)
-    public String page404(){ return "404";
+    public String page404() {
+        return "404";
     }
+
     @RequestMapping(value = "/405", method = RequestMethod.GET)
-    public String page405(){ return "405";
+    public String page405() {
+        return "405";
     }
+
     @RequestMapping(value = "/500", method = RequestMethod.GET)
-    public String page500(){ return "500";
+    public String page500() {
+        return "500";
     }
+
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
+    public String main() {
+        return "redirect:/jsDonut/welcome";
+    }
+
 }
