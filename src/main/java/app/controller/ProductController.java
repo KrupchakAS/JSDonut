@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping(value = "/jsDonut/admin")
+@RequestMapping(value = "/admin")
 public class ProductController {
 
     @Autowired

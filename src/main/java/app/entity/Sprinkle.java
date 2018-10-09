@@ -1,6 +1,7 @@
 package app.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -16,6 +17,7 @@ public class Sprinkle {
     @Column(name = "name")
     private String name;
 
+    @Min(value = 0)
     @NotNull(message = "Field can not be null")
     @Column(name = "price")
     private Float price;

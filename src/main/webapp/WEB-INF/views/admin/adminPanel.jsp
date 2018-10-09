@@ -15,8 +15,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span></button>
-            <a class="navbar-brand" href="/jsDonut/admin/adminPanel"><span></span>Admin Panel</a>
-            <a class="navbar-brand" href="/jsDonut/welcome"><span></span>Home</a>
+            <a class="navbar-brand" href="${contextPath}/admin/adminPanel"><span></span>Admin Panel</a>
+            <a class="navbar-brand" href="${contextPath}/welcome"><span></span>Home</a>
         </div>
     </div><!-- /.container-fluid -->
 </nav>
@@ -30,13 +30,13 @@
     </div>
     <div class="divider"></div>
     <ul class="nav menu">
-        <li><a href="${contextPath}/jsDonut/admin/statistic"> Statistic</a></li>
-        <li><a href="${contextPath}/jsDonut/admin/order"> Orders</a></li>
-        <li><a href="${contextPath}/jsDonut/admin/category"> Categories</a></li>
-        <li><a href="${contextPath}/jsDonut/admin/product"> Products</a></li>
-        <li><a href="${contextPath}/jsDonut/admin/sprinkle"> Sprinkles</a></li>
-        <li><a href="${contextPath}/jsDonut/admin/dough"> Doughs</a></li>
-        <li><a href="${contextPath}/jsDonut/admin/filling"> Fillings</a></li>
+        <li><a href="${contextPath}/admin/statistic"> Statistic</a></li>
+        <li><a href="${contextPath}/admin/order"> Orders</a></li>
+        <li><a href="${contextPath}/admin/category"> Categories</a></li>
+        <li><a href="${contextPath}/admin/product"> Products</a></li>
+        <li><a href="${contextPath}/admin/sprinkle"> Sprinkles</a></li>
+        <li><a href="${contextPath}/admin/dough"> Doughs</a></li>
+        <li><a href="${contextPath}/admin/filling"> Fillings</a></li>
     </ul>
 </div><!--/.sidebar-->
 

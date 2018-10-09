@@ -207,7 +207,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <build>
-        <finalName>JSDonut</finalName>
+        <finalName>jsDonut</finalName>
         <plugins>
             <plugin>
                 <groupId>org.liquibase</groupId>
@@ -233,29 +233,11 @@
                 </configuration>
             </plugin>
             <plugin>
-                <!-- Build an executable JAR -->
+                <!-- Build an executable WAR -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.1.0</version>
-                <!--<configuration>-->
-                    <!--<archive>-->
-                        <!--<manifest>-->
-                            <!--<addClasspath>true</addClasspath>-->
-                            <!--<classpathPrefix>lib/</classpathPrefix>-->
-                            <!--<mainClass>app.MainClass</mainClass>-->
-                        <!--</manifest>-->
-                    <!--</archive>-->
-                <!--</configuration>-->
             </plugin>
         </plugins>
     </build>
-    <!--<distributionManagement>-->
-        <!--<repository>-->
-            <!--<uniqueVersion>false</uniqueVersion>-->
-            <!--<id>corp1</id>-->
-            <!--<name>Corporate Repository</name>-->
-            <!--<url>C:/Users/mi/.m2</url>-->
-            <!--<layout>default</layout>-->
-        <!--</repository>-->
-    <!--</distributionManagement>-->
 </project>

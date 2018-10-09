@@ -105,9 +105,9 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="${contextPath}/jsDonut/welcome"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
+            <li><a href="${contextPath}/welcome"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
             </li>
-            <li><a href="${contextPath}/jsDonut/filter"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Filter</a>
+            <li><a href="${contextPath}/filter"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Filter</a>
             </li>
         </ol>
     </div>
@@ -118,16 +118,16 @@
         <div class="container">
             <div class="nav navbar-nav wow fadeInLeft animated" data-wow-delay=".5s">
                 <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
-                    <p>Welcome to Donut Shop<a href="${contextPath}/jsDonut/registration">Sign Up </a> Or <a
-                            href="${contextPath}/jsDonut/login">Sign In </a></p>
+                    <p>Welcome to Donut Shop<a href="${contextPath}/registration">Sign Up </a> Or <a
+                            href="${contextPath}/login">Sign In </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <p> Hi Admin, let's work<a href="${contextPath}/jsDonut/admin/adminPanel">Admin Panel</a> <a
-                            href="${contextPath}/jsDonut/account">My Account</a> <a href="${contextPath}/jsDonut/logout">Sing Out </a></p>
+                    <p> Hi Admin, let's work<a href="${contextPath}/admin/adminPanel">Admin Panel</a> <a
+                            href="${contextPath}/account">My Account</a> <a href="${contextPath}/logout">Sing Out </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <p>Hi, ${pageContext.request.userPrincipal.name} <a href="${contextPath}/jsDonut/account">My Account</a> <a
-                            href="${contextPath}/jsDonut/logout">Sing Out </a></p>
+                    <p>Hi, ${pageContext.request.userPrincipal.name} <a href="${contextPath}/account">My Account</a> <a
+                            href="${contextPath}/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
         </div>
@@ -142,7 +142,7 @@
                 </ul>
             </div>
             <div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
-                <h1><a href="${contextPath}/jsDonut/welcome">Welcome to Donut Shop<b></b><span class="tag">Everything for your Sweet Dream </span>
+                <h1><a href="${contextPath}/welcome">Welcome to Donut Shop<b></b><span class="tag">Everything for your Sweet Dream </span>
                 </a>
                 </h1>
             </div>
@@ -278,17 +278,15 @@
                         </div>
 
                     </div>
-                    <h3 class="Total-price wow fadeInRight animated" style="padding-left: 955px; color: black">
-                        TotalPrice: ${sessionScope.order.totalPrice}₽</h3>
-
+                    <h3 class="Total-price wow fadeInRight animated" style="padding-left: 80px; color: black">
+                        TotalPrice(minimum:600₽): ${sessionScope.order.totalPrice}₽<</h3>
                     <h2 style="padding-left: 1050px;"><a href="#"><span
                             class="OrderSave label label-success">Save Order</span></a></h2>
                 </sec:authorize>
                 <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
-                    <h3 style="padding-left: 660px; color: red">To Buy, You Must -> <a href="${contextPath}/jsDonut/login">Sign in</a>
-                    </h3>
-                    <h3 class="Total-price wow fadeInRight animated" style="padding-left: 955px; color: black">
-                        TotalPrice: ${sessionScope.order.totalPrice}₽</h3>
+                    <h3 style="display: inline-block; padding-left: 480px; color: red">To Buy, You Must -> <a href="${contextPath}/login">Sign in</a><h3  class="Total-price wow fadeInRight animated" style="display: inline-block; padding-left: 80px; color: black">
+                        TotalPrice(minimum:600₽): ${sessionScope.order.totalPrice}₽</h3></h3>
+
 
                 </sec:authorize>
             </c:when>
@@ -305,7 +303,7 @@
     <div class="container">
         <div class="footer-info">
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
-                <h4 class="footer-logo"><a href="${contextPath}/jsDonut/welcome">Donut <b>Shop</b> <span class="tag">Everything for you Sweet Dream  </span>
+                <h4 class="footer-logo"><a href="${contextPath}/welcome">Donut <b>Shop</b> <span class="tag">Everything for you Sweet Dream  </span>
                 </a></h4>
                 <p>© 2018 Donut Shop. All rights reserved</p>
             </div>

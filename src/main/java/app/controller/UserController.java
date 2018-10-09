@@ -34,7 +34,7 @@ import static app.controller.MainController.productDTOList;
 
 
 @Controller
-@RequestMapping(value = "/jsDonut")
+
 public class UserController {
 
     @Autowired
@@ -62,8 +62,8 @@ public class UserController {
         }
         orderDTO.setTotalPrice(totalPrice);
 
-        messageSender.sendMessage("ATATA");
-        System.out.println("ATATA");
+        //messageSender.sendMessage("ATATA");
+        //System.out.println("ATATA");
 
         session.setAttribute("countProductInOrder", productDTOList.size());
         return "main/welcome";

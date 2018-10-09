@@ -4,6 +4,7 @@ package app.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -26,10 +27,12 @@ public class Product {
     @Column(name = "image")
     private String image;
 
+    @Min(value = 0)
     @NotNull(message = "Field can not be null")
     @Column(name = "price")
     private Float price;
 
+    @Min(value = 0)
     @NotNull(message = "Field can not be null")
     @Column(name = "workPrice")
     private Float workPrice;

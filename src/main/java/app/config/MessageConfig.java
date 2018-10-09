@@ -13,7 +13,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.util.Properties;
 
-@Component
+@Configuration
 public class MessageConfig {
 
     private static final Logger logger = LogManager.getLogger(MessageConfig.class);
@@ -62,7 +62,5 @@ public class MessageConfig {
         logger.info("Create Queue");
         return queue;
     }
-
-
 
 }

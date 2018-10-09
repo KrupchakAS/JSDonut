@@ -1,6 +1,7 @@
 package app.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 
@@ -17,6 +18,7 @@ public class Filling {
     @Column(name = "name")
     private String name;
 
+    @Min(value = 0)
     @NotNull(message = "Field can not be Null")
     @Column(name = "price")
     private Float price;

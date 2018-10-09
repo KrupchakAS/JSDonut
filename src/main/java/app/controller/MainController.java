@@ -2,6 +2,7 @@ package app.controller;
 
 import app.dto.*;
 
+import app.exception.MinTotalPriceOrder;
 import app.exception.ObjectAlreadyInOrder;
 import app.service.api.*;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/jsDonut")
+
 public class MainController {
 
     private static final Logger logger = LogManager.getLogger(MainController.class);
@@ -164,6 +165,9 @@ public class MainController {
                 addressService.create(order.getAddress());
                 orderDTO.setAddress(order.getAddress());
             }
+        }
+        if (orderDTO.getTotalPrice() < 600) {
+            throw new MinTotalPriceOrder("Total Price can't be less than 600P");
         }
         orderDTO.setDeliveryOption(order.getDeliveryOption());
         orderDTO.setPaymentOption(order.getPaymentOption());

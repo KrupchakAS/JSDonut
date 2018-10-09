@@ -102,9 +102,9 @@
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-            <li><a href="${contextPath}/jsDonut/welcome"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
+            <li><a href="${contextPath}/welcome"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
             </li>
-            <li><a href="${contextPath}/jsDonut/filter"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Filter</a>
+            <li><a href="${contextPath}/filter"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>Filter</a>
             </li>
         </ol>
     </div>
@@ -115,16 +115,16 @@
         <div class="container">
             <div class="nav navbar-nav wow fadeInLeft animated" data-wow-delay=".5s">
                 <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
-                    <p>Welcome to Donut Shop<a href="${contextPath}/jsDonut/registration">Sign Up </a> Or <a
-                            href="${contextPath}/jsDonut/login">Sign In </a></p>
+                    <p>Welcome to Donut Shop<a href="${contextPath}/registration">Sign Up </a> Or <a
+                            href="${contextPath}/login">Sign In </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <p> Hi Admin, let's work<a href="${contextPath}/jsDonut/admin/adminPanel">Admin Panel</a> We will glad to see you
-                        again <a href="${contextPath}/jsDonut/logout">Sing Out </a></p>
+                    <p> Hi Admin, let's work<a href="${contextPath}/admin/adminPanel">Admin Panel</a> We will glad to see you
+                        again <a href="${contextPath}/logout">Sing Out </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                    <p>Hi, ${pageContext.request.userPrincipal.name} <a href="${contextPath}/jsDonut/account">My Account</a> <a
-                            href="${contextPath}/jsDonut/logout">Sing Out </a></p>
+                    <p>Hi, ${pageContext.request.userPrincipal.name} <a href="${contextPath}/account">My Account</a> <a
+                            href="${contextPath}/logout">Sing Out </a></p>
                 </sec:authorize>
             </div>
             <div class="clearfix"></div>
@@ -140,11 +140,11 @@
                 </ul>
             </div>
             <div class="nav navbar-nav logo wow zoomIn animated" data-wow-delay=".7s">
-                <h1><a href="${contextPath}/jsDonut/welcome">Welcome to Donut Shop<b></b><span class="tag">Everything for your Sweet Dream </span></a></h1>
+                <h1><a href="${contextPath}/welcome">Welcome to Donut Shop<b></b><span class="tag">Everything for your Sweet Dream </span></a></h1>
             </div>
             <div class="nav navbar-nav navbar-right header-two-right">
                 <div class="header-right cart">
-                    <a href="${contextPath}/jsDonut/cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a><h4>
+                    <a href="${contextPath}/cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a><h4>
                     (<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)</h4>
                     <div class="cart-box">
                         <p><a href="#" class="ClearButton simpleCart_empty">Empty cart</a></p>
@@ -186,7 +186,7 @@
     <div class="InfoDiv block__display-none login-page">
         <div class="widget-shadow">
             <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
-                <form method="post" action="${contextPath}/jsDonut/changeUserInfo">
+                <form method="post" action="${contextPath}/changeUserInfo">
                     <div>
                         <input type="text" class="firstName" placeholder="firstName" minlength="2" maxlength="16">
                         <input type="text" class="surName" placeholder="surName" minlength="2" maxlength="16">
@@ -201,7 +201,7 @@
     <div class="PasswordDiv block__display-none login-page">
         <div class="widget-shadow">
             <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
-                <form method="post" action="${contextPath}/jsDonut/changeUserPassword">
+                <form method="post" action="${contextPath}/changeUserPassword">
                     <div>
                         <input type="password" class="Password" placeholder="Password" minlength="4" maxlength="16"
                                required>
@@ -255,7 +255,7 @@
     <div class="container">
         <div class="footer-info">
             <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
-                <h4 class="footer-logo"><a href="${contextPath}/jsDonut/welcome">Donut <b>Shop</b> <span class="tag">Everything for you Sweet Dream  </span>
+                <h4 class="footer-logo"><a href="${contextPath}/welcome">Donut <b>Shop</b> <span class="tag">Everything for you Sweet Dream  </span>
                 </a></h4>
                 <p>© 2018 Donut Shop. All rights reserved</p>
             </div>

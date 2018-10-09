@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/jsDonut/admin")
+@RequestMapping(value = "/admin")
 public class DoughController {
 
     @Autowired

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "jsDonut/admin")
+@RequestMapping(value = "/admin")
 public class AdminController {
 
     @RequestMapping(value = "/adminPanel",method = RequestMethod.GET)

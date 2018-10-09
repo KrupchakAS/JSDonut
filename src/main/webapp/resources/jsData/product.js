@@ -414,6 +414,7 @@ function SaveOrder(button) {
     pst.data = {};
     pst.data = getDataFormForOrder();
     pst.successFunction = function () {
+        $('.cart-info').addClass('block__display-none');
         swal('Order Added. You can show details in Account');
     };
 
@@ -584,7 +585,7 @@ $(function () {
     });
     $(document).on('click', '.OrderSave', function () {
         SaveOrder($(this));
-        $('.cart-info').addClass('block__display-none');
+
     });
     $(document).on('click', '.ChangeYourPassword', function () {
         $('.PasswordDiv').removeClass('block__display-none');

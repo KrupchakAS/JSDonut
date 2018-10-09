@@ -11,6 +11,7 @@ import app.entity.enums.PaymentStatus;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.util.Date;
@@ -37,6 +38,7 @@ public class Order {
     @NotNull(message = "Field can not be null")
     private Byte orderStatus;
 
+    @Min(value = 600)
     @NotNull(message = "Field can not be null")
     private Float totalPrice;
 

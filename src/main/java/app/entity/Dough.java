@@ -1,6 +1,7 @@
 package app.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -16,6 +17,7 @@ public class Dough {
     @Column(name = "name")
     private String name;
 
+    @Min(value = 0)
     @NotNull(message = "Field can not be Null")
     @Column(name = "price")
     private Float price;
