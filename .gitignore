@@ -1,7 +1,7 @@
 # IntelliJ:
 .idea/
 *.iml
-.src/main/recources/log/
+.src/main/resources/log/
 # Maven:
 .idea
 target
