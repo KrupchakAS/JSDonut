@@ -4,5 +4,6 @@
 .src/main/resources/log/
 # Maven:
 .idea
+.src/main/resources/log
 target
 
