@@ -1,9 +1,10 @@
 # IntelliJ:
 .idea/
 *.iml
-.src/main/resources/log/
+*.log
+
 # Maven:
 .idea
-.src/main/resources/log
+
 target
 
