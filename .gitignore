@@ -4,3 +4,4 @@
 # Maven:
 .idea
 target
+src/main/recources/log
