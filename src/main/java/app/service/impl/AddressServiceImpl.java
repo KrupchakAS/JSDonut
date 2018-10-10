@@ -6,8 +6,8 @@ import app.entity.Address;
 import app.service.api.AddressService;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import org.apache.log4j.Logger;
 import org.modelmapper.ModelMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @Service
 public class AddressServiceImpl implements AddressService {
 
-    private static final Logger logger = LogManager.getLogger(AddressServiceImpl.class);
+    private static final Logger logger = Logger.getLogger(AddressServiceImpl.class);
 
     @Autowired
     private AddressDao addressDao;

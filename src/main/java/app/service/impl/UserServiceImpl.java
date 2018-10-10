@@ -4,8 +4,8 @@ import app.dao.api.UserDao;
 import app.dto.UserDTO;
 import app.entity.User;
 import app.service.api.UserService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import org.apache.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private static final Logger logger = LogManager.getLogger(UserServiceImpl.class);
+    private static final Logger logger = Logger.getLogger(UserServiceImpl.class);
 
     @Autowired
     private UserDao userDao;

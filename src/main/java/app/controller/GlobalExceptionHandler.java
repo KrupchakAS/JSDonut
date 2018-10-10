@@ -2,8 +2,7 @@ package app.controller;
 
 import app.dto.AjaxDTO;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -18,7 +17,7 @@ import java.sql.SQLException;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    private static final Logger logger = LogManager.getLogger(GlobalExceptionHandler.class);
+    private static final Logger logger = Logger.getLogger(GlobalExceptionHandler.class);
 
     @ResponseBody
     @ExceptionHandler(Exception.class)

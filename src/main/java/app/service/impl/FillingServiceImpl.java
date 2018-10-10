@@ -5,8 +5,7 @@ import app.dto.FillingDTO;
 import app.entity.Filling;
 import app.exception.ObjectExistsException;
 import app.service.api.FillingService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,7 @@ import java.util.stream.Collectors;
 @Service
 public class FillingServiceImpl implements FillingService {
 
-    private static final Logger logger = LogManager.getLogger(FillingServiceImpl.class);
+    private static final Logger logger = Logger.getLogger(FillingServiceImpl.class);
 
     @Autowired
     private FillingDao fillingDao;

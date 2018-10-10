@@ -3,13 +3,10 @@ package app.service.impl;
 import app.dao.api.UserDao;
 import app.dto.UserDTO;
 import app.entity.User;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,7 +18,6 @@ import java.util.Set;
 @Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private static final Logger logger = LogManager.getLogger(UserDetailsServiceImpl.class);
 
     @Autowired
     private UserDao userDao;

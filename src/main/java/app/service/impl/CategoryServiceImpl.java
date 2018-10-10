@@ -5,8 +5,8 @@ import app.dto.CategoryDTO;
 import app.entity.Category;
 import app.exception.ObjectExistsException;
 import app.service.api.CategoryService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import org.apache.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
-    private static final Logger logger = LogManager.getLogger(CategoryServiceImpl.class);
+    private static final Logger logger = Logger.getLogger(CategoryServiceImpl.class);
 
     @Autowired
     private CategoryDao categoryDao;

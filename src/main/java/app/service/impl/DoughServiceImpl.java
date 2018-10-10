@@ -6,9 +6,7 @@ import app.dto.DoughDTO;
 import app.entity.Dough;
 import app.exception.ObjectExistsException;
 import app.service.api.DoughService;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +19,7 @@ import java.util.stream.Collectors;
 @Service
 public class DoughServiceImpl implements DoughService {
 
-    private static final Logger logger = LogManager.getLogger(DoughServiceImpl.class);
+    private static final Logger logger = Logger.getLogger(DoughServiceImpl.class);
 
     @Autowired
     private DoughDao doughDao;

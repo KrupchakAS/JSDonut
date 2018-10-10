@@ -5,8 +5,8 @@ import app.dto.*;
 import app.exception.MinTotalPriceOrder;
 import app.exception.ObjectAlreadyInOrder;
 import app.service.api.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -23,7 +23,7 @@ import java.util.List;
 
 public class MainController {
 
-    private static final Logger logger = LogManager.getLogger(MainController.class);
+    private static final Logger logger = Logger.getLogger(MainController.class);
 
     public static final List<ProductDTO> productDTOList = new ArrayList<>();
 

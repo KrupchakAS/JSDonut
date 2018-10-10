@@ -11,8 +11,6 @@ public interface OrderDao extends GenericDao<Order>{
 
     List<Order> getOrdersByUserId(Integer userId);
 
-
-
     List<Order> getOrdersForMonth();
 
     List<Order> getOrdersForWeek();

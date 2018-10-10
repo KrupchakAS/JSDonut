@@ -1,7 +1,8 @@
 package app.config;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +17,7 @@ import java.util.Properties;
 @Configuration
 public class MessageConfig {
 
-    private static final Logger logger = LogManager.getLogger(MessageConfig.class);
+    private static final Logger logger = Logger.getLogger(MessageConfig.class);
 
     @Bean
     public Context context() throws NamingException {
@@ -41,10 +42,7 @@ public class MessageConfig {
 
     @Bean
     public QueueConnectionFactory connectionFactory() throws NamingException {
-        logger.info("Attempting to acquire connection factory " );
-        QueueConnectionFactory connectionFactory = (QueueConnectionFactory) context().lookup("jms/RemoteConnectionFactory");
-        logger.info("Found connection factory");
-        return connectionFactory;
+        return (QueueConnectionFactory) context().lookup("jms/RemoteConnectionFactory");
     }
 
     @Bean

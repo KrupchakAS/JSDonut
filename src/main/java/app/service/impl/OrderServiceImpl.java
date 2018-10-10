@@ -12,8 +12,7 @@ import app.entity.User;
 import app.entity.enums.Converter.OrderStatusConverter;
 import app.entity.enums.Converter.PaymentStatusConverter;
 import app.service.api.OrderService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.apache.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,13 +24,12 @@ import app.entity.enums.Converter.PaymentOptionConverter;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static java.util.Map.Entry.comparingByValue;
 import static java.util.stream.Collectors.toMap;
 
 @Service
 public class OrderServiceImpl implements OrderService {
 
-    private static final Logger logger = LogManager.getLogger(OrderServiceImpl.class);
+    private static final Logger logger = Logger.getLogger(OrderServiceImpl.class);
 
     @Autowired
     private OrderDao orderDao;
