@@ -27,24 +27,27 @@ public class Product {
     @Column(name = "image")
     private String image;
 
-    @Min(value = 0)
+    @Min(value = 10)
     @NotNull(message = "Field can not be null")
     @Column(name = "price")
     private Float price;
 
-    @Min(value = 0)
+    @Min(value = 5)
     @NotNull(message = "Field can not be null")
     @Column(name = "workPrice")
     private Float workPrice;
 
+    @Min(value = 1)
     @NotNull(message = "Field can not be null")
     @Column(name = "weight")
     private Short weight;
 
+    @Min(value = 1)
     @NotNull(message = "Field can not be null")
     @Column(name = "quantity")
     private Short quantity;
 
+    @Min(value = 10)
     @NotNull(message = "Field can not be null")
     @Column(name = "calories")
     private Short calories;

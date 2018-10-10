@@ -4,6 +4,5 @@
 *.log
 # Maven:
 .idea
-
 target
 

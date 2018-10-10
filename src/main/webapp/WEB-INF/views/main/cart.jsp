@@ -279,8 +279,8 @@
 
                     </div>
                     <h3 class="Total-price wow fadeInRight animated" style="padding-left: 80px; color: black">
-                        TotalPrice(minimum:600₽): ${sessionScope.order.totalPrice}₽<</h3>
-                    <h2 style="padding-left: 1050px;"><a href="#"><span
+                        TotalPrice(minimum:600₽): ${sessionScope.order.totalPrice}₽</h3>
+                    <h2 style="padding-left: 950px;"><a href="#"><span
                             class="OrderSave label label-success">Save Order</span></a></h2>
                 </sec:authorize>
                 <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">

@@ -2,6 +2,7 @@ package app.controller;
 
 import app.dto.AjaxDTO;
 import app.dto.FillingDTO;
+import app.exception.MinPriceException;
 import app.service.api.FillingService;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,9 @@ public class FillingController {
     public AjaxDTO createFilling(@Valid @RequestBody FillingDTO fillingDTO) throws InterruptedException {
         AjaxDTO result = new AjaxDTO();
         if(fillingDTO != null){
+            if(fillingDTO.getPrice() <= 10){
+                throw new MinPriceException(" Price can not be less than 10P ");
+            }
             fillingService.create(fillingDTO);
             result.setData(fillingDTO);
         }
@@ -50,6 +54,9 @@ public class FillingController {
     public AjaxDTO updateFilling(@Valid @RequestBody FillingDTO fillingDTO){
         AjaxDTO result = new AjaxDTO();
         if(fillingDTO != null){
+            if(fillingDTO.getPrice() <= 10){
+                throw new MinPriceException(" Price can not be less than 10P ");
+            }
             fillingService.update(fillingDTO);
             result.setData(fillingDTO);
         }

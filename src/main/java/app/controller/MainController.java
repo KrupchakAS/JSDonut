@@ -2,8 +2,9 @@ package app.controller;
 
 import app.dto.*;
 
-import app.exception.MinTotalPriceOrder;
-import app.exception.ObjectAlreadyInOrder;
+import app.exception.MinQuantityException;
+import app.exception.MinTotalPriceOrderException;
+import app.exception.ObjectAlreadyInOrderException;
 import app.service.api.*;
 
 import org.apache.log4j.Logger;
@@ -112,10 +113,14 @@ public class MainController {
         ProductDTO productDTO = productService.getById(productId);
         for (int i = 0; i < productDTOList.size(); i++) {
             if (productDTOList.get(i).getId().equals(productDTO.getId())) {
-                throw new ObjectAlreadyInOrder(String.format("Product with name %s already in your Order", productDTO.getName()));
+                throw new ObjectAlreadyInOrderException(String.format("Product with name %s already in your Order", productDTO.getName()));
             }
         }
-        productDTO.setQuantity(quantity);
+        if(quantity >=1){
+            productDTO.setQuantity(quantity);
+        }else {
+            throw new MinQuantityException("Wrong Quantity");
+        }
         productDTOList.add(productDTO);
         OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
         orderDTO.setProductList(productDTOList);
@@ -167,7 +172,7 @@ public class MainController {
             }
         }
         if (orderDTO.getTotalPrice() < 600) {
-            throw new MinTotalPriceOrder("Total Price can't be less than 600P");
+            throw new MinTotalPriceOrderException("Total Price can't be less than 600P");
         }
         orderDTO.setDeliveryOption(order.getDeliveryOption());
         orderDTO.setPaymentOption(order.getPaymentOption());

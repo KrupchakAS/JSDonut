@@ -2,6 +2,7 @@ package app.controller;
 
 import app.dto.AjaxDTO;
 import app.dto.ProductDTO;
+import app.exception.MinPriceException;
 import app.service.api.*;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,9 @@ public class ProductController {
     public AjaxDTO createProduct(@Valid @RequestBody ProductDTO productDTO){
         AjaxDTO result = new AjaxDTO();
         if(productDTO != null){
+            if(productDTO.getPrice() <= 10){
+                throw new MinPriceException(" Price can not be less than 10P");
+            }
             productService.create(productDTO);
             result.setData(productDTO);
         }
@@ -61,6 +65,9 @@ public class ProductController {
     public AjaxDTO updateProduct(@Valid @RequestBody ProductDTO productDTO){
         AjaxDTO result = new AjaxDTO();
         if(productDTO != null){
+            if(productDTO.getPrice() <= 10){
+                throw new MinPriceException(" Price can not be less than 10P");
+            }
             productService.update(productDTO);
             result.setData(productDTO);
         }

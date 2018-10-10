@@ -2,6 +2,7 @@ package app.controller;
 
 import app.dto.AjaxDTO;
 import app.dto.SprinkleDTO;
+import app.exception.MinPriceException;
 import app.service.api.SprinkleService;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,9 @@ public class SprinkleController {
     public AjaxDTO createSprinkle(@Valid @RequestBody SprinkleDTO sprinkleDTO){
         AjaxDTO result = new AjaxDTO();
         if(sprinkleDTO != null){
+            if(sprinkleDTO.getPrice() <= 10){
+                throw new MinPriceException("Price can not be less than 10P");
+            }
             sprinkleService.create(sprinkleDTO);
             result.setData(sprinkleDTO);
         }
@@ -50,6 +54,9 @@ public class SprinkleController {
     public AjaxDTO updateSprinkle(@Valid @RequestBody SprinkleDTO sprinkleDTO){
         AjaxDTO result = new AjaxDTO();
         if(sprinkleDTO != null){
+            if(sprinkleDTO.getPrice() <= 10){
+                throw new MinPriceException("Price can not be less than 10P");
+            }
             sprinkleService.update(sprinkleDTO);
             result.setData(sprinkleDTO);
         }

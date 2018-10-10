@@ -3,9 +3,8 @@ package app.controller;
 import app.dto.AjaxDTO;
 import app.dto.OrderDTO;
 import app.dto.UserDTO;
-import app.exception.UserNotFound;
+import app.exception.UserNotFoundException;
 import app.message.MessageSender;
-import app.service.api.AddressService;
 import app.service.api.OrderService;
 import app.service.api.UserService;
 import app.validator.UserValidator;
@@ -19,7 +18,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,7 +25,6 @@ import javax.validation.Valid;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static app.controller.MainController.productDTOList;
@@ -62,8 +59,8 @@ public class UserController {
         }
         orderDTO.setTotalPrice(totalPrice);
 
-        //messageSender.sendMessage("ATATA");
-        //System.out.println("ATATA");
+        messageSender.sendMessage("ATATA");
+        System.out.println("ATATA");
 
         session.setAttribute("countProductInOrder", productDTOList.size());
         return "main/welcome";
@@ -86,7 +83,7 @@ public class UserController {
             return "main/registration";
         }
         userService.create(userForm);
-        return "redirect:/jsDonut/welcome";
+        return "redirect:/welcome";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -107,7 +104,7 @@ public class UserController {
         if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
-        return "redirect:/jsDonut/welcome";
+        return "redirect:/welcome";
     }
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
@@ -135,7 +132,7 @@ public class UserController {
         AjaxDTO result = new AjaxDTO();
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         if (userDTO == null) {
-            throw new UserNotFound("User Not Found");
+            throw new UserNotFoundException("User Not Found");
         }
         userDTO.setPassword(userDTO1.getPassword());
         userService.updatePassword(userDTO);
@@ -148,7 +145,7 @@ public class UserController {
         AjaxDTO result = new AjaxDTO();
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         if (userDTO == null) {
-            throw new UserNotFound("User Not Found");
+            throw new UserNotFoundException("User Not Found");
         }
         userDTO.setFirstName(userDTO1.getFirstName());
         userDTO.setSurName(userDTO1.getSurName());
@@ -180,7 +177,7 @@ public class UserController {
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String main() {
-        return "redirect:/jsDonut/welcome";
+        return "redirect:/welcome";
     }
 
 }

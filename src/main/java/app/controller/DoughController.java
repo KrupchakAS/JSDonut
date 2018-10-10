@@ -4,6 +4,7 @@ import app.dto.AjaxDTO;
 import app.dto.DoughDTO;
 import app.dto.FillingDTO;
 import app.dto.SprinkleDTO;
+import app.exception.MinPriceException;
 import app.service.api.DoughService;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,9 +42,12 @@ public class DoughController {
     public AjaxDTO createDough(@Valid @RequestBody DoughDTO doughDTO){
         AjaxDTO result = new AjaxDTO();
         if(doughDTO != null){
+            if(doughDTO.getPrice() <= 10){
+                throw new MinPriceException("Price can not be less than 10P ");
+            }
             doughService.create(doughDTO);
+            result.setData(doughDTO);
         }
-        result.setData(doughDTO);
         return result;
     }
 
@@ -52,9 +56,12 @@ public class DoughController {
     public AjaxDTO updateDough( @RequestBody DoughDTO doughDTO){
         AjaxDTO result = new AjaxDTO();
         if(doughDTO != null){
+            if(doughDTO.getPrice() <= 10){
+                throw new MinPriceException("Price can not be less than 10P ");
+            }
             doughService.update(doughDTO);
+            result.setData(doughDTO);
         }
-        result.setData(doughDTO);
         return result;
     }
 

@@ -54,6 +54,6 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(NoHandlerFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handlerNotFound(){
-        return "redirect:/jsDonut/404";
+        return "redirect:/404";
     }
 }
