@@ -6,11 +6,11 @@ import javax.validation.constraints.Size;
 public class SprinkleDTO {
 
     private Integer id;
-    @Size(min = 2, max = 16, message = "Field must be between 2 and 16 characters.")
+
     private String name;
-    @NotNull
+
     private Float price;
-    @NotNull
+
     private Short calories;
 
     public Integer getId() {

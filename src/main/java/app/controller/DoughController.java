@@ -2,9 +2,8 @@ package app.controller;
 
 import app.dto.AjaxDTO;
 import app.dto.DoughDTO;
-import app.dto.FillingDTO;
-import app.dto.SprinkleDTO;
-import app.exception.MinPriceException;
+import app.exception.MinLengthFieldException;
+import app.exception.MinValueException;
 import app.service.api.DoughService;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -39,12 +37,15 @@ public class DoughController {
 
     @ResponseBody
     @RequestMapping(value = "/dough/createDough", method = RequestMethod.POST)
-    public AjaxDTO createDough(@Valid @RequestBody DoughDTO doughDTO){
+    public AjaxDTO createDough(@RequestBody DoughDTO doughDTO){
         AjaxDTO result = new AjaxDTO();
         if(doughDTO != null){
-            if(doughDTO.getPrice() <= 10){
-                throw new MinPriceException("Price can not be less than 10P ");
-            }
+            if(doughDTO.getName().length() < 1 || doughDTO.getCalories() == null){
+                throw new MinLengthFieldException("Field can not be empty");
+            } else if(doughDTO.getPrice() < 10){
+                throw new MinValueException("Price can not be less than 10P ");
+            } else if(doughDTO.getCalories() < 50){
+                throw new MinValueException("Calories can not be less than 50 "); }
             doughService.create(doughDTO);
             result.setData(doughDTO);
         }
@@ -56,9 +57,12 @@ public class DoughController {
     public AjaxDTO updateDough( @RequestBody DoughDTO doughDTO){
         AjaxDTO result = new AjaxDTO();
         if(doughDTO != null){
-            if(doughDTO.getPrice() <= 10){
-                throw new MinPriceException("Price can not be less than 10P ");
-            }
+            if(doughDTO.getName().length() <= 1 || doughDTO.getCalories() == null){
+                throw new MinLengthFieldException("Field can not be empty");
+            } else if(doughDTO.getPrice() <= 10){
+                throw new MinValueException("Price can not be less than 10P ");
+            } else if(doughDTO.getCalories() < 50){
+                throw new MinValueException("Calories can not be less than 50 "); }
             doughService.update(doughDTO);
             result.setData(doughDTO);
         }

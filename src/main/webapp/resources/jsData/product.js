@@ -14,7 +14,8 @@ function updateItem(button) {
         $('#ProdPrice-' + product.id).html(product.price);
         $('#ProdWeight-' + product.id).html(product.weight);
         $('#ProdQuantity-' + product.id).html(product.quantity);
-
+        closeProduct();
+        swal('Updated!');
     };
 
     console.log(pst.data);
@@ -60,7 +61,6 @@ $(document).ready(function () {
     $(document).on('click', '.product-update', function (e) {
         e.preventDefault();
         updateItem($(this));
-        swal('Updated!');
     });
 });
 
@@ -244,6 +244,8 @@ function deleteProduct(id, button) {
     pst.url = '/jsDonut/admin/product/deleteProduct';
     pst.successFunction = function (result) {
         pst.selector.closest('tr').remove();
+        swal('Deleted!');
+        closeProduct();
     };
 
     sendAjax(pst);
@@ -254,7 +256,6 @@ $(document).ready(function () {
         e.preventDefault();
         var id = $(this).closest('tr').data('id');
         deleteProduct(id, $(this));
-        swal('Deleted!');
     });
 });
 
@@ -321,9 +322,6 @@ function addProducts(productList) {
                 '</div> </div> </div><hr>');
         }
     }
-
-    closeProduct();
-
 }
 
 // AddProductToOrder ----------------------------------------------

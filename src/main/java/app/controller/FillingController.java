@@ -2,7 +2,8 @@ package app.controller;
 
 import app.dto.AjaxDTO;
 import app.dto.FillingDTO;
-import app.exception.MinPriceException;
+import app.exception.MinLengthFieldException;
+import app.exception.MinValueException;
 import app.service.api.FillingService;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -37,11 +37,15 @@ public class FillingController {
 
     @ResponseBody
     @RequestMapping(value = "/filling/createFilling", method = RequestMethod.POST)
-    public AjaxDTO createFilling(@Valid @RequestBody FillingDTO fillingDTO) throws InterruptedException {
+    public AjaxDTO createFilling(@RequestBody FillingDTO fillingDTO) throws InterruptedException {
         AjaxDTO result = new AjaxDTO();
         if(fillingDTO != null){
-            if(fillingDTO.getPrice() <= 10){
-                throw new MinPriceException(" Price can not be less than 10P ");
+            if(fillingDTO.getName().length() < 1 || fillingDTO.getCalories() == null){
+                throw new MinLengthFieldException("Field can not be empty ");
+            } else if(fillingDTO.getPrice() < 10){
+                throw new MinValueException("Price can not be less than 10P ");
+            }  else if(fillingDTO.getCalories() < 50){
+                throw new MinValueException(" Calories can not be less than 50");
             }
             fillingService.create(fillingDTO);
             result.setData(fillingDTO);
@@ -51,11 +55,15 @@ public class FillingController {
 
     @ResponseBody
     @RequestMapping(value = "/filling/updateFilling", method = RequestMethod.POST)
-    public AjaxDTO updateFilling(@Valid @RequestBody FillingDTO fillingDTO){
+    public AjaxDTO updateFilling(@RequestBody FillingDTO fillingDTO){
         AjaxDTO result = new AjaxDTO();
         if(fillingDTO != null){
-            if(fillingDTO.getPrice() <= 10){
-                throw new MinPriceException(" Price can not be less than 10P ");
+            if(fillingDTO.getName().length() < 1 || fillingDTO.getCalories() == null){
+                throw new MinLengthFieldException("Field can not be empty ");
+            } else if(fillingDTO.getPrice() < 10){
+                throw new MinValueException("Price can not be less than 10P ");
+            } else if(fillingDTO.getCalories() < 50){
+                throw new MinValueException(" Calories can not be less than 50 ");
             }
             fillingService.update(fillingDTO);
             result.setData(fillingDTO);

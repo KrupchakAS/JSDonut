@@ -36,10 +36,10 @@
         <li class="${statisticActive}"><a href="${contextPath}/admin/statistic"> Statistic</a></li>
         <li class="${orderActive}"><a href="${contextPath}/admin/order"> Orders</a></li>
         <li class="${categoryActive}"><a href="${contextPath}/admin/category"> Categories</a></li>
-        <li class="${productActive}"><a href="${contextPath}/admin/product">Product</a></li>
-        <li class="${sprinkleActive}"><a href="${contextPath}/admin/sprinkle">Sprinkle</a></li>
-        <li class="${doughActive}"><a href="${contextPath}/admin/dough">Dough</a></li>
-        <li class="${fillingActive}"><a href="${contextPath}/admin/filling">Filling</a></li>
+        <li class="${productActive}"><a href="${contextPath}/admin/product">Products</a></li>
+        <li class="${sprinkleActive}"><a href="${contextPath}/admin/sprinkle">Sprinkles</a></li>
+        <li class="${doughActive}"><a href="${contextPath}/admin/dough">Doughs</a></li>
+        <li class="${fillingActive}"><a href="${contextPath}/admin/filling">Fillings</a></li>
     </ul>
 </div><!--/.sidebar-->
 

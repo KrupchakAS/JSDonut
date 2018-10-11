@@ -6,7 +6,7 @@ public class CategoryDTO {
 
     private Integer id;
 
-    @Size(min = 2, max = 16, message = "Field must be between 2 and 16 characters.")
+
     private String name;
 
     public Integer getId() {

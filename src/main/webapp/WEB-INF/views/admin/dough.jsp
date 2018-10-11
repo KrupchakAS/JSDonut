@@ -119,7 +119,6 @@
                                 <div class="col-md-6">
                                     <button type="button" class="btn btn-lg btn-success btn-block dough-save">Save
                                     </button>
-
                                     <button type="button" class="btn btn-lg btn-success btn-block dough-update">Update
                                     </button>
                                 </div>

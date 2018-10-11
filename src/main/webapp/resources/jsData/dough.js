@@ -52,6 +52,8 @@ function updateItem(button) {
         $('#DouName-' + dough.id).html(dough.name);
         $('#DouCal-' + dough.id).html(dough.calories);
         $('#DouPr-' + dough.id).html(dough.price);
+        swal('Updated!');
+        closeDough();
     };
 
     console.log(pst.data);
@@ -74,7 +76,7 @@ $(document).ready(function () {
     $(document).on('click', '.dough-update', function (e) {
         e.preventDefault();
         updateItem($(this));
-        swal('Updated!');
+
     });
 });
 
@@ -158,6 +160,8 @@ function deleteDough(id, button) {
     pst.url = '/jsDonut/admin/dough/deleteDough';
     pst.successFunction = function (result) {
         pst.selector.closest('tr').remove();
+        closeDough();
+        swal('Deleted!');
     };
 
     sendAjax(pst);
@@ -168,7 +172,6 @@ $(document).ready(function () {
         e.preventDefault();
         var id = $(this).closest('tr').data('id');
         deleteDough(id, $(this));
-        swal('Deleted!');
     });
 });
 // Scripts
@@ -182,12 +185,6 @@ $(function () {
         getUpdateForm(id, $(this));
     });
     $(document).on('click', '.dough-close', function () {
-        closeDough();
-    });
-    $(document).on('click', '.dough-update', function () {
-        closeDough();
-    });
-    $(document).on('click', '.dough-delete', function () {
         closeDough();
     });
 });

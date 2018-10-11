@@ -2,6 +2,7 @@ package app.controller;
 
 import app.dto.AjaxDTO;
 import app.dto.CategoryDTO;
+import app.exception.MinLengthFieldException;
 import app.service.api.CategoryService;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +36,12 @@ public class CategoryController {
 
     @ResponseBody
     @RequestMapping(value = "/category/createCategory", method = RequestMethod.POST)
-    public AjaxDTO createCategory(@Valid @RequestBody CategoryDTO categoryDTO) {
+    public AjaxDTO createCategory(@RequestBody CategoryDTO categoryDTO) {
         AjaxDTO result = new AjaxDTO();
         if (categoryDTO != null) {
+            if(categoryDTO.getName().length() < 1 || categoryDTO.getName() == null ){
+                throw new MinLengthFieldException("Field can not be empty");
+            }
             categoryService.create(categoryDTO);
             result.setData(categoryDTO);
         }
@@ -46,9 +50,12 @@ public class CategoryController {
 
     @ResponseBody
     @RequestMapping(value = "/category/updateCategory", method = RequestMethod.POST)
-    public AjaxDTO updateCategory(@Valid @RequestBody CategoryDTO categoryDTO) {
+    public AjaxDTO updateCategory(@RequestBody CategoryDTO categoryDTO) {
         AjaxDTO result = new AjaxDTO();
         if (categoryDTO != null) {
+            if(categoryDTO.getName().length() < 1 || categoryDTO.getName() == null){
+                throw new MinLengthFieldException("Field can not be empty");
+            }
             categoryService.update(categoryDTO);
         }
         result.setData(categoryDTO);

@@ -46,7 +46,9 @@ function updateItem(button) {
     pst.data = {};
     pst.data = getItemData();
     pst.successFunction = function (category) {
-        $('#CatName').text(category.name)
+        $('#CatName').html(category.name)
+        closeCategory();
+        swal('Updated!');
     };
 
     console.log(pst.data);
@@ -68,7 +70,7 @@ $(document).ready(function () {
     $(document).on('click', '.category-update', function (e) {
         e.preventDefault();
         updateItem($(this));
-        swal('Updated!');
+
     });
 });
 
@@ -146,6 +148,8 @@ function deleteCategory(id, button) {
     pst.url = '/jsDonut/admin/category/deleteCategory';
     pst.successFunction = function (result) {
         pst.selector.closest('tr').remove();
+        swal('Deleted!');
+        closeCategory();
     };
 
     sendAjax(pst);
@@ -156,7 +160,6 @@ $(document).ready(function () {
         e.preventDefault();
         var id = $(this).closest('tr').data('id');
         deleteCategory(id, $(this));
-        swal('Deleted!');
     });
 });
 
@@ -171,12 +174,6 @@ $(function() {
         getUpdateForm(id, $(this));
     });
     $(document).on('click', '.category-close', function() {
-        closeCategory();
-    });
-    $(document).on('click', '.category-update', function() {
-        closeCategory();
-    });
-    $(document).on('click', '.category-delete', function () {
         closeCategory();
     });
 });

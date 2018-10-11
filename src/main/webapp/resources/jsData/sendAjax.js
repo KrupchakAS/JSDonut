@@ -36,7 +36,7 @@ function sendAjax(ajax) {
                 ajax.errorFunction(result);
 
             } else {
-                swal('Error', result.error, 'error');
+                swal('Error!', result.error, 'error');
             }
 
         }

@@ -235,7 +235,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<User> getTop10Users() {
+    public List<UserDTO> getTop10Users() {
         List<Order> orderList = orderDao.getAll();
         Map<User, Integer> top10Users = new HashMap<>();
         for (int i = 0; i < orderList.size(); i++) {
@@ -262,15 +262,15 @@ public class OrderServiceImpl implements OrderService {
             for (int i = 0; i < 10; i++) {
                 userList2.add(userList.get(i));
             }
-            return userList2;
+            return userList2.stream().map(user -> modelMapper.map(user,UserDTO.class)).collect(Collectors.toList());
         } else {
-            return userList;
+            return userList.stream().map(user -> modelMapper.map(user,UserDTO.class)).collect(Collectors.toList());
         }
     }
 
     @Transactional(readOnly = true)
     @Override
-    public List<Product> getTop10Products() {
+    public List<ProductDTO> getTop10Products() {
         List<Order> orderList = orderDao.getAll();
         Map<Product, Integer> top10Products = new HashMap<>();
         List<Product> productList = new ArrayList<>();
@@ -301,9 +301,10 @@ public class OrderServiceImpl implements OrderService {
             for (int i = 0; i < 10; i++) {
                 productList2.add(productList1.get(i));
             }
-            return productList2;
+
+            return productList2.stream().map(product -> modelMapper.map(product,ProductDTO.class)).collect(Collectors.toList());
         } else {
-            return productList1;
+            return productList1.stream().map(product -> modelMapper.map(product,ProductDTO.class)).collect(Collectors.toList());
         }
     }
 }

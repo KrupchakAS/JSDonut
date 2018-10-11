@@ -2,7 +2,8 @@ package app.controller;
 
 import app.dto.AjaxDTO;
 import app.dto.ProductDTO;
-import app.exception.MinPriceException;
+import app.exception.MinLengthFieldException;
+import app.exception.MinValueException;
 import app.service.api.*;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,11 +49,25 @@ public class ProductController {
 
     @ResponseBody
     @RequestMapping(value = "/product/createProduct", method = RequestMethod.POST)
-    public AjaxDTO createProduct(@Valid @RequestBody ProductDTO productDTO){
+    public AjaxDTO createProduct(@RequestBody ProductDTO productDTO) {
         AjaxDTO result = new AjaxDTO();
-        if(productDTO != null){
-            if(productDTO.getPrice() <= 10){
-                throw new MinPriceException(" Price can not be less than 10P");
+        if (productDTO != null) {
+            if (productDTO.getName().length() < 1 || productDTO.getDescription().length() < 1 ||
+                    productDTO.getCalories() == null || productDTO.getQuantity() == null ||
+                    productDTO.getWeight() == null) {
+                throw new MinLengthFieldException(" Field can not be empty");
+            } else if (productDTO.getCategory().getId() == null) {
+                throw new MinLengthFieldException("Field Category can not be empty");
+            } else if (productDTO.getDough().getId() == null) {
+                throw new MinLengthFieldException("Field Dough can not be empty");
+            } else if (productDTO.getPrice() < 10) {
+                throw new MinValueException(" Price can not be less than 10P");
+            } else if (productDTO.getCalories() < 50) {
+                throw new MinValueException("Calories can not be less than 50 ");
+            } else if (productDTO.getWeight() < 30) {
+                throw new MinValueException("Weight can not be less than 30 ");
+            } else if (productDTO.getQuantity() < 1) {
+                throw new MinValueException("Quantity can not be less than 1 ");
             }
             productService.create(productDTO);
             result.setData(productDTO);
@@ -62,12 +77,22 @@ public class ProductController {
 
     @ResponseBody
     @RequestMapping(value = "/product/updateProduct", method = RequestMethod.POST)
-    public AjaxDTO updateProduct(@Valid @RequestBody ProductDTO productDTO){
+    public AjaxDTO updateProduct(@RequestBody ProductDTO productDTO) {
         AjaxDTO result = new AjaxDTO();
-        if(productDTO != null){
-            if(productDTO.getPrice() <= 10){
-                throw new MinPriceException(" Price can not be less than 10P");
-            }
+        if (productDTO != null) {
+            if (productDTO.getName().length() < 1 || productDTO.getDescription().length() < 1 ||
+                    productDTO.getCalories() == null || productDTO.getQuantity() == null || productDTO.getWeight() == null) {
+                throw new MinLengthFieldException("Field can not be empty");
+            } else if (productDTO.getDough().getId() == null) {
+                throw new MinLengthFieldException("Field Dough can not be empty");
+            } else if (productDTO.getPrice() < 10) {
+                throw new MinValueException(" Price can not be less than 10P");
+            } else if (productDTO.getCalories() < 50) {
+                throw new MinValueException(" Calories can not be less than 50 ");
+            } else if (productDTO.getWeight() < 30) {
+                throw new MinValueException("Weight can not be less than 30 ");
+            } else if (productDTO.getQuantity() < 1) {
+                throw new MinValueException("Quantity can not be less than 1 "); }
             productService.update(productDTO);
             result.setData(productDTO);
         }
@@ -76,10 +101,10 @@ public class ProductController {
 
     @ResponseBody
     @RequestMapping(value = "/product/deleteProduct", method = RequestMethod.DELETE)
-    public AjaxDTO deleteProduct(@Valid @RequestBody Integer id){
+    public AjaxDTO deleteProduct(@Valid @RequestBody Integer id) {
         ProductDTO productDTO = productService.getById(id);
         AjaxDTO result = new AjaxDTO();
-        if(productDTO != null){
+        if (productDTO != null) {
             productService.delete(productDTO);
         }
         return result;

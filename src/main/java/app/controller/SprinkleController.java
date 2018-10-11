@@ -2,7 +2,8 @@ package app.controller;
 
 import app.dto.AjaxDTO;
 import app.dto.SprinkleDTO;
-import app.exception.MinPriceException;
+import app.exception.MinLengthFieldException;
+import app.exception.MinValueException;
 import app.service.api.SprinkleService;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -37,11 +37,15 @@ public class SprinkleController {
 
     @ResponseBody
     @RequestMapping(value = "/sprinkle/createSprinkle", method = RequestMethod.POST)
-    public AjaxDTO createSprinkle(@Valid @RequestBody SprinkleDTO sprinkleDTO){
+    public AjaxDTO createSprinkle(@RequestBody SprinkleDTO sprinkleDTO){
         AjaxDTO result = new AjaxDTO();
         if(sprinkleDTO != null){
-            if(sprinkleDTO.getPrice() <= 10){
-                throw new MinPriceException("Price can not be less than 10P");
+            if(sprinkleDTO.getName().length() < 1 || sprinkleDTO.getCalories() == null){
+                throw new MinLengthFieldException("Field can not be empty");
+            } else if(sprinkleDTO.getPrice() < 10){
+                throw new MinValueException("Price can not be less than 10P");
+            } else if(sprinkleDTO.getCalories() < 50){
+                throw new MinValueException(" Calories can not be less than 50 ");
             }
             sprinkleService.create(sprinkleDTO);
             result.setData(sprinkleDTO);
@@ -51,11 +55,15 @@ public class SprinkleController {
 
     @ResponseBody
     @RequestMapping(value = "/sprinkle/updateSprinkle", method = RequestMethod.POST)
-    public AjaxDTO updateSprinkle(@Valid @RequestBody SprinkleDTO sprinkleDTO){
+    public AjaxDTO updateSprinkle(@RequestBody SprinkleDTO sprinkleDTO){
         AjaxDTO result = new AjaxDTO();
         if(sprinkleDTO != null){
-            if(sprinkleDTO.getPrice() <= 10){
-                throw new MinPriceException("Price can not be less than 10P");
+            if(sprinkleDTO.getName().length() < 1 || sprinkleDTO.getCalories() == null){
+                throw new MinLengthFieldException("Field can not be empty");
+            } else if(sprinkleDTO.getPrice() < 10){
+                throw new MinValueException("Price can not be less than 10P");
+            } else if(sprinkleDTO.getCalories() < 50){
+                throw new MinValueException("Calories can not be less than 50 ");
             }
             sprinkleService.update(sprinkleDTO);
             result.setData(sprinkleDTO);

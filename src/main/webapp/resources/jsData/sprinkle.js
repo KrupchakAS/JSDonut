@@ -50,6 +50,9 @@ function updateItem(button) {
         $('#SprinkleName-' + sprinkle.id).html(sprinkle.name);
         $('#SprinkleCal-' + sprinkle.id).html(sprinkle.calories);
         $('#SprinklePrice-' + sprinkle.id).html(sprinkle.price);
+        swal('Updated!');
+        closeSprinkle();
+
     };
     console.log(pst.data);
 
@@ -73,7 +76,7 @@ $(document).ready(function () {
     $(document).on('click', '.sprinkle-update', function (e) {
         e.preventDefault();
         updateItem($(this));
-        swal('Updated!');
+
     });
 });
 
@@ -157,6 +160,8 @@ function deleteSprinkle(id, button) {
     pst.url = '/jsDonut/admin/sprinkle/deleteSprinkle';
     pst.successFunction = function (result) {
         pst.selector.closest('tr').remove();
+        swal('Deleted!');
+        closeSprinkle();
     };
 
     sendAjax(pst);
@@ -167,7 +172,6 @@ $(document).ready(function () {
         e.preventDefault();
         var id = $(this).closest('tr').data('id');
         deleteSprinkle(id, $(this));
-        swal('Deleted!');
     });
 });
 
@@ -185,13 +189,7 @@ $(function () {
     $(document).on('click', '.sprinkle-close', function () {
         closeSprinkle();
     });
-    $(document).on('click', '.sprinkle-update', function () {
-        closeSprinkle();
-    });
 
-    $(document).on('click', '.sprinkle-delete', function () {
-        closeSprinkle();
-    });
 });
 
 function closeSprinkle() {

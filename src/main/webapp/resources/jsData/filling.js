@@ -37,7 +37,6 @@ function openFillingFormUpdate(fillingObject) {
     $('.filling-form').removeClass('block__display-none');
     $('.filling-update').removeClass('block__display-none');
 
-
 }
 
 function updateItem(button) {
@@ -52,6 +51,8 @@ function updateItem(button) {
         $('#FilName-' + filling.id).html(filling.name);
         $('#FilCal-' + filling.id).html(filling.calories);
         $('#FilPr-' + filling.id).html(filling.price);
+        closeFilling();
+        swal('Updated!');
     };
 
     console.log(pst.data);
@@ -76,7 +77,7 @@ $(document).ready(function () {
     $(document).on('click', '.filling-update', function (e) {
         e.preventDefault();
         updateItem($(this));
-        swal('Updated!');
+
     });
 });
 
@@ -139,8 +140,6 @@ $(document).ready(function () {
     $(document).on('click', '.filling-save', function (e) {
         e.preventDefault();
         saveItem($(this));
-        swal('SAVED!');
-
     });
 });
 
@@ -160,6 +159,8 @@ function deleteFilling(id, button) {
     pst.url = '/jsDonut/admin/filling/deleteFilling';
     pst.successFunction = function (result) {
         pst.selector.closest('tr').remove();
+        swal('Deleted!');
+        closeFilling();
     };
 
     sendAjax(pst);
@@ -170,7 +171,6 @@ $(document).ready(function () {
         e.preventDefault();
         var id = $(this).closest('tr').data('id');
         deleteFilling(id, $(this));
-        swal('Deleted!');
     });
 });
 
@@ -185,12 +185,6 @@ $(function () {
         getUpdateForm(id, $(this));
     });
     $(document).on('click', '.filling-close', function () {
-        closeFilling();
-    });
-    $(document).on('click', '.filling-update', function () {
-        closeFilling();
-    });
-    $(document).on('click', '.filling-delete', function () {
         closeFilling();
     });
 });

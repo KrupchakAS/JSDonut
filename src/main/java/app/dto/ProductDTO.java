@@ -12,32 +12,32 @@ public class ProductDTO {
 
     private Integer id;
 
-    @Size(min = 2, max = 16, message = "Field must be between 2 and 16 characters.")
+
     private String name;
 
-    @NotBlank
+
     private String description;
 
     private String image;
 
-    @NotNull
+
     private Float price;
 
-    @NotNull
+
     private Float workPrice;
 
-    @NotNull
+
     private Short weight;
 
-    @NotNull
+
     private Short quantity;
 
-    @NotNull
+
     private Short calories;
 
     private UserDTO user;
 
-    @NotNull
+
     private CategoryDTO category;
     @JsonIgnore
     private List<OrderDTO> orderList;

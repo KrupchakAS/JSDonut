@@ -6,11 +6,11 @@ import javax.validation.constraints.NotNull;
 public class DoughDTO {
 
     private Integer id;
-    @NotNull
+
     private String name;
-    @NotNull
+
     private Float price;
-    @NotNull
+
     private Short calories;
 
     public Integer getId() {
