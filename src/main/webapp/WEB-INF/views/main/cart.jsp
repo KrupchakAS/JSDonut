@@ -278,9 +278,9 @@
                         </div>
 
                     </div>
-                    <h3 class="Total-price wow fadeInRight animated" style="padding-left: 80px; color: black">
+                    <h3 class="Total-price wow fadeInRight animated" style="padding-left: 780px; color: black">
                         TotalPrice(minimum:600₽): ${sessionScope.order.totalPrice}₽</h3>
-                    <h2 style="padding-left: 950px;"><a href="#"><span
+                    <h2 style="padding-left: 1020px;"><a href="#"><span
                             class="OrderSave label label-success">Save Order</span></a></h2>
                 </sec:authorize>
                 <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
@@ -296,7 +296,9 @@
         </c:choose>
     </div>
 </div>
-
+<div class="ChocDonut block__display-none">
+    <img width="100%" src="${contextPath}/resources/assetsMainPages/images/chocolate-donuts.jpg">
+</div>
 <!--//cart-items-->
 <!--footer-->
 <div class="footer">

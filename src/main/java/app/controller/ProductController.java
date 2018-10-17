@@ -4,6 +4,7 @@ import app.dto.AjaxDTO;
 import app.dto.ProductDTO;
 import app.exception.MinLengthFieldException;
 import app.exception.MinValueException;
+import app.message.MessageSender;
 import app.service.api.*;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,10 @@ public class ProductController {
     private SprinkleService sprinkleService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private MessageSender messageSender;
+    @Autowired
+    private OrderService orderService;
 
     @RequestMapping(value = "/product", method = RequestMethod.GET)
     public String openPage(ModelMap modelMap) {
@@ -70,6 +75,7 @@ public class ProductController {
                 throw new MinValueException("Quantity can not be less than 1 ");
             }
             productService.create(productDTO);
+            messageSender.sendMessage("Update");
             result.setData(productDTO);
         }
         return result;
@@ -94,6 +100,7 @@ public class ProductController {
             } else if (productDTO.getQuantity() < 1) {
                 throw new MinValueException("Quantity can not be less than 1 "); }
             productService.update(productDTO);
+            messageSender.sendMessage("Update");
             result.setData(productDTO);
         }
         return result;

@@ -3,6 +3,7 @@ package app.controller;
 import app.dto.AjaxDTO;
 import app.dto.OrderDTO;
 import app.dto.UserDTO;
+import app.exception.MinLengthFieldException;
 import app.exception.UserNotFoundException;
 import app.message.MessageSender;
 import app.service.api.OrderService;
@@ -58,10 +59,6 @@ public class UserController {
             totalPrice += productDTOList.get(i).getPrice() * productDTOList.get(i).getQuantity();
         }
         orderDTO.setTotalPrice(totalPrice);
-
-        messageSender.sendMessage("ATATA");
-        System.out.println("ATATA");
-
         session.setAttribute("countProductInOrder", productDTOList.size());
         return "main/welcome";
     }
@@ -133,6 +130,11 @@ public class UserController {
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         if (userDTO == null) {
             throw new UserNotFoundException("User Not Found");
+        }
+        if(userDTO1.getPassword().length() < 4 & userDTO1.getConfirmPassword().length() < 4){
+            throw new MinLengthFieldException("Field can not be less 4 characters");
+        }else if (!userDTO1.getPassword().equals(userDTO1.getConfirmPassword())){
+            throw new MinLengthFieldException("Password don't match.");
         }
         userDTO.setPassword(userDTO1.getPassword());
         userService.updatePassword(userDTO);

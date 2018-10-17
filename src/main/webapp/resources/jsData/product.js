@@ -413,7 +413,9 @@ function SaveOrder(button) {
     pst.data = getDataFormForOrder();
     pst.successFunction = function () {
         $('.cart-info').addClass('block__display-none');
+        $('.ChocDonut').removeClass('block__display-none');
         swal('Order Added. You can show details in Account');
+
     };
 
     console.log(pst.data);

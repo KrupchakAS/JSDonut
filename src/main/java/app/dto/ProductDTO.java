@@ -6,37 +6,30 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.List;
 
-public class ProductDTO {
+public class ProductDTO implements Serializable{
 
     private Integer id;
 
-
     private String name;
-
 
     private String description;
 
     private String image;
 
-
     private Float price;
-
 
     private Float workPrice;
 
-
     private Short weight;
 
-
     private Short quantity;
-
 
     private Short calories;
 
     private UserDTO user;
-
 
     private CategoryDTO category;
     @JsonIgnore

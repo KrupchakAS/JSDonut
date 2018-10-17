@@ -5,6 +5,7 @@ import app.dto.*;
 import app.exception.MinQuantityException;
 import app.exception.MinTotalPriceOrderException;
 import app.exception.ObjectAlreadyInOrderException;
+import app.message.MessageSender;
 import app.service.api.*;
 
 import org.apache.log4j.Logger;
@@ -51,6 +52,9 @@ public class MainController {
 
     @Autowired
     private SprinkleService sprinkleService;
+
+    @Autowired
+    private MessageSender messageSender;
 
     @RequestMapping(value = "/getProductsByParameters", method = RequestMethod.GET)
     @ResponseBody
@@ -178,6 +182,7 @@ public class MainController {
         orderDTO.setPaymentOption(order.getPaymentOption());
         orderDTO.setUserDTO(userDTO);
         orderService.create(orderDTO);
+        messageSender.sendMessage("Update");
         result.setData(orderDTO);
         session.setAttribute("order", new OrderDTO());
         productDTOList.clear();

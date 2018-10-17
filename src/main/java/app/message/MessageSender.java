@@ -1,9 +1,13 @@
 package app.message;
 
+import app.dto.ProductDTO;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.jms.*;
+import java.util.List;
 
 @Component
 public class MessageSender {
@@ -15,6 +19,7 @@ public class MessageSender {
     private JMSProducer jmsProducer;
 
     public void sendMessage(String txt) {
+            //String prodList = new ObjectMapper().writeValueAsString(productDTOSList);
             jmsProducer.send(queue,txt);
     }
 

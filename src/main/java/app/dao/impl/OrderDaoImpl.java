@@ -55,4 +55,9 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
             return list;
         }
     }
+
+    @Override
+    public List<Order> getOrdersWithStatusCooking() {
+        return null;
+    }
 }
