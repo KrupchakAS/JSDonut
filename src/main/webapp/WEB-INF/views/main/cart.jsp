@@ -274,7 +274,7 @@
                             </form>
                         </div>
                         <div class="col-sm-3">
-                            <div class="PickUpDiv block__display-none"><p class="pickup-option">PICKUP: -> Saint-Petersburg str.Buharestskaya 100.</p></div>
+                            <div class="PickUpDiv block__display-none"><p class="pickup-option">PICKUP: -> Saint-Petersburg str.Buharestskaya 100</p></div>
                         </div>
 
                     </div>
