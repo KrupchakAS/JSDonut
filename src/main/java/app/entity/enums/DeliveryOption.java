@@ -2,20 +2,20 @@ package app.entity.enums;
 
 public enum DeliveryOption {
 
-    PICKUP((byte) 1),
-    DELIVERY((byte) 2);
+    PICKUP(1),
+    DELIVERY(2);
 
-    public final Byte value;
+    public final Integer value;
 
-    public Byte getValue() {
+    public Integer getValue() {
         return value;
     }
 
-    DeliveryOption(final Byte value) {
+    DeliveryOption(final Integer value) {
         this.value = value;
     }
 
-    public static DeliveryOption valueOf(final Byte value) {
+    public static DeliveryOption valueOf(final Integer value) {
         for (DeliveryOption status : DeliveryOption.values()) {
             if (status.getValue().equals(value)) {
                 return status;

@@ -14,4 +14,6 @@ public interface GenericDao<Entity> {
 
     List<Entity> getAll();
 
+    Entity selectForUpdate(Integer id);
+
 }

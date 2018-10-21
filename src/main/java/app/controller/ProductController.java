@@ -75,7 +75,6 @@ public class ProductController {
                 throw new MinValueException("Quantity can not be less than 1 ");
             }
             productService.create(productDTO);
-            messageSender.sendMessage("Update");
             result.setData(productDTO);
         }
         return result;
@@ -100,7 +99,6 @@ public class ProductController {
             } else if (productDTO.getQuantity() < 1) {
                 throw new MinValueException("Quantity can not be less than 1 "); }
             productService.update(productDTO);
-            messageSender.sendMessage("Update");
             result.setData(productDTO);
         }
         return result;

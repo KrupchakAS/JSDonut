@@ -3,6 +3,7 @@ package app.dao;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -46,6 +47,11 @@ public abstract class GenericDaoImpl<Entity> implements GenericDao<Entity> {
         CriteriaQuery<Entity> criteriaQuery = entityManager.getCriteriaBuilder().createQuery(daoClass);
         criteriaQuery.from(daoClass);
         return findList(criteriaQuery);
+    }
+
+    @Override
+    public Entity selectForUpdate(Integer id) {
+        return entityManager.find(daoClass, id, LockModeType.PESSIMISTIC_WRITE);
     }
 
     protected List<Entity> findList(CriteriaQuery<Entity> criteriaQuery) {

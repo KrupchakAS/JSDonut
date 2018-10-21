@@ -36,7 +36,6 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
     @Override
     public List<Order> getOrdersForMonth() {
         TypedQuery<Order> q = entityManager.createQuery("FROM Order WHERE month(purchaseDate) = month(now())-1",Order.class);
-//        Select * from table where date between '01-01-2014' and '14-01-2014' - Between(example)
         List<Order> list = q.getResultList();
         if (list.isEmpty()) {
             return null;
@@ -56,8 +55,4 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
         }
     }
 
-    @Override
-    public List<Order> getOrdersWithStatusCooking() {
-        return null;
-    }
 }

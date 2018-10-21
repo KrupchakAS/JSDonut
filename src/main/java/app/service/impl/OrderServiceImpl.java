@@ -1,17 +1,18 @@
 package app.service.impl;
 
 import app.dao.api.OrderDao;
-import app.dto.AddressDTO;
-import app.dto.OrderDTO;
-import app.dto.ProductDTO;
-import app.dto.UserDTO;
-import app.entity.Address;
-import app.entity.Order;
-import app.entity.Product;
-import app.entity.User;
+import app.dao.api.OrderProductDao;
+import app.dto.*;
+import app.entity.*;
 import app.entity.enums.Converter.OrderStatusConverter;
 import app.entity.enums.Converter.PaymentStatusConverter;
+import app.entity.enums.OrderStatus;
+import app.entity.enums.PaymentOption;
+import app.entity.enums.PaymentStatus;
+import app.message.MessageSender;
+import app.service.api.OrderProductService;
 import app.service.api.OrderService;
+import app.service.api.ProductService;
 import org.apache.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,30 +38,49 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private ModelMapper modelMapper;
 
-    @Transactional(propagation = Propagation.REQUIRED)
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private MessageSender messageSender;
+
+    @Autowired
+    private OrderProductDao orderProductDao;
+
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public void create(OrderDTO orderDTO) {
         if (orderDTO != null) {
-            orderDTO.setPurchaseDate(new Date());
-
             Order order = new Order();
+            order.setPurchaseDate(new Date());
             order.setTotalPrice(orderDTO.getTotalPrice());
-            List<Product> productList = orderDTO.getProductList().stream().map(productDTO -> modelMapper.map(productDTO, Product.class)).collect(Collectors.toList());
-            order.setProductList(productList);
+            order.setProductList(generateProductList(orderDTO.getProductList()));
             if (orderDTO.getAddress() != null) {
                 order.setAddress(modelMapper.map(orderDTO.getAddress(), Address.class));
             }
             order.setUser(modelMapper.map(orderDTO.getUserDTO(), User.class));
-            order.setPurchaseDate(orderDTO.getPurchaseDate());
-            order.setDeliveryOption(new DeliveryOptionConverter().convertToDatabaseColumn(orderDTO.getDeliveryOption()));
-            order.setPaymentOption(new PaymentOptionConverter().convertToDatabaseColumn(orderDTO.getPaymentOption()));
-            order.setOrderStatus((byte) 1);
-            if (new PaymentOptionConverter().convertToDatabaseColumn(orderDTO.getPaymentOption()) == 1) {
-                order.setPaymentStatus((byte) 1);
+
+            order.setDeliveryOption(orderDTO.getDeliveryOption());
+            order.setPaymentOption(orderDTO.getPaymentOption());
+            order.setOrderStatus(OrderStatus.AWAITING_PAYMENT);
+            if (orderDTO.getPaymentOption() == PaymentOption.CASH) {
+                order.setPaymentStatus(PaymentStatus.NOT_PAID);
             } else {
-                order.setPaymentStatus((byte) 2);
+                order.setPaymentStatus(PaymentStatus.PAID);
             }
             orderDao.create(order);
+            List<OrderProduct> orderProductList = new ArrayList<>();
+            for(int i = 0; i < orderDTO.getProductList().size();i++){
+                OrderProduct orderProduct = new OrderProduct();
+                orderProduct.setOrder(order);
+                orderProduct.setProduct(modelMapper.map(orderDTO.getProductList().get(i),Product.class));
+                orderProduct.setQuantity(orderDTO.getProductList().get(i).getQuantity());
+                orderProductDao.create(orderProduct);
+                orderProductList.add(orderProduct);
+            }
+            order.setOrderProducts(orderProductList);
+            orderDao.update(order);
+            messageSender.sendMessage("Update");
         }
         logger.info("Successfully saved order");
     }
@@ -70,10 +90,10 @@ public class OrderServiceImpl implements OrderService {
     public void updateStatuses(OrderDTO orderDTO) {
         Order order = orderDao.getById(orderDTO.getId());
         if (order != null) {
-            order.setDeliveryOption(new DeliveryOptionConverter().convertToDatabaseColumn(orderDTO.getDeliveryOption()));
-            order.setPaymentOption(new PaymentOptionConverter().convertToDatabaseColumn(orderDTO.getPaymentOption()));
-            order.setOrderStatus(new OrderStatusConverter().convertToDatabaseColumn(orderDTO.getOrderStatus()));
-            order.setPaymentStatus(new PaymentStatusConverter().convertToDatabaseColumn(orderDTO.getPaymentStatus()));
+            order.setDeliveryOption(orderDTO.getDeliveryOption());
+            order.setPaymentOption(orderDTO.getPaymentOption());
+            order.setOrderStatus(orderDTO.getOrderStatus());
+            order.setPaymentStatus(orderDTO.getPaymentStatus());
             orderDao.update(order);
         }
         logger.info("Successfully updated order");
@@ -92,14 +112,14 @@ public class OrderServiceImpl implements OrderService {
                 order.setAddress(modelMapper.map(orderDTO.getAddress(), Address.class));
             }
             order.setUser(modelMapper.map(orderDTO.getUserDTO(), User.class));
-            order.setDeliveryOption(new DeliveryOptionConverter().convertToDatabaseColumn(orderDTO.getDeliveryOption()));
-            order.setPaymentOption(new PaymentOptionConverter().convertToDatabaseColumn(orderDTO.getPaymentOption()));
-            order.setOrderStatus((byte) 1);
-            order.setPaymentStatus((byte) 1);
-            if (new PaymentOptionConverter().convertToDatabaseColumn(orderDTO.getPaymentOption()) == 1) {
-                order.setPaymentStatus((byte) 1);
+
+            order.setDeliveryOption(orderDTO.getDeliveryOption());
+            order.setPaymentOption(orderDTO.getPaymentOption());
+            order.setOrderStatus(OrderStatus.AWAITING_PAYMENT);
+            if (orderDTO.getPaymentOption() == PaymentOption.CASH) {
+                order.setPaymentStatus(PaymentStatus.NOT_PAID);
             } else {
-                order.setPaymentStatus((byte) 2);
+                order.setPaymentStatus(PaymentStatus.PAID);
             }
             orderDao.update(order);
         }
@@ -123,14 +143,21 @@ public class OrderServiceImpl implements OrderService {
             orderDTO.setAddress(modelMapper.map(order.getAddress(), AddressDTO.class));
         }
         orderDTO.setId(order.getId());
+
+        List<OrderProduct> orderProductDTOS = orderProductDao.getOrderProductsByOrderId(order.getId());
+        orderDTO.setOrderProducts(orderProductDTOS);
+
         orderDTO.setPurchaseDate(order.getPurchaseDate());
         orderDTO.setTotalPrice(order.getTotalPrice());
+
         orderDTO.setProductList(order.getProductList().stream().map(product -> modelMapper.map(product, ProductDTO.class)).collect(Collectors.toList()));
         orderDTO.setUserDTO(modelMapper.map(order.getUser(), UserDTO.class));
-        orderDTO.setPaymentOption(new PaymentOptionConverter().convertToEntityAttribute(order.getPaymentOption()));
-        orderDTO.setDeliveryOption(new DeliveryOptionConverter().convertToEntityAttribute(order.getDeliveryOption()));
-        orderDTO.setOrderStatus(new OrderStatusConverter().convertToEntityAttribute(order.getOrderStatus()));
-        orderDTO.setPaymentStatus(new PaymentStatusConverter().convertToEntityAttribute(order.getPaymentStatus()));
+
+        orderDTO.setPaymentOption(order.getPaymentOption());
+        orderDTO.setDeliveryOption(order.getDeliveryOption());
+        orderDTO.setOrderStatus(order.getOrderStatus());
+        orderDTO.setPaymentStatus(order.getPaymentStatus());
+
         return orderDTO;
     }
 
@@ -143,12 +170,15 @@ public class OrderServiceImpl implements OrderService {
             for (int i = 0; i < orderList.size(); i++) {
                 OrderDTO orderDTO = new OrderDTO();
 
-                orderDTO.setPaymentOption(new PaymentOptionConverter().convertToEntityAttribute(orderList.get(i).getPaymentOption()));
-                orderDTO.setDeliveryOption(new DeliveryOptionConverter().convertToEntityAttribute(orderList.get(i).getDeliveryOption()));
-                orderDTO.setOrderStatus(new OrderStatusConverter().convertToEntityAttribute(orderList.get(i).getOrderStatus()));
-                orderDTO.setPaymentStatus(new PaymentStatusConverter().convertToEntityAttribute(orderList.get(i).getPaymentStatus()));
+                orderDTO.setPaymentOption(orderList.get(i).getPaymentOption());
+                orderDTO.setDeliveryOption(orderList.get(i).getDeliveryOption());
+                orderDTO.setOrderStatus(orderList.get(i).getOrderStatus());
+                orderDTO.setPaymentStatus(orderList.get(i).getPaymentStatus());
 
                 orderDTO.setId(orderList.get(i).getId());
+
+                List<OrderProduct> orderProductDTOS = orderProductDao.getOrderProductsByOrderId(orderList.get(i).getId());
+                orderDTO.setOrderProducts(orderProductDTOS);
 
                 List<ProductDTO> productList = orderList.get(i).getProductList().stream().map(product -> modelMapper.map(product, ProductDTO.class)).collect(Collectors.toList());
                 orderDTO.setProductList(productList);
@@ -179,10 +209,13 @@ public class OrderServiceImpl implements OrderService {
                 OrderDTO orderDTO = new OrderDTO();
                 orderDTO.setId(orderList.get(i).getId());
 
-                orderDTO.setPaymentOption(new PaymentOptionConverter().convertToEntityAttribute(orderList.get(i).getPaymentStatus()));
-                orderDTO.setDeliveryOption(new DeliveryOptionConverter().convertToEntityAttribute(orderList.get(i).getDeliveryOption()));
-                orderDTO.setOrderStatus(new OrderStatusConverter().convertToEntityAttribute(orderList.get(i).getOrderStatus()));
-                orderDTO.setPaymentStatus(new PaymentStatusConverter().convertToEntityAttribute(orderList.get(i).getPaymentStatus()));
+                List<OrderProduct> orderProductDTOS = orderProductDao.getOrderProductsByOrderId(orderList.get(i).getId());
+                orderDTO.setOrderProducts(orderProductDTOS);
+
+                orderDTO.setPaymentOption(orderList.get(i).getPaymentOption());
+                orderDTO.setDeliveryOption(orderList.get(i).getDeliveryOption());
+                orderDTO.setOrderStatus(orderList.get(i).getOrderStatus());
+                orderDTO.setPaymentStatus(orderList.get(i).getPaymentStatus());
 
                 List<ProductDTO> productList = orderList.get(i).getProductList().stream().map(product -> modelMapper.map(product, ProductDTO.class)).collect(Collectors.toList());
                 orderDTO.setProductList(productList);
@@ -190,6 +223,7 @@ public class OrderServiceImpl implements OrderService {
                     AddressDTO addressDTO = modelMapper.map(orderList.get(i).getAddress(), AddressDTO.class);
                     orderDTO.setAddress(addressDTO);
                 }
+
                 orderDTO.setPurchaseDate(orderList.get(i).getPurchaseDate());
                 orderDTO.setTotalPrice(orderList.get(i).getTotalPrice());
                 UserDTO userDTO = modelMapper.map(orderList.get(i).getUser(), UserDTO.class);
@@ -224,8 +258,8 @@ public class OrderServiceImpl implements OrderService {
         List<Order> orderList = orderDao.getOrdersForWeek();
         Float proceeds = 0.0f;
         if (orderList != null) {
-            for (int i = 0; i < orderList.size(); i++) {
-                proceeds += orderList.get(i).getTotalPrice();
+            for (Order anOrderList : orderList) {
+                proceeds += anOrderList.getTotalPrice();
             }
             return proceeds;
         } else {
@@ -240,8 +274,8 @@ public class OrderServiceImpl implements OrderService {
         Map<User, Integer> top10Users = new HashMap<>();
         for (int i = 0; i < orderList.size(); i++) {
             int countOrders = 0;
-            for (int j = 0; j < orderList.size(); j++) {
-                if (orderList.get(i).getUser().getId().equals(orderList.get(j).getUser().getId())) {
+            for (Order anOrderList : orderList) {
+                if (orderList.get(i).getUser().getId().equals(anOrderList.getUser().getId())) {
                     countOrders++;
                 }
             }
@@ -274,13 +308,13 @@ public class OrderServiceImpl implements OrderService {
         List<Order> orderList = orderDao.getAll();
         Map<Product, Integer> top10Products = new HashMap<>();
         List<Product> productList = new ArrayList<>();
-        for (int i = 0; i < orderList.size(); i++) {
-            productList.addAll(orderList.get(i).getProductList());
+        for (Order anOrderList : orderList) {
+            productList.addAll(anOrderList.getProductList());
         }
         for (int i = 0; i < productList.size(); i++) {
             int countInOrders = 0;
-            for (int j = 0; j < productList.size(); j++) {
-                if (productList.get(i).getId().equals(productList.get(j).getId())) {
+            for (Product aProductList : productList) {
+                if (productList.get(i).getId().equals(aProductList.getId())) {
                     countInOrders++;
                 }
             }
@@ -306,5 +340,20 @@ public class OrderServiceImpl implements OrderService {
         } else {
             return productList1.stream().map(product -> modelMapper.map(product,ProductDTO.class)).collect(Collectors.toList());
         }
+    }
+
+
+    private List<Product> generateProductList(List<ProductDTO> productDTOList) {
+        List<Product> productList = new ArrayList<>();
+
+        for (ProductDTO productDTO : productDTOList) {
+            productService.byProduct(productDTO);
+            productList.add(modelMapper.map(productDTO, Product.class));
+        }
+        return productList;
+    }
+
+    public void setProductService(ProductService productService) {
+        this.productService = productService;
     }
 }

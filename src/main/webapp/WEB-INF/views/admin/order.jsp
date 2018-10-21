@@ -73,9 +73,9 @@
                                             <tr class="order-table__row" data-id="${order.id}">
                                                 <td>${order.id}</td>
                                                 <td>
-                                                    <с:forEach var="product" items="${order.productList}">
-                                                        ${product.category.name}
-                                                        ${product.name}
+                                                    <с:forEach var="product" items="${order.orderProducts}">
+                                                        ${product.product.category.name}
+                                                        ${product.product.name}
                                                         (Qty)${product.quantity}
                                                         <br>
                                                     </с:forEach>

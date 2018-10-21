@@ -2,22 +2,22 @@ package app.entity.enums;
 
 public enum OrderStatus {
 
-    AWAITING_PAYMENT((byte) 1),
-    AWAITING_SHIPMENT((byte) 2),
-    SHIPPED((byte) 3),
-    DELIVERED((byte) 4);
+    AWAITING_PAYMENT(1),
+    AWAITING_SHIPMENT(2),
+    SHIPPED(3),
+    DELIVERED(4);
 
-    private final Byte value;
+    private final Integer value;
 
-    public Byte getValue() {
+    public Integer getValue() {
         return value;
     }
 
-    OrderStatus(final Byte value) {
+    OrderStatus(final Integer value) {
         this.value = value;
     }
 
-    public static OrderStatus valueOf(final Byte value) {
+    public static OrderStatus valueOf(final Integer value) {
         for (OrderStatus status : OrderStatus.values()) {
             if (status.getValue().equals(value)) {
                 return status;

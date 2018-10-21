@@ -53,8 +53,7 @@ public class MainController {
     @Autowired
     private SprinkleService sprinkleService;
 
-    @Autowired
-    private MessageSender messageSender;
+
 
     @RequestMapping(value = "/getProductsByParameters", method = RequestMethod.GET)
     @ResponseBody
@@ -182,7 +181,6 @@ public class MainController {
         orderDTO.setPaymentOption(order.getPaymentOption());
         orderDTO.setUserDTO(userDTO);
         orderService.create(orderDTO);
-        messageSender.sendMessage("Update");
         result.setData(orderDTO);
         session.setAttribute("order", new OrderDTO());
         productDTOList.clear();

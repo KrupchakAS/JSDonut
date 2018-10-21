@@ -6,15 +6,15 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 @Converter(autoApply = true)
-public class OrderStatusConverter implements AttributeConverter<OrderStatus, Byte> {
+public class OrderStatusConverter implements AttributeConverter<OrderStatus, Integer> {
 
     @Override
-    public Byte convertToDatabaseColumn(OrderStatus attribute) {
+    public Integer convertToDatabaseColumn(OrderStatus attribute) {
         return attribute.getValue();
     }
 
     @Override
-    public OrderStatus convertToEntityAttribute(Byte dbData) {
+    public OrderStatus convertToEntityAttribute(Integer dbData) {
         return OrderStatus.valueOf(dbData);
     }
 }

@@ -2,20 +2,20 @@ package app.entity.enums;
 
 public enum PaymentOption {
 
-    CASH((byte) 1),
-    CARD((byte) 2);
+    CASH(1),
+    CARD(2);
 
-    public final Byte value;
+    public final Integer value;
 
-    public Byte getValue() {
+    public Integer getValue() {
         return value;
     }
 
-    PaymentOption(final Byte value) {
+    PaymentOption(final Integer value) {
         this.value = value;
     }
 
-    public static PaymentOption valueOf(final Byte value) {
+    public static PaymentOption valueOf(final Integer value) {
         for (PaymentOption status : PaymentOption.values()) {
             if (status.getValue().equals(value)) {
                 return status;

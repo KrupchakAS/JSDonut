@@ -89,6 +89,16 @@ CREATE TABLE orders (
 )
   ENGINE = InnoDB;
 
+CREATE TABLE orderProductsQuantity (
+  id             INT     NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  quantity SMALLINT NOT NULL,
+  order_id   INT NOT NULL,
+  FOREIGN KEY (order_id) REFERENCES orders (id),
+  product_id INT NOT NULL,
+  FOREIGN KEY (product_id) REFERENCES products (id)
+
+) ENGINE = InnoDB;
+
 -- Table for mapping products and orders: order_products
 CREATE TABLE order_products (
   order_id   INT NOT NULL,

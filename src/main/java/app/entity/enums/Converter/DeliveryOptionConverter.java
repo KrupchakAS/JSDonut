@@ -4,16 +4,16 @@ import app.entity.enums.DeliveryOption;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
-@Converter(autoApply = true)
-public class DeliveryOptionConverter implements AttributeConverter<DeliveryOption, Byte> {
+@Converter
+public class DeliveryOptionConverter implements AttributeConverter<DeliveryOption, Integer> {
 
     @Override
-    public Byte convertToDatabaseColumn(DeliveryOption attribute) {
+    public Integer convertToDatabaseColumn(DeliveryOption attribute) {
         return attribute.getValue();
     }
 
     @Override
-    public DeliveryOption convertToEntityAttribute(Byte dbData) {
+    public DeliveryOption convertToEntityAttribute(Integer dbData) {
         return DeliveryOption.valueOf(dbData);
     }
 

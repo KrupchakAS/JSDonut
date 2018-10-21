@@ -13,7 +13,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import java.util.Date;
 import java.util.List;
 
@@ -26,17 +25,21 @@ public class Order {
     @Column(name = "id")
     private Integer id;
 
+    @Convert(converter = PaymentOptionConverter.class)
     @NotNull(message = "Field can not be null")
-    private Byte paymentOption;
+    private PaymentOption paymentOption;
 
     @NotNull(message = "Field can not be null")
-    private Byte deliveryOption;
+    @Convert(converter = DeliveryOptionConverter.class)
+    private DeliveryOption deliveryOption;
 
     @NotNull(message = "Field can not be null")
-    private Byte paymentStatus;
+    @Convert(converter = PaymentStatusConverter.class)
+    private PaymentStatus paymentStatus;
 
     @NotNull(message = "Field can not be null")
-    private Byte orderStatus;
+    @Convert(converter = OrderStatusConverter.class)
+    private OrderStatus orderStatus;
 
     @Min(value = 600)
     @NotNull(message = "Field can not be null")
@@ -63,6 +66,9 @@ public class Order {
     @JoinColumn(name = "address_id")
     private Address address;
 
+    @OneToMany(mappedBy = "order")
+    private List<OrderProduct> orderProducts;
+
     public Integer getId() {
         return id;
     }
@@ -71,35 +77,35 @@ public class Order {
         this.id = id;
     }
 
-    public Byte getPaymentOption() {
+    public PaymentOption getPaymentOption() {
         return paymentOption;
     }
 
-    public void setPaymentOption(Byte paymentOption) {
+    public void setPaymentOption(PaymentOption paymentOption) {
         this.paymentOption = paymentOption;
     }
 
-    public Byte getDeliveryOption() {
+    public DeliveryOption getDeliveryOption() {
         return deliveryOption;
     }
 
-    public void setDeliveryOption(Byte deliveryOption) {
+    public void setDeliveryOption(DeliveryOption deliveryOption) {
         this.deliveryOption = deliveryOption;
     }
 
-    public Byte getPaymentStatus() {
+    public PaymentStatus getPaymentStatus() {
         return paymentStatus;
     }
 
-    public void setPaymentStatus(Byte paymentStatus) {
+    public void setPaymentStatus(PaymentStatus paymentStatus) {
         this.paymentStatus = paymentStatus;
     }
 
-    public Byte getOrderStatus() {
+    public OrderStatus getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(Byte orderStatus) {
+    public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
     }
 
@@ -141,5 +147,13 @@ public class Order {
 
     public void setPurchaseDate(Date purchaseDate) {
         this.purchaseDate = purchaseDate;
+    }
+
+    public List<OrderProduct> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(List<OrderProduct> orderProducts) {
+        this.orderProducts = orderProducts;
     }
 }

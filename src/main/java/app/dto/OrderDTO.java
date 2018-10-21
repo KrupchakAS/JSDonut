@@ -1,5 +1,6 @@
 package app.dto;
 
+import app.entity.OrderProduct;
 import app.entity.enums.DeliveryOption;
 import app.entity.enums.OrderStatus;
 import app.entity.enums.PaymentOption;
@@ -30,6 +31,16 @@ public class OrderDTO {
     private UserDTO user;
 
     private AddressDTO address;
+
+    private List<OrderProduct> orderProducts;
+
+    public List<OrderProduct> getOrderProducts() {
+        return orderProducts;
+    }
+
+    public void setOrderProducts(List<OrderProduct> orderProducts) {
+        this.orderProducts = orderProducts;
+    }
 
     public Integer getId() {
         return id;

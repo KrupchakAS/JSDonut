@@ -28,4 +28,5 @@ public class CategoryDaoImpl extends GenericDaoImpl<Category> implements Categor
             return list.get(0);
         }
     }
+
 }

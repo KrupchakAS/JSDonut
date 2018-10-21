@@ -5,15 +5,15 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 @Converter(autoApply = true)
-public class PaymentStatusConverter implements AttributeConverter<PaymentStatus, Byte> {
+public class PaymentStatusConverter implements AttributeConverter<PaymentStatus, Integer> {
 
     @Override
-    public Byte convertToDatabaseColumn(PaymentStatus attribute) {
+    public Integer convertToDatabaseColumn(PaymentStatus attribute) {
         return attribute.getValue();
     }
 
     @Override
-    public PaymentStatus convertToEntityAttribute(Byte dbData) {
+    public PaymentStatus convertToEntityAttribute(Integer dbData) {
         return PaymentStatus.valueOf(dbData);
     }
 }
