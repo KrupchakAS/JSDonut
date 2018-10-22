@@ -51,7 +51,7 @@ public class MessageConfig {
             QueueConnection queueConnection = factory.createQueueConnection("root","root");
             queueConnection.start();
             QueueSession session = queueConnection.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
-            queue = session.createQueue("ExpiryQueue");
+            queue = session.createQueue("DLQ");
         } catch (JMSException e) {
             e.printStackTrace();
         }

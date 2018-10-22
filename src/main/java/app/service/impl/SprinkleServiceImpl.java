@@ -93,4 +93,8 @@ public class SprinkleServiceImpl implements SprinkleService {
             return new ArrayList<>();
         }
     }
+
+    public void setModelMapper(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 }

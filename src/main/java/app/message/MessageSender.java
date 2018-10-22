@@ -1,14 +1,14 @@
 package app.message;
 
-import app.dto.ProductDTO;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.jms.*;
-import java.util.List;
 
+
+@Transactional
 @Component
 public class MessageSender {
 
@@ -41,7 +41,7 @@ public class MessageSender {
 //            //2) create queue session
 //            QueueSession ses = con.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
 //            //3) get the Queue object
-//            Queue t = ses.createQueue("ExpiryQueue");
+//            Queue t = ses.createQueue("DLQ");
 //            //4)create QueueSender object
 //            QueueSender sender = ses.createSender(t);
 //            //5) create TextMessage object

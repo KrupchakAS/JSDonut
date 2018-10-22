@@ -95,4 +95,8 @@ public class CategoryServiceImpl implements CategoryService {
             return null;
         }
     }
+
+    public void setModelMapper(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 }

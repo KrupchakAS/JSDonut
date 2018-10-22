@@ -41,8 +41,8 @@ public class ProductServiceImpl implements ProductService {
             Product product = modelMapper.map(productDTO, Product.class);
             productDao.create(product);
             productDTO.setId(product.getId());
-            messageSender.sendMessage("Update");
             logger.info("Successfully saved product");
+            messageSender.sendMessage("Update");
         }
         return productDTO;
     }
@@ -53,8 +53,8 @@ public class ProductServiceImpl implements ProductService {
         Product product = productDao.getById(productDTO.getId());
         if (product != null)
             productDao.update(modelMapper.map(productDTO, Product.class));
-        messageSender.sendMessage("Update");
         logger.info("Successfully updated product");
+        messageSender.sendMessage("Update");
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -62,8 +62,9 @@ public class ProductServiceImpl implements ProductService {
     public void delete(ProductDTO productDTO) {
         if (productDTO != null)
             productDao.delete(modelMapper.map(productDTO, Product.class));
-        messageSender.sendMessage("Update");
+
         logger.info("Successfully deleted product");
+        messageSender.sendMessage("Update");
     }
 
     @Transactional(readOnly = true)

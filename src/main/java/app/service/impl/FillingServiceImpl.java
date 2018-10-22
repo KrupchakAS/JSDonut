@@ -91,5 +91,7 @@ public class FillingServiceImpl implements FillingService {
             return null;
         }
     }
-
+    public void setModelMapper(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 }

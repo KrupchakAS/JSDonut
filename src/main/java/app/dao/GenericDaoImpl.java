@@ -1,18 +1,16 @@
 package app.dao;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.LockModeType;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-
+@Transactional
 public abstract class GenericDaoImpl<Entity> implements GenericDao<Entity> {
 
     @PersistenceContext

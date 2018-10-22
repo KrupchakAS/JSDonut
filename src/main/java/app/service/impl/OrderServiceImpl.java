@@ -4,13 +4,11 @@ import app.dao.api.OrderDao;
 import app.dao.api.OrderProductDao;
 import app.dto.*;
 import app.entity.*;
-import app.entity.enums.Converter.OrderStatusConverter;
-import app.entity.enums.Converter.PaymentStatusConverter;
 import app.entity.enums.OrderStatus;
 import app.entity.enums.PaymentOption;
 import app.entity.enums.PaymentStatus;
 import app.message.MessageSender;
-import app.service.api.OrderProductService;
+
 import app.service.api.OrderService;
 import app.service.api.ProductService;
 import org.apache.log4j.Logger;
@@ -19,8 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import app.entity.enums.Converter.DeliveryOptionConverter;
-import app.entity.enums.Converter.PaymentOptionConverter;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -69,6 +65,7 @@ public class OrderServiceImpl implements OrderService {
                 order.setPaymentStatus(PaymentStatus.PAID);
             }
             orderDao.create(order);
+
             List<OrderProduct> orderProductList = new ArrayList<>();
             for(int i = 0; i < orderDTO.getProductList().size();i++){
                 OrderProduct orderProduct = new OrderProduct();
@@ -79,10 +76,11 @@ public class OrderServiceImpl implements OrderService {
                 orderProductList.add(orderProduct);
             }
             order.setOrderProducts(orderProductList);
+
             orderDao.update(order);
+            logger.info("Successfully saved order");
             messageSender.sendMessage("Update");
         }
-        logger.info("Successfully saved order");
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -355,5 +353,9 @@ public class OrderServiceImpl implements OrderService {
 
     public void setProductService(ProductService productService) {
         this.productService = productService;
+    }
+
+    public void setModelMapper(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
     }
 }

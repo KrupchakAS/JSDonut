@@ -92,4 +92,8 @@ public class DoughServiceImpl implements DoughService {
             return null;
         }
     }
+
+    public void setModelMapper(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 }

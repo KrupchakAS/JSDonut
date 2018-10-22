@@ -43,13 +43,8 @@ public class DonutRestController {
             productDTO.setCategory(list.get(i).getCategory().getName());
             listTotal.add(productDTO);
         }
-        logger.info("Send list with size" + listTotal.size());
+        logger.info("Send list with size " + listTotal.size());
         return listTotal;
     }
 
-    @GetMapping(value = "/getOrders")
-    @SuppressWarnings("unchecked")
-    public ResponseEntity getOrders() {
-        return new ResponseEntity(new ArrayList<>(), HttpStatus.OK);
-    }
 }

@@ -44,9 +44,6 @@ public class UserController {
     @Autowired
     private OrderService orderService;
 
-    @Autowired
-    private MessageSender messageSender;
-
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
     public String welcome(HttpSession session) {
         if (session.getAttribute("order") == null) {
