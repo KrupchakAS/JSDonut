@@ -126,88 +126,68 @@ CREATE TABLE products (
   dough_id    TINYINT,
   FOREIGN KEY (dough_id) REFERENCES dough (id),
   filling_id  TINYINT,
-  FOREIGN KEY (filling_id) REFERENCES filling (id),
-  UNIQUE (name)
+  FOREIGN KEY (filling_id) REFERENCES filling (id)
 )
   ENGINE = InnoDB;
 
 -- Insert data!
-INSERT INTO users VALUES
-  (1, 'admin', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', 'Андрей', 'Крупчак', '9650024321',
-   'krupchakas@yandex.ru', '1989/02/23', 'ROLE_ADMIN');
-INSERT INTO address VALUES (1, 'Санкт-Петербург', 'Бухарестская', '114', '24', '192288', '1');
+INSERT INTO users VALUES (1, 'admin', '$2a$11$uSXS6rLJ91WjgOHhEGDx..VGs7MkKZV68Lv5r1uwFu7HgtRn3dcXG', 'Andrey', 'Krupchak', '9650024321','krupchakas@yandex.ru', '1989/02/23', 'ROLE_ADMIN');
+INSERT INTO address VALUES (1, 'Saint-Petersburg', 'Buharestskay', '114', '24', '192288', '1');
 
-INSERT INTO category VALUE (1, 'Донатсы');
-INSERT INTO category VALUE (2, 'Пироженные');
-INSERT INTO category VALUE (3, 'Торты');
-INSERT INTO category VALUE (4, 'Макарони');
+INSERT INTO category VALUE (1, 'Donuts');
+INSERT INTO category VALUE (2, 'Cakes');
+INSERT INTO category VALUE (3, 'Pies');
+INSERT INTO category VALUE (4, 'Macaroni');
 
-INSERT INTO dough VALUE (1, 'Бисквитное', 320, 70);
-INSERT INTO dough VALUE (2, 'Песочное', 440, 105);
-INSERT INTO dough VALUE (3, 'Слоеное', 405, 90);
-INSERT INTO dough VALUE (4, 'Заварное', 240, 125);
-INSERT INTO dough VALUE (5, 'Миндальное', 465, 125);
-INSERT INTO dough VALUE (6, 'Классическое(дрожжевое)', 425, 45);
-INSERT INTO dough VALUE (7, 'Классическое(бездрожжевое)', 425, 45);
+INSERT INTO dough VALUE (1, 'Biscuit', 320, 70);
+INSERT INTO dough VALUE (2, 'Shortbread', 440, 105);
+INSERT INTO dough VALUE (3, 'Flaky Pastry', 405, 90);
+INSERT INTO dough VALUE (4, 'Custard', 240, 125);
+INSERT INTO dough VALUE (5, 'Almond', 465, 125);
+INSERT INTO dough VALUE (6, 'Classic(yeast)', 425, 45);
+INSERT INTO dough VALUE (7, 'Classic(unyeast)', 425, 45);
 
-INSERT INTO filling VALUE (1, 'Шоколад(темный)', 410, 145);
-INSERT INTO filling VALUE (2, 'Шоколад(молочный)', 495, 125);
-INSERT INTO filling VALUE (3, 'Банан', 260, 115);
-INSERT INTO filling VALUE (4, 'Клубника', 240, 125);
-INSERT INTO filling VALUE (5, 'Вишня', 265, 130);
-INSERT INTO filling VALUE (6, 'Киви', 190, 120);
-INSERT INTO filling VALUE (7, 'Смородина', 205, 100);
-INSERT INTO filling VALUE (8, 'Заварной крем', 160, 80);
-INSERT INTO filling VALUE (9, 'Творог', 155, 90);
-INSERT INTO filling VALUE (10, 'Ваниль', 125, 90);
+INSERT INTO filling VALUE (1, 'Chocolate(dark)', 410, 145);
+INSERT INTO filling VALUE (2, 'Chocolate(milk)', 495, 125);
+INSERT INTO filling VALUE (3, 'Banana', 260, 115);
+INSERT INTO filling VALUE (4, 'Strawberry', 240, 125);
+INSERT INTO filling VALUE (5, 'Cherry', 265, 130);
+INSERT INTO filling VALUE (6, 'Kiwi', 190, 120);
+INSERT INTO filling VALUE (7, 'Currant', 205, 100);
+INSERT INTO filling VALUE (8, 'Custard cream', 160, 80);
+INSERT INTO filling VALUE (9, 'Curd', 155, 90);
+INSERT INTO filling VALUE (10, 'Vanilla', 125, 90);
 
-INSERT INTO sprinkle VALUE (1, 'Шарики разноцветные(шоколад)', 390, 100);
-INSERT INTO sprinkle VALUE (2, 'Вермишель разноцветная(глазурь)', 385, 110);
-INSERT INTO sprinkle VALUE (3, 'Конфетти разноцветная(глазурь)', 387, 105);
-INSERT INTO sprinkle VALUE (4, 'Кокосовая стружка', 399, 120);
-INSERT INTO sprinkle VALUE (5, 'Мак', 395, 130);
-INSERT INTO sprinkle VALUE (6, 'Вафельная крошка', 280, 120);
-INSERT INTO sprinkle VALUE (7, 'Шоколадная крошка', 495, 130);
-INSERT INTO sprinkle VALUE (8, 'Ваниль', 400, 90);
-INSERT INTO sprinkle VALUE (9, 'Ореховые слайсы', 735, 210);
+INSERT INTO sprinkle VALUE (1, 'Colored balls(chocolate)', 390, 100);
+INSERT INTO sprinkle VALUE (2, 'Colored noodle(glaze)', 385, 110);
+INSERT INTO sprinkle VALUE (3, 'Colored confetti(glaze)', 387, 105);
+INSERT INTO sprinkle VALUE (4, 'Coconut flakes', 399, 120);
+INSERT INTO sprinkle VALUE (5, 'Poppy', 395, 130);
+INSERT INTO sprinkle VALUE (6, 'Waffle Crumb', 280, 120);
+INSERT INTO sprinkle VALUE (7, 'Chocolate Crumb', 495, 130);
+INSERT INTO sprinkle VALUE (8, 'Vanilla', 400, 90);
+INSERT INTO sprinkle VALUE (9, 'Nut slices', 735, 210);
 
-INSERT INTO products VALUE (1, 'Шоколадный', 'С шоколадной глазурью', NULL, 50, 20, 90, 20, 320, NULL, 1, 6, 1);
-INSERT INTO products VALUE (2, 'Ванильный', 'С мадагаскарской ванилью', NULL, 55, 15, 80, 45, 290, NULL, 1, 6, 3);
-INSERT INTO products VALUE (3, 'Вишневый', 'Со спелой вишней', NULL, 55, 18, 85, 35, 300, NULL, 1, 6, 5);
-INSERT INTO products VALUE (4, 'Абрикосовый', 'С ярким абрикосом', NULL, 52, 16, 75, 30, 310, NULL, 1, 6, 10);
-INSERT INTO products VALUE (5, 'Черничный', 'Со сладкой черникой', NULL, 61, 18, 75, 250, 270, NULL, 1, 6, 10);
+INSERT INTO products VALUE (1, 'Chocolate', 'With chocolate glaze', NULL, 50, 20, 90, 20, 320, NULL, 1, 6, 1);
+INSERT INTO products VALUE (2, 'Vanilla', 'With madagascar vanilla', NULL, 55, 15, 80, 45, 290, NULL, 1, 6, 3);
+INSERT INTO products VALUE (3, 'Cherry', 'With ripe cherry', NULL, 55, 18, 85, 35, 300, NULL, 1, 6, 5);
+INSERT INTO products VALUE (4, 'Apricot', 'With striking apricot', NULL, 52, 16, 75, 30, 310, NULL, 1, 6, 10);
+INSERT INTO products VALUE (5, 'Bilberry', 'With sweet bilberry', NULL, 58, 18, 75, 250, 270, NULL, 1, 6, 10);
 
-INSERT INTO products VALUE (6, 'Малиновая радость', 'Тарталетка Малиновая', NULL, 40, 10, 66, 20, 230, NULL, 2, 2, 8);
-INSERT INTO products
-  VALUE (7, 'Черная Смородинка', 'Тарталетка с Черной Смородиной', NULL, 58, 12, 70, 45, 280, NULL, 2, 2, 8);
-INSERT INTO products VALUE (8, 'Клубника-шейк', 'Тарталетка Клубничная', NULL, 50, 11, 71, 35, 290, NULL, 2, 2, 8);
-INSERT INTO products VALUE (9, 'Эклер Ваниль', 'Эклер Классический ванильный', NULL, 36, 9, 55, 30, 295, NULL, 2, 4, 8);
-INSERT INTO products
-  VALUE (10, 'Эклер Кофейный', 'Эклер Классический кофейный', NULL, 38, 9, 65, 150, 280, NULL, 2, 4, 8);
+INSERT INTO products VALUE (6, 'Raspberry', 'Tartlet with raspberry', NULL, 40, 10, 66, 20, 230, NULL, 2, 2, 8);
+INSERT INTO products VALUE (7, 'Black currant', 'Tartlet with black currant', NULL, 58, 12, 70, 45, 280, NULL, 2, 2, 8);
+INSERT INTO products VALUE (8, 'Strawberry', 'Tartlet with strawberry', NULL, 50, 11, 71, 35, 290, NULL, 2, 2, 8);
+INSERT INTO products VALUE (9, 'Eclair Vanilla', 'Eclair classic vanilla', NULL, 36, 9, 55, 30, 295, NULL, 2, 4, 8);
+INSERT INTO products VALUE (10, 'Eclair Coffee', 'Eclair classic coffee', NULL, 38, 9, 65, 150, 280, NULL, 2, 4, 8);
 
-INSERT INTO products VALUE
-  (11, 'Миндальный', 'Два бисквитных коржа с хрустящим слоем миндаля в карамели и лепестками миндаля', NULL, 480, 120,
-       330, 150, 390, NULL, 3, 5, 9);
-INSERT INTO products VALUE
-  (12, 'Брусничный', 'Пирог с брусничной начинкой и начинкой из белого шоколада', NULL, 330, 80, 800, 12, 420, NULL, 3,
-   2, 10);
-INSERT INTO products VALUE (13, 'Три шоколада',
-                                'Слой брауни с воздушным муссом из молочного шоколада, шоколадным бисквитом, покрыт темным шоколадом',
-                                NULL, 400, 90, 700, 22, 460, NULL, 3, 2, 9);
-INSERT INTO products
-  VALUE (14, 'Медовик', 'Класический медовик с традиционным вкусом', NULL, 290, 85, 480, 25, 380, NULL, 3, 2, 10);
-INSERT INTO products VALUE
-  (15, 'Захер', 'Традиционный шоколадный торт с абрикосовым джемом и шоколадной глазурью', NULL, 505, 110, 700, 9, 370,
-       NULL, 3, 1, 10);
+INSERT INTO products VALUE (11, 'Almond', 'Two biscuits with a crispy layer of almonds in caramel and almond petals', NULL, 480, 120,330, 150, 390, NULL, 3, 5, 9);
+INSERT INTO products VALUE (12, 'Cranberry', 'Cake with cranberry filling and a filling of white chocolate', NULL, 330, 80, 800, 12, 420, NULL, 3, 2, 10);
+INSERT INTO products VALUE (13, 'Three Chocolate', 'A layer of brownie with milk chocolate air mousse, chocolate biscuit, covered with dark chocolate', NULL, 400, 90, 700, 22, 460, NULL, 3, 2, 9);
+INSERT INTO products VALUE (14, 'Honey cake', 'Classic honey cake with traditional taste', NULL, 290, 85, 480, 25, 380, NULL, 3, 2, 10);
+INSERT INTO products VALUE (15, 'Sacher', 'Traditional chocolate cake with apricot jam and chocolate glaze', NULL, 505, 110, 700, 9, 370,NULL, 3, 1, 10);
 
-INSERT INTO products
-  VALUE (16, 'Банан', 'Французское миндальное печенье с банановой начинкой', NULL, 29, 6, 15, 500, 100, NULL, 4, 5, 3);
-INSERT INTO products
-  VALUE (17, 'Имбирь', 'Французское печенье с начинкой киви.', NULL, 34, 6, 15, 450, 110, NULL, 4, 5, 6);
-INSERT INTO products VALUE
-  (18, 'Клубника', 'Французское миндальное слубничкое печенье с начинкой', NULL, 38, 7, 15, 350, 100, NULL, 4, 5, 4);
-INSERT INTO products
-  VALUE (19, 'Вишня', 'Французское миндальное вишневое печенье с начинкой', NULL, 34, 6, 15, 400, 110, NULL, 4, 5, 5);
-INSERT INTO products VALUE
-  (20, 'Смородина', 'Французское миндальное смородина микс печенье с начинкой', NULL, 34, 6, 15, 550, 120, NULL, 4, 5,
-   7);
+INSERT INTO products VALUE (16, 'Banana', 'French almond cookies with banana filling', NULL, 29, 6, 15, 500, 100, NULL, 4, 5, 3);
+INSERT INTO products VALUE (17, 'Ginger', 'French almond cookies with ginger filling', NULL, 34, 6, 15, 450, 110, NULL, 4, 5, 6);
+INSERT INTO products VALUE (18, 'Strawberry', 'French almond cookies with ginger filling', NULL, 38, 7, 15, 350, 100, NULL, 4, 5, 4);
+INSERT INTO products VALUE (19, 'Cherry', 'French almond cookies with cherry filling', NULL, 34, 6, 15, 400, 110, NULL, 4, 5, 5);
+INSERT INTO products VALUE (20, 'Currant', 'French almond cookies with currant filling', NULL, 34, 6, 15, 550, 120, NULL, 4, 5, 7);
