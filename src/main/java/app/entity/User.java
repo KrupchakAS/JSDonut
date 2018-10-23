@@ -21,28 +21,27 @@ public class User {
     @Column(name = "id")
     private Integer id;
 
-    @NotNull(message = "Field can not be null")
+    @Size(min = 4,max = 16, message = "Field must be between 4 and 16 characters.")
     @Column(name = "login")
     private String login;
 
-    @NotNull(message = "Field can not be null")
+    @Size(min = 4,max = 60, message = "Field must be between 4 and 16 characters.")
     @Column(name = "password")
     private String password;
 
-    @NotNull(message = "Field can not be null")
+    @Size(min = 1,max = 16, message = "Field must be between 1 and 16 characters.")
     @Column(name = "firstName")
     private String firstName;
 
-    @NotNull(message = "Field can not be null")
+    @Size(min = 1,max = 16, message = "Field must be between 1 and 16 characters.")
     @Column(name = "surName")
     private String surName;
 
-    @NotNull(message = "Field can not be null")
+    @Size(min = 10,max = 10, message = "Field must be length 10 digits.")
     @Column(name = "phoneNumber")
     private String phoneNumber;
 
     @NotNull(message = "Field can not be null")
-    @Past
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Temporal(TemporalType.DATE)
     @Column(name = "birthDate")

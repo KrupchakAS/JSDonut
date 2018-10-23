@@ -10,7 +10,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
-@Transactional
+
 public abstract class GenericDaoImpl<Entity> implements GenericDao<Entity> {
 
     @PersistenceContext
@@ -27,9 +27,7 @@ public abstract class GenericDaoImpl<Entity> implements GenericDao<Entity> {
     }
 
     @Override
-    public void update(Entity entity) {
-        entityManager.merge(entity);
-    }
+    public void update(Entity entity) { entityManager.merge(entity); }
 
     @Override
     public void delete(Entity entity) {

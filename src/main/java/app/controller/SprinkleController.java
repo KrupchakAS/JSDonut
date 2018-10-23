@@ -40,7 +40,7 @@ public class SprinkleController {
     public AjaxDTO createSprinkle(@RequestBody SprinkleDTO sprinkleDTO){
         AjaxDTO result = new AjaxDTO();
         if(sprinkleDTO != null){
-            if(sprinkleDTO.getName().length() < 1 || sprinkleDTO.getCalories() == null){
+            if(sprinkleDTO.getName().length() < 1 || sprinkleDTO.getCalories() == null || sprinkleDTO.getPrice() == null){
                 throw new MinLengthFieldException("Field can not be empty");
             } else if(sprinkleDTO.getPrice() < 10){
                 throw new MinValueException("Price can not be less than 10P");
@@ -58,7 +58,7 @@ public class SprinkleController {
     public AjaxDTO updateSprinkle(@RequestBody SprinkleDTO sprinkleDTO){
         AjaxDTO result = new AjaxDTO();
         if(sprinkleDTO != null){
-            if(sprinkleDTO.getName().length() < 1 || sprinkleDTO.getCalories() == null){
+            if(sprinkleDTO.getName().length() < 1 || sprinkleDTO.getCalories() == null || sprinkleDTO.getPrice() == null){
                 throw new MinLengthFieldException("Field can not be empty");
             } else if(sprinkleDTO.getPrice() < 10){
                 throw new MinValueException("Price can not be less than 10P");

@@ -16,4 +16,6 @@ public interface CategoryService {
     CategoryDTO getByName(String name);
 
     List<CategoryDTO> getAll();
+
+    void checkCategoryByProduct(Integer id);
 }

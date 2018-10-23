@@ -40,7 +40,7 @@ public class FillingController {
     public AjaxDTO createFilling(@RequestBody FillingDTO fillingDTO) throws InterruptedException {
         AjaxDTO result = new AjaxDTO();
         if(fillingDTO != null){
-            if(fillingDTO.getName().length() < 1 || fillingDTO.getCalories() == null){
+            if(fillingDTO.getName().length() < 1 || fillingDTO.getCalories() == null || fillingDTO.getPrice() == null){
                 throw new MinLengthFieldException("Field can not be empty ");
             } else if(fillingDTO.getPrice() < 10){
                 throw new MinValueException("Price can not be less than 10P ");
@@ -58,7 +58,7 @@ public class FillingController {
     public AjaxDTO updateFilling(@RequestBody FillingDTO fillingDTO){
         AjaxDTO result = new AjaxDTO();
         if(fillingDTO != null){
-            if(fillingDTO.getName().length() < 1 || fillingDTO.getCalories() == null){
+            if(fillingDTO.getName().length() < 1 || fillingDTO.getCalories() == null || fillingDTO.getPrice() == null){
                 throw new MinLengthFieldException("Field can not be empty ");
             } else if(fillingDTO.getPrice() < 10){
                 throw new MinValueException("Price can not be less than 10P ");

@@ -3,6 +3,7 @@ package app.service.impl;
 import app.dao.api.UserDao;
 import app.dto.UserDTO;
 import app.entity.User;
+import app.exception.MinLengthFieldException;
 import app.service.api.UserService;
 
 import org.apache.log4j.Logger;
@@ -16,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Transactional
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -45,8 +46,8 @@ public class UserServiceImpl implements UserService {
     public void updatePassword(UserDTO userDTO) {
         User user = userDao.getById(userDTO.getId());
         if (user != null)
-            userDTO.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
-        userDao.update(modelMapper.map(userDTO, User.class));
+            user.setPassword(bCryptPasswordEncoder.encode(userDTO.getPassword()));
+        userDao.update(user);
         logger.info(String.format("Successfully update password user %s", userDTO.getLogin()));
     }
 
@@ -111,6 +112,19 @@ public class UserServiceImpl implements UserService {
             return list.stream().map(user -> modelMapper.map(user, UserDTO.class)).collect(Collectors.toList());
         } else {
             return null;
+        }
+    }
+
+    @Override
+    public void checkUserFields(UserDTO userDTO) {
+        if(userDTO.getFirstName().equals(""))  {
+            throw new MinLengthFieldException("Field can not be empty"); }
+        else if(!userDTO.getSurName().equals("")) {
+            throw new MinLengthFieldException("Field can not be empty"); }
+        else if(userDTO.getPhoneNumber().length() == 10){
+            throw new MinLengthFieldException("Field phoneNumber 10 characters");}
+        else if(userDTO.getBirthDate() != null){
+            throw new MinLengthFieldException("Field can not be empty");
         }
     }
 }

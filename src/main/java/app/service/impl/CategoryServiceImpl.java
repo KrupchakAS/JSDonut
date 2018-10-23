@@ -1,8 +1,11 @@
 package app.service.impl;
 
 import app.dao.api.CategoryDao;
+import app.dao.api.ProductDao;
 import app.dto.CategoryDTO;
 import app.entity.Category;
+import app.entity.Product;
+import app.exception.CategoryUsedException;
 import app.exception.ObjectExistsException;
 import app.service.api.CategoryService;
 
@@ -26,6 +29,9 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private ProductDao productDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
@@ -93,6 +99,15 @@ public class CategoryServiceImpl implements CategoryService {
             return categoryList.stream().map(category -> modelMapper.map(category, CategoryDTO.class)).collect(Collectors.toList());
         } else {
             return null;
+        }
+    }
+    @Override
+    public void checkCategoryByProduct(Integer id){
+        List<Product> productList = productDao.getAll();
+        for(int i = 0; i<productList.size();i++){
+            if(productList.get(i).getCategory().getId().equals(id)){
+                throw new CategoryUsedException("Category contains in some Products");
+            }
         }
     }
 

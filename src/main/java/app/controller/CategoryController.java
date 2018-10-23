@@ -68,6 +68,7 @@ public class CategoryController {
         CategoryDTO categoryDTO = categoryService.getById(id);
         AjaxDTO result = new AjaxDTO();
         if (categoryDTO != null) {
+            categoryService.checkCategoryByProduct(id);
             categoryService.delete(categoryDTO);
         }
         return result;

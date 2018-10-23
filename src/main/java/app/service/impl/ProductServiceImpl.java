@@ -3,6 +3,8 @@ package app.service.impl;
 import app.dao.api.ProductDao;
 import app.dto.ProductDTO;
 import app.entity.Product;
+import app.exception.MinLengthFieldException;
+import app.exception.MinValueException;
 import app.exception.ObjectExistsException;
 import app.message.MessageSender;
 import app.service.api.ProductService;
@@ -144,5 +146,26 @@ public class ProductServiceImpl implements ProductService {
 
     public void setModelMapper(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
+    }
+
+    @Override
+    public void checkProductFields(ProductDTO productDTO) {
+        if (productDTO.getName().length() < 1 || productDTO.getDescription().length() < 1
+                || productDTO.getCalories() == null || productDTO.getQuantity() == null || productDTO.getPrice() == null
+                ||  productDTO.getWeight() == null) {
+            throw new MinLengthFieldException(" Field can not be empty");
+        } else if (productDTO.getCategory().getId() == null) {
+            throw new MinLengthFieldException("Field Category can not be empty");
+        } else if (productDTO.getDough().getId() == null) {
+            throw new MinLengthFieldException("Field Dough can not be empty");
+        } else if (productDTO.getPrice() < 10) {
+            throw new MinValueException(" Price can not be less than 10P");
+        } else if (productDTO.getCalories() < 50) {
+            throw new MinValueException("Calories can not be less than 50 ");
+        } else if (productDTO.getWeight() < 30) {
+            throw new MinValueException("Weight can not be less than 30 ");
+        } else if (productDTO.getQuantity() < 1) {
+            throw new MinValueException("Quantity can not be less than 1 ");
+        }
     }
 }

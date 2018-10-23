@@ -128,9 +128,9 @@ public class UserController {
         if (userDTO == null) {
             throw new UserNotFoundException("User Not Found");
         }
-        if(userDTO1.getPassword().length() < 4 & userDTO1.getConfirmPassword().length() < 4){
+        if (userDTO1.getPassword().length() < 4 & userDTO1.getConfirmPassword().length() < 4) {
             throw new MinLengthFieldException("Field can not be less 4 characters");
-        }else if (!userDTO1.getPassword().equals(userDTO1.getConfirmPassword())){
+        } else if (!userDTO1.getPassword().equals(userDTO1.getConfirmPassword())) {
             throw new MinLengthFieldException("Password don't match.");
         }
         userDTO.setPassword(userDTO1.getPassword());
@@ -145,11 +145,14 @@ public class UserController {
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         if (userDTO == null) {
             throw new UserNotFoundException("User Not Found");
-        }
-        userDTO.setFirstName(userDTO1.getFirstName());
-        userDTO.setSurName(userDTO1.getSurName());
-        userDTO.setPhoneNumber(userDTO1.getPhoneNumber());
-        userDTO.setBirthDate(userDTO1.getBirthDate());
+        }if(userDTO1.getFirstName() != null && userDTO1.getFirstName().length() > 1 ){
+        userDTO.setFirstName(userDTO1.getFirstName());}
+        if(userDTO1.getSurName() != null && userDTO1.getSurName().length() > 1){
+        userDTO.setSurName(userDTO1.getSurName());}
+        if (userDTO1.getPhoneNumber() != null && userDTO1.getPhoneNumber().length() == 10){
+        userDTO.setPhoneNumber(userDTO1.getPhoneNumber());}
+        if(userDTO1.getBirthDate() != null) {
+            userDTO.setBirthDate(userDTO1.getBirthDate()); }
         userService.updateInfo(userDTO);
         return result;
     }

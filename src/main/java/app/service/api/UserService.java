@@ -22,4 +22,6 @@ public interface UserService {
     UserDTO getByEmail(String email);
 
     void updateInfo(UserDTO entity);
+
+    void checkUserFields(UserDTO userDTO);
 }

@@ -57,23 +57,7 @@ public class ProductController {
     public AjaxDTO createProduct(@RequestBody ProductDTO productDTO) {
         AjaxDTO result = new AjaxDTO();
         if (productDTO != null) {
-            if (productDTO.getName().length() < 1 || productDTO.getDescription().length() < 1 ||
-                    productDTO.getCalories() == null || productDTO.getQuantity() == null ||
-                    productDTO.getWeight() == null) {
-                throw new MinLengthFieldException(" Field can not be empty");
-            } else if (productDTO.getCategory().getId() == null) {
-                throw new MinLengthFieldException("Field Category can not be empty");
-            } else if (productDTO.getDough().getId() == null) {
-                throw new MinLengthFieldException("Field Dough can not be empty");
-            } else if (productDTO.getPrice() < 10) {
-                throw new MinValueException(" Price can not be less than 10P");
-            } else if (productDTO.getCalories() < 50) {
-                throw new MinValueException("Calories can not be less than 50 ");
-            } else if (productDTO.getWeight() < 30) {
-                throw new MinValueException("Weight can not be less than 30 ");
-            } else if (productDTO.getQuantity() < 1) {
-                throw new MinValueException("Quantity can not be less than 1 ");
-            }
+            productService.checkProductFields(productDTO);
             productService.create(productDTO);
             result.setData(productDTO);
         }
@@ -85,19 +69,7 @@ public class ProductController {
     public AjaxDTO updateProduct(@RequestBody ProductDTO productDTO) {
         AjaxDTO result = new AjaxDTO();
         if (productDTO != null) {
-            if (productDTO.getName().length() < 1 || productDTO.getDescription().length() < 1 ||
-                    productDTO.getCalories() == null || productDTO.getQuantity() == null || productDTO.getWeight() == null) {
-                throw new MinLengthFieldException("Field can not be empty");
-            } else if (productDTO.getDough().getId() == null) {
-                throw new MinLengthFieldException("Field Dough can not be empty");
-            } else if (productDTO.getPrice() < 10) {
-                throw new MinValueException(" Price can not be less than 10P");
-            } else if (productDTO.getCalories() < 50) {
-                throw new MinValueException(" Calories can not be less than 50 ");
-            } else if (productDTO.getWeight() < 30) {
-                throw new MinValueException("Weight can not be less than 30 ");
-            } else if (productDTO.getQuantity() < 1) {
-                throw new MinValueException("Quantity can not be less than 1 "); }
+            productService.checkProductFields(productDTO);
             productService.update(productDTO);
             result.setData(productDTO);
         }

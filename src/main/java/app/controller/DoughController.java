@@ -40,7 +40,7 @@ public class DoughController {
     public AjaxDTO createDough(@RequestBody DoughDTO doughDTO){
         AjaxDTO result = new AjaxDTO();
         if(doughDTO != null){
-            if(doughDTO.getName().length() < 1 || doughDTO.getCalories() == null){
+            if(doughDTO.getName().length() < 1 || doughDTO.getCalories() == null || doughDTO.getPrice() == null){
                 throw new MinLengthFieldException("Field can not be empty");
             } else if(doughDTO.getPrice() < 10){
                 throw new MinValueException("Price can not be less than 10P ");
@@ -57,7 +57,7 @@ public class DoughController {
     public AjaxDTO updateDough( @RequestBody DoughDTO doughDTO){
         AjaxDTO result = new AjaxDTO();
         if(doughDTO != null){
-            if(doughDTO.getName().length() <= 1 || doughDTO.getCalories() == null){
+            if(doughDTO.getName().length() <= 1 || doughDTO.getCalories() == null || doughDTO.getPrice() == null){
                 throw new MinLengthFieldException("Field can not be empty");
             } else if(doughDTO.getPrice() <= 10){
                 throw new MinValueException("Price can not be less than 10P ");

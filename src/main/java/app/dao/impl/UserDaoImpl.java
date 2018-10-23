@@ -4,6 +4,7 @@ import app.dao.GenericDaoImpl;
 import app.dao.api.UserDao;
 import app.entity.User;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -32,7 +33,6 @@ public class UserDaoImpl extends GenericDaoImpl<User> implements UserDao {
         }
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public User getByEmail(String email) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();

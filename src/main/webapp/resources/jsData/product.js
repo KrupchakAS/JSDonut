@@ -262,7 +262,7 @@ $(document).ready(function () {
 
 // GetProductsByParameters -------------------------------------------
 
-function getProductByParameters(categoryId, fillingId, doughId,sprinkleIdList, productName, minPrice, maxPrice, selector) {
+function getProductByParameters(categoryId, fillingId, doughId, sprinkleIdList, productName, minPrice, maxPrice, selector) {
     var ajax = {};
     ajax.data = {};
 
@@ -275,7 +275,7 @@ function getProductByParameters(categoryId, fillingId, doughId,sprinkleIdList, p
     if (doughId !== null && doughId.length > 0) {
         ajax.data.doughId = parseInt(doughId);
     }
-    if(sprinkleIdList !== null && sprinkleIdList.length > 0){
+    if (sprinkleIdList !== null && sprinkleIdList.length > 0) {
         ajax.data.sprinkleIdList = sprinkleIdList;
     }
     if (productName.length > 0) {
@@ -287,7 +287,7 @@ function getProductByParameters(categoryId, fillingId, doughId,sprinkleIdList, p
     if (maxPrice.length > 0) {
         ajax.data.maxPrice = parseInt(maxPrice);
     }
-console.log(ajax.data);
+    console.log(ajax.data);
 
     ajax.type = "GET";
     ajax.url = "/jsDonut/getProductsByParameters";
@@ -414,8 +414,7 @@ function SaveOrder(button) {
     pst.successFunction = function () {
         $('.cart-info').addClass('block__display-none');
         $('.ChocDonut').removeClass('block__display-none');
-        swal('Order Added. You can show details in Account');
-
+        swal('Order Added. we will contact you soon. You can show details in your Account');
     };
 
     console.log(pst.data);
@@ -472,7 +471,7 @@ function getPasswords() {
     if ($('.Password').val().length >= 4 && $('.ConfirmPassword').val().length >= 4) {
         passwords.password = $('.Password').val();
         passwords.confirmPassword = $('.ConfirmPassword').val();
-    }else {
+    } else {
         swal('!!!');
     }
 
@@ -498,7 +497,12 @@ function ChangeUserInfo(button) {
     pst.data = {};
     pst.data = getInfo();
     pst.successFunction = function () {
+        $('.InfoDiv').addClass('block__display-none');
         swal('Info Successfully Changed');
+        $('.firstName').val('');
+        $('.surName').val('');
+        $('.phoneNumber').val('');
+        $('.birthDate').val('');
     };
 
     console.log(pst.data);
@@ -510,10 +514,18 @@ function getInfo() {
 
     var userinfo = {};
 
-    userinfo.firstName = $('.firstName').val();
-    userinfo.surName = $('.surName').val();
-    userinfo.phoneNumber = $('.phoneNumber').val();
-    userinfo.birthDate = $('.birthDate').val();
+    if ($('.firstName').val() != undefined && $('.firstName').val().length > 1) {
+        userinfo.firstName = $('.firstName').val();
+    }
+    if ($('.surName').val() != undefined && $('.surName').val().length > 1) {
+        userinfo.surName = $('.surName').val();
+    }
+    if ($('.phoneNumber').val() != undefined && $('.phoneNumber').val().length == 10) {
+        userinfo.phoneNumber = $('.phoneNumber').val();
+    }
+    if ($('.birthDate').val() != undefined) {
+        userinfo.birthDate = $('.birthDate').val();
+    }
 
     return userinfo;
 }
@@ -522,7 +534,6 @@ $(document).ready(function () {
     $(document).on('click', '.ChangeInfo', function (e) {
         e.preventDefault();
         ChangeUserInfo($(this));
-        $('.InfoDiv').addClass('block__display-none');
     });
 });
 
