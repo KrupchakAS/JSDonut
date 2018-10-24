@@ -5,6 +5,7 @@ import app.entity.enums.DeliveryOption;
 import app.entity.enums.OrderStatus;
 import app.entity.enums.PaymentOption;
 import app.entity.enums.PaymentStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.validation.constraints.NotNull;
 import java.util.Date;
@@ -31,7 +32,7 @@ public class OrderDTO {
     private UserDTO user;
 
     private AddressDTO address;
-
+    @JsonIgnore
     private List<OrderProduct> orderProducts;
 
     public List<OrderProduct> getOrderProducts() {

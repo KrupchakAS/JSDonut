@@ -3,8 +3,8 @@ package app.service.impl;
 import app.dao.api.AddressDao;
 import app.dto.AddressDTO;
 import app.entity.Address;
+import app.exception.MinLengthFieldException;
 import app.service.api.AddressService;
-
 
 
 import org.apache.log4j.Logger;
@@ -46,7 +46,7 @@ public class AddressServiceImpl implements AddressService {
     public void update(AddressDTO addressDTO) {
         Address address = addressDao.getById(addressDTO.getId());
         if (address != null)
-            addressDao.update(modelMapper.map(addressDTO,Address.class));
+            addressDao.update(modelMapper.map(addressDTO, Address.class));
         logger.info("Successfully updated address");
     }
 
@@ -87,5 +87,24 @@ public class AddressServiceImpl implements AddressService {
             return addressList.stream().map(address -> modelMapper.map(address, AddressDTO.class)).collect(Collectors.toList());
         }
         return null;
+    }
+
+    @Override
+    public void checkAddressFields(AddressDTO addressDTO) {
+        if (addressDTO.getCity().length() < 2) {
+            throw new MinLengthFieldException("Field City can not be less 2 characters");
+        }
+        if (addressDTO.getStreet().length() < 2) {
+            throw new MinLengthFieldException("Field Street can not be less 2 characters");
+        }
+        if (addressDTO.getPostCode().length() < 4) {
+            throw new MinLengthFieldException("Field PostCode can not be less 4 characters");
+        }
+        if (addressDTO.getHouseNumber() == null) {
+            throw new MinLengthFieldException("Field HouseNumber can not be empty");
+        }
+        if (addressDTO.getApartmentNumber() == null) {
+            throw new MinLengthFieldException("Field ApartmentNumber can not be empty");
+        }
     }
 }

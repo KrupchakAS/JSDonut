@@ -169,6 +169,7 @@ public class MainController {
             if (order.getAddress().getId() != null) {
                 orderDTO.setAddress(addressService.getById(order.getAddress().getId()));
             } else if (order.getAddress() != null) {
+                addressService.checkAddressFields(order.getAddress());
                 order.getAddress().setUserDTO(userDTO);
                 addressService.create(order.getAddress());
                 orderDTO.setAddress(order.getAddress());

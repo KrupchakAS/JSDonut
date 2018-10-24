@@ -276,7 +276,7 @@ function getProductByParameters(categoryId, fillingId, doughId, sprinkleIdList, 
         ajax.data.doughId = parseInt(doughId);
     }
     if (sprinkleIdList !== null && sprinkleIdList.length > 0) {
-        ajax.data.sprinkleIdList = sprinkleIdList;
+        ajax.data.sprinkleIdList = sprinkleIdList.join(',');
     }
     if (productName.length > 0) {
         ajax.data.productName = productName;
@@ -414,7 +414,7 @@ function SaveOrder(button) {
     pst.successFunction = function () {
         $('.cart-info').addClass('block__display-none');
         $('.ChocDonut').removeClass('block__display-none');
-        swal('Order Added. we will contact you soon. You can show details in your Account');
+        swal('Order Added. We will contact you soon. You can show details in your Account');
     };
 
     console.log(pst.data);
@@ -468,12 +468,8 @@ function getPasswords() {
 
     var passwords = {};
 
-    if ($('.Password').val().length >= 4 && $('.ConfirmPassword').val().length >= 4) {
         passwords.password = $('.Password').val();
         passwords.confirmPassword = $('.ConfirmPassword').val();
-    } else {
-        swal('!!!');
-    }
 
     return passwords;
 }

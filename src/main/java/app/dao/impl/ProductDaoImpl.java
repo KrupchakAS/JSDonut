@@ -58,6 +58,7 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
                 params.add(criteriaBuilder.equal(productRoot.get("sprinkleList"), sprinkleIdList.get(i)));
             }
         }
+
         if (categoryId != null) {
             params.add(criteriaBuilder.equal(productRoot.get("category"), categoryId));
         }

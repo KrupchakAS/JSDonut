@@ -17,4 +17,6 @@ public interface AddressService {
 
     List<AddressDTO> getAddressesByUserId (Integer id);
 
+    void checkAddressFields(AddressDTO addressDTO);
+
 }

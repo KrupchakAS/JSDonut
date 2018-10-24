@@ -167,11 +167,11 @@
             <div class="row">
                 <h3 style="color: tomato;  margin-left: 50px">Account Panel</h3>
                 <br>
-
-                <h5 style="color: #23527c;  margin-left: 50px">${user.firstName} ${user.surName}</h5>
+                <h5 style="font-size: 20px; color: #23527c;  margin-left: 50px">${user.firstName} ${user.surName}</h5>
                 <br>
-                <h5 style="color: #23527c;  margin-left: 50px">Дата рождения: ${user.birthDate}</h5>
-
+                <h5 style="color: #23527c;  margin-left: 50px">BirthDate: ${user.birthDate}</h5>
+                <br>
+                <h5 style="color: #23527c;  margin-left: 50px">PhoneNumber: ${user.phoneNumber}</h5>
                 <form style="padding: 10px; margin: 30px" class=" form-group-sm">
                     <h4 style="margin: 10px;"><a href="#"><span
                             class="ChangeUserInfo label label-default">Change my Info</span></a></h4>
@@ -231,9 +231,9 @@
                         <br>
                         <с:forEach var="product" items="${order.orderProducts}">
                             <div>
-                                <h6 style=" display: inline-block">${product.product.category.name}</h6>|<h5
-                                    style="color: #c0a16b; display: inline-block"> ${product.product.name} </h5>|<h6
-                                    style="display: inline-block"> Quantity: ${product.quantity}</h6>
+                                <span style="color: #23527c;display: inline-block">${product.product.category.name}-</span>
+                                <p style="color: #23527c;display: inline-block">${product.product.name}</p>|
+                                <h5 style="display: inline-block"> Quantity: ${product.quantity}</h5>
                             </div>
                         </с:forEach>
                         <h3 style="padding-left: 700px;color: #c0a16b">Total Price: ${order.totalPrice}</h3>

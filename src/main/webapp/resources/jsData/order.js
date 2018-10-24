@@ -13,6 +13,7 @@ function updateOrder(button) {
         $('#DelOpt-'+order.id).text(order.deliveryOption);
         $('#PayStat-'+order.id).text(order.paymentStatus);
         $('#OrdStat-'+order.id).text(order.orderStatus);
+        swal('Updated!');
     };
     console.log(pst.data);
 
@@ -36,7 +37,7 @@ $(document).ready(function () {
     $(document).on('click', '.order-update', function (e) {
         e.preventDefault();
         updateOrder($(this));
-        swal('Updated!');
+
     });
 });
 
@@ -65,18 +66,16 @@ function getOrderById(id, selector) {
 
 function openOrderFormUpdate(orderObject) {
 
-    $('.order-id').val(orderObject.id);
-    $('#PaymentOption-update option:selected').text(orderObject.paymentOption);
-    $('#DeliveryOption-update option:selected').text(orderObject.deliveryOption);
-    $('#PaymentStatus-update option:selected').text(orderObject.paymentStatus);
-    $('#OrderStatus-update option:selected').text(orderObject.orderStatus);
-
     $('.container-head').text("Order: " + orderObject.id);
     $('.order-list').addClass('block__display-none');
     $('.order-form').removeClass('block__display-none');
     $('.order-update').removeClass('block__display-none');
 
-    setSelect2Plugin();
+    $('.order-id').val(orderObject.id);
+    $('#PaymentOption-update option:selected').text(orderObject.paymentOption);
+    $('#DeliveryOption-update option:selected').text(orderObject.deliveryOption);
+    $('#PaymentStatus-update option:selected').text(orderObject.paymentStatus);
+    $('#OrderStatus-update option:selected').text(orderObject.orderStatus);
 }
 
 

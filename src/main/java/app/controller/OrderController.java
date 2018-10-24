@@ -39,7 +39,7 @@ public class OrderController {
     public AjaxDTO createOrder(@Valid @RequestBody OrderDTO orderDTO) {
         AjaxDTO result = new AjaxDTO();
         if (orderDTO != null) {
-            //orderService.create(orderDTO);
+            orderService.create(orderDTO);
             result.setData(orderDTO);
         }
         return result;
