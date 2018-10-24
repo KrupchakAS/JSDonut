@@ -119,11 +119,15 @@ public class MainController {
                 throw new ObjectAlreadyInOrderException(String.format("Product with name %s already in your Order", productDTO.getName()));
             }
         }
+        if(productDTO.getQuantity() < quantity){
+            throw new MinQuantityException(String.format("Wrong quantity, select available value. Available quantity: %s",productDTO.getQuantity()));
+        }
         if(quantity >=1){
             productDTO.setQuantity(quantity);
         }else {
             throw new MinQuantityException("Wrong Quantity");
         }
+
         productDTOList.add(productDTO);
         OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
         orderDTO.setProductList(productDTOList);

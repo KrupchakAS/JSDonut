@@ -255,6 +255,7 @@
                                 <p>${product.description}</p>
                                 <span>Filling: ${product.filling.name}</span><span>Dough: ${product.dough.name}</span>
                                 <span style="color: #c0a16b">Calories: ${product.calories}</span>
+                                <%--<p>Available quantity: ${product.quantity}</p>--%>
                                 <div style="float: right" class="quantity"><p style="color: red" class="qty">Select
                                     Quantity: </p><input min="1" type="number" value="1" name="item_quantity"
                                                          class="item_quantity">
