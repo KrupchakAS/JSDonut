@@ -3,6 +3,7 @@ package app.dao.impl;
 import app.dao.GenericDaoImpl;
 import app.dao.api.ProductDao;
 import app.entity.Product;
+import app.entity.Sprinkle;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.criteria.*;
@@ -51,13 +52,16 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
         Root<Product> productRoot = criteriaQuery.from(Product.class);
-
         List<Predicate> params = new ArrayList<>();
+
+
+        Join<Product, Sprinkle> sprinkleJoin = productRoot.join("sprinkleList");
+
         if (sprinkleIdList != null){
-            for(int i = 0; i < sprinkleIdList.size();i++){
-                params.add(criteriaBuilder.equal(productRoot.get("sprinkleList"), sprinkleIdList.get(i)));
-            }
+            criteriaQuery.where(criteriaBuilder.equal(sprinkleJoin.get("id"),sprinkleIdList.get(0)));
         }
+
+
 
         if (categoryId != null) {
             params.add(criteriaBuilder.equal(productRoot.get("category"), categoryId));

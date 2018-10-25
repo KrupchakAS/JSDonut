@@ -109,8 +109,17 @@ function openProductFormUpdate(productObject) {
     $('.product-weight').val(productObject.weight);
     $('.product-quantity').val(productObject.quantity);
     $('.product__category-id').val(productObject.category.id);
-    $('.product__filling-id').val(productObject.filling.id);
     $('.product__dough-id').val(productObject.dough.id);
+    if(productObject.filling != null){
+    $('.product__filling-id').val(productObject.filling.id);
+    }
+    if(productObject.sprinkleList != null){
+        var spIds = [];
+        for(var a = 0; a < productObject.sprinkleList.length;a++) {
+            spIds.push(productObject.sprinkleList[a].id);
+            $('.product__sprinkle-id').val(spIds);
+        }
+    }
 
     $('.container-head').text("Category: " + productObject.category.name + " Product: " + productObject.name);
     $('.product-list').addClass('block__display-none');
@@ -174,7 +183,7 @@ function getDataFromForm() {
     product.dough = {};
     product.dough.id = parseInt($('.product__dough-id').val());
     product.sprinkleList = [];
-    $.each($('.selectpicker.form-control.product__sprinkle-id').val(), function (index, value) {
+    $.each($('.product__sprinkle-id').val(), function (index, value) {
         product.sprinkleList.push({id: parseInt(value)});
     });
 
@@ -204,7 +213,7 @@ function getFormCreate() {
 }
 
 function addNewProduct(productObject) {
-    swal('SAVED!');
+    swal('Saved!');
     console.log(productObject);
 
     $('#product-table').find('tbody').append(
@@ -314,10 +323,9 @@ function addProducts(productList) {
                 '(<span>' + productObject.category.name + '</span>)' +
                 '<h6 >' + productObject.name + '</h6>' +
                 '<p>' + productObject.description + '</p>' +
-                '<span>Filling: ' + productObject.filling.name + '</span><span>Dough: ' + productObject.dough.name + '</span>' +
+                '<span>Filling: ' + productObject.filling.name + '</span>|<span style="padding-right: 10px">Dough: ' + productObject.dough.name + '</span>' +
                 '<span style="color: #c0a16b">Calories: ' + productObject.calories + '</span>' +
-                // '<p>Available quantity: '+productObject.quantity+'</p>'+
-                '<div style="float: right" class="quantity"><p style="color: red" class="qty">Select Quantity: </p><input min="1" type="number" value="1" name="item_quantity" class="item_quantity">' +
+                '<div style="float: right" class="quantity"><p style="padding-right: 10px">Available quantity: '+productObject.quantity+'</p><p style="color: red" class="qty">Select Quantity: </p><input min="1" type="number" value="1" name="item_quantity" class="item_quantity">' +
                 '<div style="float: inherit; margin-left: 15px" data-id="' + productObject.id + '" class="btn_form" ><a href="#" style="color: green"  class="add-cart item_add">Add To Cart</a></div>' +
                 '</div> </div> </div><hr>');
         }
@@ -543,6 +551,7 @@ $(document).ready(function () {
 $(function () {
     $(document).on('click', '.product-add', function () {
         getFormCreate();
+        setSelect2Plugin();
     });
     $(document).on('click', '.product-edit', function () {
         var id = $(this).closest('tr').data('id');

@@ -188,10 +188,10 @@
             <div class="login-body wow fadeInUp animated" data-wow-delay=".7s">
                 <form method="post" action="${contextPath}/changeUserInfo">
                     <div>
-                        <input type="text" class="firstName" placeholder="firstName" minlength="2" maxlength="16">
-                        <input type="text" class="surName" placeholder="surName" minlength="2" maxlength="16">
-                        <input type="text" class="phoneNumber" placeholder="phoneNumber" minlength="10" maxlength="10">
-                        <input type="date" min="1900-01-01" max="2004-01-01" class="birthDate" placeholder="birthDate">
+                        <input type="text" class="firstName" placeholder="FirstName" minlength="2" maxlength="16">
+                        <input type="text" class="surName" placeholder="SurName" minlength="2" maxlength="16">
+                        <input type="text" class="phoneNumber" placeholder="PhoneNumber" minlength="10" maxlength="10">
+                        <input type="date" min="1900-01-01" max="2004-01-01" class="birthDate" placeholder="BirthDate">
                         <input type="submit" class="ChangeInfo" value="Change">
                     </div>
                 </form>

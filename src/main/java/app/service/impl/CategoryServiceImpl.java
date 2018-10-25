@@ -106,7 +106,7 @@ public class CategoryServiceImpl implements CategoryService {
         List<Product> productList = productDao.getAll();
         for(int i = 0; i<productList.size();i++){
             if(productList.get(i).getCategory().getId().equals(id)){
-                throw new CategoryUsedException("Category contains in some Products");
+                throw new CategoryUsedException("Some Product use this Category");
             }
         }
     }

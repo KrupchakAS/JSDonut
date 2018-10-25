@@ -147,7 +147,7 @@ public class UserController {
             throw new UserNotFoundException("User Not Found");
         }
         if(userDTO1.getFirstName() == null && userDTO1.getSurName() == null && userDTO1.getPhoneNumber() == null && userDTO1.getBirthDate() == null){
-            throw new UserNotFoundException("Not field(s) to change");
+            throw new UserNotFoundException("No field(s) to change");
         }
         if (userDTO1.getFirstName() != null && userDTO1.getFirstName().length() > 1) {
             userDTO.setFirstName(userDTO1.getFirstName());

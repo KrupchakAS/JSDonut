@@ -253,10 +253,9 @@
                                 <span>(${product.category.name})</span>
                                 <h6>${product.name}</h6>
                                 <p>${product.description}</p>
-                                <span>Filling: ${product.filling.name}</span><span>Dough: ${product.dough.name}</span>
+                                <span>Filling: ${product.filling.name}</span>|<span style="padding-right: 10px">Dough: ${product.dough.name}</span>
                                 <span style="color: #c0a16b">Calories: ${product.calories}</span>
-                                <%--<p>Available quantity: ${product.quantity}</p>--%>
-                                <div style="float: right" class="quantity"><p style="color: red" class="qty">Select
+                                <div style="float: right" class="quantity"><p style="padding-right: 10px">Available quantity: ${product.quantity}</p><p style="color: red" class="qty">Select
                                     Quantity: </p><input min="1" type="number" value="1" name="item_quantity"
                                                          class="item_quantity">
                                     <div style="float: inherit; margin-left: 15px" data-id="${product.id}"
