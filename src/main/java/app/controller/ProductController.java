@@ -70,6 +70,9 @@ public class ProductController {
         AjaxDTO result = new AjaxDTO();
         if (productDTO != null) {
             productService.checkProductFields(productDTO);
+            if (productDTO.getFilling().getId() == 0) {
+                productDTO.setFilling(null);
+            }
             productService.update(productDTO);
             result.setData(productDTO);
         }

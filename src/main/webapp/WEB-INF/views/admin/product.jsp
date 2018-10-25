@@ -157,7 +157,7 @@
                                         <div class="form-group">
                                             <label for="dough">Dough</label>
                                             <select id="dough" required class="selec2-plugin form-control product__dough-id component">
-                                                <option disabled value="0" selected data-price="0" data-calories="0">Choose dough</option>
+                                                <option  value="0" selected data-price="0" data-calories="0">Choose dough</option>
                                                 <c:choose>
                                                     <c:when test="${doughList.size() > 0}">
                                                         <с:forEach var="dough" items="${doughList}">
@@ -173,7 +173,7 @@
                                         <div class="form-group">
                                             <label for="filling">Filling</label>
                                             <select id="filling" required class="form-control selec2-plugin product__filling-id component">
-                                                <option disabled value="0" selected data-price="0" data-calories="0">Choose filling</option>
+                                                <option value="0" selected data-price="0" data-calories="0">Choose filling</option>
                                                 <c:choose>
                                                     <c:when test="${fillingList.size() > 0}">
                                                         <с:forEach var="filling" items="${fillingList}">

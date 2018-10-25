@@ -110,16 +110,23 @@ function openProductFormUpdate(productObject) {
     $('.product-quantity').val(productObject.quantity);
     $('.product__category-id').val(productObject.category.id);
     $('.product__dough-id').val(productObject.dough.id);
-    if(productObject.filling != null){
-    $('.product__filling-id').val(productObject.filling.id);
+    if (productObject.filling != null && productObject.filling != undefined) {
+        $('.product__filling-id').val(productObject.filling.id);
     }
-    if(productObject.sprinkleList != null){
+    if (productObject.filling == null && productObject.filling == undefined) {
+        $('.product__filling-id').val(0);
+    }
+    if (productObject.sprinkleList.length > 0) {
         var spIds = [];
-        for(var a = 0; a < productObject.sprinkleList.length;a++) {
+        for (var a = 0; a < productObject.sprinkleList.length; a++) {
             spIds.push(productObject.sprinkleList[a].id);
             $('.product__sprinkle-id').val(spIds);
         }
     }
+    if (productObject.sprinkleList.length == 0) {
+        $('.product__sprinkle-id').val();
+    }
+
 
     $('.container-head').text("Category: " + productObject.category.name + " Product: " + productObject.name);
     $('.product-list').addClass('block__display-none');
@@ -199,10 +206,10 @@ function getFormCreate() {
     $('.product-description').val('');
     $('.product-weight').val('');
     $('.product-quantity').val('');
-    $('.product__category-id').val('Choose category');
-    $('.product__filling-id').val('Choose filling');
-    $('.product__dough-id').val('Choose dough');
-    $('.product__sprinkle-id').val('Choose sprinkle');
+    $('.product__category-id').val('');
+    $('.product__filling-id').val('');
+    $('.product__dough-id').val('');
+    $('.product__sprinkle-id').val('');
 
     $('.product-add').addClass('block__display-none');
     $('.product-list').addClass('block__display-none');
@@ -325,7 +332,7 @@ function addProducts(productList) {
                 '<p>' + productObject.description + '</p>' +
                 '<span>Filling: ' + productObject.filling.name + '</span>|<span style="padding-right: 10px">Dough: ' + productObject.dough.name + '</span>' +
                 '<span style="color: #c0a16b">Calories: ' + productObject.calories + '</span>' +
-                '<div style="float: right" class="quantity"><p style="padding-right: 10px">Available quantity: '+productObject.quantity+'</p><p style="color: red" class="qty">Select Quantity: </p><input min="1" type="number" value="1" name="item_quantity" class="item_quantity">' +
+                '<div style="float: right" class="quantity"><p style="padding-right: 10px">Available quantity: ' + productObject.quantity + '</p><p style="color: red" class="qty">Select Quantity: </p><input min="1" type="number" value="1" name="item_quantity" class="item_quantity">' +
                 '<div style="float: inherit; margin-left: 15px" data-id="' + productObject.id + '" class="btn_form" ><a href="#" style="color: green"  class="add-cart item_add">Add To Cart</a></div>' +
                 '</div> </div> </div><hr>');
         }
@@ -476,8 +483,8 @@ function getPasswords() {
 
     var passwords = {};
 
-        passwords.password = $('.Password').val();
-        passwords.confirmPassword = $('.ConfirmPassword').val();
+    passwords.password = $('.Password').val();
+    passwords.confirmPassword = $('.ConfirmPassword').val();
 
     return passwords;
 }
