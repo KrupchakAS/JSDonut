@@ -8,7 +8,7 @@
 
 <html>
 <c:import url="/WEB-INF/views/admin/adminHeader.jsp"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
 <body>
 <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
     <div class="container-fluid">
@@ -53,13 +53,15 @@
                 <div class="panel-body container-body">
                     <div class="row">
                         <div class="col-md-12 order-list">
-                            <table id="category-table" class="table table-striped order-table">
+                            <table style="padding:5px;" id="category-table" class="table table-striped order-table">
                                 <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Product List</th>
+                                    <th style="width: 200px">Product List</th>
                                     <th>User Name</th>
                                     <th>User Phone</th>
+                                    <th style="width: 150px">User Address</th>
+
                                     <th>Payment Option</th>
                                     <th>Delivery Option</th>
                                     <th>Payment Status</th>
@@ -71,26 +73,36 @@
                                     <c:when test="${orderList.size() > 0}">
                                         <с:forEach var="order" items="${orderList}">
                                             <tr class="order-table__row" data-id="${order.id}">
-                                                <td>${order.id}</td>
-                                                <td>
-                                                    <с:forEach var="product" items="${order.orderProducts}">
-                                                        ${product.product.category.name}
-                                                        ${product.product.name}
-                                                        (Qty)${product.quantity}
-                                                        <br>
-                                                    </с:forEach>
-                                                </td>
-                                                <td>${order.getUserDTO().firstName}</td>
-                                                <td>${order.getUserDTO().phoneNumber}</td>
-                                                <td id="PayOpt-${order.id}">${order.getPaymentOption()}</td>
-                                                <td id="DelOpt-${order.id}">${order.getDeliveryOption()}</td>
-                                                <td id="PayStat-${order.id}">${order.getPaymentStatus()}</td>
-                                                <td id="OrdStat-${order.id}">${order.getOrderStatus()}</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-md btn-primary order-edit">
-                                                        Edit
-                                                    </button>
-                                                </td>
+                                            <td>${order.id}</td>
+                                            <td style="width: 200px">
+                                                <с:forEach var="product" items="${order.orderProducts}">
+                                                    ${product.product.category.name}
+                                                    ${product.product.name}
+                                                    (Qty)${product.quantity}
+                                                    <br>
+                                                </с:forEach>
+                                            </td>
+                                            <td>${order.getUserDTO().firstName}</td>
+                                            <td>${order.getUserDTO().phoneNumber}</td>
+                                            <c:choose>
+                                                <c:when test="${order.getAddress() != null}">
+                                                    <td style="width: 150px">${order.getAddress().city}-${order.getAddress().street}-${order.getAddress().houseNumber}-${order.getAddress().apartmentNumber}</td>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <td style="width: 150px">PickUp</td>
+                                                </c:otherwise>
+                                            </c:choose>
+
+
+                                            <td id="PayOpt-${order.id}">${order.getPaymentOption()}</td>
+                                            <td id="DelOpt-${order.id}">${order.getDeliveryOption()}</td>
+                                            <td id="PayStat-${order.id}">${order.getPaymentStatus()}</td>
+                                            <td id="OrdStat-${order.id}">${order.getOrderStatus()}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-md btn-primary order-edit">
+                                                    Edit
+                                                </button>
+                                            </td>
                                             </tr>
                                         </с:forEach>
                                     </c:when>
@@ -115,7 +127,7 @@
                                         <label for="PaymentOption-update">Payment Option</label>
                                         <select id="PaymentOption-update"
                                                 class="form-control ">
-                                            <option value="0">Choose Payment Option</option>
+                                            <option disabled value="0">Choose Payment Option</option>
                                             <option value="1">CASH</option>
                                             <option value="2">CARD</option>
                                         </select>
@@ -126,7 +138,7 @@
                                         <label for="DeliveryOption-update">Delivery Option</label>
                                         <select id="DeliveryOption-update"
                                                 class="form-control ">
-                                            <option value="0">Choose Delivery Option</option>
+                                            <option disabled value="0">Choose Delivery Option</option>
                                             <option value="1">PICKUP</option>
                                             <option value="2">DELIVERY</option>
                                         </select>
@@ -137,7 +149,7 @@
                                         <label for="PaymentStatus-update">Payment Status</label>
                                         <select id="PaymentStatus-update"
                                                 class="form-control ">
-                                            <option value="0">Choose Payment Status</option>
+                                            <option disabled value="0">Choose Payment Status</option>
                                             <option value="1">NOT_PAID</option>
                                             <option value="2">PAID</option>
                                         </select>
@@ -148,7 +160,7 @@
                                         <label for="OrderStatus-update">Order Status</label>
                                         <select id="OrderStatus-update"
                                                 class="form-control ">
-                                            <option value="0">Choose Order Status</option>
+                                            <option disabled value="0">Choose Order Status</option>
                                             <option value="1">AWAITING_PAYMENT</option>
                                             <option value="2">AWAITING_SHIPMENT</option>
                                             <option value="3">SHIPPED</option>

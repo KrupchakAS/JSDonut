@@ -176,12 +176,9 @@ public class MainController {
                 addressService.checkAddressFields(order.getAddress());
                 order.getAddress().setUserDTO(userDTO);
                 addressService.create(order.getAddress());
-                orderDTO.setAddress(order.getAddress());
-            }
-        }
+                orderDTO.setAddress(order.getAddress()); } }
         if (orderDTO.getTotalPrice() < 600) {
-            throw new MinTotalPriceOrderException("Total Price can't be less than 600P");
-        }
+            throw new MinTotalPriceOrderException("Total Price can't be less than 600P"); }
         orderDTO.setDeliveryOption(order.getDeliveryOption());
         orderDTO.setPaymentOption(order.getPaymentOption());
         orderDTO.setUserDTO(userDTO);

@@ -123,7 +123,7 @@ CREATE TABLE products (
   FOREIGN KEY (user_id) REFERENCES users (id),
   category_id INT          NOT NULL,
   FOREIGN KEY (category_id) REFERENCES category (id),
-  dough_id    TINYINT,
+  dough_id    TINYINT NOT NULL,
   FOREIGN KEY (dough_id) REFERENCES dough (id),
   filling_id  TINYINT,
   FOREIGN KEY (filling_id) REFERENCES filling (id)

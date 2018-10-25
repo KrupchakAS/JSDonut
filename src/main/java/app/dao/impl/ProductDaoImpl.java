@@ -55,11 +55,11 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
         List<Predicate> params = new ArrayList<>();
 
 
-        Join<Product, Sprinkle> sprinkleJoin = productRoot.join("sprinkleList");
-
-        if (sprinkleIdList != null){
-            criteriaQuery.where(criteriaBuilder.equal(sprinkleJoin.get("id"),sprinkleIdList.get(0)));
-        }
+//        Join<Product, Sprinkle> sprinkleJoin = productRoot.join("sprinkleList");
+//
+//        if (sprinkleIdList != null){
+//            criteriaQuery.where(criteriaBuilder.equal(sprinkleJoin.get("id"),sprinkleIdList.get(0)));
+//        }
 
 
 

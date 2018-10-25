@@ -37,10 +37,10 @@ function getItemData() {
     product.category = {};
     product.category.id = parseInt($('.product__category-id').val());
     product.category.name = $('.product__category-id option:selected').text();
-    product.filling = {};
-    product.filling.id = parseInt($('.product__filling-id').val());
     product.dough = {};
     product.dough.id = parseInt($('.product__dough-id').val());
+    product.filling = {};
+    product.filling.id = parseInt($('.product__filling-id').val());
     product.List = [];
     product.sprinkleList = [];
     $('.product__sprinkle-id :selected').each(function () {
@@ -185,10 +185,12 @@ function getDataFromForm() {
     product.category = {};
     product.category.id = parseInt($('.product__category-id').val());
     product.category.name = $('.product__category-id option:selected').text();
-    product.filling = {};
-    product.filling.id = parseInt($('.product__filling-id').val());
     product.dough = {};
     product.dough.id = parseInt($('.product__dough-id').val());
+    if ($('.product__filling-id').val() != '0') {
+        product.filling = {};
+        product.filling.id = parseInt($('.product__filling-id').val());
+    }
     product.sprinkleList = [];
     $.each($('.product__sprinkle-id').val(), function (index, value) {
         product.sprinkleList.push({id: parseInt(value)});
@@ -206,10 +208,10 @@ function getFormCreate() {
     $('.product-description').val('');
     $('.product-weight').val('');
     $('.product-quantity').val('');
-    $('.product__category-id').val('');
-    $('.product__filling-id').val('');
-    $('.product__dough-id').val('');
-    $('.product__sprinkle-id').val('');
+    $('.product__category-id').val('Choose category');
+    $('.product__filling-id').val('Choose filling');
+    $('.product__dough-id').val('Choose dough');
+    $('.product__sprinkle-id').val('Choose sprinkles');
 
     $('.product-add').addClass('block__display-none');
     $('.product-list').addClass('block__display-none');
@@ -323,14 +325,24 @@ function addProducts(productList) {
     } else {
         for (var i = 0; i < productList.length; i++) {
             var productObject = productList[i];
-
+            var fil ='';
+            if(productObject.filling != null){
+                fil = 'Filling: ' + productObject.filling.name;
+            }
+            var sprList = '';
+            if(productObject.sprinkleList.length >0){
+                sprList = 'Sprinkles: ';
+                for (var k = 0; k < productObject.sprinkleList.length; k++) {
+                    sprList += '<span>'+(productObject.sprinkleList[k].name)+'</span>'+' ';
+                }
+            }
             $('.Product-item').append(
                 '<div class="single-info"> <div class="single-top-left simpleCart_shelfItem wow fadeInRight animated" data-wow-delay=".5s">' +
                 '<h3 style="float: right" class="item_price">' + productObject.price + '₽</h3>' +
                 '(<span>' + productObject.category.name + '</span>)' +
                 '<h6 >' + productObject.name + '</h6>' +
                 '<p>' + productObject.description + '</p>' +
-                '<span>Filling: ' + productObject.filling.name + '</span>|<span style="padding-right: 10px">Dough: ' + productObject.dough.name + '</span>' +
+                '<span style="padding-right: 10px">Dough: ' + productObject.dough.name + '</span>'+' '+'<span>' + fil + '</span><p>' + sprList + '</p>' +
                 '<span style="color: #c0a16b">Calories: ' + productObject.calories + '</span>' +
                 '<div style="float: right" class="quantity"><p style="padding-right: 10px">Available quantity: ' + productObject.quantity + '</p><p style="color: red" class="qty">Select Quantity: </p><input min="1" type="number" value="1" name="item_quantity" class="item_quantity">' +
                 '<div style="float: inherit; margin-left: 15px" data-id="' + productObject.id + '" class="btn_form" ><a href="#" style="color: green"  class="add-cart item_add">Add To Cart</a></div>' +

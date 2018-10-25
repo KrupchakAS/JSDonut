@@ -162,8 +162,8 @@ public class ProductServiceImpl implements ProductService {
             throw new MinValueException(" Price can not be less than 10P");
         } else if (productDTO.getCalories() < 50) {
             throw new MinValueException("Calories can not be less than 50 ");
-        } else if (productDTO.getWeight() < 30) {
-            throw new MinValueException("Weight can not be less than 30 ");
+        } else if (productDTO.getWeight() < 15) {
+            throw new MinValueException("Weight can not be less than 15 ");
         } else if (productDTO.getQuantity() < 1) {
             throw new MinValueException("Quantity can not be less than 1 ");
         }

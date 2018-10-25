@@ -136,29 +136,29 @@
     <div class="container">
         <div class="banner-text">
             <div class="col-sm-5 banner-left wow fadeInLeft animated" data-wow-delay=".5s">
-                <h2>Our Special Delicious</h2>
-                <div class="count main-row">
-                    <ul id="example">
-                        <li><span class="hours">00</span>
-                            <p class="hours_text">Hours</p></li>
-                        <li><span class="minutes">00</span>
-                            <p class="minutes_text">Minutes</p></li>
-                        <li><span class="seconds">00</span>
-                            <p class="seconds_text">Seconds</p></li>
-                    </ul>
-                    <div class="clearfix"></div>
-                    <script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/jquery.countdown.min.js"></script>
-                    <script type="text/javascript">
-                        $('#example').countdown({
-                            date: '12/24/2020 15:59:59',
-                            offset: -8,
-                            day: 'Day',
-                            days: 'Days'
-                        }, function () {
-                            alert('Done!');
-                        });
-                    </script>
-                </div>
+                <%--<h2>Our Special Delicious</h2>--%>
+                <%--<div class="count main-row">--%>
+                    <%--<ul id="example">--%>
+                        <%--<li><span class="hours">00</span>--%>
+                            <%--<p class="hours_text">Hours</p></li>--%>
+                        <%--<li><span class="minutes">00</span>--%>
+                            <%--<p class="minutes_text">Minutes</p></li>--%>
+                        <%--<li><span class="seconds">00</span>--%>
+                            <%--<p class="seconds_text">Seconds</p></li>--%>
+                    <%--</ul>--%>
+                    <%--<div class="clearfix"></div>--%>
+                    <%--<script type="text/javascript" src="${contextPath}/resources/assetsMainPages/js/jquery.countdown.min.js"></script>--%>
+                    <%--<script type="text/javascript">--%>
+                        <%--$('#example').countdown({--%>
+                            <%--date: '12/24/2020 15:59:59',--%>
+                            <%--offset: -8,--%>
+                            <%--day: 'Day',--%>
+                            <%--days: 'Days'--%>
+                        <%--}, function () {--%>
+                            <%--alert('Done!');--%>
+                        <%--});--%>
+                    <%--</script>--%>
+                <%--</div>--%>
 
             </div>
             <div class="col-sm-7 banner-right wow fadeInRight animated" data-wow-delay=".5s">

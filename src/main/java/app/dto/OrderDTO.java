@@ -107,13 +107,9 @@ public class OrderDTO {
         this.totalPrice = totalPrice;
     }
 
-    public AddressDTO getAddress() {
-        return address;
-    }
+    public AddressDTO getAddress() { return address; }
 
-    public void setAddress(AddressDTO address) {
-        this.address = address;
-    }
+    public void setAddress(AddressDTO address) { this.address = address; }
 
     public Date getPurchaseDate() {
         return purchaseDate;
