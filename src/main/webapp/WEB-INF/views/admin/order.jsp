@@ -58,6 +58,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th style="width: 200px">Product List</th>
+                                    <th>Total Price</th>
                                     <th>User Name</th>
                                     <th>User Phone</th>
                                     <th style="width: 150px">User Address</th>
@@ -73,36 +74,35 @@
                                     <c:when test="${orderList.size() > 0}">
                                         <с:forEach var="order" items="${orderList}">
                                             <tr class="order-table__row" data-id="${order.id}">
-                                            <td>${order.id}</td>
-                                            <td style="width: 200px">
-                                                <с:forEach var="product" items="${order.orderProducts}">
-                                                    ${product.product.category.name}
-                                                    ${product.product.name}
-                                                    (Qty)${product.quantity}
-                                                    <br>
-                                                </с:forEach>
-                                            </td>
-                                            <td>${order.getUserDTO().firstName}</td>
-                                            <td>${order.getUserDTO().phoneNumber}</td>
-                                            <c:choose>
-                                                <c:when test="${order.getAddress() != null}">
-                                                    <td style="width: 150px">${order.getAddress().city}-${order.getAddress().street}-${order.getAddress().houseNumber}-${order.getAddress().apartmentNumber}</td>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <td style="width: 150px">PickUp</td>
-                                                </c:otherwise>
-                                            </c:choose>
-
-
-                                            <td id="PayOpt-${order.id}">${order.getPaymentOption()}</td>
-                                            <td id="DelOpt-${order.id}">${order.getDeliveryOption()}</td>
-                                            <td id="PayStat-${order.id}">${order.getPaymentStatus()}</td>
-                                            <td id="OrdStat-${order.id}">${order.getOrderStatus()}</td>
-                                            <td>
-                                                <button type="button" class="btn btn-md btn-primary order-edit">
-                                                    Edit
-                                                </button>
-                                            </td>
+                                                <td>${order.id}</td>
+                                                <td style="width: 200px">
+                                                    <с:forEach var="product" items="${order.orderProducts}">
+                                                        ${product.product.category.name}
+                                                        ${product.product.name}
+                                                        (Qty)${product.quantity}
+                                                        <br>
+                                                    </с:forEach>
+                                                </td>
+                                                <td>${order.totalPrice}₽</td>
+                                                <td>${order.getUserDTO().firstName}</td>
+                                                <td>${order.getUserDTO().phoneNumber}</td>
+                                                <c:choose>
+                                                    <c:when test="${order.getAddress() != null}">
+                                                        <td style="width: 150px">${order.getAddress().city}-${order.getAddress().street}-${order.getAddress().houseNumber}-${order.getAddress().apartmentNumber}</td>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <td style="width: 150px">PickUp</td>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                                <td id="PayOpt-${order.id}">${order.getPaymentOption()}</td>
+                                                <td id="DelOpt-${order.id}">${order.getDeliveryOption()}</td>
+                                                <td id="PayStat-${order.id}">${order.getPaymentStatus()}</td>
+                                                <td id="OrdStat-${order.id}">${order.getOrderStatus()}</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-md btn-primary order-edit">
+                                                        Edit
+                                                    </button>
+                                                </td>
                                             </tr>
                                         </с:forEach>
                                     </c:when>

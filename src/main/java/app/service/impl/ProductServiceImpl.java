@@ -151,12 +151,12 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void checkProductFields(ProductDTO productDTO) {
         if (productDTO.getName().length() < 1 || productDTO.getDescription().length() < 1
-                || productDTO.getCalories() == null || productDTO.getQuantity() == null || productDTO.getPrice() == null
-                ||  productDTO.getWeight() == null) {
+                || productDTO.getCalories() == null || productDTO.getQuantity() == null
+                || productDTO.getPrice() == null ||  productDTO.getWeight() == null) {
             throw new MinLengthFieldException(" Field can not be empty");
         } else if (productDTO.getCategory().getId() == null) {
             throw new MinLengthFieldException("Field Category can not be empty");
-        } else if (productDTO.getDough().getId() == null) {
+        } else if (productDTO.getDough().getId() == null || productDTO.getDough().getId() == 0) {
             throw new MinLengthFieldException("Field Dough can not be empty");
         } else if (productDTO.getPrice() < 10) {
             throw new MinValueException(" Price can not be less than 10P");

@@ -579,9 +579,6 @@ $(function () {
     $(document).on('click', '.product-close', function () {
         closeProduct();
     });
-    $(document).on('click', '.product-update', function () {
-        closeProduct();
-    });
     $(document).on('click', '.product-delete', function () {
         closeProduct();
     });
