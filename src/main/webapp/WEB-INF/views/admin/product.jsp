@@ -140,7 +140,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="category">Category</label>
-                                            <select id="category" required class="selec2-plugin form-control product__category-id">
+                                            <select id="category" required class=" form-control product__category-id">
                                                 <option disabled value="0" selected>Choose category</option>
                                                 <c:choose>
                                                     <c:when test="${categoryList.size() > 0}">
@@ -156,7 +156,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="dough">Dough</label>
-                                            <select id="dough" required class="selec2-plugin form-control product__dough-id component">
+                                            <select id="dough" required class=" form-control product__dough-id component">
                                                 <option  value="0" selected data-price="0" data-calories="0">Choose dough</option>
                                                 <c:choose>
                                                     <c:when test="${doughList.size() > 0}">
@@ -172,7 +172,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="filling">Filling</label>
-                                            <select id="filling" required class="form-control selec2-plugin product__filling-id component">
+                                            <select id="filling" required class="form-control  product__filling-id component">
                                                 <option value="0" selected data-price="0" data-calories="0">Choose filling</option>
                                                 <c:choose>
                                                     <c:when test="${fillingList.size() > 0}">
@@ -188,8 +188,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="sprinkles">Sprinkle</label>
-                                            <select id="sprinkles" class="form-control selec2-plugin product__sprinkle-id" name="sprinkles[]" multiple="multiple">
-                                                <option disabled value="0" data-price="0" data-calories="0">Choose sprinkle</option>
+                                            <select id="sprinkles" class="form-control product__sprinkle-id" name="sprinkles[]" multiple="multiple">
+                                                <option  value="0" data-price="0" data-calories="0">Choose sprinkle</option>
                                                 <c:choose>
                                                     <c:when test="${sprinkleList.size() > 0}">
                                                         <с:forEach var="sprinkle" items="${sprinkleList}">

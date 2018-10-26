@@ -26,6 +26,15 @@ public class Sprinkle {
     @Column(name = "calories")
     private Short calories;
 
+    public Sprinkle() {
+    }
+
+    public Sprinkle(String name, Float price, Short calories) {
+        this.name = name;
+        this.price = price;
+        this.calories = calories;
+    }
+
     public Integer getId() {
         return id;
     }

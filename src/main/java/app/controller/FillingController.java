@@ -78,6 +78,7 @@ public class FillingController {
         FillingDTO fillingDTO = fillingService.getById(id);
         AjaxDTO result = new AjaxDTO();
         if(fillingDTO != null){
+            fillingService.checkFillingByProducts(id);
             fillingService.delete(fillingDTO);
         }
         return result;

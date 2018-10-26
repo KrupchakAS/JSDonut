@@ -18,4 +18,5 @@ public interface DoughService {
 
     List<DoughDTO> getAll();
 
+    void checkDoughByProducts(Integer id);
 }

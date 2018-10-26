@@ -110,11 +110,11 @@ function openProductFormUpdate(productObject) {
     $('.product-quantity').val(productObject.quantity);
     $('.product__category-id').val(productObject.category.id);
     $('.product__dough-id').val(productObject.dough.id);
-    if (productObject.filling != null && productObject.filling != undefined) {
+    if (productObject.filling !== null ) {
         $('.product__filling-id').val(productObject.filling.id);
     }
-    if (productObject.filling == null && productObject.filling == undefined) {
-        $('.product__filling-id').val(0);
+    if (productObject.filling === null ) {
+         $('.product__filling-id').val(0);
     }
     if (productObject.sprinkleList.length > 0) {
         var spIds = [];
@@ -122,10 +122,10 @@ function openProductFormUpdate(productObject) {
             spIds.push(productObject.sprinkleList[a].id);
             $('.product__sprinkle-id').val(spIds);
         }
+    }else {
+        $('.product__sprinkle-id').val('');
     }
-    if (productObject.sprinkleList.length == 0) {
-        $('.product__sprinkle-id').val();
-    }
+
 
 
     $('.container-head').text("Category: " + productObject.category.name + " Product: " + productObject.name);
@@ -138,6 +138,16 @@ function openProductFormUpdate(productObject) {
     setSelect2Plugin();
 }
 
+$(document).ready(function () {
+    $('.product-workPrice').prop("disabled",true);
+    $('.product-weight').keyup(function () {
+        if($(this).val().length != 0){
+            $('.product-workPrice').prop("disabled",false);
+        }else {
+            $('.product-workPrice').prop("disabled",true);
+        }
+    })
+});
 
 // save -----------------------------------------------------------------
 
@@ -163,7 +173,7 @@ function recountPrice() {
         fullPrice += getPrice(fullWeight, parseFloat($(this).data('price')));
     });
     $('#sprinkles :selected').each(function () {
-        fullPrice += getPrice(fullWeight, parseFloat($(this).data('price')));
+        fullPrice += getPrice(fullWeight, parseFloat($(this).data('price'))/2);
     });
     $('#price').val(fullPrice);
 }

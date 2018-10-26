@@ -169,7 +169,7 @@
                 <h3 style="color: #00a6d6;  margin-left: 50px">Filter Panel</h3>
                 <form style="padding: 5px; margin: 30px" class=" form-group-sm">
                     <select style="margin-bottom: 5px" id="category" class="form-control categoryId-Search">
-                        <option disabled value="0" selected>Category</option>
+                        <option  value="0" selected>Category</option>
                         <c:choose>
                             <c:when test="${categoryList.size() > 0}">
                                 <с:forEach var="category" items="${categoryList}">
@@ -183,7 +183,7 @@
                     </select>
 
                     <select style="margin-bottom: 5px" id="filling" class="form-control fillingId-Search">
-                        <option disabled value="0" selected>Filling</option>
+                        <option  value="0" selected>Filling</option>
                         <c:choose>
                             <c:when test="${fillingList.size() > 0}">
                                 <с:forEach var="filling" items="${fillingList}">
@@ -197,7 +197,7 @@
                     </select>
 
                     <select style="margin-bottom: 5px" id="dough" class="form-control doughId-Search">
-                        <option disabled value="0" selected>Dough</option>
+                        <option value="0" selected>Dough</option>
                         <c:choose>
                             <c:when test="${doughList.size() > 0}">
                                 <с:forEach var="dough" items="${doughList}">

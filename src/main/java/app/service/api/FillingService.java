@@ -18,5 +18,5 @@ public interface FillingService {
 
     List<FillingDTO> getAll();
 
-
+    void checkFillingByProducts(Integer id);
 }

@@ -2,8 +2,11 @@ package app.service.impl;
 
 
 import app.dao.api.DoughDao;
+import app.dao.api.ProductDao;
 import app.dto.DoughDTO;
 import app.entity.Dough;
+import app.entity.Product;
+import app.exception.ObjectUsedException;
 import app.exception.ObjectExistsException;
 import app.service.api.DoughService;
 import org.apache.log4j.Logger;
@@ -26,6 +29,9 @@ public class DoughServiceImpl implements DoughService {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private ProductDao productDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
@@ -90,6 +96,16 @@ public class DoughServiceImpl implements DoughService {
             return cornList.stream().map(corn -> modelMapper.map(corn, DoughDTO.class)).collect(Collectors.toList());
         } else {
             return null;
+        }
+    }
+
+    @Override
+    public void checkDoughByProducts(Integer id) {
+        List<Product> productList = productDao.getAll();
+        for(int i = 0; i < productList.size();i++){
+            if(productList.get(i).getDough().getId().equals(id)){
+                throw new ObjectUsedException("Some Product use this Dough");
+            }
         }
     }
 

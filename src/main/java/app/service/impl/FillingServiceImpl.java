@@ -1,8 +1,11 @@
 package app.service.impl;
 
 import app.dao.api.FillingDao;
+import app.dao.api.ProductDao;
 import app.dto.FillingDTO;
 import app.entity.Filling;
+import app.entity.Product;
+import app.exception.ObjectUsedException;
 import app.exception.ObjectExistsException;
 import app.service.api.FillingService;
 import org.apache.log4j.Logger;
@@ -25,6 +28,9 @@ public class FillingServiceImpl implements FillingService {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private ProductDao productDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
@@ -91,6 +97,17 @@ public class FillingServiceImpl implements FillingService {
             return null;
         }
     }
+
+    @Override
+    public void checkFillingByProducts(Integer id) {
+        List<Product> productList = productDao.getAll();
+        for(int i = 0; i < productList.size();i++){
+            if(productList.get(i).getFilling().getId().equals(id)){
+                throw new ObjectUsedException("Some Product use this Filling");
+            }
+        }
+    }
+
     public void setModelMapper(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }

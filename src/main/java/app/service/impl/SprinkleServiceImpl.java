@@ -1,9 +1,12 @@
 package app.service.impl;
 
+import app.dao.api.ProductDao;
 import app.dao.api.SprinkleDao;
 import app.dto.SprinkleDTO;
+import app.entity.Product;
 import app.entity.Sprinkle;
 import app.exception.ObjectExistsException;
+import app.exception.ObjectUsedException;
 import app.service.api.SprinkleService;
 import org.apache.log4j.Logger;
 import org.modelmapper.ModelMapper;
@@ -27,6 +30,9 @@ public class SprinkleServiceImpl implements SprinkleService {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private ProductDao productDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
@@ -91,6 +97,18 @@ public class SprinkleServiceImpl implements SprinkleService {
             return sprinkleList.stream().map(sprinkle -> modelMapper.map(sprinkle, SprinkleDTO.class)).collect(Collectors.toList());
         } else {
             return new ArrayList<>();
+        }
+    }
+
+    @Override
+    public void checkSprinkleByProducts(Integer id) {
+        List<Product> productList = productDao.getAll();
+        for(int i = 0; i < productList.size();i++){
+            for( int j = 0; j < productList.get(i).getSprinkleList().size();j++) {
+                if (productList.get(i).getSprinkleList().get(j).getId().equals(id)) {
+                    throw new ObjectUsedException("Some Product use this Sprinkle");
+                }
+            }
         }
     }
 

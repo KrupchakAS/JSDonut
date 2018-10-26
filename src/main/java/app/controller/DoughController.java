@@ -75,6 +75,7 @@ public class DoughController {
         DoughDTO doughDTO = doughService.getById(id);
         AjaxDTO result = new AjaxDTO();
         if(doughDTO != null){
+            doughService.checkDoughByProducts(id);
             doughService.delete(doughDTO);
         }
         return result;

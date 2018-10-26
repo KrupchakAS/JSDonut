@@ -77,6 +77,7 @@ public class SprinkleController {
         SprinkleDTO sprinkleDTO1 = sprinkleService.getById(id);
         AjaxDTO result = new AjaxDTO();
         if(sprinkleDTO1 != null){
+            sprinkleService.checkSprinkleByProducts(id);
             sprinkleService.delete(sprinkleDTO1);
         }
         return result;

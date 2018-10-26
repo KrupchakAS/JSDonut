@@ -72,10 +72,30 @@ public class Product implements Serializable{
     @JoinColumn(name = "dough_id")
     private Dough dough;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "products_sprinkle", joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "sprinkle_id"))
     private List<Sprinkle> sprinkleList;
+
+    public Product() {
+    }
+
+    public Product(String name, String description, String image, Float price, Float workPrice, Short weight, Short quantity, Short calories, User user, Category category, List<Order> orderList, Filling filling, Dough dough, List<Sprinkle> sprinkleList) {
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.price = price;
+        this.workPrice = workPrice;
+        this.weight = weight;
+        this.quantity = quantity;
+        this.calories = calories;
+        this.user = user;
+        this.category = category;
+        this.orderList = orderList;
+        this.filling = filling;
+        this.dough = dough;
+        this.sprinkleList = sprinkleList;
+    }
 
     public Integer getId() {
         return id;

@@ -5,7 +5,7 @@ import app.dao.api.ProductDao;
 import app.dto.CategoryDTO;
 import app.entity.Category;
 import app.entity.Product;
-import app.exception.CategoryUsedException;
+import app.exception.ObjectUsedException;
 import app.exception.ObjectExistsException;
 import app.service.api.CategoryService;
 
@@ -106,7 +106,7 @@ public class CategoryServiceImpl implements CategoryService {
         List<Product> productList = productDao.getAll();
         for(int i = 0; i<productList.size();i++){
             if(productList.get(i).getCategory().getId().equals(id)){
-                throw new CategoryUsedException("Some Product use this Category");
+                throw new ObjectUsedException("Some Product use this Category");
             }
         }
     }
