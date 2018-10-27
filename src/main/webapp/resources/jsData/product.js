@@ -435,7 +435,7 @@ $(document).ready(function () {
         e.preventDefault();
         var id = parseInt($(this).closest('div').data('id'));
         deleteProductByIdFromOrder(id, $(this));
-        swal('Deleted!');
+        swal('Removed!');
     });
 });
 
