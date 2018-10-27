@@ -1,5 +1,6 @@
 package app.service.api;
 
+import app.dto.FilterDTO;
 import app.dto.ProductDTO;
 import app.entity.Product;
 
@@ -21,7 +22,7 @@ public interface ProductService {
 
     List<ProductDTO> getAllByCategory(Integer categoryId);
 
-    List<ProductDTO> getProductsByParameters(Integer categoryId,Integer fillingId, Integer doughId,List<Integer> sprinkleIdList, String productsName, Integer minPrice, Integer maxPrice);
+    List<ProductDTO> getProductsByParameters(FilterDTO filterDTO);
 
     void byProduct(ProductDTO productDTO);
 

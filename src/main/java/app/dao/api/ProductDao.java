@@ -1,6 +1,7 @@
 package app.dao.api;
 
 import app.dao.GenericDao;
+import app.dto.FilterDTO;
 import app.entity.Product;
 
 import java.util.List;
@@ -10,5 +11,5 @@ public interface ProductDao extends GenericDao<Product>{
 
     List<Product> getAllByCategory(Integer categoryId);
 
-    List<Product> getProductsByParameters(Integer categoryId,Integer fillingId,Integer doughId,List<Integer> sprinkleIdList, String productsName, Integer minPrice, Integer maxPrice);
+    List<Product> getProductsByParameters(FilterDTO filterDTO);
 }

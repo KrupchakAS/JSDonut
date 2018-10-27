@@ -1,6 +1,7 @@
 package app.service.impl;
 
 import app.dao.api.ProductDao;
+import app.dto.FilterDTO;
 import app.dto.ProductDTO;
 import app.entity.Product;
 import app.exception.MinLengthFieldException;
@@ -113,8 +114,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<ProductDTO> getProductsByParameters(Integer categoryId, Integer fillingId, Integer doughId, List<Integer> sprinkleIdList, String productsName, Integer minPrice, Integer maxPrice) {
-        List<Product> productList = productDao.getProductsByParameters(categoryId, fillingId, doughId, sprinkleIdList, productsName, minPrice, maxPrice);
+    public List<ProductDTO> getProductsByParameters(FilterDTO filterDTO) {
+        List<Product> productList = productDao.getProductsByParameters(filterDTO);
         if (productList != null) {
             return productList.stream().map(product -> modelMapper.map(product, ProductDTO.class)).collect(Collectors.toList());
         }

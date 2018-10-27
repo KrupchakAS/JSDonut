@@ -2,6 +2,7 @@ package app.dao.impl;
 
 import app.dao.GenericDaoImpl;
 import app.dao.api.ProductDao;
+import app.dto.FilterDTO;
 import app.entity.Product;
 import app.entity.Sprinkle;
 import org.springframework.stereotype.Repository;
@@ -47,33 +48,33 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
     }
 
     @Override
-    public List<Product> getProductsByParameters(Integer categoryId, Integer fillingId, Integer doughId,List<Integer> sprinkleIdList, String productName, Integer minPrice, Integer maxPrice) {
+    public List<Product> getProductsByParameters(FilterDTO filterDTO) {
 
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
         Root<Product> productRoot = criteriaQuery.from(Product.class);
         List<Predicate> params = new ArrayList<>();
-        if (sprinkleIdList != null && sprinkleIdList.size() > 0) {
+        if (filterDTO.getSprinkleIdList() != null && filterDTO.getSprinkleIdList().size() > 0) {
             Join<Product, Sprinkle> sprinkleJoin = productRoot.join("sprinkleList", JoinType.INNER);
-            sprinkleJoin.on(sprinkleJoin.get("id").in(sprinkleIdList.toArray()));
+            sprinkleJoin.on(sprinkleJoin.get("id").in(filterDTO.getSprinkleIdList().toArray()));
         }
-        if (categoryId != null && categoryId != 0) {
-            params.add(criteriaBuilder.equal(productRoot.get("category"), categoryId));
+        if (filterDTO.getCategoryId() != null && filterDTO.getCategoryId() != 0) {
+            params.add(criteriaBuilder.equal(productRoot.get("category"), filterDTO.getCategoryId()));
         }
-        if (fillingId != null && fillingId !=0) {
-            params.add(criteriaBuilder.equal(productRoot.get("filling"), fillingId));
+        if (filterDTO.getFillingId() != null && filterDTO.getFillingId() !=0) {
+            params.add(criteriaBuilder.equal(productRoot.get("filling"), filterDTO.getFillingId()));
         }
-        if (doughId != null && doughId != 0) {
-            params.add(criteriaBuilder.equal(productRoot.get("dough"), doughId));
+        if (filterDTO.getDoughId() != null && filterDTO.getDoughId() != 0) {
+            params.add(criteriaBuilder.equal(productRoot.get("dough"), filterDTO.getDoughId()));
         }
-        if (productName != null) {
-            params.add(criteriaBuilder.like(productRoot.get("name"), "%"+productName+"%"));
+        if (filterDTO.getProductName() != null) {
+            params.add(criteriaBuilder.like(productRoot.get("name"), "%"+filterDTO.getProductName()+"%"));
         }
-        if (minPrice != null) {
-            params.add(criteriaBuilder.gt(productRoot.get("price"), minPrice));
+        if (filterDTO.getMinPrice() != null) {
+            params.add(criteriaBuilder.gt(productRoot.get("price"), filterDTO.getMinPrice()));
         }
-        if (maxPrice != null) {
-            params.add(criteriaBuilder.le(productRoot.get("price"), maxPrice));
+        if (filterDTO.getMaxPrice() != null) {
+            params.add(criteriaBuilder.le(productRoot.get("price"), filterDTO.getMaxPrice()));
         }
         criteriaQuery.where(params.toArray(new Predicate[]{}));
         List<Product> list = entityManager.createQuery(criteriaQuery).getResultList();

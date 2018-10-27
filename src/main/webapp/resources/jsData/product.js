@@ -291,31 +291,33 @@ $(document).ready(function () {
 function getProductByParameters(categoryId, fillingId, doughId, sprinkleIdList, productName, minPrice, maxPrice, selector) {
     var ajax = {};
     ajax.data = {};
+    var filter = {};
 
     if (categoryId !== null && categoryId.length > 0) {
-        ajax.data.categoryId = parseInt(categoryId);
+        filter.categoryId = parseInt(categoryId);
     }
     if (fillingId !== null && fillingId.length > 0) {
-        ajax.data.fillingId = parseInt(fillingId);
+        filter.fillingId = parseInt(fillingId);
     }
     if (doughId !== null && doughId.length > 0) {
-        ajax.data.doughId = parseInt(doughId);
+        filter.doughId = parseInt(doughId);
     }
     if (sprinkleIdList !== null && sprinkleIdList.length > 0) {
-        ajax.data.sprinkleIdList = sprinkleIdList.join(',');
+        filter.sprinkleIdList = sprinkleIdList;
     }
     if (productName.length > 0) {
-        ajax.data.productName = productName;
+        filter.productName = productName;
     }
     if (minPrice.length > 0) {
-        ajax.data.minPrice = parseInt(minPrice);
+        filter.minPrice = parseInt(minPrice);
     }
     if (maxPrice.length > 0) {
-        ajax.data.maxPrice = parseInt(maxPrice);
+        filter.maxPrice = parseInt(maxPrice);
     }
+    ajax.data = filter;
     console.log(ajax.data);
 
-    ajax.type = "GET";
+    ajax.type = "POST";
     ajax.url = "/jsDonut/getProductsByParameters";
     ajax.dataType = 'JSON';
     ajax.selector = selector;

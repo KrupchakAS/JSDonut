@@ -40,18 +40,11 @@ public class MainController {
     @Autowired
     private AddressService addressService;
 
-    @RequestMapping(value = "/getProductsByParameters", method = RequestMethod.GET)
+    @RequestMapping(value = "/getProductsByParameters", method = RequestMethod.POST)
     @ResponseBody
-    public AjaxDTO getProductsByParameters(
-            @RequestParam(value = "categoryId", required = false) Integer categoryId,
-            @RequestParam(value = "fillingId", required = false) Integer fillingId,
-            @RequestParam(value = "doughId", required = false) Integer doughId,
-            @RequestParam(value = "sprinkleIdList", required = false) List<Integer> sprinkleIdList,
-            @RequestParam(value = "productName", required = false) String productName,
-            @RequestParam(value = "minPrice", required = false) Integer minPrice,
-            @RequestParam(value = "maxPrice", required = false) Integer maxPrice) {
+    public AjaxDTO getProductsByParameters(@RequestBody FilterDTO filterDTO) {
         AjaxDTO result = new AjaxDTO();
-        result.setData(productService.getProductsByParameters(categoryId, fillingId, doughId, sprinkleIdList, productName, minPrice, maxPrice));
+        result.setData(productService.getProductsByParameters(filterDTO));
         return result;
     }
 
