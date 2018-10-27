@@ -220,8 +220,7 @@
             <c:choose>
                 <c:when test="${orderList.size() > 0}">
                     <с:forEach  var="order" items="${orderList}">
-                        Order №${order.id} <h4 style="color: #ce8483">Order Status: (${order.getOrderStatus()})</h4><h4 style="color: #ce8483">Payment
-                        Status: (${order.getPaymentStatus()})</h4>
+                        Order №${order.id} <h4 style="color: #ce8483">Order Status: (${order.getOrderStatus()})</h4><h4 style="color: #ce8483">PaymentStatus: (${order.getPaymentStatus()})</h4>
                         <c:choose>
                             <c:when test="${order.getAddress() != null}">
                                 <h4 style="color: #ce8483">Address Delivery: (${order.getAddress().city},${order.getAddress().street},${order.getAddress().houseNumber},${order.getAddress().apartmentNumber})</h4>
@@ -233,12 +232,12 @@
                         <br>
                         <с:forEach var="product" items="${order.orderProducts}">
                             <div>
-                                <span style="color: #23527c;display: inline-block">${product.product.category.name}-</span>
+                                <span style="color: #23527c;display: inline-block">${product.product.category.name}:</span>
                                 <p style="color: #23527c;display: inline-block">${product.product.name}</p>|
                                 <h5 style="display: inline-block"> Quantity: ${product.quantity}</h5>
                             </div>
                         </с:forEach>
-                        <h3 style="padding-left: 700px;color: #c0a16b">Total Price: ${order.totalPrice}</h3>
+                        <h3 style="padding-left: 700px;color: #c0a16b">Total Price: ${order.totalPrice}₽</h3>
                         <hr>
                     </с:forEach>
                 </c:when>
