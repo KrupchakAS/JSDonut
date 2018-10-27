@@ -53,12 +53,10 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
         CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
         Root<Product> productRoot = criteriaQuery.from(Product.class);
         List<Predicate> params = new ArrayList<>();
-
-//        Join<Product, Sprinkle> sprinkleJoin = productRoot.join("sprinkleList",JoinType.INNER);
-//        sprinkleJoin.on(sprinkleJoin.get("sprinkle_id").in(sprinkleIdList.toArray()));
-//        criteriaQuery.multiselect(productRoot,sprinkleJoin);
-
-
+        if (sprinkleIdList != null && sprinkleIdList.size() > 0) {
+            Join<Product, Sprinkle> sprinkleJoin = productRoot.join("sprinkleList", JoinType.INNER);
+            sprinkleJoin.on(sprinkleJoin.get("id").in(sprinkleIdList.toArray()));
+        }
         if (categoryId != null && categoryId != 0) {
             params.add(criteriaBuilder.equal(productRoot.get("category"), categoryId));
         }
@@ -77,9 +75,7 @@ public class ProductDaoImpl extends GenericDaoImpl<Product> implements ProductDa
         if (maxPrice != null) {
             params.add(criteriaBuilder.le(productRoot.get("price"), maxPrice));
         }
-
         criteriaQuery.where(params.toArray(new Predicate[]{}));
-
         List<Product> list = entityManager.createQuery(criteriaQuery).getResultList();
         if (list.isEmpty()) {
             return null;
