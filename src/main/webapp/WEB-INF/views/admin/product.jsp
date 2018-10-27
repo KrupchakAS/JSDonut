@@ -157,7 +157,7 @@
                                         <div class="form-group">
                                             <label for="dough">Dough</label>
                                             <select id="dough" required class=" form-control product__dough-id component">
-                                                <option  value="0" selected data-price="0" data-calories="0">Choose dough</option>
+                                                <option disabled value="0" selected data-price="0" data-calories="0">Choose dough</option>
                                                 <c:choose>
                                                     <c:when test="${doughList.size() > 0}">
                                                         <с:forEach var="dough" items="${doughList}">

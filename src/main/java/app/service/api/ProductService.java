@@ -27,4 +27,6 @@ public interface ProductService {
     void byProduct(ProductDTO productDTO);
 
     void checkProductFields(ProductDTO productDTO);
+
+    void checkProductByUsed(Integer id);
 }

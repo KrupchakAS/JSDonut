@@ -1,12 +1,15 @@
 package app.service.impl;
 
+import app.dao.api.OrderDao;
 import app.dao.api.ProductDao;
 import app.dto.FilterDTO;
 import app.dto.ProductDTO;
+import app.entity.Order;
 import app.entity.Product;
 import app.exception.MinLengthFieldException;
 import app.exception.MinValueException;
 import app.exception.ObjectExistsException;
+import app.exception.ObjectUsedException;
 import app.message.MessageSender;
 import app.service.api.ProductService;
 import org.apache.log4j.Logger;
@@ -32,6 +35,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private MessageSender messageSender;
+
+    @Autowired
+    private OrderDao orderDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
     @Override
@@ -151,22 +157,53 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void checkProductFields(ProductDTO productDTO) {
-        if (productDTO.getName().length() < 1 || productDTO.getDescription().length() < 1
-                || productDTO.getCalories() == null || productDTO.getQuantity() == null
-                || productDTO.getPrice() == null ||  productDTO.getWeight() == null) {
-            throw new MinLengthFieldException(" Field can not be empty");
-        } else if (productDTO.getCategory().getId() == null) {
+        if (productDTO.getName().length() < 1){
+            throw new MinLengthFieldException("Field Name can not be empty");
+        }
+        if(productDTO.getDescription().length() < 1){
+            throw new MinLengthFieldException("Field Description can not be empty");
+        }
+        if(productDTO.getCalories() == null){
+            throw new MinLengthFieldException("Field Calories can not be empty");
+        }
+        if(productDTO.getQuantity() == null){
+            throw new MinLengthFieldException("Field Quantity can not be empty");
+        }
+        if(productDTO.getPrice() == null){
+            throw new MinLengthFieldException("Field Price can not be empty");
+        }
+        if(productDTO.getWeight() == null) {
+            throw new MinLengthFieldException("Field Weight can not be empty");
+        }
+        if (productDTO.getCategory().getId() == null) {
             throw new MinLengthFieldException("Field Category can not be empty");
-        } else if (productDTO.getDough().getId() == null || productDTO.getDough().getId() == 0) {
+        }
+        if (productDTO.getDough().getId() == null || productDTO.getDough().getId() == 0) {
             throw new MinLengthFieldException("Field Dough can not be empty");
-        } else if (productDTO.getPrice() < 10) {
+        }
+        if (productDTO.getPrice() < 10) {
             throw new MinValueException(" Price can not be less than 10P");
-        } else if (productDTO.getCalories() < 50) {
+        }
+        if (productDTO.getCalories() < 50) {
             throw new MinValueException("Calories can not be less than 50 ");
-        } else if (productDTO.getWeight() < 15) {
-            throw new MinValueException("Weight can not be less than 15 ");
-        } else if (productDTO.getQuantity() < 1) {
+        }
+        if (productDTO.getWeight() < 15) {
+             throw new MinValueException("Weight can not be less than 15 ");
+        }
+        if (productDTO.getQuantity() < 1) {
             throw new MinValueException("Quantity can not be less than 1 ");
+        }
+    }
+
+    @Override
+    public void checkProductByUsed(Integer id) {
+        List<Order> orderList = orderDao.getAll();
+        for(int i = 0; i < orderList.size();i++){
+            for(int j = 0; j < orderList.get(i).getProductList().size();j++){
+                if(orderList.get(i).getProductList().get(j).getId().equals(id)){
+                    throw new ObjectUsedException("Product is in use, it is impossible to delete.");
+                }
+            }
         }
     }
 }
