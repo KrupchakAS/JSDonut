@@ -386,7 +386,7 @@ function getProductByIdToCart(id, quantity, selector) {
 
 function AddedToOrder(order) {
     console.log(order);
-    swal('Product was added to cart');
+    swal('Added');
     $('.CountProduct').text(order.productList.length.toString());
     $('.OrderTotalPrice').text(order.totalPrice.toString()+'₽');
 }
