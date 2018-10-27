@@ -172,7 +172,7 @@
                             <h3 style="float: right">${price}₽</h3>
                             <br>
                             <br>
-                            <h6 style="color: #1b6d85">${product.description}</h6>
+                            <h5 style="color: #1b6d85">${product.description}</h5>
                             <h4 style="float: right">Quantity ${product.quantity}</h4>
                         </div>
                         <hr>

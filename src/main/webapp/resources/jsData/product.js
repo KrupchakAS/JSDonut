@@ -422,7 +422,7 @@ function deleteProductByIdFromOrder(id, selector) {
     ajax.selector = selector;
     ajax.successFunction = function (order) {
         ajax.selector.closest('.divForRemove').remove();
-        $('.Total-price').text('TotalPrice: ' + order.totalPrice.toString());
+        $('.Total-price').text('TotalPrice(minimum:600₽): ' + order.totalPrice.toString() + '₽');
     };
 
     sendAjax(ajax);

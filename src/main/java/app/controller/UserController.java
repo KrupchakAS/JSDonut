@@ -108,7 +108,6 @@ public class UserController {
             }
             modelMap.addAttribute("orderList", orderDTOListTotal);
         }
-
         return "main/account";
     }
 
