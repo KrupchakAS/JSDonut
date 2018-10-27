@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 
@@ -117,7 +118,8 @@
                 <div class="header-right cart">
                     <a href="${contextPath}/cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a>
                     <h4>
-                        (<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)
+                        <fmt:formatNumber type="number" maxFractionDigits="2" var="price" value="${orderTotalPrice.totalPrice}" />
+                        <span class="OrderTotalPrice">${price}₽</span>(<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)
                     </h4>
                     <div class="cart-box">
                         <p><a href="#" class="ClearButton simpleCart_empty">Empty cart</a></p>
@@ -169,7 +171,7 @@
                 </div>
                 <div style="padding-bottom: 7px">
                     <span>Enter your birthday:</span>
-                    <form:input type="date" value="2000-01-01" min="1900-01-01" max="2004-01-01" path="birthDate" class="form-control"
+                    <form:input type="date" min="1900-01-01" max="2004-01-01" path="birthDate" class="form-control"
                                 placeholder="BirthDate"></form:input>
                     <div class="has-error">
                         <form:errors path="birthDate"></form:errors></div>
@@ -211,17 +213,7 @@
                 </a></h4>
                 <p>© 2018 Donut Shop. All rights reserved</p>
             </div>
-            <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
-                <h3>Popular</h3>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">new</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                </ul>
-            </div>
-            <div class="clearfix"></div>
+
         </div>
     </div>
 </div>

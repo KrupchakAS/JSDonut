@@ -29,7 +29,7 @@ function getItemData() {
     product.id = parseInt($('.product-id').val());
     product.name = $('.product-name').val();
     product.calories = parseInt($('.product-calories').val());
-    product.price = parseFloat($('.product-price').val());
+    product.price = Number(parseFloat($('.product-price').val())).toFixed(2);
     product.workPrice = parseFloat($('.product-workPrice').val());
     product.description = $('.product-description').val();
     product.weight = parseInt($('.product-weight').val());
@@ -126,8 +126,6 @@ function openProductFormUpdate(productObject) {
         $('.product__sprinkle-id').val('');
     }
 
-
-
     $('.container-head').text("Category: " + productObject.category.name + " Product: " + productObject.name);
     $('.product-list').addClass('block__display-none');
     $('.product-add').addClass('block__display-none');
@@ -187,7 +185,7 @@ function getDataFromForm() {
 
     product.name = $('.product-name').val();
     product.calories = parseInt($('.product-calories').val());
-    product.price = parseFloat($('.product-price').val());
+    product.price = Number(parseFloat($('.product-price').val())).toFixed(2);
     product.workPrice = parseFloat($('.product-workPrice').val());
     product.description = $('.product-description').val();
     product.weight = parseInt($('.product-weight').val());
@@ -388,6 +386,7 @@ function AddedToOrder(order) {
     console.log(order);
     swal('Product Add to Cart');
     $('.CountProduct').text(order.productList.length.toString());
+    $('.OrderTotalPrice').text(order.totalPrice.toString()+'₽');
 }
 
 //ClearCart
@@ -405,9 +404,9 @@ function emptyCart(selector) {
 
 function setQtyCartZero(productDTOList) {
     console.log(productDTOList);
-    swal('Cart is Empty');
     $('.CountProduct').text(productDTOList.length.toString());
-
+    $('.OrderTotalPrice').text('0.0₽')
+    swal('Cart is Empty');
 }
 
 // DeleteProductFromCartById

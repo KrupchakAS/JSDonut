@@ -5,7 +5,6 @@ import app.dto.*;
 import app.exception.MinQuantityException;
 import app.exception.MinTotalPriceOrderException;
 import app.exception.ObjectAlreadyInOrderException;
-import app.message.MessageSender;
 import app.service.api.*;
 
 import org.apache.log4j.Logger;
@@ -30,9 +29,6 @@ public class MainController {
     public static final List<ProductDTO> productDTOList = new ArrayList<>();
 
     @Autowired
-    private CategoryService categoryService;
-
-    @Autowired
     private ProductService productService;
 
     @Autowired
@@ -43,17 +39,6 @@ public class MainController {
 
     @Autowired
     private AddressService addressService;
-
-    @Autowired
-    private FillingService fillingService;
-
-    @Autowired
-    private DoughService doughService;
-
-    @Autowired
-    private SprinkleService sprinkleService;
-
-
 
     @RequestMapping(value = "/getProductsByParameters", method = RequestMethod.GET)
     @ResponseBody
@@ -68,20 +53,6 @@ public class MainController {
         AjaxDTO result = new AjaxDTO();
         result.setData(productService.getProductsByParameters(categoryId, fillingId, doughId, sprinkleIdList, productName, minPrice, maxPrice));
         return result;
-    }
-
-    @RequestMapping(value = "/filter", method = RequestMethod.GET)
-    public String filter(ModelMap modelMap, HttpSession session) {
-        session.setAttribute("countProductInOrder", productDTOList.size());
-        if (session.getAttribute("order") == null) {
-            session.setAttribute("order", new OrderDTO());
-        }
-        modelMap.addAttribute("allProducts", productService.getAll());
-        modelMap.addAttribute("categoryList", categoryService.getAll());
-        modelMap.addAttribute("fillingList", fillingService.getAll());
-        modelMap.addAttribute("doughList", doughService.getAll());
-        modelMap.addAttribute("sprinkleList", sprinkleService.getAll());
-        return "main/filter";
     }
 
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
@@ -102,9 +73,16 @@ public class MainController {
 
     @RequestMapping(value = "/emptyCart", method = RequestMethod.GET)
     @ResponseBody
-    public AjaxDTO addToOrder() {
+    public AjaxDTO addToOrder(HttpSession session) {
         AjaxDTO result = new AjaxDTO();
         productDTOList.clear();
+        if (session.getAttribute("order") == null) {
+            session.setAttribute("order", new OrderDTO());
+        }else {
+            OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
+            orderDTO.setTotalPrice(0.0f);
+            session.setAttribute("order",orderDTO);
+        }
         result.setData(productDTOList);
         return result;
     }
@@ -116,26 +94,17 @@ public class MainController {
         ProductDTO productDTO = productService.getById(productId);
         for (int i = 0; i < productDTOList.size(); i++) {
             if (productDTOList.get(i).getId().equals(productDTO.getId())) {
-                throw new ObjectAlreadyInOrderException(String.format("Product with name %s already in your Order", productDTO.getName()));
-            }
-        }
-        if(productDTO.getQuantity() < quantity){
-            throw new MinQuantityException(String.format("Wrong quantity, select available value. Available quantity: %s",productDTO.getQuantity()));
-        }
-        if(quantity >=1){
-            productDTO.setQuantity(quantity);
-        }else {
-            throw new MinQuantityException("Wrong Quantity");
-        }
-
+                throw new ObjectAlreadyInOrderException(String.format("Product with name %s already in your Order", productDTO.getName())); } }
+        if(productDTO.getQuantity() < quantity){ throw new MinQuantityException(String.format("Wrong quantity, select available value. Available quantity: %s",productDTO.getQuantity())); }
+        if(quantity >=1){ productDTO.setQuantity(quantity); }
+        else { throw new MinQuantityException("Wrong Quantity"); }
         productDTOList.add(productDTO);
         OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
         orderDTO.setProductList(productDTOList);
         Float totalPrice = 0.0f;
         for (int i = 0; i < productDTOList.size(); i++) {
-            totalPrice += productDTOList.get(i).getPrice() * productDTOList.get(i).getQuantity();
-        }
-        orderDTO.setTotalPrice(totalPrice);
+            totalPrice += productDTOList.get(i).getPrice() * productDTOList.get(i).getQuantity(); }
+        orderDTO.setTotalPrice((float) (Math.round(totalPrice*100.0)/100.0));
         result.setData(orderDTO);
         logger.info(String.format("Successfully added Product in Cart: %s", productDTO.getName()));
         logger.info(String.format("ProductCount in Cart: %d", productDTOList.size()));
@@ -149,15 +118,12 @@ public class MainController {
         for (int i = 0; i < productDTOList.size(); i++) {
             if (productId.equals(productDTOList.get(i).getId())) {
                 productDTOList.remove(productDTOList.get(i));
-                logger.info("Successfully deleted Product from Cart");
-            }
-        }
+                logger.info("Successfully deleted Product from Cart"); } }
         OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
         orderDTO.setProductList(productDTOList);
         Float totalPrice = 0.0f;
         for (int i = 0; i < productDTOList.size(); i++) {
-            totalPrice += productDTOList.get(i).getPrice() * productDTOList.get(i).getQuantity();
-        }
+            totalPrice += productDTOList.get(i).getPrice() * productDTOList.get(i).getQuantity(); }
         orderDTO.setTotalPrice(totalPrice);
         result.setData(orderDTO);
         return result;

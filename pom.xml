@@ -214,7 +214,7 @@
                 <!--<version>3.5.5</version>-->
                 <!--<configuration>-->
                     <!--<changeLogFile>-->
-                        <!--C:\Users\tooto\Desktop\TChat\src\main\resources\changelog\db.changelog-1.0.xml-->
+                        <!--C:\Users\mi\Desktop\TChat\src\main\resources\changelog\db.changelog-1.0.xml-->
                     <!--</changeLogFile>-->
                     <!--<url>jdbc:mysql://localhost:3306/JSProject</url>-->
                     <!--<username>root</username>-->

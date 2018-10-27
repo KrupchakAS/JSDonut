@@ -2,9 +2,6 @@ package app.controller;
 
 import app.dto.AjaxDTO;
 import app.dto.ProductDTO;
-import app.exception.MinLengthFieldException;
-import app.exception.MinValueException;
-import app.message.MessageSender;
 import app.service.api.*;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,10 +25,6 @@ public class ProductController {
     private SprinkleService sprinkleService;
     @Autowired
     private CategoryService categoryService;
-    @Autowired
-    private MessageSender messageSender;
-    @Autowired
-    private OrderService orderService;
 
     @RequestMapping(value = "/product", method = RequestMethod.GET)
     public String openPage(ModelMap modelMap) {

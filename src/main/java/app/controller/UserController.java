@@ -5,16 +5,13 @@ import app.dto.OrderDTO;
 import app.dto.UserDTO;
 import app.exception.MinLengthFieldException;
 import app.exception.UserNotFoundException;
-import app.message.MessageSender;
-import app.service.api.OrderService;
-import app.service.api.UserService;
+import app.service.api.*;
 import app.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -23,8 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +27,6 @@ import static app.controller.MainController.productDTOList;
 
 
 @Controller
-
 public class UserController {
 
     @Autowired
@@ -43,29 +37,29 @@ public class UserController {
 
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private CategoryService categoryService;
+
+    @Autowired
+    private ProductService productService;
+    @Autowired
+    private FillingService fillingService;
+
+    @Autowired
+    private DoughService doughService;
+
+    @Autowired
+    private SprinkleService sprinkleService;
 
     @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-    public String welcome(HttpSession session) {
-        if (session.getAttribute("order") == null) {
-            session.setAttribute("order", new OrderDTO());
-        }
-        OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
-        orderDTO.setProductList(productDTOList);
-        Float totalPrice = 0.0f;
-        for (int i = 0; i < productDTOList.size(); i++) {
-            totalPrice += productDTOList.get(i).getPrice() * productDTOList.get(i).getQuantity();
-        }
-        orderDTO.setTotalPrice(totalPrice);
-        session.setAttribute("countProductInOrder", productDTOList.size());
+    public String welcome(ModelMap modelMap,HttpSession session) {
+        sessionOrderInit(modelMap,session);
         return "main/welcome";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String createModel(ModelMap modelMap, HttpSession session) {
-        if (session.getAttribute("order") == null) {
-            session.setAttribute("order", new OrderDTO());
-        }
-        session.setAttribute("countProductInOrder", productDTOList.size());
+        sessionOrderInit(modelMap,session);
         modelMap.addAttribute("userForm", new UserDTO());
         return "main/registration";
     }
@@ -81,13 +75,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout, HttpSession session) {
+    public String login(ModelMap modelMap, String error, String logout, HttpSession session) {
+        sessionOrderInit(modelMap,session);
         if (error != null) {
-            model.addAttribute("error", "Username or password is incorrect.");
+            modelMap.addAttribute("error", "Login or password is incorrect.");
         }
-
         if (logout != null) {
-            model.addAttribute("message", "Logged out successfully.");
+            modelMap.addAttribute("message", "Logged out successfully.");
         }
         return "main/login";
     }
@@ -103,6 +97,7 @@ public class UserController {
 
     @RequestMapping(value = "/account", method = RequestMethod.GET)
     public String account(ModelMap modelMap, HttpSession session) {
+        sessionOrderInit(modelMap,session);
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
         modelMap.addAttribute("user", userDTO);
         List<OrderDTO> orderDTOList = orderService.getOrdersByUserId(userDTO.getId());
@@ -113,11 +108,19 @@ public class UserController {
             }
             modelMap.addAttribute("orderList", orderDTOListTotal);
         }
-        session.setAttribute("countProductInOrder", productDTOList.size());
-        if (session.getAttribute("order") == null) {
-            session.setAttribute("order", new OrderDTO());
-        }
+
         return "main/account";
+    }
+
+    @RequestMapping(value = "/filter", method = RequestMethod.GET)
+    public String filter(ModelMap modelMap, HttpSession session) {
+        sessionOrderInit(modelMap,session);
+        modelMap.addAttribute("allProducts", productService.getAll());
+        modelMap.addAttribute("categoryList", categoryService.getAll());
+        modelMap.addAttribute("fillingList", fillingService.getAll());
+        modelMap.addAttribute("doughList", doughService.getAll());
+        modelMap.addAttribute("sprinkleList", sprinkleService.getAll());
+        return "main/filter";
     }
 
     @RequestMapping(value = "/changeUserPassword", method = RequestMethod.POST)
@@ -129,7 +132,7 @@ public class UserController {
             throw new UserNotFoundException("User Not Found");
         }
         if (userDTO1.getPassword().length() < 4 && userDTO1.getConfirmPassword().length() < 4) {
-            throw new MinLengthFieldException("Field can not be less 4 characters");
+            throw new MinLengthFieldException("Field can not be less than 4 characters");
         } else if (!userDTO1.getPassword().equals(userDTO1.getConfirmPassword())) {
             throw new MinLengthFieldException("Password don't match.");
         }
@@ -163,6 +166,30 @@ public class UserController {
         }
         userService.updateInfo(userDTO);
         return result;
+    }
+
+    public void sessionOrderInit(ModelMap modelMap, HttpSession session){
+        if (session.getAttribute("order") == null) {
+            session.setAttribute("order", new OrderDTO());
+            OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
+            Float totalPrice = 0.0f;
+            for (int i = 0; i < productDTOList.size(); i++) {
+                totalPrice += productDTOList.get(i).getPrice() * productDTOList.get(i).getQuantity(); }
+            orderDTO.setTotalPrice(totalPrice);
+            orderDTO.setProductList(productDTOList);
+            session.setAttribute("order",orderDTO);
+            modelMap.addAttribute("orderTotalPrice",orderDTO);
+        }else {
+            OrderDTO orderDTO = (OrderDTO) session.getAttribute("order");
+            orderDTO.setProductList(productDTOList);
+            Float totalPrice = 0.0f;
+            for (int i = 0; i < productDTOList.size(); i++) {
+                totalPrice += productDTOList.get(i).getPrice() * productDTOList.get(i).getQuantity(); }
+            orderDTO.setTotalPrice(totalPrice);
+            session.setAttribute("order",orderDTO);
+            modelMap.addAttribute("orderTotalPrice",orderDTO);
+        }
+        session.setAttribute("countProductInOrder", productDTOList.size());
     }
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)

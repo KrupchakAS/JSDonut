@@ -5,6 +5,7 @@
 <%@ taglib prefix="с" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -167,7 +168,8 @@
                             </div>
                             <span>${product.category.name}</span>
                             <p style="color: #c0a16b;font-size: 20px">${product.name}</p>
-                            <h3 style="float: right">${product.price * product.quantity}₽</h3>
+                            <fmt:formatNumber type="number" maxFractionDigits="2" var="price" value="${product.price * product.quantity}" />
+                            <h3 style="float: right">${price}₽</h3>
                             <br>
                             <br>
                             <h6 style="color: #1b6d85">${product.description}</h6>
@@ -284,14 +286,17 @@
                             class="OrderSave label label-success">Save Order</span></a></h2>
                 </sec:authorize>
                 <sec:authorize access="!hasRole('ROLE_ADMIN') and !hasRole('ROLE_USER')">
-                    <h3 style="display: inline-block; padding-left: 480px; color: red">To Buy, You Must -> <a href="${contextPath}/login">Sign in</a><h3  class="Total-price wow fadeInRight animated" style="display: inline-block; padding-left: 80px; color: black">
-                        TotalPrice(minimum:600₽): ${sessionScope.order.totalPrice}₽</h3></h3>
+                    <h3 style="display: inline-block; padding-left: 480px; color: red">To Buy, You Must -> <a href="${contextPath}/login">Sign in</a>
+                        <h3  class="Total-price wow fadeInRight animated" style="display: inline-block; padding-left: 70px; color: black">
+                        TotalPrice(minimum:600₽): ${sessionScope.order.totalPrice}₽
+                        </h3>
+                    </h3>
 
 
                 </sec:authorize>
             </c:when>
             <c:otherwise>
-                <h2>Cart is empty</h2>
+                <h2>Cart is empty, choose -> <a href="${contextPath}/filter">Delicious</a></h2>
             </c:otherwise>
         </c:choose>
     </div>
@@ -308,16 +313,6 @@
                 <h4 class="footer-logo"><a href="${contextPath}/welcome">Donut <b>Shop</b> <span class="tag">Everything for you Sweet Dream  </span>
                 </a></h4>
                 <p>© 2018 Donut Shop. All rights reserved</p>
-            </div>
-            <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
-                <h3>Popular</h3>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">new</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                </ul>
             </div>
 
         </div>

@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="с" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -145,7 +146,8 @@
             <div class="nav navbar-nav navbar-right header-two-right">
                 <div class="header-right cart">
                     <a href="${contextPath}/cart"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a><h4>
-                    (<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)</h4>
+                    <fmt:formatNumber type="number" maxFractionDigits="2" var="price" value="${orderTotalPrice.totalPrice}" />
+                    <span class="OrderTotalPrice">${price}₽</span>(<span class="CountProduct">${sessionScope.countProductInOrder.toString()}</span>)</h4>
                     <div class="cart-box">
                         <p><a href="#" class="ClearButton simpleCart_empty">Empty cart</a></p>
                         <div class="clearfix"></div>
@@ -259,18 +261,6 @@
                 </a></h4>
                 <p>© 2018 Donut Shop. All rights reserved</p>
             </div>
-            <div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
-                <h3>Popular</h3>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">new</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Wishlist</a></li>
-                </ul>
-            </div>
-
-            <div class="clearfix"></div>
         </div>
     </div>
 </div>

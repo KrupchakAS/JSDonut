@@ -189,7 +189,7 @@
                                         <div class="form-group">
                                             <label for="sprinkles">Sprinkle</label>
                                             <select id="sprinkles" class="form-control product__sprinkle-id" name="sprinkles[]" multiple="multiple">
-                                                <option  value="0" data-price="0" data-calories="0">Choose sprinkle</option>
+                                                <option disabled value="0" data-price="0" data-calories="0">Choose sprinkle</option>
                                                 <c:choose>
                                                     <c:when test="${sprinkleList.size() > 0}">
                                                         <с:forEach var="sprinkle" items="${sprinkleList}">

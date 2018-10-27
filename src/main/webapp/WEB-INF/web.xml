@@ -3,7 +3,7 @@
          xmlns = "http://java.sun.com/xml/ns/j2ee"
          xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation = "http://java.sun.com/xml/ns/j2ee
-   http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+   http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd">
 
     <display-name>Donut</display-name>
 
@@ -28,19 +28,19 @@
 
     <error-page>
         <error-code>403</error-code>
-        <location>/jsDonut/403</location>
+        <location>/403</location>
     </error-page>
     <error-page>
         <error-code>404</error-code>
-        <location>/jsDonut/404</location>
+        <location>/404</location>
     </error-page>
     <error-page>
         <error-code>405</error-code>
-        <location>/jsDonut/405</location>
+        <location>/405</location>
     </error-page>
     <error-page>
         <error-code>500</error-code>
-        <location>/jsDonut/500</location>
+        <location>/500</location>
     </error-page>
 
     <filter>
