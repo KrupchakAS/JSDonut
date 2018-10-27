@@ -175,7 +175,7 @@ public class ProductServiceImpl implements ProductService {
         if(productDTO.getWeight() == null) {
             throw new MinLengthFieldException("Field Weight can not be empty");
         }
-        if (productDTO.getCategory().getId() == null) {
+        if (productDTO.getCategory().getId() == null || productDTO.getCategory().getId() == 0) {
             throw new MinLengthFieldException("Field Category can not be empty");
         }
         if (productDTO.getDough().getId() == null || productDTO.getDough().getId() == 0) {
