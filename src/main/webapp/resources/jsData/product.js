@@ -452,7 +452,7 @@ function SaveOrder(button) {
     pst.successFunction = function () {
         $('.cart-info').addClass('block__display-none');
         $('.ChocDonut').removeClass('block__display-none');
-        swal('Your order is accepted. We will contact you soon. You can watch details in your Account');
+        swal('Your order is accepted. We will contact you soon. You can watch details in your Account.');
     };
 
     console.log(pst.data);

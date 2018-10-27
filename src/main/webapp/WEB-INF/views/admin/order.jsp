@@ -56,17 +56,18 @@
                             <table style="padding:5px;" id="category-table" class="table table-striped order-table">
                                 <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th style="width: 200px">Product List</th>
-                                    <th>Total Price</th>
-                                    <th>User Name</th>
-                                    <th>User Phone</th>
-                                    <th style="width: 150px">User Address</th>
+                                    <th style="font-size: 15px">#</th>
+                                    <th style="font-size: 15px;width:80px">Date</th>
+                                    <th style="font-size: 15px; width: 170px">Product List</th>
+                                    <th style="font-size: 15px">Total Price</th>
+                                    <th style="font-size: 15px">User Name</th>
+                                    <th style="font-size: 15px">User Phone</th>
+                                    <th style="font-size: 15px; width: 150px">User Address</th>
 
-                                    <th>Payment Option</th>
-                                    <th>Delivery Option</th>
-                                    <th>Payment Status</th>
-                                    <th>Order Status</th>
+                                    <th style="font-size: 15px">Payment Option</th>
+                                    <th style="font-size: 15px">Delivery Option</th>
+                                    <th style="font-size: 15px">Payment Status</th>
+                                    <th style="font-size: 15px">Order Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -74,30 +75,31 @@
                                     <c:when test="${orderList.size() > 0}">
                                         <с:forEach var="order" items="${orderList}">
                                             <tr class="order-table__row" data-id="${order.id}">
-                                                <td>${order.id}</td>
-                                                <td style="width: 200px">
+                                                <td style="font-size: 11px">${order.id}</td>
+                                                <td style="font-size: 11px;width: 80px">${order.purchaseDate}</td>
+                                                <td style="font-size: 11px;width: 170px">
                                                     <с:forEach var="product" items="${order.orderProducts}">
-                                                        ${product.product.category.name}
+                                                        ${product.product.category.name}:
                                                         ${product.product.name}
                                                         (Qty)${product.quantity}
                                                         <br>
                                                     </с:forEach>
                                                 </td>
-                                                <td>${order.totalPrice}₽</td>
-                                                <td>${order.getUserDTO().firstName}</td>
-                                                <td>${order.getUserDTO().phoneNumber}</td>
+                                                <td style="font-size: 11px">${order.totalPrice}₽</td>
+                                                <td style="font-size: 11px">${order.getUserDTO().firstName}</td>
+                                                <td style="font-size: 11px">${order.getUserDTO().phoneNumber}</td>
                                                 <c:choose>
                                                     <c:when test="${order.getAddress() != null}">
-                                                        <td style="width: 150px">${order.getAddress().city}-${order.getAddress().street}-${order.getAddress().houseNumber}-${order.getAddress().apartmentNumber}</td>
+                                                        <td style="font-size: 11px; width: 150px">${order.getAddress().city}-${order.getAddress().street}-${order.getAddress().houseNumber}-${order.getAddress().apartmentNumber}</td>
                                                     </c:when>
                                                     <c:otherwise>
-                                                        <td style="width: 150px">PickUp</td>
+                                                        <td style="font-size: 11px">PickUp</td>
                                                     </c:otherwise>
                                                 </c:choose>
-                                                <td id="PayOpt-${order.id}">${order.getPaymentOption()}</td>
-                                                <td id="DelOpt-${order.id}">${order.getDeliveryOption()}</td>
-                                                <td id="PayStat-${order.id}">${order.getPaymentStatus()}</td>
-                                                <td id="OrdStat-${order.id}">${order.getOrderStatus()}</td>
+                                                <td style="font-size: 11px" id="PayOpt-${order.id}">${order.getPaymentOption()}</td>
+                                                <td style="font-size: 11px" id="DelOpt-${order.id}">${order.getDeliveryOption()}</td>
+                                                <td style="font-size: 11px" id="PayStat-${order.id}">${order.getPaymentStatus()}</td>
+                                                <td style="font-size: 11px" id="OrdStat-${order.id}">${order.getOrderStatus()}</td>
                                                 <td>
                                                     <button type="button" class="btn btn-md btn-primary order-edit">
                                                         Edit
