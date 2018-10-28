@@ -46,7 +46,7 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
     @SuppressWarnings("unchecked")
     @Override
     public List<Order> getOrdersForWeek() {
-        TypedQuery<Order> q = entityManager.createQuery("FROM Order WHERE WEEK (purchaseDate) = WEEK( current_date ) - 1 AND YEAR( purchaseDate) = YEAR( current_date )", Order.class);
+        TypedQuery<Order> q = entityManager.createQuery("FROM Order WHERE yearweek(purchaseDate,1) = yearweek(curdate(),1)", Order.class);
         List<Order> list = q.getResultList();
         if (list.isEmpty()) {
             return null;
