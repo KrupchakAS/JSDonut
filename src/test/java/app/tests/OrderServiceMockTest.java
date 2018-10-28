@@ -134,14 +134,6 @@ public class OrderServiceMockTest {
     }
 
     @Test
-    public void testOrderAlreadyExists() {
-        when(orderDao.getById(order.getId())).thenReturn(order);
-        Integer oDtoId = 1;
-        Integer oId = order.getId();
-        assertTrue(oDtoId.equals(oId));
-    }
-
-    @Test
     public void testGetOrderById() {
         when(orderDao.getById(order.getId())).thenReturn(order);
         assertEquals(orderDao.getById(order.getId()).getId(), order.getId());
@@ -158,6 +150,14 @@ public class OrderServiceMockTest {
     public void testTotalPriceCantLessZero() {
         when(orderDao.getById(order.getId())).thenReturn(order);
         assertFalse(order.getTotalPrice() < 0.0f);
+    }
+
+    @Test
+    public void testOrderAlreadyExists() {
+        when(orderDao.getById(order.getId())).thenReturn(order);
+        Integer oDtoId = 1;
+        Integer oId = order.getId();
+        assertTrue(oDtoId.equals(oId));
     }
 
     @Test

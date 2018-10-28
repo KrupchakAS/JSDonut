@@ -17,14 +17,6 @@
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
 
-
-    <!--<jms:listener-container connection-factory="connectionFactory" acknowledge="transacted">-->
-    <!--&lt;!&ndash;other acknowledge types: AUTO(before invoking onMessage), DUPS_OK(may result in duplicates), CLIENT(manual)&ndash;&gt;-->
-    <!--<jms:listener destination="inputQueue" ref="respondingMessageListener"/>-->
-    <!--</jms:listener-container>-->
-
-    <!--<bean id="converter" class="org.springframework.jms.support.converter.SimpleMessageConverter"/>-->
-
     <mvc:annotation-driven/>
 
     <mvc:resources mapping="/resources/**" location="/resources/"/>

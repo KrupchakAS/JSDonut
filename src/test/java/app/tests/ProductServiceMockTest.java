@@ -1,6 +1,7 @@
 package app.tests;
 
 import app.dao.api.ProductDao;
+import app.dto.FilterDTO;
 import app.dto.ProductDTO;
 import app.entity.*;
 import app.entity.enums.DeliveryOption;
@@ -142,15 +143,6 @@ public class ProductServiceMockTest {
     }
 
     @Test
-    public void testProductAlreadyExists() {
-        when(productDao.getByName(product.getName())).thenReturn(product);
-        ProductDTO productDTO = productService.getByName(product.getName());
-        Integer productDtoId = productDTO.getId();
-        Integer productId = product.getId();
-        assertTrue(productDtoId.equals(productId));
-    }
-
-    @Test
     public void testGetProductById() {
         when(productDao.getById(product.getId())).thenReturn(product);
         assertEquals(productService.getById(product.getId()).getId(), product.getId());
@@ -166,6 +158,15 @@ public class ProductServiceMockTest {
     public void testFindProductByNameFalse() {
         when(productDao.getByName("Chocolate1")).thenReturn(null);
         assertNull(productService.getByName("Chocolate1"));
+    }
+
+    @Test
+    public void testProductAlreadyExists() {
+        when(productDao.getByName(product.getName())).thenReturn(product);
+        ProductDTO productDTO = productService.getByName(product.getName());
+        Integer productDtoId = productDTO.getId();
+        Integer productId = product.getId();
+        assertTrue(productDtoId.equals(productId));
     }
 
     @Test
@@ -192,14 +193,13 @@ public class ProductServiceMockTest {
         assertFalse(productService.getById(product.getId()).getPrice() < 0);
     }
 
-//    @Test
-//    public void testGetProductsByParams() {
-//        List<Product> list = productDao.getProductsByParameters(product.getCategory().getId(), product.getFilling().getId(), product.getDough().getId(),
-//                new ArrayList<>(), product.getName(), Math.round(product.getPrice()), Math.round(product.getPrice()));
-//        when(list).thenReturn(Collections.EMPTY_LIST);
-//        assertNotNull(productService.getProductsByParameters(product.getCategory().getId(), product.getFilling().getId(), product.getDough().getId(),
-//                new ArrayList<>(), product.getName(), Math.round(product.getPrice()), Math.round(product.getPrice())));
-//    }
+    @Test
+    public void testGetProductsByParams() {
+        FilterDTO filterDTO = new FilterDTO();
+        List<Product> list = productDao.getProductsByParameters(filterDTO);
+        when(list).thenReturn(Collections.EMPTY_LIST);
+        assertNotNull(productService.getProductsByParameters(filterDTO));
+    }
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
@@ -208,6 +208,6 @@ public class ProductServiceMockTest {
     public void testCreateProductWithoutName() {
         testFindProductByNameTrue();
         expectedException.expect(ObjectExistsException.class);
-        given(productService.create(modelMapper.map(product,ProductDTO.class))).willThrow(new ObjectExistsException("Already Exists"));
+        given(productService.create(modelMapper.map(product,ProductDTO.class))).willThrow(new ObjectExistsException(""));
     }
 }
