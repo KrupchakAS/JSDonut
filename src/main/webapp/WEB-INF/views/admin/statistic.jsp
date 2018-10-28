@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="с" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <html>
@@ -55,8 +56,8 @@
                             <table id="category-table" class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Proceeds For Last Month</th>
-                                    <th>Proceeds For Last Week</th>
+                                    <th>Revenue for the current Month</th>
+                                    <th>Revenue for the current Week</th>
                                     <th>TOP 10 Customers</th>
                                     <th>TOP 10 Products</th>
                                 </tr>
@@ -64,9 +65,11 @@
                                 <tbody>
                                 <tr>
                                     <td>
+
                                         <c:choose>
                                             <c:when test="${ProceedsForLastMonth != null}">
-                                                ${ProceedsForLastMonth}
+                                                <fmt:formatNumber type="number" maxFractionDigits="2" var="proccedsMonth" value="${ProceedsForLastMonth}" />
+                                                ${proccedsMonth}
                                             </c:when>
                                             <c:otherwise>
                                                 No proceeds
@@ -76,7 +79,8 @@
                                     <td>
                                         <c:choose>
                                             <c:when test="${ProceedsForLastWeek != null}">
-                                                ${ProceedsForLastWeek}
+                                                <fmt:formatNumber type="number" maxFractionDigits="2" var="proccedsWeek" value="${ProceedsForLastWeek}" />
+                                                ${proccedsWeek}
                                             </c:when>
                                             <c:otherwise>
                                                 No proceeds

@@ -35,7 +35,7 @@ public class OrderDaoImpl extends GenericDaoImpl<Order> implements OrderDao {
     @SuppressWarnings("unchecked")
     @Override
     public List<Order> getOrdersForMonth() {
-        TypedQuery<Order> q = entityManager.createQuery("FROM Order WHERE month(purchaseDate) = month(now())-1",Order.class);
+        TypedQuery<Order> q = entityManager.createQuery("FROM Order WHERE month(purchaseDate) = month(now())",Order.class);
         List<Order> list = q.getResultList();
         if (list.isEmpty()) {
             return null;
