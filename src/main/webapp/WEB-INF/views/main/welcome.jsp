@@ -91,7 +91,7 @@
                     <p><a href="${contextPath}/registration">Sign Up </a> Or <a href="${contextPath}/login">Sign In </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                    <p> Hi Admin, let's work<a href="${contextPath}/admin/adminPanel">Admin Panel</a>   <a href="${contextPath}/account">My Account</a>     <a href="${contextPath}/jsDonut/logout">Sing Out </a></p>
+                    <p> Hi Admin, let's work<a href="${contextPath}/admin/adminPanel">Admin Panel</a>   <a href="${contextPath}/account">My Account</a>     <a href="${contextPath}/logout">Sing Out </a></p>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_USER')">
                     <p>Hi, ${pageContext.request.userPrincipal.name}    <a href="${contextPath}/account">My Account</a>     <a href="${contextPath}/logout">Sing Out </a></p>
