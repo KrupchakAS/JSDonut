@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+/**
+ * Category controller
+ */
 @Controller
 @RequestMapping(value = "/admin")
 public class CategoryController {
@@ -19,6 +22,11 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    /**
+     * Open admin panel category view
+     * @param modelMap - model for view
+     * @return - string view name
+     */
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public String openPage(ModelMap modelMap) {
         modelMap.addAttribute("categoryActive", "active");
@@ -26,6 +34,11 @@ public class CategoryController {
         return "admin/category";
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param categoryId = param to get category by Id
+     * @return - object with special response params for the query
+     */
     @RequestMapping(value = "/category/getCategoryById", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO getCategory(@RequestParam(value = "id") @Valid @NotEmpty(message = "Category id cannot be empty") Integer categoryId) {
@@ -34,6 +47,11 @@ public class CategoryController {
         return result;
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param categoryDTO - object for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @ResponseBody
     @RequestMapping(value = "/category/createCategory", method = RequestMethod.POST)
     public AjaxDTO createCategory(@RequestBody CategoryDTO categoryDTO) {
@@ -47,7 +65,11 @@ public class CategoryController {
         }
         return result;
     }
-
+    /**
+     * Method for ajax CRUD operations
+     * @param categoryDTO - object for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @ResponseBody
     @RequestMapping(value = "/category/updateCategory", method = RequestMethod.POST)
     public AjaxDTO updateCategory(@RequestBody CategoryDTO categoryDTO) {
@@ -61,7 +83,11 @@ public class CategoryController {
         result.setData(categoryDTO);
         return result;
     }
-
+    /**
+     * Method for ajax CRUD operations
+     * @param id - param for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @ResponseBody
     @RequestMapping(value = "/category/deleteCategory", method = RequestMethod.DELETE)
     public AjaxDTO deleteCategory(@Valid @NotEmpty(message = "Category id cannot be empty") @RequestBody Integer id) {

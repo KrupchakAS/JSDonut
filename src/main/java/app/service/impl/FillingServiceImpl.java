@@ -102,8 +102,10 @@ public class FillingServiceImpl implements FillingService {
     public void checkFillingByProducts(Integer id) {
         List<Product> productList = productDao.getAll();
         for(int i = 0; i < productList.size();i++){
-            if(productList.get(i).getFilling().getId().equals(id)){
-                throw new ObjectUsedException("Some Product use this Filling");
+            if(productList.get(i).getFilling() != null) {
+                if (productList.get(i).getFilling().getId().equals(id)) {
+                    throw new ObjectUsedException("Some Product use this Filling");
+                }
             }
         }
     }

@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+/**
+ * Dough controller
+ */
 @Controller
 @RequestMapping(value = "/admin")
 public class DoughController {
@@ -20,6 +23,11 @@ public class DoughController {
     @Autowired
     private DoughService doughService;
 
+    /**
+     * Open admin panel dough view
+     * @param modelMap - model for view
+     * @return - string view name
+     */
     @RequestMapping(value = "/dough", method = RequestMethod.GET)
     public String openPage(ModelMap modelMap) {
         modelMap.addAttribute("doughActive", "active");
@@ -27,6 +35,11 @@ public class DoughController {
         return "admin/dough";
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param doughId - param for the for the search dough by id operation
+     * @return - object with special response params for the query
+     */
     @RequestMapping(value = "/dough/getDoughById", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO getDough(@RequestParam(value = "id") @Valid @NotEmpty(message = "Dough id cannot be empty") Integer doughId) {
@@ -35,6 +48,11 @@ public class DoughController {
         return result;
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param doughDTO - object for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @ResponseBody
     @RequestMapping(value = "/dough/createDough", method = RequestMethod.POST)
     public AjaxDTO createDough(@RequestBody DoughDTO doughDTO){
@@ -52,6 +70,11 @@ public class DoughController {
         return result;
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param doughDTO - param for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @ResponseBody
     @RequestMapping(value = "/dough/updateDough", method = RequestMethod.POST)
     public AjaxDTO updateDough( @RequestBody DoughDTO doughDTO){
@@ -69,6 +92,11 @@ public class DoughController {
         return result;
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param id - param for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @ResponseBody
     @RequestMapping(value = "/dough/deleteDough", method = RequestMethod.DELETE)
     public AjaxDTO deleteDough(@RequestBody Integer id){

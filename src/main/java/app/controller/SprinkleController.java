@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+/**
+ * Sprinkle controller
+ */
 @Controller
 @RequestMapping(value = "/admin")
 public class SprinkleController {
@@ -20,6 +23,11 @@ public class SprinkleController {
     @Autowired
     SprinkleService sprinkleService;
 
+    /**
+     * Open admin panel sprinkle view
+     * @param modelMap - model for view
+     * @return - string view name
+     */
     @RequestMapping(value = "/sprinkle", method = RequestMethod.GET)
     public String openPage(ModelMap modelMap) {
         modelMap.addAttribute("sprinkleActive", "active");;
@@ -27,6 +35,11 @@ public class SprinkleController {
         return "admin/sprinkle";
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param sprinkleId - param for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @RequestMapping(value = "/sprinkle/getSprinkleById", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO getSprinkle(@RequestParam(value = "id") @Valid @NotEmpty(message = "Sprinkle id cannot be empty") Integer sprinkleId) {
@@ -35,6 +48,11 @@ public class SprinkleController {
         return result;
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param sprinkleDTO - object for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @ResponseBody
     @RequestMapping(value = "/sprinkle/createSprinkle", method = RequestMethod.POST)
     public AjaxDTO createSprinkle(@RequestBody SprinkleDTO sprinkleDTO){
@@ -53,6 +71,11 @@ public class SprinkleController {
         return result;
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param sprinkleDTO - object for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @ResponseBody
     @RequestMapping(value = "/sprinkle/updateSprinkle", method = RequestMethod.POST)
     public AjaxDTO updateSprinkle(@RequestBody SprinkleDTO sprinkleDTO){
@@ -71,6 +94,11 @@ public class SprinkleController {
         return result;
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param id - object for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @ResponseBody
     @RequestMapping(value = "/sprinkle/deleteSprinkle", method = RequestMethod.DELETE)
     public AjaxDTO deleteSprinkle(@RequestBody Integer id){

@@ -2,6 +2,7 @@ package app.tests;
 
 import app.dao.api.OrderDao;
 
+import app.dao.api.ProductDao;
 import app.dto.OrderDTO;
 import app.entity.*;
 import app.entity.enums.DeliveryOption;
@@ -9,12 +10,15 @@ import app.entity.enums.OrderStatus;
 import app.entity.enums.PaymentOption;
 import app.entity.enums.PaymentStatus;
 import app.exception.MinTotalPriceOrderException;
+import app.service.api.ProductService;
 import app.service.impl.OrderServiceImpl;
+import app.service.impl.ProductServiceImpl;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
+import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -28,6 +32,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.Silent.class)
@@ -35,6 +40,10 @@ public class OrderServiceMockTest {
 
     @Mock
     private OrderDao orderDao;
+    @Mock
+    private ProductDao productDao;
+    @InjectMocks
+    private ProductServiceImpl productService;
 
     @InjectMocks
     private OrderServiceImpl orderService;
@@ -52,6 +61,7 @@ public class OrderServiceMockTest {
     private Address address;
     private Product product;
     private Order order;
+    private OrderDTO orderDTO;
 
     @Before
     public void setup() {
@@ -131,6 +141,8 @@ public class OrderServiceMockTest {
         order.setAddress(address);
         order.setUser(user1);
         order.setProductList(list);
+
+        orderDTO = modelMapper.map(order,OrderDTO.class);
     }
 
     @Test
@@ -169,10 +181,4 @@ public class OrderServiceMockTest {
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 
-//    @Test
-//    public void testCreateOrderByPrice() {
-//        testTotalPriceCantLessZero();
-//        expectedException.expect(MinTotalPriceOrderException.class);
-//        given(orderService.create(modelMapper.map(order,OrderDTO.class))).willThrow(new MinTotalPriceOrderException("Order price is valid"));
-//    }
 }

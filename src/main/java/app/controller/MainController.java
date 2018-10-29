@@ -20,8 +20,10 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Main controller
+ */
 @Controller
-
 public class MainController {
 
     private static final Logger logger = Logger.getLogger(MainController.class);
@@ -40,6 +42,11 @@ public class MainController {
     @Autowired
     private AddressService addressService;
 
+    /**
+     * Method for ajax CRUD operations
+     * @param filterDTO - param for the filter operation
+     * @return - list objects with special response params for the query
+     */
     @RequestMapping(value = "/getProductsByParameters", method = RequestMethod.POST)
     @ResponseBody
     public AjaxDTO getProductsByParameters(@RequestBody FilterDTO filterDTO) {
@@ -48,6 +55,11 @@ public class MainController {
         return result;
     }
 
+    /**
+     * @param modelMap - model for view
+     * @param session - param for keeping and use session attributes
+     * @return - string view name
+     */
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
     public String cart(ModelMap modelMap, HttpSession session) {
         UserDTO userDTO = userService.getByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
@@ -64,6 +76,11 @@ public class MainController {
         return "main/cart";
     }
 
+    /**
+     * Method for ajax clear order product list operation
+     * @param session - param for keeping and use session attributes
+     * @return - list products with special response params for the query
+     */
     @RequestMapping(value = "/emptyCart", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO addToOrder(HttpSession session) {
@@ -80,6 +97,13 @@ public class MainController {
         return result;
     }
 
+    /**
+     * Method for ajax add product to order product list operation
+     * @param productId - param for search product by id
+     * @param quantity - param for keep quantity product
+     * @param session - param for keeping and use session attributes
+     * @return - object with special response params for the query
+     */
     @RequestMapping(value = "/addProductToOrder", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO addToOrder(@Valid @NotNull @RequestParam(value = "id") Integer productId, @Valid @NotNull @RequestParam(value = "quantity") Short quantity, HttpSession session) {
@@ -104,6 +128,12 @@ public class MainController {
         return result;
     }
 
+    /**
+     * Method for ajax delete product from order product list operation
+     * @param productId - param for search product by id
+     * @param session - param for keeping and use session attributes
+     * @return - object with special response params for the query
+     */
     @RequestMapping(value = "/deleteProductByIdFromOrder", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO deleteProductById(@Valid @NotNull @RequestParam(value = "id") Integer productId, HttpSession session) {
@@ -122,6 +152,12 @@ public class MainController {
         return result;
     }
 
+    /**
+     * Method for ajax save order operation
+     * @param order - order object for the save operation
+     * @param session - param for keeping and use session attributes
+     * @return - object with special response params for the query
+     */
     @RequestMapping(value = "/saveOrder", method = RequestMethod.POST)
     @ResponseBody
     public AjaxDTO saveOrder(@Valid @RequestBody OrderDTO order, HttpSession session) {

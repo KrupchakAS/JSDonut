@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+/**
+ * Order controller
+ */
 @Controller
 @RequestMapping(value = "/admin")
 
@@ -19,6 +22,11 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    /**
+     * Open admin panel order view
+     * @param modelMap - model for view
+     * @return - string view name
+     */
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public String openPage(ModelMap modelMap) {
         modelMap.addAttribute("orderActive", "active");
@@ -26,6 +34,11 @@ public class OrderController {
         return "admin/order";
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param orderId - param for the for the search order by id operation
+     * @return - object with special response params for the query
+     */
     @RequestMapping(value = "/order/getOrderById", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO getOrder(@RequestParam(value = "id") @Valid @NotEmpty(message = "Order id cannot be empty") Integer orderId) {
@@ -34,6 +47,11 @@ public class OrderController {
         return result;
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param orderDTO - object for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @ResponseBody
     @RequestMapping(value = "/order/createOrder", method = RequestMethod.POST)
     public AjaxDTO createOrder(@Valid @RequestBody OrderDTO orderDTO) {
@@ -45,6 +63,11 @@ public class OrderController {
         return result;
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param orderDTO - object for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @ResponseBody
     @RequestMapping(value = "/order/updateOrder", method = RequestMethod.POST)
     public AjaxDTO updateOrder(@Valid @RequestBody OrderDTO orderDTO) {
@@ -56,6 +79,11 @@ public class OrderController {
         return result;
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param id - param for the for the search order by id operation
+     * @return - object with special response params for the query
+     */
     @ResponseBody
     @RequestMapping(value = "/order/deleteOrder", method = RequestMethod.DELETE)
     public AjaxDTO deleteOrder(@RequestBody Integer id) {

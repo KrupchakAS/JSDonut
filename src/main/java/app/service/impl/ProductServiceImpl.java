@@ -43,8 +43,8 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductDTO create(ProductDTO productDTO) {
         if (productDTO != null) {
-            Product productex = productDao.getByName(productDTO.getName());
-            if (productex != null) {
+            Product productEx = productDao.getByName(productDTO.getName());
+            if (productEx != null) {
                 throw new ObjectExistsException(String.format("Product with name %s already exists", productDTO.getName()));
             }
             Product product = modelMapper.map(productDTO, Product.class);
@@ -141,7 +141,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public void byProduct(ProductDTO productDTO) {
+    public Boolean byProduct(ProductDTO productDTO) {
         Product product = selectForUpdateProduct(productDTO.getId());
         if (product.getQuantity() < productDTO.getQuantity()) {
             String text = String.format("Cannot buy product '%s'. There are not enough quantity in the shop.", product.getName());
@@ -149,6 +149,7 @@ public class ProductServiceImpl implements ProductService {
         }
         product.setQuantity((short) (product.getQuantity() - productDTO.getQuantity()));
         productDao.update(product);
+        return true;
     }
 
     public void setModelMapper(ModelMapper modelMapper) {

@@ -32,7 +32,7 @@
     </div>
     <div class="divider"></div>
     <ul class="nav menu">
-        <li class="${statisticActive}"><a href="${contextPath}admin/statistic"> Statistic</a></li>
+        <li class="${statisticActive}"><a href="${contextPath}admin/statistic"> Statistics</a></li>
         <li class="${orderActive}"><a href="${contextPath}/admin/order"> Orders</a></li>
         <li class="${categoryActive}"><a href="${contextPath}/admin/category"> Categories</a></li>
         <li class="${productActive}"><a href="${contextPath}/admin/product"> Products</a></li>

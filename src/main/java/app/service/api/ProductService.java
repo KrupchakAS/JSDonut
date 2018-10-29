@@ -24,7 +24,7 @@ public interface ProductService {
 
     List<ProductDTO> getProductsByParameters(FilterDTO filterDTO);
 
-    void byProduct(ProductDTO productDTO);
+    Boolean byProduct(ProductDTO productDTO);
 
     void checkProductFields(ProductDTO productDTO);
 

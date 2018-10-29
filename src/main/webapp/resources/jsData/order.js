@@ -72,10 +72,20 @@ function openOrderFormUpdate(orderObject) {
     $('.order-update').removeClass('block__display-none');
 
     $('.order-id').val(orderObject.id);
-    $('#PaymentOption-update option:selected').text(orderObject.paymentOption);
-    $('#DeliveryOption-update option:selected').text(orderObject.deliveryOption);
-    $('#PaymentStatus-update option:selected').text(orderObject.paymentStatus);
-    $('#OrderStatus-update option:selected').text(orderObject.orderStatus);
+
+    $('#PaymentOption-update option').filter(function () {
+        return $(this).text() == orderObject.paymentOption.toString();
+    }).prop('selected',true);
+     $('#DeliveryOption-update option').filter(function () {
+         return $(this).text() == orderObject.deliveryOption.toString();
+     }).prop('selected',true);
+     $('#PaymentStatus-update option').filter(function () {
+         return $(this).text() == orderObject.paymentStatus.toString();
+     }).prop('selected',true);
+     $('#OrderStatus-update option').filter(function () {
+         return $(this).text() == orderObject.orderStatus.toString();
+     }).prop('selected',true);
+
 }
 
 

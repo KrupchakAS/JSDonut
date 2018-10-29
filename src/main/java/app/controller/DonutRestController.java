@@ -1,15 +1,10 @@
 package app.controller;
 
-import app.dto.OrderDTO;
 import app.dto.ProductDTO;
 import app.dto.ProductRestDTO;
 import app.service.api.OrderService;
-import app.service.api.ProductService;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Rest controller for web service
+ */
 @RestController
 @RequestMapping(value = "/rest")
 public class DonutRestController {
@@ -26,6 +24,10 @@ public class DonutRestController {
     @Autowired
     private OrderService orderService;
 
+    /**
+     * Method for ajax CRUD operations
+     * @return -  list objects with special response params for the query
+     */
     @GetMapping(value = "/getTop10Products")
     public List<ProductRestDTO> getTop10Products(){
         List<ProductDTO> list = orderService.getTop10Products();

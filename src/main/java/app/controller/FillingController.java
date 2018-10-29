@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+/**
+ * Filling controller
+ */
 @Controller
 @RequestMapping(value = "/admin")
 public class FillingController {
@@ -20,6 +23,11 @@ public class FillingController {
     @Autowired
     private FillingService fillingService;
 
+    /**
+     * Open admin panel filling view
+     * @param modelMap - model for view
+     * @return - string view name
+     */
     @RequestMapping(value = "/filling", method = RequestMethod.GET)
     public String openPage(ModelMap modelMap) {
         modelMap.addAttribute("fillingActive", "active");
@@ -27,6 +35,11 @@ public class FillingController {
         return "admin/filling";
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param fillingId - param for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @RequestMapping(value = "/filling/getFillingById", method = RequestMethod.GET)
     @ResponseBody
     public AjaxDTO getFilling(@RequestParam(value = "id") @Valid @NotEmpty(message = "Filling id cannot be empty") Integer fillingId) {
@@ -35,6 +48,11 @@ public class FillingController {
         return result;
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param fillingDTO - object for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @ResponseBody
     @RequestMapping(value = "/filling/createFilling", method = RequestMethod.POST)
     public AjaxDTO createFilling(@RequestBody FillingDTO fillingDTO) throws InterruptedException {
@@ -53,6 +71,11 @@ public class FillingController {
         return result;
     }
 
+    /**
+     * Method for ajax CRUD operations
+     * @param fillingDTO - object for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @ResponseBody
     @RequestMapping(value = "/filling/updateFilling", method = RequestMethod.POST)
     public AjaxDTO updateFilling(@RequestBody FillingDTO fillingDTO){
@@ -71,7 +94,11 @@ public class FillingController {
         return result;
     }
 
-
+    /**
+     * Method for ajax CRUD operations
+     * @param id - param for the CrUD operations
+     * @return - object with special response params for the query
+     */
     @ResponseBody
     @RequestMapping(value = "/filling/deleteFilling", method = RequestMethod.DELETE)
     public AjaxDTO deleteFilling(@RequestBody Integer id){

@@ -2,6 +2,7 @@ package app.tests;
 
 import app.dao.api.ProductDao;
 import app.dto.FilterDTO;
+import app.dto.OrderDTO;
 import app.dto.ProductDTO;
 import app.entity.*;
 import app.entity.enums.DeliveryOption;
@@ -10,7 +11,9 @@ import app.entity.enums.PaymentOption;
 import app.entity.enums.PaymentStatus;
 import app.exception.MinLengthFieldException;
 import app.exception.ObjectExistsException;
+import app.exception.ObjectUsedException;
 import app.service.api.*;
+import app.service.impl.OrderServiceImpl;
 import app.service.impl.ProductServiceImpl;
 import org.junit.Before;
 import org.junit.Rule;
@@ -40,6 +43,7 @@ public class ProductServiceMockTest {
     private ProductDao productDao;
     @InjectMocks
     private ProductServiceImpl productService;
+
     @InjectMocks
     private ModelMapper modelMapper;
 
@@ -54,6 +58,8 @@ public class ProductServiceMockTest {
     private User user2;
     private Address address;
     private Product product;
+    private OrderDTO orderDTO;
+    private ProductDTO productDTO;
 
     @Before
     public void setup() {
@@ -130,6 +136,8 @@ public class ProductServiceMockTest {
         order.setUser(user1);
         orderList.add(order);
 
+        orderDTO = modelMapper.map(order,OrderDTO.class);
+
         product = new Product();
         product.setId(3);
         product.setCalories((short) 350);
@@ -140,6 +148,7 @@ public class ProductServiceMockTest {
         product.setSprinkleList(sprinkleList);
         product.setName("Chocolate");
 
+        productDTO = modelMapper.map(product,ProductDTO.class);
     }
 
     @Test
@@ -193,13 +202,7 @@ public class ProductServiceMockTest {
         assertFalse(productService.getById(product.getId()).getPrice() < 0);
     }
 
-    @Test
-    public void testGetProductsByParams() {
-        FilterDTO filterDTO = new FilterDTO();
-        List<Product> list = productDao.getProductsByParameters(filterDTO);
-        when(list).thenReturn(Collections.EMPTY_LIST);
-        assertNotNull(productService.getProductsByParameters(filterDTO));
-    }
+
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
@@ -210,4 +213,26 @@ public class ProductServiceMockTest {
         expectedException.expect(ObjectExistsException.class);
         given(productService.create(modelMapper.map(product,ProductDTO.class))).willThrow(new ObjectExistsException(""));
     }
+
+    @Test
+    public void testGetProductsByParams() {
+        FilterDTO filterDTO = new FilterDTO();
+        List<Product> list = productDao.getProductsByParameters(filterDTO);
+        when(list).thenReturn(Collections.EMPTY_LIST);
+        assertNotNull(productService.getProductsByParameters(filterDTO));
+    }
+
+//    @Test
+//    public void testBuyProductTwoUserSimultaneously() {
+//
+//        expectedException.expect(ObjectUsedException.class);
+//
+//        doNothing().when(productService.byProduct(productDTO));
+//
+//        when(productService.byProduct(productDTO)).thenReturn(true);
+//
+//        when(productService.byProduct(productDTO)).thenReturn(true);
+//        given(productService.byProduct(productDTO))
+//                .willThrow(new ObjectUsedException("Cannot buy product . There are not enough quantity in the shop."));
+//    }
 }

@@ -267,9 +267,9 @@
                             <form class="addressForm login block__display-none">
                                 <input style="margin-bottom: 5px" id="City" placeholder="City" minlength="2" maxlength="32" class="form-control">
                                 <input style="margin-bottom: 5px" id="Street" placeholder="Street" minlength="2" maxlength="32" class="form-control">
-                                <input style="margin-bottom: 5px" id="HouseNumber" placeholder="HouseNumber" minlength="1" maxlength="8"
+                                <input style="margin-bottom: 5px" id="HouseNumber" type="number" placeholder="HouseNumber" minlength="1" maxlength="8"
                                        class="form-control">
-                                <input style="margin-bottom: 5px" id="ApartmentNumber" placeholder="ApartmentNumber" minlength="1" maxlength="8"
+                                <input style="margin-bottom: 5px" id="ApartmentNumber" type="number" placeholder="ApartmentNumber" minlength="1" maxlength="8"
                                        class="form-control">
                                 <input style="margin-bottom: 5px" id="PostCode" placeholder="PostCode" minlength="2" maxlength="16"
                                        class="form-control">
