@@ -87,9 +87,10 @@ public class UserController {
      * @return - string view name
      */
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String registration(@Valid @ModelAttribute("userForm") UserDTO userForm, BindingResult bindingResult) {
+    public String registration(@Valid @ModelAttribute("userForm") UserDTO userForm, BindingResult bindingResult,ModelMap modelMap, HttpSession session) {
         userValidator.validate(userForm, bindingResult);
         if (bindingResult.hasErrors()) {
+            sessionOrderInit(modelMap,session);
             return "main/registration";
         }
         userService.create(userForm);
@@ -270,7 +271,7 @@ public class UserController {
     }
 
     /**
-     * Open 500 error page view
+     * Open welcome page view
      */
     @RequestMapping(value = "/500", method = RequestMethod.GET)
     public String page500() {
